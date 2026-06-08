@@ -278,6 +278,24 @@ const nav = [
   ["Contact", "/contact/"]
 ];
 
+const siteRootUrl = new URL(".", document.currentScript ? document.currentScript.src : window.location.href);
+const isFilePreview = window.location.protocol === "file:";
+
+function assetUrl(path) {
+  if (/^(mailto:|https?:|file:|#)/.test(path)) return path;
+  if (!isFilePreview) return path;
+  return new URL(path.replace(/^\//, ""), siteRootUrl).href;
+}
+
+function pageUrl(path) {
+  if (/^(mailto:|https?:|file:|#)/.test(path)) return path;
+  if (!isFilePreview) return path;
+  const clean = path.replace(/^\//, "");
+  if (!clean) return new URL("index.html", siteRootUrl).href;
+  if (clean.endsWith("/")) return new URL(`${clean}index.html`, siteRootUrl).href;
+  return new URL(clean, siteRootUrl).href;
+}
+
 function esc(value) {
   return String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
 }
@@ -293,7 +311,7 @@ function cards(items) {
 function appIcon(app) {
   const initials = esc(app.name.split(" ").map(word => word[0]).join("").slice(0, 2));
   if (app.icon) {
-    return `<div class="app-icon has-image"><img src="${esc(app.icon)}" alt="${esc(app.name)} icon" onerror="this.parentElement.classList.remove('has-image'); this.replaceWith(document.createTextNode('${initials}'))"></div>`;
+    return `<div class="app-icon has-image"><img src="${esc(assetUrl(app.icon))}" alt="${esc(app.name)} icon" onerror="this.parentElement.classList.remove('has-image'); this.replaceWith(document.createTextNode('${initials}'))"></div>`;
   }
   return `<div class="app-icon" aria-hidden="true">${initials}</div>`;
 }
@@ -306,12 +324,12 @@ function shell(title, active, content) {
     <header class="site-header">
       <div class="inner">
         <nav class="nav" aria-label="Primary">
-          <a class="brand" href="/">
-            <img src="/assets/brand/bamboo-holdings-logo-hq.png" alt="" onerror="this.src='/assets/brand/bamboo-logo.png'; this.onerror=()=>this.replaceWith(Object.assign(document.createElement('span'), {className: 'brand-mark', textContent: 'B'}))">
+          <a class="brand" href="${pageUrl("/")}">
+            <img src="${assetUrl("/assets/brand/bamboo-holdings-logo-hq.png")}" alt="" onerror="this.src='${assetUrl("/assets/brand/bamboo-logo.png")}'; this.onerror=()=>this.replaceWith(Object.assign(document.createElement('span'), {className: 'brand-mark', textContent: 'B'}))">
             <span>Bamboo Holdings</span>
           </a>
           <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-          <div class="nav-links">${nav.map(([label, href]) => `<a href="${href}"${label === active ? ' aria-current="page"' : ""}>${label}</a>`).join("")}</div>
+          <div class="nav-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}"${label === active ? ' aria-current="page"' : ""}>${label}</a>`).join("")}</div>
         </nav>
       </div>
     </header>
@@ -319,7 +337,7 @@ function shell(title, active, content) {
     <footer class="site-footer">
       <div class="inner footer-grid">
         <span>&copy; ${new Date().getFullYear()} Bamboo Holdings. Builder-led venture studio.</span>
-        <div class="footer-links">${nav.map(([label, href]) => `<a href="${href}">${label}</a>`).join("")}<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
+        <div class="footer-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}">${label}</a>`).join("")}<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
       </div>
     </footer>`;
   const button = document.querySelector(".menu-button");
@@ -350,7 +368,7 @@ function home() {
         <p class="eyebrow">Bamboo Holdings</p>
         <h1>Founder-led software for the AI era.</h1>
         <p class="lede">Bamboo builds sharp, public-safe products for specific workflows: planning, coaching, travel, creativity, scoring, and decision support.</p>
-        <div class="actions"><a class="button" href="/apps/">View apps</a><a class="button secondary" href="/labs/">Enter Labs</a><a class="button secondary" href="/ventures/">Explore ventures</a></div>
+        <div class="actions"><a class="button" href="${pageUrl("/apps/")}">View apps</a><a class="button secondary" href="${pageUrl("/labs/")}">Enter Labs</a><a class="button secondary" href="${pageUrl("/ventures/")}">Explore ventures</a></div>
       </div>
       <div class="studio-visual" aria-label="Bamboo Holdings venture studio preview">
         <div class="visual-grid">
@@ -371,7 +389,7 @@ function home() {
     <section class="inner section">
       <div class="split">
         <div><p class="eyebrow">Bamboo Bore Labs</p><h2>Urban ore recovery, mapped by intelligence.</h2></div>
-        <div><p class="copy">The Labs briefing frames a new venture thesis: buried electronic-era material as concentrated anthropogenic ore, evaluated through forensic site research, AI-enhanced density intelligence, precision extraction, and on-site micro-refining.</p><div class="actions"><a class="button secondary" href="/labs/">View Labs thesis</a></div></div>
+        <div><p class="copy">The Labs briefing frames a new venture thesis: buried electronic-era material as concentrated anthropogenic ore, evaluated through forensic site research, AI-enhanced density intelligence, precision extraction, and on-site micro-refining.</p><div class="actions"><a class="button secondary" href="${pageUrl("/labs/")}">View Labs thesis</a></div></div>
       </div>
     </section>
     <section class="inner section">
@@ -385,14 +403,14 @@ function home() {
     <section class="band section">
       <div class="inner split">
         <div><p class="eyebrow">Founder-led</p><h2>Built by a practical product operator.</h2></div>
-        <div><p class="copy">Bamboo is led by Matthew Grossman, who brings operating-company experience to software: study the workflow, find the friction, and build products around what people actually do.</p><div class="actions"><a class="button secondary" href="/about/">About Bamboo</a></div></div>
+        <div><p class="copy">Bamboo is led by Matthew Grossman, who brings operating-company experience to software: study the workflow, find the friction, and build products around what people actually do.</p><div class="actions"><a class="button secondary" href="${pageUrl("/about/")}">About Bamboo</a></div></div>
       </div>
     </section>
     <section class="inner section">
       <p class="eyebrow">Contact</p>
       <h2>Have a product, partnership, or support question?</h2>
       <p class="lede">Reach Bamboo directly at <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
-      <div class="actions"><a class="button" href="/contact/">Contact</a></div>
+      <div class="actions"><a class="button" href="${pageUrl("/contact/")}">Contact</a></div>
     </section>`);
 }
 
@@ -404,9 +422,9 @@ function portfolioCard(app) {
     <p>${esc(app.tagline)}</p>
     <p>${esc(app.intro)}</p>
     <div class="mini-links">
-      <a href="${app.slug}">Overview</a>
-      <a href="${app.slug}support/">Support</a>
-      <a href="${app.slug}privacy/">Privacy</a>
+      <a href="${pageUrl(app.slug)}">Overview</a>
+      <a href="${pageUrl(`${app.slug}support/`)}">Support</a>
+      <a href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a>
     </div>
   </article>`;
 }
@@ -417,7 +435,7 @@ function ventures() {
       <p class="eyebrow">Ventures</p>
       <h1>A small venture studio for focused software products.</h1>
       <p class="lede">Bamboo develops practical products around specific workflows, learns from early users, and keeps public claims grounded in what each product is ready to support.</p>
-      <div class="actions"><a class="button" href="/apps/">View app portfolio</a><a class="button secondary" href="/contact/">Start a conversation</a></div>
+      <div class="actions"><a class="button" href="${pageUrl("/apps/")}">View app portfolio</a><a class="button secondary" href="${pageUrl("/contact/")}">Start a conversation</a></div>
     </section>
     <section class="band section"><div class="inner split"><div><h2>The studio model</h2></div><div><p class="copy">Bamboo operates as a founder-led venture studio built around operating discipline. Some ideas become public app projects; others remain research, prototypes, or internal experiments until there is enough substance to discuss them responsibly.</p></div></div></section>
     <section class="inner section">
@@ -433,17 +451,17 @@ function labs() {
         <p class="eyebrow">Bamboo Bore Labs</p>
         <h1>Liquidating the Anthropocene archive.</h1>
         <p class="lede">Bamboo Bore Labs explores urban ore recovery: identifying concentrated electronic-era deposits, validating subsurface density, and recovering high-value material with precision instead of mass excavation.</p>
-        <div class="actions"><a class="button" href="/contact/">Discuss Labs</a><a class="button secondary" href="/ventures/">Back to Ventures</a></div>
+        <div class="actions"><a class="button" href="${pageUrl("/contact/")}">Discuss Labs</a><a class="button secondary" href="${pageUrl("/ventures/")}">Back to Ventures</a></div>
       </div>
       <div class="studio-visual" aria-label="Bamboo Bore Labs thesis console">
-        <div class="lab-logo-panel"><img src="/assets/brand/bamboo-holdings-logo-hq.png" alt="Bamboo Holdings logo"></div>
+        <div class="lab-logo-panel"><img src="${assetUrl("/assets/brand/bamboo-holdings-logo-hq.png")}" alt="Bamboo Holdings logo"></div>
         <div class="visual-grid">
           <div class="visual-tile"><strong>Event forensics</strong><span>Archive-led site narrowing and disposal pattern reconstruction.</span><i class="metric-line"></i></div>
           <div class="visual-tile"><strong>Density intelligence</strong><span>AI-assisted metallic anomaly modeling from sensor data.</span><i class="metric-line"></i></div>
           <div class="visual-tile"><strong>Surgical extraction</strong><span>Bore or trench methods targeting only validated high-density zones.</span><i class="metric-line"></i></div>
           <div class="visual-tile"><strong>Micro-refining</strong><span>On-site modular refining for recovered high-value material.</span><i class="metric-line"></i></div>
         </div>
-        <p class="copy">Briefing source saved in the repo as <a href="/reference/labs/investor-briefing.pdf">Investor-Briefing.pdf</a>.</p>
+        <p class="copy">Briefing source saved in the repo as <a href="${assetUrl("/reference/labs/investor-briefing.pdf")}">Investor-Briefing.pdf</a>.</p>
       </div>
     </section>
     <section class="band section">
@@ -489,7 +507,7 @@ function appPage(app) {
           <h1>${esc(app.hero)}</h1>
           <p class="lede">${esc(app.intro)}</p>
           <p class="copy">${esc(app.long)}</p>
-          <div class="actions"><a class="button" href="${app.slug}support/">Support</a><a class="button secondary" href="${app.slug}privacy/">Privacy</a></div>
+          <div class="actions"><a class="button" href="${pageUrl(`${app.slug}support/`)}">Support</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
         </div>
         <div class="product-panel">
           ${appIcon(app)}
@@ -517,7 +535,7 @@ function supportPage(app) {
       <h1>Support for ${esc(app.name)}</h1>
       <p class="lede">${esc(app.support.overview)}</p>
       <p class="copy">For help, contact <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
-      <div class="actions"><a class="button secondary" href="${app.slug}">Back to ${esc(app.name)}</a><a class="button secondary" href="${app.slug}privacy/">Privacy</a></div>
+      <div class="actions"><a class="button secondary" href="${pageUrl(app.slug)}">Back to ${esc(app.name)}</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
     </section>
     <section class="inner section tight prose">
       <h2>When contacting support</h2>
@@ -536,7 +554,7 @@ function privacyPage(app) {
       <p class="eyebrow">${esc(app.name)} privacy</p>
       <h1>Privacy overview for ${esc(app.name)}</h1>
       <p class="lede">Effective date: ${TODAY}. This page uses cautious public-safe language from the current reference packet and should be reviewed before public launch.</p>
-      <div class="actions"><a class="button secondary" href="${app.slug}">Back to ${esc(app.name)}</a><a class="button secondary" href="${app.slug}support/">Support</a></div>
+      <div class="actions"><a class="button secondary" href="${pageUrl(app.slug)}">Back to ${esc(app.name)}</a><a class="button secondary" href="${pageUrl(`${app.slug}support/`)}">Support</a></div>
     </section>
     <section class="inner section tight prose">
       <h2>Data stored</h2>
@@ -572,7 +590,7 @@ function about() {
         <p class="copy">After graduating from Arizona State University, he founded Dorm Room Movers and grew it into a national service operating across more than 200 college and boarding school campuses. Scaling that business meant living inside operational complexity: customers, logistics, seasonal demand, support, edge cases, and the thousand small details that decide whether a service actually works.</p>
       </div>
       <div class="headshot-wrap">
-        <img src="/assets/brand/matthew-grossman-headshot.jpg" alt="Matthew Grossman" onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'headshot-placeholder', textContent: 'Headshot placeholder'}))">
+        <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'headshot-placeholder', textContent: 'Headshot placeholder'}))">
       </div>
     </section>
     <section class="band section"><div class="inner split"><div><p class="eyebrow">Operating instinct</p><h2>Bamboo comes from that same operating instinct.</h2></div><div><p class="copy">The studio is a home for focused software products built around specific problems Matthew understands or studies deeply: the clipboard a gymnastics coach still carries, the retiree trying to turn savings into monthly income, the parent looking for better creative screen time, the traveler reconciling a resort bill, or the golfer tracking the rivalry that makes the round matter.</p><p class="copy">These are not abstract markets. They are workflows. Bamboo turns them into products.</p></div></div></section>
@@ -590,8 +608,21 @@ function contact() {
     <section class="band section"><div class="inner"><p class="copy">There is no contact form, account portal, newsletter signup, analytics tracker, or ticketing backend on this site.</p></div></section>`);
 }
 
+function currentRoutePath() {
+  let path = window.location.pathname;
+  if (isFilePreview) {
+    const rootPath = siteRootUrl.pathname;
+    if (path.startsWith(rootPath)) path = path.slice(rootPath.length);
+    path = path.replace(/^\/+/, "");
+    if (!path || path === "index.html") return "/";
+    path = path.replace(/index\.html$/, "");
+    return `/${path.replace(/^\/+/, "")}`.replace(/\/?$/, "/");
+  }
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
 function route() {
-  const path = location.pathname.endsWith("/") ? location.pathname : `${location.pathname}/`;
+  const path = currentRoutePath();
   if (path === "/") return home();
   if (path === "/ventures/") return ventures();
   if (path === "/labs/") return labs();
@@ -599,7 +630,7 @@ function route() {
   if (path === "/about/") return about();
   if (path === "/contact/") return contact();
   const app = apps.find(item => path === item.slug || path === `${item.slug}support/` || path === `${item.slug}privacy/`);
-  if (!app) return shell("Page Not Found - Bamboo Holdings", "", `<section class="inner hero narrow"><h1>Page not found.</h1><p class="lede">Return to <a href="/">Bamboo Holdings</a>.</p></section>`);
+  if (!app) return shell("Page Not Found - Bamboo Holdings", "", `<section class="inner hero narrow"><h1>Page not found.</h1><p class="lede">Return to <a href="${pageUrl("/")}">Bamboo Holdings</a>.</p></section>`);
   if (path.endsWith("/support/")) return supportPage(app);
   if (path.endsWith("/privacy/")) return privacyPage(app);
   return appPage(app);
