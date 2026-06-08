@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Sparks icon</title>
+  <desc id="desc">Friendly flame character on a purple starburst background.</desc>
+  <defs>
+    <radialGradient id="sparks-bg" cx="50%" cy="38%" r="72%">
+      <stop offset="0" stop-color="#7d2e82"/>
+      <stop offset=".55" stop-color="#4d205f"/>
+      <stop offset="1" stop-color="#231236"/>
+    </radialGradient>
+    <linearGradient id="flame" x1="332" y1="188" x2="690" y2="791" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffe76d"/>
+      <stop offset=".44" stop-color="#ff9826"/>
+      <stop offset="1" stop-color="#ff4238"/>
+    </linearGradient>
+    <linearGradient id="inner-flame" x1="500" y1="326" x2="500" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff6ad"/>
+      <stop offset="1" stop-color="#ffd13e"/>
+    </linearGradient>
+    <filter id="spark-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="#16091f" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="210" fill="url(#sparks-bg)"/>
+  <g opacity=".24" stroke="#b984cf" stroke-width="34">
+    <path d="M512 512 72 264M512 512 952 264M512 512 124 748M512 512 900 748M512 512 512 62M512 512 512 962"/>
+    <path d="M512 512 214 138M512 512 810 138M512 512 260 918M512 512 764 918"/>
+  </g>
+  <g fill="#fff6ff">
+    <path d="M170 288l18 42 42 18-42 18-18 42-18-42-42-18 42-18z"/>
+    <path d="M834 222l12 28 28 12-28 12-12 28-12-28-28-12 28-12z"/>
+    <path d="M802 694l14 34 34 14-34 14-14 34-14-34-34-14 34-14z"/>
+  </g>
+  <g filter="url(#spark-shadow)">
+    <path d="M545 132c55 118-2 190 98 283 69 64 103 150 79 239-34 124-134 210-254 210-126 0-232-87-252-212-17-105 26-198 109-259 84-62 130-143 220-261z" fill="url(#flame)" stroke="#37162c" stroke-width="24" stroke-linejoin="round"/>
+    <path d="M500 312c52 79 14 130 72 191 38 41 54 96 35 151-23 69-81 111-150 111-75 0-135-52-143-127-6-60 22-112 72-147 48-34 73-89 114-179z" fill="url(#inner-flame)" opacity=".88"/>
+    <circle cx="392" cy="558" r="58" fill="#fff" stroke="#37162c" stroke-width="13"/>
+    <circle cx="594" cy="558" r="58" fill="#fff" stroke="#37162c" stroke-width="13"/>
+    <circle cx="402" cy="568" r="24" fill="#341744"/>
+    <circle cx="584" cy="568" r="24" fill="#341744"/>
+    <circle cx="413" cy="554" r="8" fill="#fff"/>
+    <circle cx="595" cy="554" r="8" fill="#fff"/>
+    <path d="M448 653c32 34 83 34 116 0" fill="none" stroke="#37162c" stroke-width="17" stroke-linecap="round"/>
+    <path d="M281 632c-45 2-80-26-105-69M742 632c45 2 80-26 105-69" fill="none" stroke="#37162c" stroke-width="28" stroke-linecap="round"/>
+    <path d="M389 855v62M617 855v62" stroke="#37162c" stroke-width="32" stroke-linecap="round"/>
+  </g>
+</svg>

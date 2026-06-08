@@ -6,6 +6,7 @@ const apps = [
     id: "runway",
     name: "Runway",
     slug: "/apps/runway/",
+    icon: "/assets/apps/runway-icon.png",
     status: "In Development",
     tagline: "A calmer way to spend in retirement.",
     hero: "Know how long your money may last.",
@@ -39,6 +40,7 @@ const apps = [
     id: "ignite",
     name: "Ignite",
     slug: "/apps/ignite/",
+    icon: "/assets/apps/ignite-icon.svg",
     status: "Early Access",
     tagline: "Know your number. Own your timeline.",
     hero: "Know your number. Own your timeline.",
@@ -71,6 +73,7 @@ const apps = [
     id: "chalk",
     name: "Chalk",
     slug: "/apps/chalk/",
+    icon: "/assets/apps/chalk-icon.png",
     status: "Preview",
     tagline: "The gymnastics coaching companion",
     hero: "Every session. Every skill. Every athlete.",
@@ -103,6 +106,7 @@ const apps = [
     id: "sparks",
     name: "Sparks: Create with AI",
     slug: "/apps/sparks/",
+    icon: "/assets/apps/sparks-icon.svg",
     status: "Coming Soon",
     tagline: "Turn screen time into creation time.",
     hero: "Build something amazing today.",
@@ -135,6 +139,7 @@ const apps = [
     id: "univoice",
     name: "UniVoice",
     slug: "/apps/univoice/",
+    icon: "/assets/apps/univoice-icon.png",
     status: "TestFlight",
     tagline: "Sing. Score. Grow.",
     hero: "Every kid's a star.",
@@ -167,6 +172,7 @@ const apps = [
     id: "triptracker-pro",
     name: "TripTracker Pro",
     slug: "/apps/triptracker-pro/",
+    icon: "/assets/apps/triptracker-pro-icon.png",
     status: "Coming Soon",
     tagline: "AI-powered resort receipt tracking",
     hero: "Every charge, every tip, every receipt - accounted for.",
@@ -199,6 +205,7 @@ const apps = [
     id: "match-card",
     name: "Match Card",
     slug: "/apps/match-card/",
+    icon: "/assets/apps/match-card-icon.png",
     status: "TestFlight",
     tagline: "Golf scorecard and round analytics",
     hero: "Your courses. Your rivalry. One scorecard.",
@@ -231,6 +238,7 @@ const apps = [
     id: "allotment-optimizer",
     name: "Allotment Optimizer",
     slug: "/apps/allotment-optimizer/",
+    icon: "/assets/apps/allotment-optimizer-icon.png",
     status: "Coming Soon",
     tagline: "Shop smarter. Stay within your limit.",
     hero: "Plan the perfect dispensary trip.",
@@ -264,10 +272,29 @@ const apps = [
 const nav = [
   ["Home", "/"],
   ["Ventures", "/ventures/"],
+  ["Labs", "/labs/"],
   ["Apps", "/apps/"],
   ["About", "/about/"],
   ["Contact", "/contact/"]
 ];
+
+const siteRootUrl = new URL(".", document.currentScript ? document.currentScript.src : window.location.href);
+const isFilePreview = window.location.protocol === "file:";
+
+function assetUrl(path) {
+  if (/^(mailto:|https?:|file:|#)/.test(path)) return path;
+  if (!isFilePreview) return path;
+  return new URL(path.replace(/^\//, ""), siteRootUrl).href;
+}
+
+function pageUrl(path) {
+  if (/^(mailto:|https?:|file:|#)/.test(path)) return path;
+  if (!isFilePreview) return path;
+  const clean = path.replace(/^\//, "");
+  if (!clean) return new URL("index.html", siteRootUrl).href;
+  if (clean.endsWith("/")) return new URL(`${clean}index.html`, siteRootUrl).href;
+  return new URL(clean, siteRootUrl).href;
+}
 
 function esc(value) {
   return String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
@@ -282,22 +309,27 @@ function cards(items) {
 }
 
 function appIcon(app) {
-  return `<div class="app-icon" aria-hidden="true">${esc(app.name.split(" ").map(word => word[0]).join("").slice(0, 2))}</div>`;
+  const initials = esc(app.name.split(" ").map(word => word[0]).join("").slice(0, 2));
+  if (app.icon) {
+    return `<div class="app-icon has-image"><img src="${esc(assetUrl(app.icon))}" alt="${esc(app.name)} icon" onerror="this.parentElement.classList.remove('has-image'); this.replaceWith(document.createTextNode('${initials}'))"></div>`;
+  }
+  return `<div class="app-icon" aria-hidden="true">${initials}</div>`;
 }
 
 function shell(title, active, content) {
   document.title = title;
   document.body.innerHTML = `
     <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient-frame" aria-hidden="true"><span></span><span></span><span></span></div>
     <header class="site-header">
       <div class="inner">
         <nav class="nav" aria-label="Primary">
-          <a class="brand" href="/">
-            <img src="/assets/brand/bamboo-logo.png" alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'), {className: 'brand-mark', textContent: 'B'}))">
+          <a class="brand" href="${pageUrl("/")}">
+            <img src="${assetUrl("/assets/brand/bamboo-holdings-logo-hq.png")}" alt="" onerror="this.src='${assetUrl("/assets/brand/bamboo-logo.png")}'; this.onerror=()=>this.replaceWith(Object.assign(document.createElement('span'), {className: 'brand-mark', textContent: 'B'}))">
             <span>Bamboo Holdings</span>
           </a>
           <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-          <div class="nav-links">${nav.map(([label, href]) => `<a href="${href}"${label === active ? ' aria-current="page"' : ""}>${label}</a>`).join("")}</div>
+          <div class="nav-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}"${label === active ? ' aria-current="page"' : ""}>${label}</a>`).join("")}</div>
         </nav>
       </div>
     </header>
@@ -305,7 +337,7 @@ function shell(title, active, content) {
     <footer class="site-footer">
       <div class="inner footer-grid">
         <span>&copy; ${new Date().getFullYear()} Bamboo Holdings. Builder-led venture studio.</span>
-        <div class="footer-links">${nav.map(([label, href]) => `<a href="${href}">${label}</a>`).join("")}<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
+        <div class="footer-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}">${label}</a>`).join("")}<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
       </div>
     </footer>`;
   const button = document.querySelector(".menu-button");
@@ -315,6 +347,17 @@ function shell(title, active, content) {
     document.body.classList.toggle("menu-open", open);
     button.setAttribute("aria-expanded", String(open));
   });
+  document.addEventListener("pointermove", event => {
+    const x = Math.round((event.clientX / Math.max(window.innerWidth, 1)) * 100);
+    const y = Math.round((event.clientY / Math.max(window.innerHeight, 1)) * 100);
+    document.documentElement.style.setProperty("--cursor-x", `${x}%`);
+    document.documentElement.style.setProperty("--cursor-y", `${y}%`);
+  }, { passive: true });
+  const revealItems = document.querySelectorAll(".card, .split, .app-hero-layout, .studio-visual");
+  revealItems.forEach((item, index) => {
+    item.classList.add("reveal");
+    item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
+  });
 }
 
 function home() {
@@ -323,24 +366,30 @@ function home() {
     <section class="inner hero">
       <div>
         <p class="eyebrow">Bamboo Holdings</p>
-        <h1>Small studio. Practical products. Long-term thinking.</h1>
-        <p class="lede">Bamboo Holdings is a founder-led venture studio building focused software products for specific, underserved workflows.</p>
-        <div class="actions"><a class="button" href="/apps/">View apps</a><a class="button secondary" href="/ventures/">Explore ventures</a></div>
+        <h1>Founder-led software for the AI era.</h1>
+        <p class="lede">Bamboo builds sharp, public-safe products for specific workflows: planning, coaching, travel, creativity, scoring, and decision support.</p>
+        <div class="actions"><a class="button" href="${pageUrl("/apps/")}">View apps</a><a class="button secondary" href="${pageUrl("/labs/")}">Enter Labs</a><a class="button secondary" href="${pageUrl("/ventures/")}">Explore ventures</a></div>
       </div>
       <div class="studio-visual" aria-label="Bamboo Holdings venture studio preview">
         <div class="visual-grid">
-          <div class="visual-tile"><strong>Personal finance</strong><span>Retirement, runway, and planning tools.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Family apps</strong><span>Creative, educational, and parent-aware products.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Field workflows</strong><span>Travel, coaching, golf, and niche planning.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Public pages</strong><span>Support, privacy, and clear product positioning.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>AI-assisted planning</strong><span>Runway, FIRE progress, receipts, and decision support.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Family creation</strong><span>Creative, educational, parent-aware experiences.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Field workflows</strong><span>Coaching, golf, travel, and niche planning loops.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Launch discipline</strong><span>Support, privacy, status language, and review gates.</span><i class="metric-line"></i></div>
         </div>
-        <p class="copy">Built quietly, tested carefully, and described cautiously until each product is ready.</p>
+        <p class="copy">An operator-led product lab: workflow research, fast prototypes, careful claims, and a portfolio that looks ready for what comes next.</p>
       </div>
     </section>
     <section class="band section">
       <div class="inner split">
         <div><p class="eyebrow">Venture studio</p><h2>Products before theater.</h2></div>
-        <div><p class="copy">Bamboo Holdings explores practical software opportunities, prototypes quickly, and brings the strongest ideas into clearer public form. The studio is intentionally small and builder-led, with an emphasis on useful products over broad claims.</p></div>
+        <div><p class="copy">Bamboo explores practical software opportunities, prototypes quickly, and brings the strongest ideas into clearer public form. The work starts with real behavior, real constraints, and products that have to survive contact with users.</p></div>
+      </div>
+    </section>
+    <section class="inner section">
+      <div class="split">
+        <div><p class="eyebrow">Bamboo Bore Labs</p><h2>Urban ore recovery, mapped by intelligence.</h2></div>
+        <div><p class="copy">The Labs briefing frames a new venture thesis: buried electronic-era material as concentrated anthropogenic ore, evaluated through forensic site research, AI-enhanced density intelligence, precision extraction, and on-site micro-refining.</p><div class="actions"><a class="button secondary" href="${pageUrl("/labs/")}">View Labs thesis</a></div></div>
       </div>
     </section>
     <section class="inner section">
@@ -354,14 +403,14 @@ function home() {
     <section class="band section">
       <div class="inner split">
         <div><p class="eyebrow">Founder-led</p><h2>Built by a practical product operator.</h2></div>
-        <div><p class="copy">Bamboo Holdings is led by Matthew Grossman. The company keeps a small footprint and treats each product as a serious craft project: clear problem, careful wording, useful experience, and room to evolve.</p><div class="actions"><a class="button secondary" href="/about/">About Bamboo</a></div></div>
+        <div><p class="copy">Bamboo is led by Matthew Grossman, who brings operating-company experience to software: study the workflow, find the friction, and build products around what people actually do.</p><div class="actions"><a class="button secondary" href="${pageUrl("/about/")}">About Bamboo</a></div></div>
       </div>
     </section>
     <section class="inner section">
       <p class="eyebrow">Contact</p>
       <h2>Have a product, partnership, or support question?</h2>
-      <p class="lede">Reach Bamboo Holdings directly at <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
-      <div class="actions"><a class="button" href="/contact/">Contact</a></div>
+      <p class="lede">Reach Bamboo directly at <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
+      <div class="actions"><a class="button" href="${pageUrl("/contact/")}">Contact</a></div>
     </section>`);
 }
 
@@ -373,9 +422,9 @@ function portfolioCard(app) {
     <p>${esc(app.tagline)}</p>
     <p>${esc(app.intro)}</p>
     <div class="mini-links">
-      <a href="${app.slug}">Overview</a>
-      <a href="${app.slug}support/">Support</a>
-      <a href="${app.slug}privacy/">Privacy</a>
+      <a href="${pageUrl(app.slug)}">Overview</a>
+      <a href="${pageUrl(`${app.slug}support/`)}">Support</a>
+      <a href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a>
     </div>
   </article>`;
 }
@@ -385,13 +434,54 @@ function ventures() {
     <section class="inner hero narrow">
       <p class="eyebrow">Ventures</p>
       <h1>A small venture studio for focused software products.</h1>
-      <p class="lede">Bamboo Holdings develops practical products around specific workflows, learns from early users, and keeps public claims grounded in what each product is ready to support.</p>
-      <div class="actions"><a class="button" href="/apps/">View app portfolio</a><a class="button secondary" href="/contact/">Start a conversation</a></div>
+      <p class="lede">Bamboo develops practical products around specific workflows, learns from early users, and keeps public claims grounded in what each product is ready to support.</p>
+      <div class="actions"><a class="button" href="${pageUrl("/apps/")}">View app portfolio</a><a class="button secondary" href="${pageUrl("/contact/")}">Start a conversation</a></div>
     </section>
-    <section class="band section"><div class="inner split"><div><h2>The studio model</h2></div><div><p class="copy">Bamboo Holdings operates as a compact, founder-led venture studio. Some ideas become public app projects; others remain research, prototypes, or internal experiments until there is enough substance to discuss them responsibly.</p></div></div></section>
+    <section class="band section"><div class="inner split"><div><h2>The studio model</h2></div><div><p class="copy">Bamboo operates as a founder-led venture studio built around operating discipline. Some ideas become public app projects; others remain research, prototypes, or internal experiments until there is enough substance to discuss them responsibly.</p></div></div></section>
     <section class="inner section">
       <p class="eyebrow">Current venture category</p>
-      ${cards([["App portfolio", "The current public portfolio is a set of mobile-focused apps spanning finance, family creativity, coaching, travel, golf, and specialized planning."], ["Future venture areas", "Bamboo may explore non-app ventures over time, but no specific future project is being named or announced here."], ["Founder-led scope", "The studio is intentionally small. The priority is careful product building, useful support pages, and honest availability language."]])}
+      ${cards([["App portfolio", "The current public portfolio is a set of mobile-focused apps spanning finance, family creativity, coaching, travel, golf, and specialized planning."], ["Future venture areas", "Bamboo may explore non-app ventures over time, but no specific future project is being named or announced here."], ["Founder-led discipline", "The priority is workflow depth, careful product building, useful support pages, and honest availability language."]])}
+    </section>`);
+}
+
+function labs() {
+  shell("Bamboo Bore Labs - Bamboo Holdings", "Labs", `
+    <section class="inner hero">
+      <div>
+        <p class="eyebrow">Bamboo Bore Labs</p>
+        <h1>Liquidating the Anthropocene archive.</h1>
+        <p class="lede">Bamboo Bore Labs explores urban ore recovery: identifying concentrated electronic-era deposits, validating subsurface density, and recovering high-value material with precision instead of mass excavation.</p>
+        <div class="actions"><a class="button" href="${pageUrl("/contact/")}">Discuss Labs</a><a class="button secondary" href="${pageUrl("/ventures/")}">Back to Ventures</a></div>
+      </div>
+      <div class="studio-visual" aria-label="Bamboo Bore Labs thesis console">
+        <div class="lab-logo-panel"><img src="${assetUrl("/assets/brand/bamboo-holdings-logo-hq.png")}" alt="Bamboo Holdings logo"></div>
+        <div class="visual-grid">
+          <div class="visual-tile"><strong>Event forensics</strong><span>Archive-led site narrowing and disposal pattern reconstruction.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Density intelligence</strong><span>AI-assisted metallic anomaly modeling from sensor data.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Surgical extraction</strong><span>Bore or trench methods targeting only validated high-density zones.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Micro-refining</strong><span>On-site modular refining for recovered high-value material.</span><i class="metric-line"></i></div>
+        </div>
+        <p class="copy">Briefing source saved in the repo as <a href="${assetUrl("/reference/labs/investor-briefing.pdf")}">Investor-Briefing.pdf</a>.</p>
+      </div>
+    </section>
+    <section class="band section">
+      <div class="inner split">
+        <div><p class="eyebrow">The thesis</p><h2>Humanity built concentrated ore bodies, then buried them.</h2></div>
+        <div><p class="copy">The briefing argues that modernization cycles concentrated refined electronics and metal-rich equipment into disposal bands that were not economically recoverable at the time. With better sensing, AI modeling, precision extraction, and modular refining, those deposits can be evaluated as urban ore rather than trash.</p></div>
+      </div>
+    </section>
+    <section class="inner section">
+      <p class="eyebrow">The BBL stack</p>
+      ${cards([["Forensic site ID", "Archive research and disposal pattern reconstruction to identify candidate sites before field spend."], ["Subsurface density intelligence", "AI-driven anomaly modeling layered with multi-sensor EMI and ground-penetrating radar."], ["Precision extraction", "Validated high-density zones are targeted surgically, avoiding broad landfill mining or mass excavation."], ["On-site micro-refining", "Modular recovery workflows reduce dependence on large centralized smelter infrastructure."], ["Capital-gated execution", "Each phase must clear threshold economics before advancing to the next spend gate."], ["Global option value", "If validated, the model points toward a high-barrier urban ore recovery category."]])}
+    </section>
+    <section class="band section">
+      <div class="inner split">
+        <div><p class="eyebrow">Execution discipline</p><h2>Phase-gated from research to controlled scaling.</h2></div>
+        <div>${list(["Phase 0: archival site narrowing", "Phase 1: geophysical validation", "Phase 2: core sampling and assay", "Phase 3: pilot extraction", "Phase 4: controlled scaling only on validated high-density sites"])}</div>
+      </div>
+    </section>
+    <section class="inner section tight">
+      <div class="notice"><strong>Briefing status:</strong> Bamboo Bore Labs is presented here as a venture thesis and investor briefing concept. Technical, environmental, permitting, recovery, and economic claims require site-specific validation before public operating claims are made.</div>
     </section>`);
 }
 
@@ -400,7 +490,7 @@ function appsPage() {
     <section class="inner hero narrow">
       <p class="eyebrow">Apps</p>
       <h1>Focused products for specific jobs.</h1>
-      <p class="lede">The Bamboo Holdings app portfolio is intentionally varied, but each product starts from the same question: what would make this workflow clearer, calmer, or easier to finish?</p>
+      <p class="lede">The Bamboo app portfolio is intentionally varied, but each product starts from the same question: what would make this workflow clearer, calmer, or easier to finish?</p>
     </section>
     <section class="inner section tight">
       <div class="grid">${apps.map(app => portfolioCard(app)).join("")}</div>
@@ -417,7 +507,7 @@ function appPage(app) {
           <h1>${esc(app.hero)}</h1>
           <p class="lede">${esc(app.intro)}</p>
           <p class="copy">${esc(app.long)}</p>
-          <div class="actions"><a class="button" href="${app.slug}support/">Support</a><a class="button secondary" href="${app.slug}privacy/">Privacy</a></div>
+          <div class="actions"><a class="button" href="${pageUrl(`${app.slug}support/`)}">Support</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
         </div>
         <div class="product-panel">
           ${appIcon(app)}
@@ -445,7 +535,7 @@ function supportPage(app) {
       <h1>Support for ${esc(app.name)}</h1>
       <p class="lede">${esc(app.support.overview)}</p>
       <p class="copy">For help, contact <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
-      <div class="actions"><a class="button secondary" href="${app.slug}">Back to ${esc(app.name)}</a><a class="button secondary" href="${app.slug}privacy/">Privacy</a></div>
+      <div class="actions"><a class="button secondary" href="${pageUrl(app.slug)}">Back to ${esc(app.name)}</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
     </section>
     <section class="inner section tight prose">
       <h2>When contacting support</h2>
@@ -464,7 +554,7 @@ function privacyPage(app) {
       <p class="eyebrow">${esc(app.name)} privacy</p>
       <h1>Privacy overview for ${esc(app.name)}</h1>
       <p class="lede">Effective date: ${TODAY}. This page uses cautious public-safe language from the current reference packet and should be reviewed before public launch.</p>
-      <div class="actions"><a class="button secondary" href="${app.slug}">Back to ${esc(app.name)}</a><a class="button secondary" href="${app.slug}support/">Support</a></div>
+      <div class="actions"><a class="button secondary" href="${pageUrl(app.slug)}">Back to ${esc(app.name)}</a><a class="button secondary" href="${pageUrl(`${app.slug}support/`)}">Support</a></div>
     </section>
     <section class="inner section tight prose">
       <h2>Data stored</h2>
@@ -495,15 +585,16 @@ function about() {
     <section class="inner hero">
       <div>
         <p class="eyebrow">About</p>
-        <h1>Founder-led, practical, and product-first.</h1>
-        <p class="lede">Bamboo Holdings is a small venture studio led by Matthew Grossman. The work is hands-on: identify a specific workflow, build a thoughtful product, and communicate clearly about what is ready.</p>
+        <h1>Products built from inside real workflows.</h1>
+        <p class="lede">Matthew Grossman builds products from the inside of real workflows.</p>
+        <p class="copy">After graduating from Arizona State University, he founded Dorm Room Movers and grew it into a national service operating across more than 200 college and boarding school campuses. Scaling that business meant living inside operational complexity: customers, logistics, seasonal demand, support, edge cases, and the thousand small details that decide whether a service actually works.</p>
       </div>
       <div class="headshot-wrap">
-        <img src="/assets/brand/matthew-grossman-headshot.jpg" alt="Matthew Grossman" onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'headshot-placeholder', textContent: 'Headshot placeholder'}))">
+        <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'headshot-placeholder', textContent: 'Headshot placeholder'}))">
       </div>
     </section>
-    <section class="band section"><div class="inner split"><div><h2>Built with a narrow scope and a long view.</h2></div><div><p class="copy">Bamboo Holdings does not present itself as a large firm or agency. It is a builder-led holding company for focused products, careful experiments, and ventures that earn their way into public view.</p></div></div></section>
-    <section class="inner section tight">${cards([["Practical", "The studio favors products that solve concrete problems for specific people."], ["Cautious", "Availability, privacy, and compliance language stays grounded until each product is confirmed."], ["Long-term", "The portfolio is built with room for iteration, support, and future venture paths."]])}</section>`);
+    <section class="band section"><div class="inner split"><div><p class="eyebrow">Operating instinct</p><h2>Bamboo comes from that same operating instinct.</h2></div><div><p class="copy">The studio is a home for focused software products built around specific problems Matthew understands or studies deeply: the clipboard a gymnastics coach still carries, the retiree trying to turn savings into monthly income, the parent looking for better creative screen time, the traveler reconciling a resort bill, or the golfer tracking the rivalry that makes the round matter.</p><p class="copy">These are not abstract markets. They are workflows. Bamboo turns them into products.</p></div></div></section>
+    <section class="inner section tight">${cards([["Operating-company credibility", "Bamboo carries forward the lessons of scaling a real service business: support, logistics, timing, edge cases, and operational detail."], ["Workflow depth", "Products start by studying specific user behavior before they become interfaces, features, or launch pages."], ["Practical product craft", "The portfolio spans coaching, retirement planning, kids' creativity, travel tools, golf, music learning, FIRE planning, and niche workflow utilities."]])}</section>`);
 }
 
 function contact() {
@@ -511,21 +602,35 @@ function contact() {
     <section class="inner hero narrow">
       <p class="eyebrow">Contact</p>
       <h1>Get in touch.</h1>
-      <p class="lede">For app support, product questions, venture conversations, or general inquiries, contact Bamboo Holdings by email.</p>
+      <p class="lede">For app support, product questions, venture conversations, or general inquiries, contact Bamboo by email.</p>
       <div class="actions"><a class="button" href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
     </section>
     <section class="band section"><div class="inner"><p class="copy">There is no contact form, account portal, newsletter signup, analytics tracker, or ticketing backend on this site.</p></div></section>`);
 }
 
+function currentRoutePath() {
+  let path = window.location.pathname;
+  if (isFilePreview) {
+    const rootPath = siteRootUrl.pathname;
+    if (path.startsWith(rootPath)) path = path.slice(rootPath.length);
+    path = path.replace(/^\/+/, "");
+    if (!path || path === "index.html") return "/";
+    path = path.replace(/index\.html$/, "");
+    return `/${path.replace(/^\/+/, "")}`.replace(/\/?$/, "/");
+  }
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
 function route() {
-  const path = location.pathname.endsWith("/") ? location.pathname : `${location.pathname}/`;
+  const path = currentRoutePath();
   if (path === "/") return home();
   if (path === "/ventures/") return ventures();
+  if (path === "/labs/") return labs();
   if (path === "/apps/") return appsPage();
   if (path === "/about/") return about();
   if (path === "/contact/") return contact();
   const app = apps.find(item => path === item.slug || path === `${item.slug}support/` || path === `${item.slug}privacy/`);
-  if (!app) return shell("Page Not Found - Bamboo Holdings", "", `<section class="inner hero narrow"><h1>Page not found.</h1><p class="lede">Return to <a href="/">Bamboo Holdings</a>.</p></section>`);
+  if (!app) return shell("Page Not Found - Bamboo Holdings", "", `<section class="inner hero narrow"><h1>Page not found.</h1><p class="lede">Return to <a href="${pageUrl("/")}">Bamboo Holdings</a>.</p></section>`);
   if (path.endsWith("/support/")) return supportPage(app);
   if (path.endsWith("/privacy/")) return privacyPage(app);
   return appPage(app);

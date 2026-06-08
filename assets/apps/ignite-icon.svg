@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Ignite icon</title>
+  <desc id="desc">Orange app icon with a clean road mark and flame.</desc>
+  <defs>
+    <linearGradient id="ignite-bg" x1="180" y1="58" x2="844" y2="966" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffb21f"/>
+      <stop offset=".5" stop-color="#f28b0b"/>
+      <stop offset="1" stop-color="#b95c06"/>
+    </linearGradient>
+    <linearGradient id="ignite-glow" x1="512" y1="102" x2="512" y2="872" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff7d6"/>
+      <stop offset=".38" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ffe2a4"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#4f2500" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="210" fill="#e8eee4"/>
+  <rect x="68" y="68" width="888" height="888" rx="178" fill="url(#ignite-bg)"/>
+  <path d="M198 325h628" stroke="#ffc957" stroke-width="60" stroke-linecap="round" opacity=".45"/>
+  <path d="M512 150c42 58 89 127 89 185 0 59-39 103-89 103s-89-44-89-103c0-58 47-127 89-185z" fill="#fff1bf" filter="url(#soft-shadow)"/>
+  <path d="M202 852 512 268l310 584" fill="none" stroke="url(#ignite-glow)" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M512 493v18M512 600v32M512 735v55" fill="none" stroke="#ffecc1" stroke-width="58" stroke-linecap="round"/>
+  <path d="M202 852h152M670 852h152" fill="none" stroke="#ffecc1" stroke-width="58" stroke-linecap="round"/>
+</svg>
