@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bamboo Holdings</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --ink: #17211b;
+      --muted: #667069;
+      --paper: #fbfaf6;
+      --line: #dfe4dc;
+      --bamboo: #2f6f4f;
+      --leaf: #8fb76a;
+      --chalk: #f25a3d;
+      --white: #ffffff;
+    }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(251, 250, 246, 0.94);
+      position: sticky;
+      top: 0;
+    }
+    .inner {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--bamboo);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: var(--bamboo);
+      font-weight: 900;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+    }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--ink); }
+    main { overflow: hidden; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 48px;
+      align-items: center;
+      padding: 80px 0 56px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: 0.96;
+      letter-spacing: 0;
+      max-width: 800px;
+    }
+    .lede {
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+      max-width: 620px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: 8px;
+      padding: 0 18px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 750;
+    }
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+    .visual {
+      min-height: 430px;
+      position: relative;
+      border-left: 1px solid var(--line);
+      padding-left: 40px;
+    }
+    .stalks {
+      height: 430px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: end;
+    }
+    .stalk {
+      border-radius: 8px;
+      background: linear-gradient(180deg, var(--leaf), var(--bamboo));
+      box-shadow: inset 0 0 0 1px rgba(23, 33, 27, 0.1);
+      position: relative;
+    }
+    .stalk::before,
+    .stalk::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.45);
+    }
+    .stalk::before { top: 28%; }
+    .stalk::after { top: 62%; }
+    .stalk:nth-child(1) { height: 54%; }
+    .stalk:nth-child(2) { height: 83%; }
+    .stalk:nth-child(3) { height: 68%; }
+    .stalk:nth-child(4) { height: 95%; }
+    .stalk:nth-child(5) { height: 60%; }
+    .catalog {
+      border-top: 1px solid var(--line);
+      padding: 42px 0 76px;
+    }
+    .section-title {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .app-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+    }
+    .app-row:last-child { border-bottom: 1px solid var(--line); }
+    .app-title {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.15;
+    }
+    .app-copy {
+      margin: 8px 0 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      min-height: 32px;
+      padding: 0 12px;
+      background: rgba(242, 90, 61, 0.1);
+      color: var(--chalk);
+      font-weight: 800;
+      font-size: 13px;
+    }
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      padding: 28px 0;
+    }
+    footer .inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+    @media (max-width: 760px) {
+      .inner { width: min(100% - 28px, 1080px); }
+      .nav { align-items: flex-start; flex-direction: column; padding: 18px 0; }
+      .nav-links { flex-wrap: wrap; gap: 14px; }
+      .hero { grid-template-columns: 1fr; padding: 48px 0 40px; }
+      .visual { min-height: 210px; border-left: 0; padding-left: 0; }
+      .stalks { height: 210px; }
+      .app-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="/">
+          <span class="mark" aria-hidden="true">B</span>
+          <span>Bamboo Holdings</span>
+        </a>
+        <div class="nav-links">
+          <a href="/apps/chalk/">Chalk</a>
+          <a href="/apps/chalk/support/">Support</a>
+          <a href="/apps/chalk/privacy/">Privacy</a>
+          <a href="mailto:info@bamboo.holdings">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="inner hero">
+      <div>
+        <h1>Bamboo Holdings</h1>
+        <p class="lede">A small home for focused software products. Our first public app is Chalk, a gymnastics coaching companion for coaches, athletes, parents, and facility admins.</p>
+        <div class="actions">
+          <a class="button" href="/apps/chalk/">View Chalk</a>
+          <a class="button secondary" href="mailto:info@bamboo.holdings">info@bamboo.holdings</a>
+        </div>
+      </div>
+      <div class="visual" aria-hidden="true">
+        <div class="stalks">
+          <span class="stalk"></span>
+          <span class="stalk"></span>
+          <span class="stalk"></span>
+          <span class="stalk"></span>
+          <span class="stalk"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="inner catalog" aria-labelledby="apps-title">
+      <p class="section-title" id="apps-title">Apps</p>
+      <article class="app-row">
+        <div>
+          <h2 class="app-title">Chalk</h2>
+          <p class="app-copy">A gymnastics coaching app for logging sessions, rating skills, and creating athlete homework plans from local on-device data.</p>
+        </div>
+        <a class="badge" href="/apps/chalk/">Open app page</a>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <span>&copy; 2026 Bamboo Holdings</span>
+      <a href="mailto:info@bamboo.holdings">info@bamboo.holdings</a>
+    </div>
+  </footer>
+</body>
+</html>
