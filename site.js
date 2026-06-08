@@ -6,6 +6,7 @@ const apps = [
     id: "runway",
     name: "Runway",
     slug: "/apps/runway/",
+    icon: "/assets/apps/runway-icon.png",
     status: "In Development",
     tagline: "A calmer way to spend in retirement.",
     hero: "Know how long your money may last.",
@@ -71,6 +72,7 @@ const apps = [
     id: "chalk",
     name: "Chalk",
     slug: "/apps/chalk/",
+    icon: "/assets/apps/chalk-icon.png",
     status: "Preview",
     tagline: "The gymnastics coaching companion",
     hero: "Every session. Every skill. Every athlete.",
@@ -135,6 +137,7 @@ const apps = [
     id: "univoice",
     name: "UniVoice",
     slug: "/apps/univoice/",
+    icon: "/assets/apps/univoice-icon.png",
     status: "TestFlight",
     tagline: "Sing. Score. Grow.",
     hero: "Every kid's a star.",
@@ -167,6 +170,7 @@ const apps = [
     id: "triptracker-pro",
     name: "TripTracker Pro",
     slug: "/apps/triptracker-pro/",
+    icon: "/assets/apps/triptracker-pro-icon.png",
     status: "Coming Soon",
     tagline: "AI-powered resort receipt tracking",
     hero: "Every charge, every tip, every receipt - accounted for.",
@@ -199,6 +203,7 @@ const apps = [
     id: "match-card",
     name: "Match Card",
     slug: "/apps/match-card/",
+    icon: "/assets/apps/match-card-icon.png",
     status: "TestFlight",
     tagline: "Golf scorecard and round analytics",
     hero: "Your courses. Your rivalry. One scorecard.",
@@ -231,6 +236,7 @@ const apps = [
     id: "allotment-optimizer",
     name: "Allotment Optimizer",
     slug: "/apps/allotment-optimizer/",
+    icon: "/assets/apps/allotment-optimizer-icon.png",
     status: "Coming Soon",
     tagline: "Shop smarter. Stay within your limit.",
     hero: "Plan the perfect dispensary trip.",
@@ -282,7 +288,11 @@ function cards(items) {
 }
 
 function appIcon(app) {
-  return `<div class="app-icon" aria-hidden="true">${esc(app.name.split(" ").map(word => word[0]).join("").slice(0, 2))}</div>`;
+  const initials = esc(app.name.split(" ").map(word => word[0]).join("").slice(0, 2));
+  if (app.icon) {
+    return `<div class="app-icon has-image"><img src="${esc(app.icon)}" alt="${esc(app.name)} icon" onerror="this.parentElement.classList.remove('has-image'); this.replaceWith(document.createTextNode('${initials}'))"></div>`;
+  }
+  return `<div class="app-icon" aria-hidden="true">${initials}</div>`;
 }
 
 function shell(title, active, content) {
