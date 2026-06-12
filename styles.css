@@ -311,6 +311,14 @@ main { min-height: 60vh; }
   font-size: clamp(18px, 2vw, 22px);
 }
 
+.bio-copy .bio-lede {
+  margin-top: 0;
+  color: #20241d;
+  font-size: clamp(24px, 3.1vw, 38px);
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
 .bio-photo {
   position: relative;
   aspect-ratio: 4 / 5;
@@ -348,8 +356,12 @@ main { min-height: 60vh; }
 .apps-reveal {
   min-height: 100vh;
   scroll-snap-align: start;
-  background: #171915;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(63, 114, 95, .32), transparent 32%),
+    radial-gradient(circle at 82% 22%, rgba(189, 138, 69, .24), transparent 30%),
+    linear-gradient(135deg, #080b09 0%, #161a14 46%, #242117 100%);
   color: #fbfaf5;
+  overflow: hidden;
 }
 
 .apps-wrap {
@@ -364,13 +376,14 @@ main { min-height: 60vh; }
 }
 
 .apps-heading {
-  width: min(650px, 100%);
+  width: min(760px, 100%);
   margin-bottom: clamp(28px, 5vh, 48px);
 }
 
 .apps-heading h2 {
   color: #fbfaf5;
-  font-size: clamp(38px, 5vw, 72px);
+  font-size: clamp(50px, 7vw, 112px);
+  line-height: .86;
 }
 
 .app-grid {
@@ -382,15 +395,18 @@ main { min-height: 60vh; }
 
 .app-grid .portfolio-card {
   min-height: 420px;
-  border-color: rgba(251, 250, 245, .14);
+  border-color: rgba(251, 250, 245, .2);
   background:
-    linear-gradient(180deg, rgba(251, 250, 245, .1), rgba(251, 250, 245, .045)),
-    rgba(251, 250, 245, .035);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, .22);
+    radial-gradient(circle at 20% 0%, var(--app-accent-soft, rgba(251, 250, 245, .12)), transparent 34%),
+    linear-gradient(180deg, rgba(251, 250, 245, .14), rgba(251, 250, 245, .045)),
+    rgba(251, 250, 245, .04);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .34);
+  backdrop-filter: blur(16px);
 }
 
 .app-grid .portfolio-card h3 {
   color: #fbfaf5;
+  font-size: clamp(28px, 3.2vw, 44px);
 }
 
 .app-grid .portfolio-card p {
@@ -403,6 +419,107 @@ main { min-height: 60vh; }
 
 .app-grid .mini-links a:hover {
   color: #fbfaf5;
+}
+
+.app-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.app-card-chalk {
+  --app-accent-soft: rgba(255, 255, 255, .2);
+  --app-accent: #f1eadc;
+}
+
+.app-card-triptracker-pro {
+  --app-accent-soft: rgba(85, 133, 187, .28);
+  --app-accent: #7fb2e8;
+}
+
+.app-card-match-card {
+  --app-accent-soft: rgba(230, 156, 65, .3);
+  --app-accent: #f1a442;
+}
+
+.app-store-badge {
+  width: fit-content;
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 11px;
+  padding: 7px 13px 7px 11px;
+  background: #050505;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .28);
+}
+
+.app-store-badge:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, .42);
+}
+
+.app-store-badge small,
+.app-store-badge strong {
+  display: block;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.app-store-badge small {
+  margin-bottom: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  opacity: .82;
+}
+
+.app-store-badge strong {
+  font-size: 21px;
+  font-weight: 850;
+}
+
+.store-mark {
+  position: relative;
+  width: 25px;
+  height: 30px;
+  flex: 0 0 auto;
+}
+
+.store-mark::before,
+.store-mark::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  width: 7px;
+  height: 28px;
+  border-radius: 999px;
+  background: #fff;
+  transform-origin: center;
+}
+
+.store-mark::before {
+  transform: rotate(33deg);
+}
+
+.store-mark::after {
+  transform: rotate(-33deg);
+}
+
+.testflight-badge {
+  width: fit-content;
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 11px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, .1);
+  color: #fbfaf5;
+  font-weight: 850;
 }
 
 .fly-in {

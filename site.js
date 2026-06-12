@@ -150,6 +150,13 @@ function appIcon(app) {
   return `<div class="app-icon" aria-hidden="true">${initials}</div>`;
 }
 
+function appStoreBadge(url) {
+  return `<a class="app-store-badge" href="${esc(url)}" aria-label="Download on the App Store">
+    <span class="store-mark" aria-hidden="true"></span>
+    <span><small>Download on the</small><strong>App Store</strong></span>
+  </a>`;
+}
+
 function shell(title, active, content) {
   document.title = title;
   document.body.className = active === "Home" ? "home-page" : "";
@@ -245,8 +252,7 @@ function home() {
       <div class="inner bio-card">
         <div class="bio-copy">
           <p class="eyebrow">Matthew Grossman</p>
-          <h1>Founder. Operator. Still building.</h1>
-          <p>Matthew co-founded Dorm Room Movers while at Arizona State University and helped grow it from a garage startup into a nationwide logistics operation serving more than 300 colleges, universities, and boarding schools.</p>
+          <p class="bio-lede">Matthew co-founded Dorm Room Movers while at Arizona State University and helped grow it from a garage startup into a nationwide logistics operation serving more than 300 colleges, universities, and boarding schools.</p>
           <p>Bamboo is where he works on what comes next: practical software, useful tools, and ideas worth testing.</p>
         </div>
         <div class="bio-photo">
@@ -259,7 +265,7 @@ function home() {
         <div class="inner app-stage">
           <div class="apps-heading">
             <p class="eyebrow">Current work</p>
-            <h2>Apps I am working on.</h2>
+            <h2>Current apps</h2>
           </div>
           <div class="app-grid">
             ${featured.map((app, index) => portfolioCard(app, index)).join("")}
@@ -282,14 +288,16 @@ function home() {
 
 function portfolioCard(app, index = 0) {
   const directions = ["from-left", "from-bottom", "from-right"];
-  return `<article class="card portfolio-card fly-in ${directions[index % directions.length]}" style="--delay: ${index * 140}ms">
-    ${appIcon(app)}
-    <span class="status">${esc(app.status)}</span>
+  return `<article class="card portfolio-card app-card-${esc(app.id)} fly-in ${directions[index % directions.length]}" style="--delay: ${index * 140}ms">
+    <div class="app-card-top">
+      ${appIcon(app)}
+      <span class="status">${esc(app.status)}</span>
+    </div>
     <h3>${esc(app.name)}</h3>
     <p>${esc(app.tagline)}</p>
     <p>${esc(app.intro)}</p>
+    ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : `<span class="testflight-badge">TestFlight</span>`}
     <div class="mini-links">
-      ${app.appStoreUrl ? `<a href="${esc(app.appStoreUrl)}">Download iOS</a>` : ""}
       <a href="${pageUrl(app.slug)}">Overview</a>
       <a href="${pageUrl(`${app.slug}support/`)}">Support</a>
       <a href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a>
@@ -308,7 +316,7 @@ function appPage(app) {
           <h1>${esc(app.hero)}</h1>
           <p class="lede">${esc(app.intro)}</p>
           <p class="copy">${esc(app.long)}</p>
-          <div class="actions">${app.appStoreUrl ? `<a class="button" href="${esc(app.appStoreUrl)}">Download on iOS</a>` : ""}<a class="button${app.appStoreUrl ? " secondary" : ""}" href="${pageUrl(`${app.slug}support/`)}">Support</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
+          <div class="actions">${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : ""}<a class="button${app.appStoreUrl ? " secondary" : ""}" href="${pageUrl(`${app.slug}support/`)}">Support</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
         </div>
         <div class="product-panel">
           ${appIcon(app)}
