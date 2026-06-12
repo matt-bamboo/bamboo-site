@@ -244,11 +244,11 @@ function home() {
         <div class="bio-copy">
           <p class="eyebrow">Matthew Grossman</p>
           <p class="bio-lede">Matthew co-founded Dorm Room Movers while at Arizona State University and helped grow it from a garage startup into a nationwide logistics operation serving more than 300 colleges, universities, and boarding schools.</p>
-          <p>After the 2023 exit, Bamboo became the place for the next chapter: products and ideas shaped by what Matthew learned in the messy middle of logistics, customers, seasonal demand, and support.</p>
+          <p>Before and alongside that work, he spent time in India and helped run a 350-seat customer service and operations center in Austin supporting Electronic Arts domestic voice, email, and live chat programs.</p>
           <div class="bio-facts" aria-label="Selected background">
             <span><strong>2007</strong> Founded Dorm Room Movers</span>
-            <span><strong>300+</strong> Campuses served</span>
-            <span><strong>42</strong> States in the network</span>
+            <span><strong>350</strong> Seat Austin support center</span>
+            <span><strong>EA</strong> Domestic voice support</span>
           </div>
         </div>
         <div class="bio-photo">
