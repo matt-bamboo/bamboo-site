@@ -201,7 +201,7 @@ Match Card may store:
 
 ### Optional backup
 
-If the user enables backup, Match Card may store an opaque backup copy of app data on a developer-operated server, keyed by a device key rather than a user account. Backup is optional and should be described as off by default unless owner confirms otherwise.
+If the user enables backup, Match Card may store an opaque backup copy of app data on a Bamboo-operated server, keyed by a device key rather than a user account. Backup is optional and should be described as off by default unless owner confirms otherwise.
 
 ### Data processed by third parties
 
