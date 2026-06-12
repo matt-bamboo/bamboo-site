@@ -104,10 +104,10 @@ const apps = [
 ];
 
 const nav = [
-  ["Home", "/"],
-  ["Apps", "/apps/"],
-  ["About", "/about/"],
-  ["Contact", "/contact/"]
+  ["Home", "#top"],
+  ["Apps", "#apps"],
+  ["About", "#about"],
+  ["Contact", "#contact"]
 ];
 
 const siteRootUrl = new URL(".", document.currentScript ? document.currentScript.src : window.location.href);
@@ -185,7 +185,7 @@ function shell(title, active, content) {
     document.documentElement.style.setProperty("--cursor-x", `${x}%`);
     document.documentElement.style.setProperty("--cursor-y", `${y}%`);
   }, { passive: true });
-  const revealItems = document.querySelectorAll(".card, .split, .app-hero-layout, .studio-visual");
+  const revealItems = document.querySelectorAll(".card, .split, .app-hero-layout, .focus-panel");
   revealItems.forEach((item, index) => {
     item.classList.add("reveal");
     item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
@@ -195,48 +195,49 @@ function shell(title, active, content) {
 function home() {
   const featured = apps;
   shell("Bamboo Holdings", "Home", `
-    <section class="inner hero">
+    <section id="top" class="inner hero">
       <div>
         <p class="eyebrow">Bamboo Holdings</p>
-        <h1>Practical products shaped by operating experience.</h1>
-        <p class="lede">Bamboo is a holding company for focused software products built around real workflows, clear constraints, and careful public claims.</p>
-        <div class="actions"><a class="button" href="${pageUrl("/apps/")}">View apps</a><a class="button secondary" href="${pageUrl("/about/")}">About Bamboo</a></div>
+        <h1>Practical apps built from operating insight.</h1>
+        <p class="lede">Bamboo Holdings is the operating home for a focused portfolio of apps. The work starts with a real workflow, a real user, and the details that decide whether a product earns a place in someone's routine.</p>
+        <div class="actions"><a class="button" href="${pageUrl("#apps")}">View portfolio</a><a class="button secondary" href="${pageUrl("#about")}">Operating background</a></div>
       </div>
-      <div class="studio-visual" aria-label="Bamboo Holdings product focus preview">
+      <div class="focus-panel" aria-label="Bamboo Holdings product focus preview">
         <div class="visual-grid">
-          <div class="visual-tile"><strong>Coaching workflow</strong><span>Session logging, skill progress, and follow-through.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Travel records</strong><span>Receipts, folios, shared expenses, and trip notes.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Golf scoring</strong><span>Rounds, rivalries, side games, and share cards.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Responsible launch</strong><span>Support, privacy, status language, and review gates.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Chalk</strong><span>Practice records, skill progress, and coaching follow-through.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>TripTracker Pro</strong><span>Receipts, folios, shared expenses, and trip records.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Match Card</strong><span>Two-player golf scoring, rivalry history, and side games.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Public readiness</strong><span>Plain claims, support paths, and privacy pages before promotion.</span><i class="metric-line"></i></div>
         </div>
-        <p class="copy">Current work centers on coaching workflow, travel records, and golf scoring: product areas where small details decide whether the tool is useful.</p>
+        <p class="copy">Bamboo keeps the public surface simple: what exists, who it is for, how to get support, and what claims are not being made.</p>
       </div>
     </section>
     <section class="band section">
       <div class="inner split">
-        <div><p class="eyebrow">Approach</p><h2>Specific workflows, not abstract markets.</h2></div>
-        <div><p class="copy">Bamboo starts with the operating reality around a problem: who uses the product, what they need to finish, where the friction appears, and which claims are ready to stand behind publicly.</p></div>
+        <div><p class="eyebrow">Approach</p><h2>Built around jobs people already do.</h2></div>
+        <div><p class="copy">Bamboo does not need every product to sound like a category thesis. A coach needs a cleaner way to capture practice. A traveler needs a trustworthy trip record. A golfer needs a scorecard that understands the match. The portfolio is built around those concrete jobs.</p></div>
       </div>
     </section>
-    <section class="inner section">
-      <p class="eyebrow">Featured apps</p>
+    <section id="apps" class="inner section">
+      <p class="eyebrow">Portfolio</p>
+      <div class="split section-intro"><div><h2>Current apps.</h2></div><div><p class="copy">Each app has a marketing page, support page, and privacy page for public review and App Store use. Availability language stays conservative until a product is ready to claim more.</p></div></div>
       <div class="grid">${featured.map(app => portfolioCard(app)).join("")}</div>
     </section>
     <section class="inner section tight">
       <p class="eyebrow">Current focus</p>
-      ${cards([["Coaching workflow", "Tools for session logging, skill progress, and practical follow-through."], ["Travel records", "Travel tools for receipts, folios, shared expenses, and trip records."], ["Golf scoring", "Golf scoring for two-player rounds, rivalry history, and side-game tracking."]])}
+      ${cards([["Coaching records", "Chalk gives coaches a structured way to log sessions, track skill progress, and manage follow-through."], ["Travel records", "TripTracker Pro is built for resort travelers who want clean receipts, folios, shared expenses, and notes."], ["Golf scoring", "Match Card keeps two-player rounds, rivalry history, side games, and score sharing focused."]])}
     </section>
-    <section class="band section">
+    <section id="about" class="band section">
       <div class="inner split">
-        <div><p class="eyebrow">Operating background</p><h2>Built from experience with real service complexity.</h2></div>
-        <div><p class="copy">Matthew Grossman's background scaling Dorm Room Movers across more than 200 campuses informs the Bamboo approach: study the workflow, respect the edge cases, and build around what people actually do.</p><div class="actions"><a class="button secondary" href="${pageUrl("/about/")}">About Bamboo</a></div></div>
+        <div><p class="eyebrow">Operating background</p><h2>The point of view comes from running a real company.</h2></div>
+        <div><p class="copy">Matthew Grossman graduated from Arizona State University and founded Dorm Room Movers, growing it into a national service across more than 200 college and boarding school campuses. That experience matters here: customers, logistics, support, seasonality, edge cases, and the thousand small details that decide whether a service actually works.</p><p class="copy">Bamboo applies that same operating instinct to app products. Start with the workflow. Understand the friction. Keep the claims honest. Make the product useful enough to survive real use.</p></div>
       </div>
     </section>
-    <section class="inner section">
+    <section id="contact" class="inner section">
       <p class="eyebrow">Contact</p>
-      <h2>Have a product, partnership, or support question?</h2>
-      <p class="lede">Reach Bamboo directly at <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
-      <div class="actions"><a class="button" href="${pageUrl("/contact/")}">Contact</a></div>
+      <h2>For app support or business inquiries.</h2>
+      <p class="lede">Reach Bamboo at <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. No forms, accounts, analytics, newsletter capture, or ticketing backend are used on this site.</p>
+      <div class="actions"><a class="button" href="mailto:${CONTACT_EMAIL}">Email Bamboo</a></div>
     </section>`);
 }
 
@@ -363,7 +364,7 @@ function about() {
         <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'headshot-placeholder', textContent: 'Headshot placeholder'}))">
       </div>
     </section>
-    <section class="band section"><div class="inner split"><div><p class="eyebrow">Operating instinct</p><h2>Bamboo comes from that same operating instinct.</h2></div><div><p class="copy">The studio is a home for focused software products built around specific problems Matthew understands or studies deeply: the traveler reconciling a resort bill, the group splitting trip expenses, or the golfer tracking the rivalry that makes the round matter.</p><p class="copy">These are not abstract markets. They are workflows. Bamboo turns them into products.</p></div></div></section>
+    <section class="band section"><div class="inner split"><div><p class="eyebrow">Operating instinct</p><h2>Bamboo comes from that same operating instinct.</h2></div><div><p class="copy">Bamboo is the operating home for focused app products built around specific problems Matthew understands or studies deeply: the traveler reconciling a resort bill, the group splitting trip expenses, or the golfer tracking the rivalry that makes the round matter.</p><p class="copy">These are not abstract markets. They are workflows. Bamboo turns them into products.</p></div></div></section>
     <section class="inner section tight">${cards([["Operating-company credibility", "Bamboo carries forward the lessons of scaling a real service business: support, logistics, timing, edge cases, and operational detail."], ["Workflow depth", "Products start by studying specific user behavior before they become interfaces, features, or launch pages."], ["Practical product craft", "The current portfolio centers on coaching workflow, travel tools, golf scoring, and focused product utilities."]])}</section>`);
 }
 
@@ -394,9 +395,7 @@ function currentRoutePath() {
 function route() {
   const path = currentRoutePath();
   if (path === "/") return home();
-  if (path === "/apps/") return appsPage();
-  if (path === "/about/") return about();
-  if (path === "/contact/") return contact();
+  if (path === "/apps/" || path === "/about/" || path === "/contact/") return home();
   const app = apps.find(item => path === item.slug || path === `${item.slug}support/` || path === `${item.slug}privacy/`);
   if (!app) return shell("Page Not Found - Bamboo Holdings", "", `<section class="inner hero narrow"><h1>Page not found.</h1><p class="lede">Return to <a href="${pageUrl("/")}">Bamboo Holdings</a>.</p></section>`);
   if (path.endsWith("/support/")) return supportPage(app);
