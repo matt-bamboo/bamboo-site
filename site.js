@@ -105,7 +105,7 @@ const apps = [
 
 const nav = [
   ["Home", "#top"],
-  ["Apps", "#apps"],
+  ["Work", "#work"],
   ["About", "#about"],
   ["Contact", "#contact"]
 ];
@@ -198,44 +198,44 @@ function home() {
     <section id="top" class="inner hero">
       <div>
         <p class="eyebrow">Bamboo Holdings</p>
-        <h1>Practical apps built from operating insight.</h1>
-        <p class="lede">Bamboo Holdings is the operating home for a focused portfolio of apps. The work starts with a real workflow, a real user, and the details that decide whether a product earns a place in someone's routine.</p>
-        <div class="actions"><a class="button" href="${pageUrl("#apps")}">View portfolio</a><a class="button secondary" href="${pageUrl("#about")}">Operating background</a></div>
+        <h1>An operating company for practical ideas.</h1>
+        <p class="lede">Bamboo Holdings is where Matthew Grossman develops focused projects, tools, and operating ideas. The common thread is not a category. It is a way of working: find the friction, understand the workflow, and build with enough discipline for real use.</p>
+        <div class="actions"><a class="button" href="${pageUrl("#work")}">View current work</a><a class="button secondary" href="${pageUrl("#about")}">Operating background</a></div>
       </div>
       <div class="focus-panel" aria-label="Bamboo Holdings product focus preview">
         <div class="visual-grid">
-          <div class="visual-tile"><strong>Chalk</strong><span>Practice records, skill progress, and coaching follow-through.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>TripTracker Pro</strong><span>Receipts, folios, shared expenses, and trip records.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Match Card</strong><span>Two-player golf scoring, rivalry history, and side games.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Public readiness</strong><span>Plain claims, support paths, and privacy pages before promotion.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Operating lens</strong><span>Customers, edge cases, support, timing, and repeat behavior.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Workflow research</strong><span>Start with the job people are already trying to finish.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Focused builds</strong><span>Small enough to be sharp. Serious enough to be useful.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Public discipline</strong><span>Clear support paths, privacy pages, and careful claims.</span><i class="metric-line"></i></div>
         </div>
-        <p class="copy">Bamboo keeps the public surface simple: what exists, who it is for, how to get support, and what claims are not being made.</p>
+        <p class="copy">The current public work happens to include apps. Bamboo itself is broader than that: a holding company for practical projects shaped by operating experience.</p>
       </div>
     </section>
     <section class="band section">
       <div class="inner split">
         <div><p class="eyebrow">Approach</p><h2>Built around jobs people already do.</h2></div>
-        <div><p class="copy">Bamboo does not need every product to sound like a category thesis. A coach needs a cleaner way to capture practice. A traveler needs a trustworthy trip record. A golfer needs a scorecard that understands the match. The portfolio is built around those concrete jobs.</p></div>
+        <div><p class="copy">Bamboo is not trying to sound bigger than it is, and it is not trying to turn every idea into a grand market story. The work begins with concrete situations: a coach trying to remember what happened in practice, a traveler reconciling a resort bill, a golfer keeping track of the match that actually matters.</p></div>
       </div>
     </section>
-    <section id="apps" class="inner section">
-      <p class="eyebrow">Portfolio</p>
-      <div class="split section-intro"><div><h2>Current apps.</h2></div><div><p class="copy">Each app has a marketing page, support page, and privacy page for public review and App Store use. Availability language stays conservative until a product is ready to claim more.</p></div></div>
+    <section id="work" class="inner section">
+      <p class="eyebrow">Current work</p>
+      <div class="split section-intro"><div><h2>Projects in public view.</h2></div><div><p class="copy">These are current app projects that need public pages for review, support, and privacy. They are part of Bamboo, not the whole story.</p></div></div>
       <div class="grid">${featured.map(app => portfolioCard(app)).join("")}</div>
     </section>
     <section class="inner section tight">
-      <p class="eyebrow">Current focus</p>
-      ${cards([["Coaching records", "Chalk gives coaches a structured way to log sessions, track skill progress, and manage follow-through."], ["Travel records", "TripTracker Pro is built for resort travelers who want clean receipts, folios, shared expenses, and notes."], ["Golf scoring", "Match Card keeps two-player rounds, rivalry history, side games, and score sharing focused."]])}
+      <p class="eyebrow">What connects the work</p>
+      ${cards([["Operational detail", "The useful part is usually buried in edge cases, handoffs, and repeated behavior."], ["Narrow surfaces", "Bamboo favors focused tools over bloated platforms or vague positioning."], ["Plain public claims", "Pages say what is ready, what is limited, and where support or privacy details live."]])}
     </section>
     <section id="about" class="band section">
       <div class="inner split">
         <div><p class="eyebrow">Operating background</p><h2>The point of view comes from running a real company.</h2></div>
-        <div><p class="copy">Matthew Grossman graduated from Arizona State University and founded Dorm Room Movers, growing it into a national service across more than 200 college and boarding school campuses. That experience matters here: customers, logistics, support, seasonality, edge cases, and the thousand small details that decide whether a service actually works.</p><p class="copy">Bamboo applies that same operating instinct to app products. Start with the workflow. Understand the friction. Keep the claims honest. Make the product useful enough to survive real use.</p></div>
+        <div><p class="copy">Matthew Grossman graduated from Arizona State University and founded Dorm Room Movers, growing it into a national service across more than 200 college and boarding school campuses. That experience matters here: customers, logistics, support, seasonality, edge cases, and the thousand small details that decide whether a service actually works.</p><p class="copy">Bamboo carries that operating instinct into whatever it builds next. Start with the workflow. Understand the friction. Keep the claims honest. Make the result useful enough to survive real use.</p></div>
       </div>
     </section>
     <section id="contact" class="inner section">
       <p class="eyebrow">Contact</p>
-      <h2>For app support or business inquiries.</h2>
+      <h2>For support or business inquiries.</h2>
       <p class="lede">Reach Bamboo at <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. No forms, accounts, analytics, newsletter capture, or ticketing backend are used on this site.</p>
       <div class="actions"><a class="button" href="mailto:${CONTACT_EMAIL}">Email Bamboo</a></div>
     </section>`);
@@ -256,17 +256,6 @@ function portfolioCard(app) {
   </article>`;
 }
 
-function appsPage() {
-  shell("Apps - Bamboo Holdings", "Apps", `
-    <section class="inner hero narrow">
-      <p class="eyebrow">Apps</p>
-      <h1>Focused products for specific jobs.</h1>
-      <p class="lede">The Bamboo app portfolio currently includes Chalk for coaching workflow, TripTracker Pro for resort travel records, and Match Card for two-player golf scoring.</p>
-    </section>
-    <section class="inner section tight">
-      <div class="grid">${apps.map(app => portfolioCard(app)).join("")}</div>
-    </section>`);
-}
 
 function appPage(app) {
   shell(`${app.name} - Bamboo Holdings`, "Apps", `
@@ -351,33 +340,7 @@ function privacyPage(app) {
     </section>`);
 }
 
-function about() {
-  shell("About - Bamboo Holdings", "About", `
-    <section class="inner hero">
-      <div>
-        <p class="eyebrow">About</p>
-        <h1>Products built from inside real workflows.</h1>
-        <p class="lede">Matthew Grossman builds products from the inside of real workflows.</p>
-        <p class="copy">After graduating from Arizona State University, he founded Dorm Room Movers and grew it into a national service operating across more than 200 college and boarding school campuses. Scaling that business meant living inside operational complexity: customers, logistics, seasonal demand, support, edge cases, and the thousand small details that decide whether a service actually works.</p>
-      </div>
-      <div class="headshot-wrap">
-        <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'headshot-placeholder', textContent: 'Headshot placeholder'}))">
-      </div>
-    </section>
-    <section class="band section"><div class="inner split"><div><p class="eyebrow">Operating instinct</p><h2>Bamboo comes from that same operating instinct.</h2></div><div><p class="copy">Bamboo is the operating home for focused app products built around specific problems Matthew understands or studies deeply: the traveler reconciling a resort bill, the group splitting trip expenses, or the golfer tracking the rivalry that makes the round matter.</p><p class="copy">These are not abstract markets. They are workflows. Bamboo turns them into products.</p></div></div></section>
-    <section class="inner section tight">${cards([["Operating-company credibility", "Bamboo carries forward the lessons of scaling a real service business: support, logistics, timing, edge cases, and operational detail."], ["Workflow depth", "Products start by studying specific user behavior before they become interfaces, features, or launch pages."], ["Practical product craft", "The current portfolio centers on coaching workflow, travel tools, golf scoring, and focused product utilities."]])}</section>`);
-}
 
-function contact() {
-  shell("Contact - Bamboo Holdings", "Contact", `
-    <section class="inner hero narrow">
-      <p class="eyebrow">Contact</p>
-      <h1>Get in touch.</h1>
-      <p class="lede">For app support, product questions, partnerships, or general inquiries, contact Bamboo by email.</p>
-      <div class="actions"><a class="button" href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
-    </section>
-    <section class="band section"><div class="inner"><p class="copy">There is no contact form, account portal, newsletter signup, analytics tracker, or ticketing backend on this site.</p></div></section>`);
-}
 
 function currentRoutePath() {
   let path = window.location.pathname;
