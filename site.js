@@ -37,6 +37,41 @@ const apps = [
     }
   },
   {
+    id: "sparks",
+    name: "Sparks: Create with AI",
+    slug: "/apps/sparks/",
+    icon: "/assets/apps/sparks-icon.png",
+    status: "Coming soon",
+    supportEmail: "hello@sparks.app",
+    tagline: "Build games, art, and stories",
+    hero: "A creative AI studio for kids.",
+    intro: "Sparks is a kids creative AI app for making, exploring, and playing with AI-guided creative activities.",
+    long: "Sparks gives kids a place to create with Sparky, an AI creative sidekick. The app is designed around guided activities such as quizzes, games, pixel art, stories, and family sharing, with parent controls and local device storage described in the current source copy.",
+    users: ["Kids exploring creative activities with parental involvement", "Families looking for creative screen time", "Parents who want a private, family-centered creation space", "Children who prefer speaking ideas instead of typing"],
+    features: [["Sparky creative assistant", "Kids can ask Sparky for help turning ideas into creative activities."], ["Games, art, and stories", "Source materials describe quizzes, arcade games, pixel art, stories, and other creative templates."], ["Voice-powered ideas", "Sparks may request microphone access so children can speak ideas to Sparky."], ["Family Wall", "Source materials describe private family sharing for creations."], ["Parent Dashboard", "Parents can manage profiles, PIN controls, screen time, and activity context from the parent area."], ["Local-first data", "Source privacy copy says child profiles, creations, chat history, and pixel art are stored locally on device."]],
+    works: ["Set up Sparks with parental involvement.", "Create or choose a child profile.", "Pick a creative activity or tell Sparky an idea.", "Build, play, edit, or save the creation.", "Use the Parent Dashboard to manage profiles and controls.", "Export creations before deleting the app or resetting the device."],
+    availability: "Coming soon. Public App Store availability has not been confirmed.",
+    disclaimer: "Sparks involves children, AI, microphone/voice features, and third-party AI providers. The current public privacy language should receive child privacy and AI-provider legal review before public launch.",
+    support: {
+      overview: "Sparks is a kids creative AI app made by Sunshine Studio. Support can help with Sparky voice behavior, local creations, child profiles, the Parent Dashboard, parent PIN reset, and privacy questions.",
+      include: ["Device model", "iOS or iPadOS version", "Sparks app version if visible", "Whether the issue involves Sparky, voice, profiles, creations, Family Wall, or the Parent Dashboard", "A short description of what happened and what you expected"],
+      faq: [["Sparky's voice isn't working.", "Check that your device isn't on silent or vibrate. Voice requires an internet connection. If it still does not work, Sparky will switch to your device's built-in voice automatically."], ["My child's creations disappeared.", "All data is stored on-device. If you deleted the app or reset the device, the data cannot be recovered. The source support copy recommends exporting creations from the Parent Dashboard before major device changes."], ["How do I change or remove a child profile?", "Open the Parent Dashboard, tap the lock icon, enter your PIN, and use the profile controls to edit, freeze, or remove a profile."], ["How do I reset my parent PIN?", "Use Reset device & sign out in the Parent Dashboard. This removes all data, so export first."], ["Is there a subscription?", "The source support copy says Sparks is free to use and asks users to contact support for questions about premium features. Final App Store pricing and subscription language should be confirmed before public launch."]],
+      limitations: ["Public App Store availability has not been confirmed", "AI and voice features require an internet connection", "Local data can be lost if the app is deleted or the device is reset before export", "Parent PIN reset removes local data", "Child privacy, AI-provider, voice, microphone, Anthropic, OpenAI transcription, and ElevenLabs disclosures still need legal review before public launch"]
+    },
+    privacy: {
+      effectiveDate: "June 2025",
+      stored: ["Child profiles", "Created apps and activities", "Chat history", "Pixel art", "Parent Dashboard settings and controls", "Family Wall creation context described in source marketing copy"],
+      local: "The Sparks source privacy copy says Sparks is designed to run entirely on the user's device, with child profiles, created apps, chat history, and pixel art stored locally using AsyncStorage.",
+      thirdParty: "The source privacy copy says the AI prompts sent to Sparky are processed by Anthropic (Claude). It also says Sparks may request microphone access so children can speak ideas to Sparky, and that audio is transcribed locally or via a secure API call. The migration notes specifically flag OpenAI transcription for review if configured. ElevenLabs is listed as powering Sparky's voice. Photo library access is requested only when a child chooses to save pixel art to the Camera Roll.",
+      accounts: "The source copy describes local child profiles and Parent Dashboard controls. It does not describe a Bamboo Holdings account system for Sparks public pages.",
+      ai: "Sparky uses AI processing. Source materials identify Anthropic (Claude) for AI prompts, ElevenLabs for voice output, and voice transcription that may be local or use an external transcription API such as OpenAI if configured.",
+      children: "Sparks is intended for children ages 8-14 with parental involvement according to the source privacy copy. The app involves children, AI, microphone/voice features, parent controls, and third-party providers, so this language should receive child privacy and AI-provider legal review before public launch.",
+      payments: "The source support copy says Sparks is free to use and directs premium-feature questions to support. Separate App Store copy references possible premium features or subscription access, so final payments language should be confirmed before launch.",
+      tracking: "The source privacy copy says Sparks does not display advertising, does not have social features that share data with strangers, and does not track children across apps or websites.",
+      deletion: "The source privacy copy says users can delete all data using Reset device & sign out in the Parent Dashboard or by deleting the app from the device."
+    }
+  },
+  {
     id: "triptracker-pro",
     name: "TripTracker Pro",
     slug: "/apps/triptracker-pro/",
@@ -114,6 +149,7 @@ const nav = [
 
 const footerLinks = [
   ["Chalk", "/apps/chalk/"],
+  ["Sparks", "/apps/sparks/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
   ["Match Card", "/apps/match-card/"]
 ];
@@ -377,12 +413,13 @@ function appPage(app) {
 }
 
 function supportPage(app) {
+  const supportEmail = app.supportEmail || APP_CONTACT_EMAIL;
   shell(`${app.name} Support - Bamboo Holdings`, "Apps", `
     <section class="inner hero narrow">
       <p class="eyebrow">${esc(app.name)} support</p>
       <h1>Support for ${esc(app.name)}</h1>
       <p class="lede">${esc(app.support.overview)}</p>
-      <p class="copy">For help, contact <a href="mailto:${APP_CONTACT_EMAIL}">${APP_CONTACT_EMAIL}</a>.</p>
+      <p class="copy">For help, contact <a href="mailto:${supportEmail}">${supportEmail}</a>.</p>
       <div class="actions"><a class="button secondary" href="${pageUrl(app.slug)}">Back to ${esc(app.name)}</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
     </section>
     <section class="inner section tight prose">
@@ -397,11 +434,13 @@ function supportPage(app) {
 }
 
 function privacyPage(app) {
+  const supportEmail = app.supportEmail || APP_CONTACT_EMAIL;
+  const effectiveDate = app.privacy.effectiveDate || TODAY;
   shell(`${app.name} Privacy - Bamboo Holdings`, "Apps", `
     <section class="inner hero narrow">
       <p class="eyebrow">${esc(app.name)} privacy</p>
       <h1>Privacy overview for ${esc(app.name)}</h1>
-      <p class="lede">Effective date: ${TODAY}. This page uses cautious public-safe language from the current reference packet and should be reviewed before public launch.</p>
+      <p class="lede">Effective date: ${esc(effectiveDate)}. This page uses cautious public-safe language from the current source materials and should be reviewed before public launch.</p>
       <div class="actions"><a class="button secondary" href="${pageUrl(app.slug)}">Back to ${esc(app.name)}</a><a class="button secondary" href="${pageUrl(`${app.slug}support/`)}">Support</a></div>
     </section>
     <section class="inner section tight prose">
@@ -424,7 +463,7 @@ function privacyPage(app) {
       <h2>Data deletion note</h2>
       <p>${esc(app.privacy.deletion)}</p>
       <h2>Contact</h2>
-      <p>Questions can be sent to <a href="mailto:${APP_CONTACT_EMAIL}">${APP_CONTACT_EMAIL}</a>.</p>
+      <p>Questions can be sent to <a href="mailto:${supportEmail}">${supportEmail}</a>.</p>
     </section>`);
 }
 

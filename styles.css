@@ -473,6 +473,11 @@ main { min-height: 60vh; }
   --app-accent: #f1eadc;
 }
 
+.app-card-sparks {
+  --app-accent-soft: rgba(237, 112, 143, .2);
+  --app-accent: #ed708f;
+}
+
 .app-card-triptracker-pro {
   --app-accent-soft: rgba(171, 157, 127, .24);
   --app-accent: #d6c6a2;
