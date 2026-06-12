@@ -276,8 +276,7 @@ function home() {
       <div class="forest-shade contact-shade" aria-hidden="true"></div>
       <div class="inner contact-panel">
         <p class="eyebrow">Contact</p>
-        <p>Send a note. No form, no funnel.</p>
-        <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
+        <a class="contact-email" href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
       </div>
     </section>`);
 }
