@@ -286,8 +286,7 @@ function portfolioCard(app, index = 0) {
     <h3>${esc(app.name)}</h3>
     <p class="app-tagline">${esc(app.tagline)}</p>
     <p>${esc(app.intro)}</p>
-    ${app.appStoreUrl ? "" : `<p class="app-card-note">${esc(app.availability)}</p>`}
-    ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : `<span class="testflight-badge">TestFlight</span>`}
+    ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : ""}
     <div class="mini-links">
       <a href="${pageUrl(app.slug)}">Overview</a>
       <a href="${pageUrl(`${app.slug}support/`)}">Support</a>
