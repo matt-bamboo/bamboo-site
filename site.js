@@ -1,4 +1,5 @@
 const CONTACT_EMAIL = "matt@bamboo.holdings";
+const APP_CONTACT_EMAIL = "info@bamboo.holdings";
 const TODAY = "June 8, 2026";
 
 const apps = [
@@ -163,6 +164,7 @@ function appStoreBadge(url) {
 }
 
 function shell(title, active, content) {
+  const footerEmail = currentRoutePath().startsWith("/apps/") ? APP_CONTACT_EMAIL : CONTACT_EMAIL;
   document.title = title;
   document.body.className = active === "Home" ? "home-page" : "";
   document.body.innerHTML = `
@@ -185,7 +187,7 @@ function shell(title, active, content) {
         <div>
           <span>&copy; ${new Date().getFullYear()} Bamboo Holdings. All rights reserved.</span>
         </div>
-        <div class="footer-links">${footerLinks.map(([label, href]) => `<a href="${pageUrl(href)}">${label === "Email" ? CONTACT_EMAIL : label}</a>`).join("")}</div>
+        <div class="footer-links">${footerLinks.map(([label, href]) => label === "Email" ? `<a href="mailto:${footerEmail}">${footerEmail}</a>` : `<a href="${pageUrl(href)}">${label}</a>`).join("")}</div>
       </div>
     </footer>`;
   document.addEventListener("pointermove", event => {
@@ -333,7 +335,7 @@ function supportPage(app) {
       <p class="eyebrow">${esc(app.name)} support</p>
       <h1>Support for ${esc(app.name)}</h1>
       <p class="lede">${esc(app.support.overview)}</p>
-      <p class="copy">For help, contact <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
+      <p class="copy">For help, contact <a href="mailto:${APP_CONTACT_EMAIL}">${APP_CONTACT_EMAIL}</a>.</p>
       <div class="actions"><a class="button secondary" href="${pageUrl(app.slug)}">Back to ${esc(app.name)}</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
     </section>
     <section class="inner section tight prose">
@@ -375,7 +377,7 @@ function privacyPage(app) {
       <h2>Data deletion note</h2>
       <p>${esc(app.privacy.deletion)}</p>
       <h2>Contact</h2>
-      <p>Questions can be sent to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
+      <p>Questions can be sent to <a href="mailto:${APP_CONTACT_EMAIL}">${APP_CONTACT_EMAIL}</a>.</p>
     </section>`);
 }
 
