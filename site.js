@@ -72,6 +72,39 @@ const apps = [
     }
   },
   {
+    id: "allotment-optimizer",
+    name: "Allotment Optimizer",
+    slug: "/apps/allotment-optimizer/",
+    status: "Preparing for iOS release",
+    supportEmail: "matt@bamboo.holdings",
+    tagline: "Cannabis allotment planning, on device",
+    hero: "A clearer way to estimate and track personal allotment usage.",
+    intro: "Allotment Optimizer is an informational planning tool for Arizona adults who want a clearer way to estimate and track cannabis allotment usage.",
+    long: "Allotment Optimizer is designed for personal planning, education, and recordkeeping. It helps users estimate allotment usage, organize product details, and compare planning scenarios without selling cannabis, processing orders, connecting users to dispensaries for transactions, or replacing official state, medical, or dispensary records.",
+    users: ["Arizona adults who want a personal planning record", "Patients or adult-use consumers tracking their own estimated allotment usage", "People comparing product weights, prices, and deals for informational planning", "Users who prefer local-only tools with no account or analytics"],
+    features: [["Estimate allotment usage", "Track gram amounts and personal planning scenarios against an estimated allotment."], ["Compare planning scenarios", "Review combinations of product weights, prices, and deals as informational estimates only."], ["Keep local records", "Store products, purchase history, favorites, quick links, and settings on device."], ["Manual backup and restore", "Export or restore a JSON backup using the device file picker or share sheet."], ["No account required", "The app is designed without accounts, analytics, ads, tracking, or backend collection."], ["Adult-focused disclaimers", "The app includes a first-launch 21+ gate and makes clear it is not legal, medical, tax, or purchasing advice."]],
+    works: ["Set an estimated allotment mode and planning preferences.", "Add product weights, prices, and optional deal details.", "Review informational combinations and planning estimates.", "Record purchases for personal tracking.", "Use reset or manual backup/export tools when managing local data.", "Verify all legal limits, pricing, tax, and availability with official sources and licensed dispensaries."],
+    availability: "Prepared for iOS App Store release. The app is free.",
+    disclaimer: "Allotment Optimizer is an informational planning and recordkeeping tool only. It does not sell cannabis, process orders, facilitate checkout or delivery, provide legal, medical, or tax advice, or replace official state, medical, or dispensary records.",
+    support: {
+      overview: "Allotment Optimizer is an on-device informational planning tool for Arizona adults. Support can help with local app behavior, settings, backup and restore, and general troubleshooting.",
+      include: ["Device type", "iOS version", "Allotment Optimizer app version if available", "Whether the issue involves planning, history, quick links, backup, restore, or reset", "A short description of the issue"],
+      faq: [["Does Allotment Optimizer sell cannabis or process orders?", "No. The app does not sell cannabis, process orders, facilitate checkout, delivery, or cannabis transactions, or connect users to dispensaries for transactions."], ["Is this an official allotment record?", "No. The app is for personal planning and education. It does not replace official state, medical, dispensary, or registry records."], ["Does the app require an account?", "No. Allotment Optimizer does not require an account or sign-in."], ["Does data sync across devices?", "No. Data is stored on device. Manual JSON backup and restore are the current user-directed way to move data."], ["Can support recover my app data?", "No. Bamboo Holdings does not receive app data or backup files through the app, so support cannot recover deleted local data."]],
+      limitations: ["Arizona-focused informational planning", "Adults 21+ only", "No official government, medical, legal, tax, or dispensary-record authority", "No account recovery", "No cloud sync or automatic backup", "Manual backup/export is user-directed", "Local data can be lost if the app is deleted before backup"]
+    },
+    privacy: {
+      stored: ["Allotment settings and planning preferences", "Product names, weights, prices, deal details, and planning inputs", "Purchase history and local records entered by the user", "Saved product library items", "Quick links and favorites", "Manual JSON backup files only when the user chooses to export them"],
+      local: "Allotment Optimizer stores app information locally on the user's device. Bamboo Holdings does not receive personal app data through a backend service, account system, analytics pipeline, or cloud sync feature.",
+      thirdParty: "The app does not use analytics, advertising, tracking SDKs, backend sync, or third-party AI processing. If a user opens a saved quick link or website in the in-app browser, that user is interacting directly with the third-party website under that site's own terms and privacy practices.",
+      accounts: "Allotment Optimizer does not require an account, sign-in, profile, or remote identity.",
+      ai: "Allotment Optimizer does not use AI or external model providers.",
+      children: "Allotment Optimizer is intended for adults 21 and older where cannabis is legal. It is not directed to children.",
+      payments: "The app is free and does not process payments, cannabis orders, checkout, delivery, or transactions.",
+      tracking: "Data Not Collected. The app does not use analytics, ads, advertising identifiers, third-party tracking, or behavioral profiling.",
+      deletion: "Users can clear local app data with in-app reset controls or by deleting the app. Manual backup and restore are user-directed actions using the device file picker or share sheet, and Bamboo Holdings does not receive uploaded backup files through the app."
+    }
+  },
+  {
     id: "univoice",
     name: "UniVoice",
     slug: "/apps/univoice/",
@@ -182,6 +215,7 @@ const nav = [
 const footerLinks = [
   ["Chalk", "/apps/chalk/"],
   ["Sparks", "/apps/sparks/"],
+  ["Allotment Optimizer", "/apps/allotment-optimizer/"],
   ["UniVoice", "/apps/univoice/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
   ["Match Card", "/apps/match-card/"]
