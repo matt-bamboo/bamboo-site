@@ -252,14 +252,14 @@ function home() {
     <section id="bio" class="bio-reveal">
       <div class="inner bio-card">
         <div class="bio-copy">
+          <div class="bio-photo">
+            <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.parentElement.classList.add('missing-photo'); this.remove();">
+          </div>
           <p class="bio-lede">I'm Matthew Grossman, and I build systems that scale.</p>
           <p>As an operational architect and growth advisor, I work at the intersection of complex logistics, technology integration, and large-scale labor management. Through Bamboo Holdings, I currently advise and mentor 14 scaling companies, helping founders audit workflows, eliminate supply chain bottlenecks, and build repeatable infrastructure for growth.</p>
           <p>My approach comes from nearly twenty years of hands-on execution: scaling high-volume national logistics, managing compressed seasonal demand, and running corporate enterprise operations.</p>
           <p>At Dorm Room Movers, I spent 16 years helping build an asset-light logistics platform across 300+ universities and boarding schools, including Yale, Carnegie Mellon, UMass Amherst, Choate Rosemary Hall, and the Berkshire School. Before that, with iEnergizer, I helped build and operate a 350-seat customer service center in Austin supporting Electronic Arts across 40 portfolios.</p>
           <p>Whether I'm advising a growing company or building something new, the focus is the same: strip away operational chaos and engineer systems that perform.</p>
-        </div>
-        <div class="bio-photo">
-          <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.parentElement.classList.add('missing-photo'); this.remove();">
         </div>
       </div>
     </section>
