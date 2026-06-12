@@ -250,7 +250,6 @@ function home() {
     <section id="bio" class="bio-reveal">
       <div class="inner bio-card">
         <div class="bio-copy">
-          <p class="eyebrow">Matthew Grossman</p>
           <p class="bio-lede">I'm Matthew Grossman, and I build systems that scale.</p>
           <p>As an operational architect and growth advisor, I work at the intersection of complex logistics, technology integration, and large-scale labor management. Through Bamboo Holdings, I currently advise and mentor 14 scaling companies, helping founders audit workflows, eliminate supply chain bottlenecks, and build repeatable infrastructure for growth.</p>
           <p>My approach comes from nearly twenty years of hands-on execution: scaling high-volume national logistics, managing compressed seasonal demand, and running corporate enterprise operations.</p>

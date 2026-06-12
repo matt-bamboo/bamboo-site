@@ -264,9 +264,10 @@ main { min-height: 60vh; }
 .bio-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 310px);
-  gap: clamp(34px, 7vw, 92px);
+  grid-template-columns: minmax(0, 760px) minmax(260px, 360px);
+  gap: clamp(38px, 8vw, 112px);
   align-items: center;
+  justify-content: space-between;
   border-left: 6px solid #c59b54;
   padding-left: clamp(22px, 4vw, 46px);
   opacity: 0;
@@ -302,6 +303,8 @@ main { min-height: 60vh; }
 
 .bio-photo {
   position: relative;
+  justify-self: end;
+  width: min(100%, 360px);
   aspect-ratio: 4 / 5;
   border: 1px solid rgba(31, 30, 26, .18);
   border-radius: 8px;
@@ -1335,8 +1338,7 @@ h3 {
 @media (max-width: 940px) {
   .hero,
   .split,
-  .app-hero-layout,
-  .bio-card {
+  .app-hero-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1347,10 +1349,12 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .bio-photo {
-    width: min(260px, 70vw);
-    order: -1;
+  .bio-card {
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 250px);
+    gap: clamp(24px, 5vw, 42px);
   }
+
+  .bio-photo { width: min(100%, 250px); }
 }
 
 @media (max-width: 720px) {
@@ -1408,6 +1412,15 @@ h3 {
     padding: 76px 0;
   }
 
+  .bio-card {
+    grid-template-columns: minmax(0, 1fr) minmax(160px, 210px);
+    gap: 22px;
+  }
+
+  .bio-copy .bio-lede {
+    font-size: clamp(24px, 6vw, 34px);
+  }
+
   .app-grid {
     grid-template-columns: 1fr;
   }
@@ -1435,6 +1448,17 @@ h3 {
   }
 
   .screen-row span { text-align: left; }
+}
+
+@media (max-width: 520px) {
+  .bio-card {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-photo {
+    justify-self: start;
+    width: min(260px, 72vw);
+  }
 }
 
 @media (min-width: 721px) and (max-width: 1040px) {
