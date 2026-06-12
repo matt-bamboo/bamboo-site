@@ -1,4 +1,4 @@
-const CONTACT_EMAIL = "info@bamboo.holdings";
+const CONTACT_EMAIL = "matt@bamboo.holdings";
 const TODAY = "June 8, 2026";
 
 const apps = [
@@ -280,7 +280,8 @@ function home() {
       <div class="forest-shade contact-shade" aria-hidden="true"></div>
       <div class="inner contact-panel">
         <p class="eyebrow">Contact</p>
-        <h2>Reach Matthew through Bamboo.</h2>
+        <h2>Have something worth talking about?</h2>
+        <p>Send a note. No form, no funnel.</p>
         <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
       </div>
     </section>`);
