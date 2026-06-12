@@ -348,7 +348,7 @@ main { min-height: 60vh; }
 .app-scroll {
   --track-shift: 0px;
   min-height: 360vh;
-  scroll-snap-align: start;
+  scroll-snap-align: none;
   background: #171915;
   color: #fbfaf5;
 }

@@ -7,7 +7,7 @@ const apps = [
     name: "Chalk",
     slug: "/apps/chalk/",
     icon: "/assets/apps/chalk-icon.png",
-    status: "Preview",
+    status: "TestFlight",
     tagline: "The gymnastics coaching companion",
     hero: "Every session. Every skill. Every athlete.",
     intro: "Chalk helps gymnastics coaches log sessions, rate skills, and send personalized drill plans to athletes and parents.",
@@ -15,13 +15,13 @@ const apps = [
     users: ["Gymnastics coaches", "Youth gymnasts and athletes", "Parents who want safe visibility into homework and progress", "Gym owners, program directors, and facility admins"],
     features: [["Rate, plan, send", "Log a session, rate skills, and turn practice notes into a focused homework plan."], ["Built for class flow", "Move through activity areas, collect ratings for the whole class, and review everything before closing the session."], ["Homework that fits", "Plans are generated from the day's ratings, with flexibility built in and a focused cap."], ["Four views, one workflow", "Coaches, athletes, parents, and admins each see the information they need."], ["Track the journey", "Skill trees, milestones, session history, and progress comparisons help make improvement visible."], ["Private by design", "No accounts, no ads, and no server sync in the current preview. Data is stored on the device."]],
     works: ["Choose a role: Coach, Athlete, Parent, or Admin.", "Log an individual athlete session or start a class session.", "Rate skills and add notes.", "Review the homework draft.", "Send homework to the athlete and parent views.", "Track progress over time."],
-    availability: "Currently in private preview for iOS.",
+    availability: "Currently in TestFlight for iOS.",
     disclaimer: "Chalk is a preview product for youth sports workflows. Public privacy and compliance details should receive owner and legal review before launch.",
     support: {
       overview: "Chalk is a gymnastics coaching companion for session logging, skill tracking, and homework follow-through. The current preview uses local on-device data and does not include accounts or cloud sync.",
       include: ["Your iPhone model", "Your iOS version", "Chalk app version if visible", "Whether you are using demo data or custom data", "A short description of the issue"],
       faq: [["How do I log a training session?", "Open the Coach view, choose an athlete or class, rate the relevant skills, add notes if needed, and save the session."], ["What do the 1-4 ratings mean?", "1 means Needs Work, 2 means Developing, 3 means Almost There, and 4 means Nailed It."], ["How does homework get created?", "After a session, Chalk creates a homework draft from the ratings. Coaches can review and adjust the plan before sending it."], ["Does Chalk require a login?", "No. The current preview has no account system. It opens to a role picker."], ["Will data sync to another device?", "No. Current data is stored on the device only and does not sync across devices."]],
-      limitations: ["iOS only in the current preview", "No account system", "No cloud backup or multi-device sync", "No Android build currently", "No push notifications currently", "No AI processing or machine learning in the homework engine", "Data can be lost if the app is deleted or the device is replaced without backup"]
+      limitations: ["iOS TestFlight only currently", "No account system", "No cloud backup or multi-device sync", "No Android build currently", "No push notifications currently", "No AI processing or machine learning in the homework engine", "Data can be lost if the app is deleted or the device is replaced without backup"]
     },
     privacy: {
       stored: ["Athlete names and ages", "Coach names and roster information", "Parent display information in demo or facility data", "Session ratings and notes", "Homework plans and completion records", "Practice logs", "Skill progress and milestone records", "Custom skills and drills", "Facility name, tagline, and location text", "Class, program, roster, and curriculum configuration", "Optional skill video URLs"],
@@ -40,7 +40,8 @@ const apps = [
     name: "TripTracker Pro",
     slug: "/apps/triptracker-pro/",
     icon: "/assets/apps/triptracker-pro-icon.png",
-    status: "Coming Soon",
+    status: "Available on iOS",
+    appStoreUrl: "https://apps.apple.com/us/app/triptracker-pro/id6762306487",
     tagline: "AI-powered resort receipt tracking",
     hero: "Every charge, every tip, every receipt - accounted for.",
     intro: "TripTracker Pro helps resort travelers scan receipts, track expenses, reconcile hotel bills, split costs, and keep a clean record of their trip.",
@@ -48,7 +49,7 @@ const apps = [
     users: ["Frequent resort and timeshare travelers", "Travelers managing multi-person trips", "People who want to reconcile hotel folios before checkout", "Travelers who track cash tips, card charges, and shared expenses", "Resort guests who want notes and records to carry forward to future stays"],
     features: [["Scan receipts as you go", "Capture receipts during the trip and review extracted details before saving."], ["Reconcile your hotel bill", "Compare your final folio against saved receipts and spot charges that need review."], ["Split costs without a spreadsheet", "Track shared expenses and see a clean settlement summary at the end of the trip."], ["Remember staff and tips", "Keep a record of staff names, roles, and tip history across resort visits."], ["Keep resort notes", "Save details about a property so they are available next time you return."], ["Export your trip record", "Create a portable trip file for personal records or device migration."]],
     works: ["Create a trip with resort, dates, currencies, and optional budget.", "Scan receipts throughout the stay.", "Upload the hotel folio near checkout.", "Review matched and disputed charges.", "Settle shared expenses.", "Export a clean trip summary."],
-    availability: "Coming soon.",
+    availability: "Available now on the iOS App Store. Android coming soon.",
     disclaimer: "TripTracker Pro is a personal record-keeping tool. AI extraction may be incomplete or incorrect, and users should review receipts, folios, and exports carefully.",
     support: {
       overview: "TripTracker Pro is a personal travel expense tracker for resort trips. Most issues can be fixed directly in the app by editing receipts, updating trip settings, or exporting/importing trip data.",
@@ -63,7 +64,7 @@ const apps = [
       accounts: "TripTracker Pro currently does not require a user account or sign-in.",
       ai: "Receipt, folio, flight, and assistant features may use external AI processing. AI results should be reviewed and corrected when needed.",
       children: "TripTracker Pro is not intended for children under 13.",
-      payments: "The public release model has not been confirmed. This page does not claim paid, free, subscription, or purchase behavior.",
+      payments: "TripTracker Pro is available through the iOS App Store. This page does not make separate claims about pricing, subscriptions, or in-app purchases.",
       tracking: "No analytics, advertising, or tracking claims are made unless confirmed against the current codebase before publication.",
       deletion: "Users can delete app records from within the app. Exact full-data-reset behavior should be confirmed before publishing detailed instructions."
     }
@@ -73,7 +74,8 @@ const apps = [
     name: "Match Card",
     slug: "/apps/match-card/",
     icon: "/assets/apps/match-card-icon.png",
-    status: "TestFlight",
+    status: "Available on iOS",
+    appStoreUrl: "https://apps.apple.com/us/app/match-card-pro/id6762983683",
     tagline: "Golf scorecard and round analytics",
     hero: "Your courses. Your rivalry. One scorecard.",
     intro: "Match Card is a two-player golf scorecard for iPhone that helps regular playing partners score rounds, track rivalry stats, settle friendly side games, and keep a course-by-course record.",
@@ -81,13 +83,13 @@ const apps = [
     users: ["Recreational golfers who play regularly with the same partner", "Two-player golf rivalries", "Golfers who care about course-specific history and head-to-head records", "Players who want a cleaner alternative to bloated golf apps", "Golfers who want side-game math handled for them"],
     features: [["Live scoring, one-handed", "Fast hole-by-hole scoring with auto-saving drafts."], ["Score with your voice", "Tap the mic, say the scores, and keep the round moving."], ["Built for rivalries", "Track the season-long head-to-head between you and your regular playing partner."], ["Per-course handicap", "Keep course-specific performance history instead of one blended number."], ["Side games settled", "Handle Skins, Match Play, Nassau, Stableford, and more without spreadsheet math."], ["Share the round", "Generate clean post-round share cards for scores, stats, and highlights."]],
     works: ["Set your two player names.", "Choose or add a course.", "Score each hole by tap or voice.", "Save the round.", "Review side games and the season trophy.", "Share the result if you want."],
-    availability: "Now in TestFlight for iPhone.",
+    availability: "Available now on the iOS App Store. Android coming soon.",
     disclaimer: "Match Card can tally friendly side games, but it does not process payments, transfer money, or settle wagers.",
     support: {
       overview: "Match Card is a two-player golf scorecard for iPhone. It does not require an account and is designed to work offline for round scoring.",
       include: ["iPhone model", "iOS version", "Match Card app version if visible", "A short description of the issue", "What screen you were on"],
       faq: [["Do I need an account?", "No. Match Card does not require sign-in or account creation."], ["How does voice scoring work?", "Tap the microphone on the live scoring screen and say the scores. It is a tap-to-record feature, not always-listening."], ["Why does the app ask for location?", "Location may be used to capture a weather stamp for the round or bias course search. If location is denied, the app should still support scoring."], ["Is my data backed up?", "Only if the user enables optional backup. Backup is off by default."], ["Does Match Card handle money or betting payments?", "No. Match Card can tally friendly side games, but it does not process payments, transfer money, or settle wagers."]],
-      limitations: ["iPhone only unless owner confirms otherwise", "TestFlight beta unless owner confirms public App Store release", "No live multi-device sync", "Optional backup is not an account system", "No always-listening voice mode"]
+      limitations: ["iOS only currently", "Android coming soon", "No live multi-device sync", "Optional backup is not an account system", "No always-listening voice mode"]
     },
     privacy: {
       stored: ["Round scores and scoring details", "Player names", "Course and venue records", "Hole notes and course history", "Bag and club data", "Side-game results", "App settings", "Attached local photo references", "Derived stats, records, and handicap calculations"],
@@ -96,7 +98,7 @@ const apps = [
       accounts: "Match Card currently does not require user accounts, login, email, Apple Sign In, or Google Sign In.",
       ai: "Voice, image, location, and course-search processing are feature-specific and should not be described as advertising or tracking.",
       children: "Match Card is not directed at children.",
-      payments: "Match Card does not currently offer subscriptions, in-app purchases, ads, or payment processing unless owner confirms a change.",
+      payments: "Match Card is available through the iOS App Store. Match Card does not process payments, transfer money, or settle wagers.",
       tracking: "No analytics, advertising, or tracking claims are made unless confirmed against the current codebase before publication.",
       deletion: "Users can erase local data in the app. Optional backup, if enabled, should be deleted separately through the backup feature."
     }
@@ -221,7 +223,7 @@ function shell(title, active, content) {
     document.querySelectorAll(".app-scroll").forEach(section => {
       const rect = section.getBoundingClientRect();
       const range = Math.max(section.offsetHeight - window.innerHeight, 1);
-      const progress = Math.min(Math.max(-rect.top / range, 0), 1);
+      const progress = Math.min(Math.max((window.innerHeight - rect.top) / range, 0), 1);
       const track = section.querySelector(".app-track");
       const maxShift = track ? Math.max(track.scrollWidth - window.innerWidth + 40, 0) : 0;
       section.style.setProperty("--app-progress", progress.toFixed(4));
@@ -295,6 +297,7 @@ function portfolioCard(app) {
     <p>${esc(app.tagline)}</p>
     <p>${esc(app.intro)}</p>
     <div class="mini-links">
+      ${app.appStoreUrl ? `<a href="${esc(app.appStoreUrl)}">Download iOS</a>` : ""}
       <a href="${pageUrl(app.slug)}">Overview</a>
       <a href="${pageUrl(`${app.slug}support/`)}">Support</a>
       <a href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a>
@@ -313,7 +316,7 @@ function appPage(app) {
           <h1>${esc(app.hero)}</h1>
           <p class="lede">${esc(app.intro)}</p>
           <p class="copy">${esc(app.long)}</p>
-          <div class="actions"><a class="button" href="${pageUrl(`${app.slug}support/`)}">Support</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
+          <div class="actions">${app.appStoreUrl ? `<a class="button" href="${esc(app.appStoreUrl)}">Download on iOS</a>` : ""}<a class="button${app.appStoreUrl ? " secondary" : ""}" href="${pageUrl(`${app.slug}support/`)}">Support</a><a class="button secondary" href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a></div>
         </div>
         <div class="product-panel">
           ${appIcon(app)}
