@@ -195,14 +195,19 @@ function shell(title, active, content) {
 function home() {
   const featured = apps;
   shell("Bamboo Holdings", "Home", `
-    <section id="top" class="inner hero">
-      <div>
+    <section id="top" class="hero hero-video">
+      <video class="hero-media" autoplay muted loop playsinline poster="${assetUrl("/assets/brand/bamboo-forest-poster.jpg")}" aria-hidden="true">
+        <source src="${assetUrl("/assets/brand/bamboo-forest-hero.mp4")}" type="video/mp4">
+      </video>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="inner hero-video-content">
+        <div>
         <p class="eyebrow">Bamboo Holdings</p>
         <h1>The home for Matthew Grossman's projects.</h1>
         <p class="lede">Matthew founded Dorm Room Movers after graduating from Arizona State University and grew it into a national service across more than 200 campuses. Bamboo is where he works on new ideas now: tools, experiments, and products based on real problems he notices and wants to solve.</p>
         <div class="actions"><a class="button" href="${pageUrl("#work")}">See current projects</a><a class="button secondary" href="${pageUrl("#about")}">Matthew's story</a></div>
-      </div>
-      <div class="focus-panel" aria-label="Bamboo Holdings product focus preview">
+        </div>
+        <div class="focus-panel" aria-label="Bamboo Holdings product focus preview">
         <div class="visual-grid">
           <div class="visual-tile"><strong>Built from experience</strong><span>Years of customers, logistics, support, and real-world details.</span><i class="metric-line"></i></div>
           <div class="visual-tile"><strong>Current projects</strong><span>Chalk, TripTracker Pro, Match Card, and whatever earns attention next.</span><i class="metric-line"></i></div>
@@ -210,6 +215,7 @@ function home() {
           <div class="visual-tile"><strong>No big act</strong><span>A straightforward place for work in progress and useful ideas.</span><i class="metric-line"></i></div>
         </div>
         <p class="copy">Bamboo is not trying to sound like a huge company. It is a clear home base for Matthew's current work and the public pages those projects need.</p>
+        </div>
       </div>
     </section>
     <section class="band section">
