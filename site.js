@@ -282,31 +282,18 @@ function home() {
 
 function portfolioCard(app, index = 0) {
   const directions = ["from-left", "from-bottom", "from-right"];
-  const featureList = app.features.slice(0, 3).map(([title, body]) => `<li><strong>${esc(title)}</strong><span>${esc(body)}</span></li>`).join("");
-  const userList = app.users.slice(0, 4).map(user => `<li>${esc(user)}</li>`).join("");
+  const featureList = app.features.slice(0, 3).map(([title]) => `<li>${esc(title)}</li>`).join("");
   return `<article class="card portfolio-card app-card-${esc(app.id)} fly-in ${directions[index % directions.length]}" style="--delay: ${index * 140}ms">
-    <div class="app-card-scroll" tabindex="0" aria-label="${esc(app.name)} details">
-      <section class="app-panel app-panel-cover" aria-label="${esc(app.name)} overview">
-        <div class="app-card-top">
-          ${appIcon(app)}
-          <span class="status">${esc(app.status)}</span>
-        </div>
-        <h3>${esc(app.name)}</h3>
-        <p>${esc(app.tagline)}</p>
-        <p>${esc(app.intro)}</p>
-        ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : `<span class="testflight-badge">TestFlight</span>`}
-        <span class="side-hint">Scroll card for details</span>
-      </section>
-      <section class="app-panel" aria-label="${esc(app.name)} features">
-        <p class="panel-kicker">Features</p>
-        <ul class="panel-list feature-list">${featureList}</ul>
-      </section>
-      <section class="app-panel" aria-label="${esc(app.name)} audience and status">
-        <p class="panel-kicker">Who it is for</p>
-        <ul class="panel-list compact-list">${userList}</ul>
-        <p class="availability-note">${esc(app.availability)}</p>
-      </section>
+    <div class="app-card-top">
+      ${appIcon(app)}
+      <span class="status">${esc(app.status)}</span>
     </div>
+    <h3>${esc(app.name)}</h3>
+    <p class="app-tagline">${esc(app.tagline)}</p>
+    <p>${esc(app.intro)}</p>
+    <ul class="app-feature-pills">${featureList}</ul>
+    <p class="availability-note">${esc(app.availability)}</p>
+    ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : `<span class="testflight-badge">TestFlight</span>`}
     <div class="mini-links">
       <a href="${pageUrl(app.slug)}">Overview</a>
       <a href="${pageUrl(`${app.slug}support/`)}">Support</a>
