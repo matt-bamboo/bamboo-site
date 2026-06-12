@@ -152,8 +152,7 @@ function appIcon(app) {
 
 function appStoreBadge(url) {
   return `<a class="app-store-badge" href="${esc(url)}" aria-label="Download on the App Store">
-    <span class="store-mark" aria-hidden="true"></span>
-    <span><small>Download on the</small><strong>App Store</strong></span>
+    <img src="${assetUrl("/assets/brand/download-on-app-store.svg")}" alt="Download on the App Store">
   </a>`;
 }
 
@@ -170,7 +169,6 @@ function shell(title, active, content) {
             <img src="${assetUrl("/assets/brand/bamboo-holdings-logo-hq.png")}" alt="" onerror="this.src='${assetUrl("/assets/brand/bamboo-logo.png")}'; this.onerror=()=>this.replaceWith(Object.assign(document.createElement('span'), {className: 'brand-mark', textContent: 'B'}))">
             <span>Bamboo Holdings</span>
           </a>
-          <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
           <div class="nav-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}"${label === active ? ' aria-current="page"' : ""}>${label}</a>`).join("")}</div>
         </nav>
       </div>
@@ -182,13 +180,6 @@ function shell(title, active, content) {
         <div class="footer-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}">${label}</a>`).join("")}<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
       </div>
     </footer>`;
-  const button = document.querySelector(".menu-button");
-  const links = document.querySelector(".nav-links");
-  button.addEventListener("click", () => {
-    const open = links.classList.toggle("open");
-    document.body.classList.toggle("menu-open", open);
-    button.setAttribute("aria-expanded", String(open));
-  });
   document.addEventListener("pointermove", event => {
     const x = Math.round((event.clientX / Math.max(window.innerWidth, 1)) * 100);
     const y = Math.round((event.clientY / Math.max(window.innerHeight, 1)) * 100);
@@ -254,6 +245,11 @@ function home() {
           <p class="eyebrow">Matthew Grossman</p>
           <p class="bio-lede">Matthew co-founded Dorm Room Movers while at Arizona State University and helped grow it from a garage startup into a nationwide logistics operation serving more than 300 colleges, universities, and boarding schools.</p>
           <p>Bamboo is where he works on what comes next: practical software, useful tools, and ideas worth testing.</p>
+          <div class="bio-facts" aria-label="Selected background">
+            <span><strong>2007</strong> Founded Dorm Room Movers</span>
+            <span><strong>300+</strong> Campuses served</span>
+            <span><strong>42</strong> States in the network</span>
+          </div>
         </div>
         <div class="bio-photo">
           <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.parentElement.classList.add('missing-photo'); this.remove();">

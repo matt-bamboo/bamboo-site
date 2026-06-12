@@ -195,24 +195,6 @@ img { max-width: 100%; display: block; }
   color: #fbfaf5;
 }
 
-.menu-button {
-  display: none;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(251, 250, 245, .2);
-  border-radius: 8px;
-  background: rgba(251, 250, 245, 0.08);
-  color: #fbfaf5;
-}
-
-.menu-button span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  margin: 4px auto;
-  background: currentColor;
-}
-
 main { min-height: 60vh; }
 
 .home-page .site-header {
@@ -317,6 +299,34 @@ main { min-height: 60vh; }
   font-size: clamp(24px, 3.1vw, 38px);
   line-height: 1.18;
   letter-spacing: 0;
+}
+
+.bio-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 34px;
+}
+
+.bio-facts span {
+  min-height: 94px;
+  border: 1px solid rgba(37, 40, 33, .12);
+  border-radius: 8px;
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .38)),
+    rgba(89, 106, 74, .06);
+  color: #565b4f;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.bio-facts strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #182016;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: .9;
 }
 
 .bio-photo {
@@ -445,68 +455,18 @@ main { min-height: 60vh; }
 
 .app-store-badge {
   width: fit-content;
-  min-height: 52px;
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  border: 1px solid rgba(255, 255, 255, .22);
-  border-radius: 11px;
-  padding: 7px 13px 7px 11px;
-  background: #050505;
-  color: #ffffff;
+  display: inline-block;
   text-decoration: none;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, .28);
 }
 
 .app-store-badge:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, .42);
 }
 
-.app-store-badge small,
-.app-store-badge strong {
+.app-store-badge img {
+  width: 162px;
+  height: auto;
   display: block;
-  line-height: 1;
-  letter-spacing: 0;
-}
-
-.app-store-badge small {
-  margin-bottom: 4px;
-  font-size: 10px;
-  font-weight: 700;
-  opacity: .82;
-}
-
-.app-store-badge strong {
-  font-size: 21px;
-  font-weight: 850;
-}
-
-.store-mark {
-  position: relative;
-  width: 25px;
-  height: 30px;
-  flex: 0 0 auto;
-}
-
-.store-mark::before,
-.store-mark::after {
-  content: "";
-  position: absolute;
-  left: 8px;
-  width: 7px;
-  height: 28px;
-  border-radius: 999px;
-  background: #fff;
-  transform-origin: center;
-}
-
-.store-mark::before {
-  transform: rotate(33deg);
-}
-
-.store-mark::after {
-  transform: rotate(-33deg);
 }
 
 .testflight-badge {
@@ -1413,22 +1373,29 @@ h3 {
 
 @media (max-width: 720px) {
   .inner { width: min(100% - 28px, 1160px); }
-  .nav { min-height: 66px; }
-  .menu-button { display: block; }
-  .nav-links {
-    position: fixed;
-    inset: 66px 0 auto 0;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    border-bottom: 1px solid rgba(251, 250, 245, .14);
-    background: rgba(11, 14, 9, 0.96);
-    padding: 10px 20px 20px;
+  .nav {
+    min-height: 66px;
+    gap: 12px;
   }
 
-  .nav-links.open { display: flex; }
-  .nav-links a { width: 100%; padding: 12px 0; }
+  .brand span {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    gap: 4px;
+    overflow-x: auto;
+    font-size: 12px;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
+    padding: 8px 7px;
+  }
   .hero { padding: 52px 0 42px; }
   .hero-video { padding: 0; }
   .hero-video-simple {
@@ -1444,6 +1411,10 @@ h3 {
   .bio-reveal {
     min-height: auto;
     padding: 92px 0;
+  }
+
+  .bio-facts {
+    grid-template-columns: 1fr;
   }
 
   .story-copy {
