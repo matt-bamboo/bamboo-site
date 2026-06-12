@@ -199,13 +199,13 @@ function shell(title, active, content) {
     item.classList.add("reveal");
     item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
   });
-  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .fly-in");
+  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .bio-facts span, .apps-heading, .fly-in");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add("is-visible");
       });
-    }, { threshold: 0.26, rootMargin: "0px 0px -12% 0px" });
+    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
     stagedItems.forEach(item => observer.observe(item));
   } else {
     stagedItems.forEach(item => item.classList.add("is-visible"));
@@ -282,15 +282,31 @@ function home() {
 
 function portfolioCard(app, index = 0) {
   const directions = ["from-left", "from-bottom", "from-right"];
+  const featureList = app.features.slice(0, 3).map(([title, body]) => `<li><strong>${esc(title)}</strong><span>${esc(body)}</span></li>`).join("");
+  const userList = app.users.slice(0, 4).map(user => `<li>${esc(user)}</li>`).join("");
   return `<article class="card portfolio-card app-card-${esc(app.id)} fly-in ${directions[index % directions.length]}" style="--delay: ${index * 140}ms">
-    <div class="app-card-top">
-      ${appIcon(app)}
-      <span class="status">${esc(app.status)}</span>
+    <div class="app-card-scroll" tabindex="0" aria-label="${esc(app.name)} details">
+      <section class="app-panel app-panel-cover" aria-label="${esc(app.name)} overview">
+        <div class="app-card-top">
+          ${appIcon(app)}
+          <span class="status">${esc(app.status)}</span>
+        </div>
+        <h3>${esc(app.name)}</h3>
+        <p>${esc(app.tagline)}</p>
+        <p>${esc(app.intro)}</p>
+        ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : `<span class="testflight-badge">TestFlight</span>`}
+        <span class="side-hint">Scroll card for details</span>
+      </section>
+      <section class="app-panel" aria-label="${esc(app.name)} features">
+        <p class="panel-kicker">Features</p>
+        <ul class="panel-list feature-list">${featureList}</ul>
+      </section>
+      <section class="app-panel" aria-label="${esc(app.name)} audience and status">
+        <p class="panel-kicker">Who it is for</p>
+        <ul class="panel-list compact-list">${userList}</ul>
+        <p class="availability-note">${esc(app.availability)}</p>
+      </section>
     </div>
-    <h3>${esc(app.name)}</h3>
-    <p>${esc(app.tagline)}</p>
-    <p>${esc(app.intro)}</p>
-    ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : `<span class="testflight-badge">TestFlight</span>`}
     <div class="mini-links">
       <a href="${pageUrl(app.slug)}">Overview</a>
       <a href="${pageUrl(`${app.slug}support/`)}">Support</a>
