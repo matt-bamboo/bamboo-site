@@ -235,18 +235,29 @@ function shell(title, active, content) {
     ["wheel", "touchstart", "pointerdown", "keydown"].forEach(eventName => {
       window.addEventListener(eventName, cancelAutoScroll, { once: true, passive: true });
     });
-    const ease = progress => 1 - Math.pow(1 - progress, 3);
+    const ease = progress => progress * progress * progress * (progress * (progress * 6 - 15) + 10);
     const glideToBio = () => {
       const startY = window.scrollY;
       const endY = bioSection.getBoundingClientRect().top + window.scrollY;
       const distance = endY - startY;
-      const duration = 2200;
+      const duration = 3200;
       const started = performance.now();
+      const rootStyle = document.documentElement.style;
+      const previousScrollBehavior = rootStyle.scrollBehavior;
+      rootStyle.scrollBehavior = "auto";
       const step = now => {
-        if (visitorMoved) return;
+        if (visitorMoved) {
+          rootStyle.scrollBehavior = previousScrollBehavior;
+          return;
+        }
         const progress = Math.min((now - started) / duration, 1);
         window.scrollTo(0, startY + (distance * ease(progress)));
-        if (progress < 1) requestAnimationFrame(step);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          window.scrollTo(0, endY);
+          rootStyle.scrollBehavior = previousScrollBehavior;
+        }
       };
       requestAnimationFrame(step);
     };
