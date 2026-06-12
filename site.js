@@ -198,45 +198,45 @@ function home() {
     <section id="top" class="inner hero">
       <div>
         <p class="eyebrow">Bamboo Holdings</p>
-        <h1>An operating company for practical ideas.</h1>
-        <p class="lede">Bamboo Holdings is where Matthew Grossman develops focused projects, tools, and operating ideas. The common thread is not a category. It is a way of working: find the friction, understand the workflow, and build with enough discipline for real use.</p>
-        <div class="actions"><a class="button" href="${pageUrl("#work")}">View current work</a><a class="button secondary" href="${pageUrl("#about")}">Operating background</a></div>
+        <h1>The home for Matthew Grossman's projects.</h1>
+        <p class="lede">Matthew founded Dorm Room Movers after graduating from Arizona State University and grew it into a national service across more than 200 campuses. Bamboo is where he works on new ideas now: tools, experiments, and products based on real problems he notices and wants to solve.</p>
+        <div class="actions"><a class="button" href="${pageUrl("#work")}">See current projects</a><a class="button secondary" href="${pageUrl("#about")}">Matthew's story</a></div>
       </div>
       <div class="focus-panel" aria-label="Bamboo Holdings product focus preview">
         <div class="visual-grid">
-          <div class="visual-tile"><strong>Operating lens</strong><span>Customers, edge cases, support, timing, and repeat behavior.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Workflow research</strong><span>Start with the job people are already trying to finish.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Focused builds</strong><span>Small enough to be sharp. Serious enough to be useful.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Public discipline</strong><span>Clear support paths, privacy pages, and careful claims.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Built from experience</strong><span>Years of customers, logistics, support, and real-world details.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Current projects</strong><span>Chalk, TripTracker Pro, Match Card, and whatever earns attention next.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>Simple public pages</strong><span>What each project is, how to get help, and what privacy details matter.</span><i class="metric-line"></i></div>
+          <div class="visual-tile"><strong>No big act</strong><span>A straightforward place for work in progress and useful ideas.</span><i class="metric-line"></i></div>
         </div>
-        <p class="copy">The current public work happens to include apps. Bamboo itself is broader than that: a holding company for practical projects shaped by operating experience.</p>
+        <p class="copy">Bamboo is not trying to sound like a huge company. It is a clear home base for Matthew's current work and the public pages those projects need.</p>
       </div>
     </section>
     <section class="band section">
       <div class="inner split">
-        <div><p class="eyebrow">Approach</p><h2>Built around jobs people already do.</h2></div>
-        <div><p class="copy">Bamboo is not trying to sound bigger than it is, and it is not trying to turn every idea into a grand market story. The work begins with concrete situations: a coach trying to remember what happened in practice, a traveler reconciling a resort bill, a golfer keeping track of the match that actually matters.</p></div>
+        <div><p class="eyebrow">What Bamboo is</p><h2>A place for useful projects.</h2></div>
+        <div><p class="copy">Some of the work is software. Some may not be. The starting point is usually simple: Matthew sees a messy process, a repeated annoyance, or a tool he wishes existed, then starts working through it.</p></div>
       </div>
     </section>
     <section id="work" class="inner section">
       <p class="eyebrow">Current work</p>
-      <div class="split section-intro"><div><h2>Projects in public view.</h2></div><div><p class="copy">These are current app projects that need public pages for review, support, and privacy. They are part of Bamboo, not the whole story.</p></div></div>
+      <div class="split section-intro"><div><h2>A few things on the table.</h2></div><div><p class="copy">These projects are public because they need a clean place for basic information, support, and privacy details. They are current work, and Bamboo will keep changing as new ideas become real enough to share.</p></div></div>
       <div class="grid">${featured.map(app => portfolioCard(app)).join("")}</div>
     </section>
     <section class="inner section tight">
-      <p class="eyebrow">What connects the work</p>
-      ${cards([["Operational detail", "The useful part is usually buried in edge cases, handoffs, and repeated behavior."], ["Narrow surfaces", "Bamboo favors focused tools over bloated platforms or vague positioning."], ["Plain public claims", "Pages say what is ready, what is limited, and where support or privacy details live."]])}
+      <p class="eyebrow">Common thread</p>
+      ${cards([["Real use", "The projects are based on things people actually do, not abstract themes."], ["Clear scope", "A project can be narrow and still be worth doing if it solves the right problem."], ["Plain language", "The site should say what exists, what is still early, and how to get in touch."]])}
     </section>
     <section id="about" class="band section">
       <div class="inner split">
-        <div><p class="eyebrow">Operating background</p><h2>The point of view comes from running a real company.</h2></div>
-        <div><p class="copy">Matthew Grossman graduated from Arizona State University and founded Dorm Room Movers, growing it into a national service across more than 200 college and boarding school campuses. That experience matters here: customers, logistics, support, seasonality, edge cases, and the thousand small details that decide whether a service actually works.</p><p class="copy">Bamboo carries that operating instinct into whatever it builds next. Start with the workflow. Understand the friction. Keep the claims honest. Make the result useful enough to survive real use.</p></div>
+        <div><p class="eyebrow">About Matthew</p><h2>He has built and run something real before.</h2></div>
+        <div><p class="copy">After graduating from Arizona State University, Matthew founded Dorm Room Movers and grew it into a national service across more than 200 college and boarding school campuses. That meant dealing with customers, logistics, seasonal rushes, support issues, and all the details that decide whether a service actually works.</p><p class="copy">Bamboo is the next chapter: a place to work on new projects with the same practical mindset.</p></div>
       </div>
     </section>
     <section id="contact" class="inner section">
       <p class="eyebrow">Contact</p>
-      <h2>For support or business inquiries.</h2>
-      <p class="lede">Reach Bamboo at <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. No forms, accounts, analytics, newsletter capture, or ticketing backend are used on this site.</p>
+      <h2>Reach Bamboo directly.</h2>
+      <p class="lede">For support, project questions, or business inquiries, email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
       <div class="actions"><a class="button" href="mailto:${CONTACT_EMAIL}">Email Bamboo</a></div>
     </section>`);
 }
