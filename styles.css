@@ -345,21 +345,18 @@ main { min-height: 60vh; }
   font-weight: 800;
 }
 
-.app-scroll {
-  --track-shift: 0px;
-  min-height: 360vh;
-  scroll-snap-align: none;
+.apps-reveal {
+  min-height: 100vh;
+  scroll-snap-align: start;
   background: #171915;
   color: #fbfaf5;
 }
 
-.app-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+.apps-wrap {
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  padding: clamp(92px, 12vh, 150px) 0;
 }
 
 .app-stage {
@@ -376,19 +373,15 @@ main { min-height: 60vh; }
   font-size: clamp(38px, 5vw, 72px);
 }
 
-.app-track {
-  display: flex;
-  width: max-content;
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
-  transform: translate3d(var(--track-shift), 0, 0);
-  transition: transform .08s linear;
-  will-change: transform;
+  perspective: 1200px;
 }
 
-.app-track .portfolio-card {
-  width: min(430px, calc(100vw - 44px));
+.app-grid .portfolio-card {
   min-height: 420px;
-  flex: 0 0 auto;
   border-color: rgba(251, 250, 245, .14);
   background:
     linear-gradient(180deg, rgba(251, 250, 245, .1), rgba(251, 250, 245, .045)),
@@ -396,20 +389,50 @@ main { min-height: 60vh; }
   box-shadow: 0 24px 70px rgba(0, 0, 0, .22);
 }
 
-.app-track .portfolio-card h3 {
+.app-grid .portfolio-card h3 {
   color: #fbfaf5;
 }
 
-.app-track .portfolio-card p {
+.app-grid .portfolio-card p {
   color: rgba(251, 250, 245, .7);
 }
 
-.app-track .mini-links {
+.app-grid .mini-links {
   color: rgba(251, 250, 245, .76);
 }
 
-.app-track .mini-links a:hover {
+.app-grid .mini-links a:hover {
   color: #fbfaf5;
+}
+
+.fly-in {
+  opacity: 0;
+  transition:
+    opacity .9s ease var(--delay, 0ms),
+    transform 1.05s cubic-bezier(.16, 1, .3, 1) var(--delay, 0ms),
+    filter .9s ease var(--delay, 0ms);
+  will-change: transform, opacity, filter;
+}
+
+.fly-in.from-left {
+  transform: translate3d(-72px, 46px, 0) rotateY(-14deg) rotateZ(-2deg) scale(.94);
+  filter: blur(10px);
+}
+
+.fly-in.from-bottom {
+  transform: translate3d(0, 90px, 0) rotateX(11deg) scale(.92);
+  filter: blur(12px);
+}
+
+.fly-in.from-right {
+  transform: translate3d(72px, 46px, 0) rotateY(14deg) rotateZ(2deg) scale(.94);
+  filter: blur(10px);
+}
+
+.fly-in.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
+  filter: blur(0);
 }
 
 .contact-forest {
@@ -1310,25 +1333,20 @@ h3 {
     margin-left: 0;
   }
 
-  .app-scroll {
+  .apps-reveal,
+  .apps-wrap {
     min-height: auto;
   }
 
-  .app-sticky {
-    position: relative;
-    height: auto;
+  .apps-wrap {
     padding: 76px 0;
-    overflow: visible;
   }
 
-  .app-track {
-    width: auto;
-    display: grid;
-    transform: none !important;
+  .app-grid {
+    grid-template-columns: 1fr;
   }
 
-  .app-track .portfolio-card {
-    width: auto;
+  .app-grid .portfolio-card {
     min-height: 320px;
   }
 
@@ -1356,29 +1374,12 @@ h3 {
   .screen-row span { text-align: left; }
 }
 
-@media (min-width: 561px) {
-  .app-scroll {
-    min-height: 360vh;
+@media (min-width: 721px) and (max-width: 1040px) {
+  .app-grid {
+    grid-template-columns: 1fr;
   }
 
-  .app-sticky {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding: 0;
-  }
-
-  .app-track {
-    display: flex;
-    width: max-content;
-    transform: translate3d(var(--track-shift), 0, 0) !important;
-  }
-
-  .app-track .portfolio-card {
-    width: min(430px, calc(100vw - 44px));
-    min-height: 420px;
+  .app-grid .portfolio-card {
+    min-height: 320px;
   }
 }

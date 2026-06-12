@@ -188,12 +188,12 @@ function shell(title, active, content) {
     document.documentElement.style.setProperty("--cursor-x", `${x}%`);
     document.documentElement.style.setProperty("--cursor-y", `${y}%`);
   }, { passive: true });
-  const revealItems = document.querySelectorAll(".card, .split, .app-hero-layout, .scroll-reveal");
+  const revealItems = document.querySelectorAll(".card:not(.portfolio-card), .split, .app-hero-layout, .scroll-reveal");
   revealItems.forEach((item, index) => {
     item.classList.add("reveal");
     item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
   });
-  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .contact-panel");
+  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .contact-panel, .fly-in");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -220,15 +220,6 @@ function shell(title, active, content) {
   });
   const updateScrollScenes = () => {
     document.body.classList.toggle("is-scrolled", window.scrollY > 32);
-    document.querySelectorAll(".app-scroll").forEach(section => {
-      const rect = section.getBoundingClientRect();
-      const range = Math.max(section.offsetHeight - window.innerHeight, 1);
-      const progress = Math.min(Math.max((window.innerHeight - rect.top) / range, 0), 1);
-      const track = section.querySelector(".app-track");
-      const maxShift = track ? Math.max(track.scrollWidth - window.innerWidth + 40, 0) : 0;
-      section.style.setProperty("--app-progress", progress.toFixed(4));
-      section.style.setProperty("--track-shift", `${Math.round(progress * -maxShift)}px`);
-    });
     document.querySelectorAll(".forest-scene").forEach(section => {
       const rect = section.getBoundingClientRect();
       const progress = Math.min(Math.max((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0), 1);
@@ -263,15 +254,15 @@ function home() {
         </div>
       </div>
     </section>
-    <section id="apps" class="app-scroll">
-      <div class="app-sticky">
+    <section id="apps" class="apps-reveal">
+      <div class="apps-wrap">
         <div class="inner app-stage">
           <div class="apps-heading">
             <p class="eyebrow">Current work</p>
             <h2>A few software projects in motion.</h2>
           </div>
-          <div class="app-track">
-            ${featured.map(app => portfolioCard(app)).join("")}
+          <div class="app-grid">
+            ${featured.map((app, index) => portfolioCard(app, index)).join("")}
           </div>
         </div>
       </div>
@@ -289,8 +280,9 @@ function home() {
     </section>`);
 }
 
-function portfolioCard(app) {
-  return `<article class="card portfolio-card">
+function portfolioCard(app, index = 0) {
+  const directions = ["from-left", "from-bottom", "from-right"];
+  return `<article class="card portfolio-card fly-in ${directions[index % directions.length]}" style="--delay: ${index * 140}ms">
     ${appIcon(app)}
     <span class="status">${esc(app.status)}</span>
     <h3>${esc(app.name)}</h3>
