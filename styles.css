@@ -1237,7 +1237,7 @@ h3 {
 
 .site-footer {
   border-top: 1px solid rgba(197, 155, 84, .22);
-  padding: 44px 0 50px;
+  padding: 34px 0 38px;
   color: rgba(251, 250, 245, .72);
   font-size: 14px;
   background:
@@ -1245,53 +1245,26 @@ h3 {
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: minmax(220px, 1.2fr) minmax(180px, .8fr) minmax(260px, 1fr);
-  align-items: flex-start;
-  gap: 28px;
-}
-
-.footer-grid strong {
-  display: block;
-  margin-bottom: 8px;
-  color: #fbfaf5;
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .footer-grid span {
   display: block;
 }
 
-.footer-label {
-  margin-bottom: 8px;
-  color: rgba(251, 250, 245, .44);
-  font-size: 11px;
-  font-weight: 850;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.footer-contact a,
-.footer-links {
-  color: rgba(251, 250, 245, .76);
-}
-
-.footer-contact a {
-  text-decoration: none;
-  border-bottom: 1px solid rgba(251, 250, 245, .22);
+.footer-meta {
+  flex: 0 1 auto;
 }
 
 .footer-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 12px 18px;
-  max-width: 650px;
-}
-
-.footer-links .footer-label {
-  flex: 0 0 100%;
-  text-align: right;
+  gap: 10px 18px;
+  color: rgba(251, 250, 245, .76);
 }
 
 .footer-links a {
@@ -1300,7 +1273,6 @@ h3 {
   border-bottom: 1px solid rgba(251, 250, 245, .22);
 }
 
-.footer-contact a:hover,
 .footer-links a:hover {
   color: #fbfaf5;
   border-color: rgba(197, 155, 84, .72);
@@ -1498,32 +1470,20 @@ h3 {
   }
 
   .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .footer-grid .footer-label {
-    display: none;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .footer-links {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    justify-content: start;
-    gap: 12px;
-    max-width: none;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px 16px;
   }
 
   .footer-grid span,
-  .footer-contact a,
   .footer-links a {
     font-size: 13px;
-  }
-
-  .footer-links a {
-    width: min-content;
-    min-width: 0;
   }
 
   .grid,

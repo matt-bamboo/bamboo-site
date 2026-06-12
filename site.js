@@ -164,7 +164,10 @@ function appStoreBadge(url) {
 
 function shell(title, active, content) {
   const footerEmail = currentRoutePath().startsWith("/apps/") ? APP_CONTACT_EMAIL : CONTACT_EMAIL;
-  const footerLinksHtml = footerLinks.map(([label, href]) => `<a href="${pageUrl(href)}">${label}</a>`).join("");
+  const footerLinksHtml = [
+    `<a href="mailto:${footerEmail}">${footerEmail}</a>`,
+    ...footerLinks.map(([label, href]) => `<a href="${pageUrl(href)}">${label}</a>`)
+  ].join("");
   document.title = title;
   document.body.className = active === "Home" ? "home-page" : "";
   document.body.innerHTML = `
@@ -187,12 +190,7 @@ function shell(title, active, content) {
         <div class="footer-meta">
           <span>&copy; ${new Date().getFullYear()} Bamboo Holdings. All rights reserved.</span>
         </div>
-        <div class="footer-contact">
-          <span class="footer-label">Contact</span>
-          <a href="mailto:${footerEmail}">${footerEmail}</a>
-        </div>
-        <nav class="footer-links" aria-label="App links">
-          <span class="footer-label">Apps</span>
+        <nav class="footer-links" aria-label="Footer links">
           ${footerLinksHtml}
         </nav>
       </div>
