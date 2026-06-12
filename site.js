@@ -72,6 +72,38 @@ const apps = [
     }
   },
   {
+    id: "univoice",
+    name: "UniVoice",
+    slug: "/apps/univoice/",
+    status: "TestFlight migration",
+    tagline: "Singing and pitch practice for kids",
+    hero: "Practice pitch, listening, and confidence.",
+    intro: "UniVoice is a singing and pitch practice app for kids and families, currently treated as a TestFlight/current migration app until App Store Connect confirms public status.",
+    long: "UniVoice helps kids and families practice singing, pitch matching, and listening skills through guided voice exercises. The current code review indicates that microphone input, pitch detection, scoring, profiles, practice progress, and saved singing clips are handled locally on the device, while dynamic coach voice may use backend-generated ElevenLabs text-to-speech when enabled.",
+    users: ["Kids practicing singing and pitch matching with family support", "Parents who want a focused, guided practice tool", "Families using TestFlight or preview builds during migration", "Learners who benefit from immediate pitch and listening feedback"],
+    features: [["Microphone pitch practice", "UniVoice uses microphone access so users can sing into the app for pitch practice and scoring."], ["On-device pitch feedback", "Current migration review indicates pitch detection and scoring run locally/on-device."], ["Local profiles and progress", "Profiles, practice progress, scores, and saved singing clips can be stored locally on the device."], ["Recording controls", "Users or parents can delete saved recordings and local profiles from the current in-app deletion flows."], ["Coach audio", "Bundled coach audio can play offline, and dynamic coach voice may use backend-generated ElevenLabs text-to-speech when enabled."], ["Migration-first wording", "Public availability, final links, support details, and legal/privacy wording still need owner review before launch."]],
+    works: ["Open UniVoice from the current TestFlight or preview build.", "Choose or manage a local profile.", "Allow microphone access for singing and pitch practice.", "Sing into the app and review pitch/scoring feedback.", "Save or remove local singing clips as supported by the app.", "Use support and privacy pages for current migration-era guidance."],
+    availability: "Currently treated as TestFlight/current migration. Public App Store availability should be verified before publishing download links.",
+    disclaimer: "UniVoice involves children, microphone access, local saved singing clips, and optional dynamic coach voice. Public privacy and child-safety language should receive owner and legal review before launch.",
+    support: {
+      overview: "UniVoice is a singing and pitch practice app for kids and families. Support can help with TestFlight access, microphone permissions, pitch practice behavior, local profiles, saved recordings, and coach voice questions during migration.",
+      include: ["Device model", "iOS version", "UniVoice app version if visible", "Whether you are using TestFlight or another preview build", "Whether the issue involves microphone access, pitch detection, saved recordings, profiles, or coach voice", "A short description of what happened and what you expected"],
+      faq: [["Why does UniVoice ask for microphone access?", "UniVoice uses microphone access so users can sing into the app for pitch practice, pitch detection, and scoring."], ["Is pitch detection server-backed?", "Current migration review indicates pitch detection and scoring run locally/on-device."], ["Can UniVoice save recordings?", "Yes. The current app can save local singing clips or takes on the device."], ["Can recordings or profiles be deleted?", "Current code review found in-app flows for deleting saved recordings and local profiles."], ["Does coach voice require internet?", "Bundled coach audio can play offline. Dynamic coach voice may use backend-generated ElevenLabs text-to-speech when enabled, which requires a backend and internet connection."], ["Is UniVoice public on the App Store?", "Treat UniVoice as TestFlight/current migration until App Store Connect confirms public availability. This page does not provide a download link yet."]],
+      limitations: ["Public App Store availability has not been confirmed", "Final support contact and App Store links need owner confirmation", "Dynamic coach voice depends on backend configuration and internet access when enabled", "Local data can be lost if the app is deleted or the device is replaced without backup", "Child privacy, microphone, recordings, local storage, and ElevenLabs disclosures still need legal review before public launch"]
+    },
+    privacy: {
+      stored: ["Local profiles", "Practice progress and state", "Pitch scores and performance results", "Saved singing clips or takes stored locally on the device", "Coach audio state and related app settings"],
+      local: "Based on the current UniVoice migration review, microphone input for pitch detection and scoring is processed locally/on-device. Profiles, practice state, scores, and saved singing clips can be stored locally on the device.",
+      thirdParty: "Dynamic coach voice may use backend-generated ElevenLabs text-to-speech when enabled. ElevenLabs is the only third-party AI or voice provider found in the current UniVoice code audit. No other third-party AI or voice runtime provider was found in that audit.",
+      accounts: "Current migration review did not identify a public account system for UniVoice. Treat account, App Store, and TestFlight status as needing final owner confirmation before launch.",
+      ai: "UniVoice does not currently appear to use generative coach text from a model provider in the reviewed app code. Dynamic coach voice may use ElevenLabs text-to-speech through a backend when enabled.",
+      children: "UniVoice is for kids and families and uses microphone access for singing practice. This page is a cautious migration-era overview and should receive child privacy and legal review before public launch.",
+      payments: "No subscription, in-app purchase, or payment claim should be made until App Store Connect and the current build configuration are reviewed.",
+      tracking: "No analytics, advertising, or tracking claims are made unless confirmed against the current codebase and App Store privacy labels before publication.",
+      deletion: "Current code review found app flows for deleting saved recordings and local profiles. App deletion may also remove local app data, subject to device backup behavior."
+    }
+  },
+  {
     id: "triptracker-pro",
     name: "TripTracker Pro",
     slug: "/apps/triptracker-pro/",
@@ -150,6 +182,7 @@ const nav = [
 const footerLinks = [
   ["Chalk", "/apps/chalk/"],
   ["Sparks", "/apps/sparks/"],
+  ["UniVoice", "/apps/univoice/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
   ["Match Card", "/apps/match-card/"]
 ];
