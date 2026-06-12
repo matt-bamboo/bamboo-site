@@ -113,7 +113,6 @@ const nav = [
 ];
 
 const footerLinks = [
-  ["Email", `mailto:${CONTACT_EMAIL}`],
   ["Chalk", "/apps/chalk/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
   ["Match Card", "/apps/match-card/"]
@@ -165,6 +164,7 @@ function appStoreBadge(url) {
 
 function shell(title, active, content) {
   const footerEmail = currentRoutePath().startsWith("/apps/") ? APP_CONTACT_EMAIL : CONTACT_EMAIL;
+  const footerLinksHtml = footerLinks.map(([label, href]) => `<a href="${pageUrl(href)}">${label}</a>`).join("");
   document.title = title;
   document.body.className = active === "Home" ? "home-page" : "";
   document.body.innerHTML = `
@@ -184,10 +184,17 @@ function shell(title, active, content) {
     <main id="main">${content}</main>
     <footer class="site-footer">
       <div class="inner footer-grid">
-        <div>
+        <div class="footer-meta">
           <span>&copy; ${new Date().getFullYear()} Bamboo Holdings. All rights reserved.</span>
         </div>
-        <div class="footer-links">${footerLinks.map(([label, href]) => label === "Email" ? `<a href="mailto:${footerEmail}">${footerEmail}</a>` : `<a href="${pageUrl(href)}">${label}</a>`).join("")}</div>
+        <div class="footer-contact">
+          <span class="footer-label">Contact</span>
+          <a href="mailto:${footerEmail}">${footerEmail}</a>
+        </div>
+        <nav class="footer-links" aria-label="App links">
+          <span class="footer-label">Apps</span>
+          ${footerLinksHtml}
+        </nav>
       </div>
     </footer>`;
   document.addEventListener("pointermove", event => {
@@ -228,7 +235,8 @@ function shell(title, active, content) {
   });
   const introVideo = document.querySelector(".forest-intro .forest-media");
   const bioSection = document.querySelector("#bio");
-  if (introVideo && bioSection && window.location.hash !== "#bio") {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (introVideo && bioSection && window.location.hash !== "#bio" && !prefersReducedMotion) {
     let autoScrollUsed = false;
     let visitorMoved = false;
     const cancelAutoScroll = () => { visitorMoved = true; };
