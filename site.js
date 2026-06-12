@@ -105,7 +105,6 @@ const apps = [
 
 const nav = [
   ["Home", "/"],
-  ["Ventures", "/ventures/"],
   ["Apps", "/apps/"],
   ["About", "/about/"],
   ["Contact", "/contact/"]
@@ -169,7 +168,7 @@ function shell(title, active, content) {
     <main id="main">${content}</main>
     <footer class="site-footer">
       <div class="inner footer-grid">
-        <span>&copy; ${new Date().getFullYear()} Bamboo Holdings. Bamboo Holdings.</span>
+        <span>&copy; ${new Date().getFullYear()} Bamboo Holdings.</span>
         <div class="footer-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}">${label}</a>`).join("")}<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
       </div>
     </footer>`;
@@ -195,28 +194,28 @@ function shell(title, active, content) {
 
 function home() {
   const featured = apps;
-  shell("Bamboo Holdings - Venture Studio", "Home", `
+  shell("Bamboo Holdings", "Home", `
     <section class="inner hero">
       <div>
         <p class="eyebrow">Bamboo Holdings</p>
-        <h1>Focused products from operating insight.</h1>
-        <p class="lede">Bamboo is a founder-led home for focused product work across coaching, travel records, and golf scoring.</p>
-        <div class="actions"><a class="button" href="${pageUrl("/apps/")}">View apps</a><a class="button secondary" href="${pageUrl("/ventures/")}">Explore ventures</a></div>
+        <h1>Practical products shaped by operating experience.</h1>
+        <p class="lede">Bamboo is a holding company for focused software products built around real workflows, clear constraints, and careful public claims.</p>
+        <div class="actions"><a class="button" href="${pageUrl("/apps/")}">View apps</a><a class="button secondary" href="${pageUrl("/about/")}">About Bamboo</a></div>
       </div>
-      <div class="studio-visual" aria-label="Bamboo Holdings venture studio preview">
+      <div class="studio-visual" aria-label="Bamboo Holdings product focus preview">
         <div class="visual-grid">
           <div class="visual-tile"><strong>Coaching workflow</strong><span>Session logging, skill progress, and follow-through.</span><i class="metric-line"></i></div>
           <div class="visual-tile"><strong>Travel records</strong><span>Receipts, folios, shared expenses, and trip notes.</span><i class="metric-line"></i></div>
           <div class="visual-tile"><strong>Golf scoring</strong><span>Rounds, rivalries, side games, and share cards.</span><i class="metric-line"></i></div>
           <div class="visual-tile"><strong>Responsible launch</strong><span>Support, privacy, status language, and review gates.</span><i class="metric-line"></i></div>
         </div>
-        <p class="copy">An operator-led studio: workflow research, careful claims, and a public portfolio focused on practical tools people can actually use.</p>
+        <p class="copy">Current work centers on coaching workflow, travel records, and golf scoring: product areas where small details decide whether the tool is useful.</p>
       </div>
     </section>
     <section class="band section">
       <div class="inner split">
-        <div><p class="eyebrow">Venture studio</p><h2>Practical products, grounded claims.</h2></div>
-        <div><p class="copy">Bamboo explores practical software opportunities, evaluates opportunities carefully, and brings the strongest ideas into clear public form. The work starts with real behavior, real constraints, and a bias toward products that can hold up in daily use.</p></div>
+        <div><p class="eyebrow">Approach</p><h2>Specific workflows, not abstract markets.</h2></div>
+        <div><p class="copy">Bamboo starts with the operating reality around a problem: who uses the product, what they need to finish, where the friction appears, and which claims are ready to stand behind publicly.</p></div>
       </div>
     </section>
     <section class="inner section">
@@ -229,8 +228,8 @@ function home() {
     </section>
     <section class="band section">
       <div class="inner split">
-        <div><p class="eyebrow">Founder-led</p><h2>Led by operating-company experience.</h2></div>
-        <div><p class="copy">Bamboo is led by Matthew Grossman, bringing operating-company experience to product work: study the workflow, find the friction, and build around what people actually do.</p><div class="actions"><a class="button secondary" href="${pageUrl("/about/")}">About Bamboo</a></div></div>
+        <div><p class="eyebrow">Operating background</p><h2>Built from experience with real service complexity.</h2></div>
+        <div><p class="copy">Matthew Grossman's background scaling Dorm Room Movers across more than 200 campuses informs the Bamboo approach: study the workflow, respect the edge cases, and build around what people actually do.</p><div class="actions"><a class="button secondary" href="${pageUrl("/about/")}">About Bamboo</a></div></div>
       </div>
     </section>
     <section class="inner section">
@@ -254,21 +253,6 @@ function portfolioCard(app) {
       <a href="${pageUrl(`${app.slug}privacy/`)}">Privacy</a>
     </div>
   </article>`;
-}
-
-function ventures() {
-  shell("Ventures - Bamboo Holdings", "Ventures", `
-    <section class="inner hero narrow">
-      <p class="eyebrow">Ventures</p>
-      <h1>A venture studio for focused software products.</h1>
-      <p class="lede">Bamboo develops practical products around specific workflows, learns from early users, and keeps public claims grounded in what each product is ready to support.</p>
-      <div class="actions"><a class="button" href="${pageUrl("/apps/")}">View app portfolio</a><a class="button secondary" href="${pageUrl("/contact/")}">Start a conversation</a></div>
-    </section>
-    <section class="band section"><div class="inner split"><div><h2>The studio model</h2></div><div><p class="copy">Bamboo operates as a founder-led venture studio built around operating discipline. Some ideas become public app projects; others remain research, prototypes, or internal experiments until there is enough substance to discuss them responsibly.</p></div></div></section>
-    <section class="inner section">
-      <p class="eyebrow">Current venture category</p>
-      ${cards([["App portfolio", "The current public app portfolio focuses on coaching workflow, resort travel records, and two-player golf scoring."], ["Future venture areas", "Bamboo may explore additional venture areas over time, but no specific future project is being named or announced here."], ["Founder-led discipline", "The priority is workflow depth, careful product building, useful support pages, and honest availability language."]])}
-    </section>`);
 }
 
 function appsPage() {
@@ -388,7 +372,7 @@ function contact() {
     <section class="inner hero narrow">
       <p class="eyebrow">Contact</p>
       <h1>Get in touch.</h1>
-      <p class="lede">For app support, product questions, venture conversations, or general inquiries, contact Bamboo by email.</p>
+      <p class="lede">For app support, product questions, partnerships, or general inquiries, contact Bamboo by email.</p>
       <div class="actions"><a class="button" href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
     </section>
     <section class="band section"><div class="inner"><p class="copy">There is no contact form, account portal, newsletter signup, analytics tracker, or ticketing backend on this site.</p></div></section>`);
@@ -410,7 +394,6 @@ function currentRoutePath() {
 function route() {
   const path = currentRoutePath();
   if (path === "/") return home();
-  if (path === "/ventures/") return ventures();
   if (path === "/apps/") return appsPage();
   if (path === "/about/") return about();
   if (path === "/contact/") return contact();
