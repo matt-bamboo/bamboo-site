@@ -105,9 +105,8 @@ const apps = [
 
 const nav = [
   ["Home", "#top"],
-  ["Work", "#work"],
-  ["About", "#about"],
-  ["Contact", "#contact"]
+  ["Bio", "#bio"],
+  ["Apps", "#apps"]
 ];
 
 const siteRootUrl = new URL(".", document.currentScript ? document.currentScript.src : window.location.href);
@@ -185,7 +184,7 @@ function shell(title, active, content) {
     document.documentElement.style.setProperty("--cursor-x", `${x}%`);
     document.documentElement.style.setProperty("--cursor-y", `${y}%`);
   }, { passive: true });
-  const revealItems = document.querySelectorAll(".card, .split, .app-hero-layout, .focus-panel");
+  const revealItems = document.querySelectorAll(".card, .split, .app-hero-layout");
   revealItems.forEach((item, index) => {
     item.classList.add("reveal");
     item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
@@ -200,50 +199,22 @@ function home() {
         <source src="${assetUrl("/assets/brand/bamboo-forest-hero.mp4")}" type="video/mp4">
       </video>
       <div class="hero-shade" aria-hidden="true"></div>
-      <div class="inner hero-video-content">
-        <div>
+      <div class="inner hero-video-content hero-video-simple">
         <p class="eyebrow">Bamboo Holdings</p>
         <h1>The home for Matthew Grossman's projects.</h1>
-        <p class="lede">Matthew founded Dorm Room Movers after graduating from Arizona State University and grew it into a national service across more than 200 campuses. Bamboo is where he works on new ideas now: tools, experiments, and products based on real problems he notices and wants to solve.</p>
-        <div class="actions"><a class="button" href="${pageUrl("#work")}">See current projects</a><a class="button secondary" href="${pageUrl("#about")}">Matthew's story</a></div>
-        </div>
-        <div class="focus-panel" aria-label="Bamboo Holdings product focus preview">
-        <div class="visual-grid">
-          <div class="visual-tile"><strong>Built from experience</strong><span>Years of customers, logistics, support, and real-world details.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Current projects</strong><span>Chalk, TripTracker Pro, Match Card, and whatever earns attention next.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>Simple public pages</strong><span>What each project is, how to get help, and what privacy details matter.</span><i class="metric-line"></i></div>
-          <div class="visual-tile"><strong>No big act</strong><span>A straightforward place for work in progress and useful ideas.</span><i class="metric-line"></i></div>
-        </div>
-        <p class="copy">Bamboo is not trying to sound like a huge company. It is a clear home base for Matthew's current work and the public pages those projects need.</p>
-        </div>
+        <div class="actions"><a class="button" href="${pageUrl("#bio")}">Bio</a><a class="button secondary" href="${pageUrl("#apps")}">Apps</a></div>
       </div>
     </section>
-    <section class="band section">
+    <section id="bio" class="band section">
       <div class="inner split">
-        <div><p class="eyebrow">What Bamboo is</p><h2>A place for useful projects.</h2></div>
-        <div><p class="copy">Some of the work is software. Some may not be. The starting point is usually simple: Matthew sees a messy process, a repeated annoyance, or a tool he wishes existed, then starts working through it.</p></div>
+        <div><p class="eyebrow">Bio</p><h2>Matthew Grossman</h2></div>
+        <div><p class="copy">Matthew founded Dorm Room Movers after graduating from Arizona State University and grew it into a national service across more than 200 college and boarding school campuses.</p><p class="copy">Bamboo Holdings is where he works on new ideas now.</p></div>
       </div>
     </section>
-    <section id="work" class="inner section">
-      <p class="eyebrow">Current work</p>
-      <div class="split section-intro"><div><h2>A few things on the table.</h2></div><div><p class="copy">These projects are public because they need a clean place for basic information, support, and privacy details. They are current work, and Bamboo will keep changing as new ideas become real enough to share.</p></div></div>
+    <section id="apps" class="inner section">
+      <p class="eyebrow">Apps</p>
+      <div class="split section-intro"><div><h2>Current app projects.</h2></div><div><p class="copy">Marketing, support, and privacy pages are available for each app.</p></div></div>
       <div class="grid">${featured.map(app => portfolioCard(app)).join("")}</div>
-    </section>
-    <section class="inner section tight">
-      <p class="eyebrow">Common thread</p>
-      ${cards([["Real use", "The projects are based on things people actually do, not abstract themes."], ["Clear scope", "A project can be narrow and still be worth doing if it solves the right problem."], ["Plain language", "The site should say what exists, what is still early, and how to get in touch."]])}
-    </section>
-    <section id="about" class="band section">
-      <div class="inner split">
-        <div><p class="eyebrow">About Matthew</p><h2>He has built and run something real before.</h2></div>
-        <div><p class="copy">After graduating from Arizona State University, Matthew founded Dorm Room Movers and grew it into a national service across more than 200 college and boarding school campuses. That meant dealing with customers, logistics, seasonal rushes, support issues, and all the details that decide whether a service actually works.</p><p class="copy">Bamboo is the next chapter: a place to work on new projects with the same practical mindset.</p></div>
-      </div>
-    </section>
-    <section id="contact" class="inner section">
-      <p class="eyebrow">Contact</p>
-      <h2>Reach Bamboo directly.</h2>
-      <p class="lede">For support, project questions, or business inquiries, email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>
-      <div class="actions"><a class="button" href="mailto:${CONTACT_EMAIL}">Email Bamboo</a></div>
     </section>`);
 }
 

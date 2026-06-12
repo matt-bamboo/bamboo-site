@@ -264,6 +264,20 @@ main { min-height: 60vh; }
   align-items: center;
 }
 
+.hero-video-simple {
+  max-width: 1160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 0;
+  padding-bottom: clamp(70px, 12vh, 130px);
+}
+
+.hero-video-simple h1 {
+  max-width: 920px;
+}
+
 .hero-video h1,
 .hero-video .lede,
 .hero-video .copy {
