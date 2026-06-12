@@ -215,8 +215,248 @@ img { max-width: 100%; display: block; }
 
 main { min-height: 60vh; }
 
+.home-page .site-header {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+.home-page.is-scrolled .site-header {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.home-page .site-footer {
+  display: none;
+}
+
 .section { padding: 86px 0; }
 .section.tight { padding: 54px 0; }
+
+.forest-scene {
+  position: relative;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  overflow: hidden;
+  background: #10140e;
+}
+
+.forest-media,
+.forest-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.forest-media {
+  object-fit: cover;
+  opacity: .96;
+  filter: saturate(.9) contrast(1.06);
+  transform: scale(calc(1.02 + (var(--forest-progress, 0) * .12)));
+  transform-origin: center;
+}
+
+.forest-shade {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, .04), transparent 30%),
+    linear-gradient(180deg, rgba(5, 7, 4, .08), rgba(5, 7, 4, .26));
+}
+
+.forest-intro .scroll-cue {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bio-reveal {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(37, 40, 33, .045) 1px, transparent 1px),
+    linear-gradient(180deg, #ffffff 0%, #f6f3eb 100%);
+  background-size: 126px 126px, auto;
+}
+
+.bio-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 310px);
+  gap: clamp(34px, 7vw, 92px);
+  align-items: center;
+  opacity: 0;
+  transform: translateY(80px) scale(.985);
+  transition: opacity .9s ease, transform 1.1s cubic-bezier(.16, 1, .3, 1);
+}
+
+.bio-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.bio-copy h1 {
+  max-width: 840px;
+  font-size: clamp(48px, 7.4vw, 104px);
+  line-height: .88;
+}
+
+.bio-copy p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 22px 0 0;
+  color: #34382f;
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+.bio-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(37, 40, 33, .12);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #efe9dc;
+  box-shadow: 0 28px 80px rgba(37, 40, 33, .14);
+}
+
+.bio-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 10px solid rgba(255, 255, 255, .36);
+  pointer-events: none;
+}
+
+.bio-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bio-photo.missing-photo::before {
+  content: "Headshot";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.app-scroll {
+  --track-shift: 0px;
+  min-height: 360vh;
+  scroll-snap-align: start;
+  background: #171915;
+  color: #fbfaf5;
+}
+
+.app-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.app-stage {
+  width: 100%;
+}
+
+.apps-heading {
+  width: min(650px, 100%);
+  margin-bottom: clamp(28px, 5vh, 48px);
+}
+
+.apps-heading h2 {
+  color: #fbfaf5;
+  font-size: clamp(38px, 5vw, 72px);
+}
+
+.app-track {
+  display: flex;
+  width: max-content;
+  gap: 22px;
+  transform: translate3d(var(--track-shift), 0, 0);
+  transition: transform .08s linear;
+  will-change: transform;
+}
+
+.app-track .portfolio-card {
+  width: min(430px, calc(100vw - 44px));
+  min-height: 420px;
+  flex: 0 0 auto;
+  border-color: rgba(251, 250, 245, .14);
+  background:
+    linear-gradient(180deg, rgba(251, 250, 245, .1), rgba(251, 250, 245, .045)),
+    rgba(251, 250, 245, .035);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .22);
+}
+
+.app-track .portfolio-card h3 {
+  color: #fbfaf5;
+}
+
+.app-track .portfolio-card p {
+  color: rgba(251, 250, 245, .7);
+}
+
+.app-track .mini-links {
+  color: rgba(251, 250, 245, .76);
+}
+
+.app-track .mini-links a:hover {
+  color: #fbfaf5;
+}
+
+.contact-forest {
+  display: flex;
+  align-items: center;
+}
+
+.contact-shade {
+  background:
+    linear-gradient(90deg, rgba(5, 7, 4, .76), rgba(5, 7, 4, .44)),
+    linear-gradient(180deg, rgba(5, 7, 4, .18), rgba(5, 7, 4, .7));
+}
+
+.contact-panel {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity .9s ease, transform 1s cubic-bezier(.16, 1, .3, 1);
+}
+
+.contact-panel.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-panel h2 {
+  color: #fbfaf5;
+  font-size: clamp(46px, 7vw, 96px);
+}
+
+.contact-panel a {
+  display: inline-flex;
+  margin-top: 28px;
+  color: #fbfaf5;
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 850;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(251, 250, 245, .48);
+}
+
+.contact-panel .eyebrow {
+  border-color: rgba(251, 250, 245, .18);
+  background: rgba(251, 250, 245, .1);
+  color: #fbfaf5;
+}
 
 .story-section,
 .apps-section {
@@ -1013,7 +1253,8 @@ h3 {
 @media (max-width: 940px) {
   .hero,
   .split,
-  .app-hero-layout {
+  .app-hero-layout,
+  .bio-card {
     grid-template-columns: 1fr;
   }
 
@@ -1022,6 +1263,11 @@ h3 {
   .grid,
   .grid.two {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bio-photo {
+    width: min(260px, 70vw);
+    order: -1;
   }
 }
 
@@ -1055,8 +1301,39 @@ h3 {
     min-height: auto;
   }
 
+  .bio-reveal {
+    min-height: auto;
+    padding: 92px 0;
+  }
+
   .story-copy {
     margin-left: 0;
+  }
+
+  .app-scroll {
+    min-height: auto;
+  }
+
+  .app-sticky {
+    position: relative;
+    height: auto;
+    padding: 76px 0;
+    overflow: visible;
+  }
+
+  .app-track {
+    width: auto;
+    display: grid;
+    transform: none !important;
+  }
+
+  .app-track .portfolio-card {
+    width: auto;
+    min-height: 320px;
+  }
+
+  .contact-forest {
+    min-height: 100vh;
   }
   .grid,
   .grid.two,
@@ -1077,4 +1354,31 @@ h3 {
   }
 
   .screen-row span { text-align: left; }
+}
+
+@media (min-width: 561px) {
+  .app-scroll {
+    min-height: 360vh;
+  }
+
+  .app-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .app-track {
+    display: flex;
+    width: max-content;
+    transform: translate3d(var(--track-shift), 0, 0) !important;
+  }
+
+  .app-track .portfolio-card {
+    width: min(430px, calc(100vw - 44px));
+    min-height: 420px;
+  }
 }

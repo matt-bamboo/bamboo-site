@@ -106,7 +106,8 @@ const apps = [
 const nav = [
   ["Home", "#top"],
   ["Bio", "#bio"],
-  ["Apps", "#apps"]
+  ["Apps", "#apps"],
+  ["Contact", "#contact"]
 ];
 
 const siteRootUrl = new URL(".", document.currentScript ? document.currentScript.src : window.location.href);
@@ -149,6 +150,7 @@ function appIcon(app) {
 
 function shell(title, active, content) {
   document.title = title;
+  document.body.className = active === "Home" ? "home-page" : "";
   document.body.innerHTML = `
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="ambient-frame" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -189,7 +191,7 @@ function shell(title, active, content) {
     item.classList.add("reveal");
     item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
   });
-  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title");
+  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .contact-panel");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -208,41 +210,79 @@ function shell(title, active, content) {
     window.addEventListener("pointerdown", startVideo, { once: true, passive: true });
     window.addEventListener("scroll", startVideo, { once: true, passive: true });
   }
+  const sceneVideos = document.querySelectorAll(".forest-media");
+  sceneVideos.forEach(video => {
+    const startVideo = () => video.play().catch(() => {});
+    if (video.readyState > 0) startVideo();
+    video.addEventListener("canplay", startVideo, { once: true });
+  });
+  const updateScrollScenes = () => {
+    document.body.classList.toggle("is-scrolled", window.scrollY > 32);
+    document.querySelectorAll(".app-scroll").forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const range = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(-rect.top / range, 0), 1);
+      const track = section.querySelector(".app-track");
+      const maxShift = track ? Math.max(track.scrollWidth - window.innerWidth + 40, 0) : 0;
+      section.style.setProperty("--app-progress", progress.toFixed(4));
+      section.style.setProperty("--track-shift", `${Math.round(progress * -maxShift)}px`);
+    });
+    document.querySelectorAll(".forest-scene").forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const progress = Math.min(Math.max((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0), 1);
+      section.style.setProperty("--forest-progress", progress.toFixed(4));
+    });
+  };
+  updateScrollScenes();
+  window.addEventListener("scroll", updateScrollScenes, { passive: true });
+  window.addEventListener("resize", updateScrollScenes, { passive: true });
 }
 
 function home() {
   const featured = apps;
   shell("Bamboo Holdings", "Home", `
-    <section id="top" class="hero hero-video">
-      <video class="hero-media" autoplay muted loop playsinline poster="${assetUrl("/assets/brand/bamboo-forest-poster.jpg")}" aria-hidden="true">
+    <section id="top" class="forest-scene forest-intro">
+      <video class="forest-media" autoplay muted loop playsinline poster="${assetUrl("/assets/brand/bamboo-forest-poster.jpg")}" aria-hidden="true">
         <source src="${assetUrl("/assets/brand/bamboo-forest-hero.mp4")}" type="video/mp4">
       </video>
-      <div class="hero-shade" aria-hidden="true"></div>
-      <div class="inner hero-video-content hero-video-simple">
-        <div class="hero-title">
-          <p class="eyebrow">Bamboo Holdings</p>
-          <h1>Matthew Grossman</h1>
-          <p class="lede">Entrepreneur, operator, mentor, and builder of useful things.</p>
-        </div>
-        <a class="scroll-cue" href="${pageUrl("#bio")}" aria-label="Scroll to bio"><span></span></a>
-      </div>
+      <div class="forest-shade" aria-hidden="true"></div>
+      <a class="scroll-cue" href="${pageUrl("#bio")}" aria-label="Scroll to bio"><span></span></a>
     </section>
-    <section id="bio" class="story-section section">
-      <div class="inner story-stage">
-        <p class="eyebrow">Bio</p>
-        <h2>Matthew builds from inside real workflows.</h2>
-        <div class="story-copy">
-          <p>After graduating from Arizona State University, Matthew co-founded Dorm Room Movers and helped grow it from a garage startup into a nationwide, technology-enabled logistics operation serving more than 300 colleges, universities, and boarding schools.</p>
-          <p>Scaling that company meant living inside operational complexity: customers, seasonal demand, logistics partners, support teams, edge cases, and the systems that decide whether a service actually works.</p>
-          <p>Bamboo is the next chapter: a place to study specific problems, test ideas, and build practical products around real behavior.</p>
+    <section id="bio" class="bio-reveal">
+      <div class="inner bio-card">
+        <div class="bio-copy">
+          <p class="eyebrow">Matthew Grossman</p>
+          <h1>Built from real operating work.</h1>
+          <p>Matthew co-founded Dorm Room Movers while at Arizona State University and helped grow it from a garage startup into a nationwide logistics operation serving more than 300 colleges, universities, and boarding schools.</p>
+          <p>That experience shapes Bamboo: study the workflow, find the friction, and build useful products around how people actually work.</p>
+        </div>
+        <div class="bio-photo">
+          <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.parentElement.classList.add('missing-photo'); this.remove();">
         </div>
       </div>
     </section>
-    <section id="apps" class="apps-section section">
-      <div class="inner app-stage">
-        <p class="eyebrow">Apps</p>
-        <div class="split section-intro"><div><h2>A few current software projects.</h2></div><div><p class="copy">These are not the whole story. They are examples of the kind of focused workflows Bamboo is exploring.</p></div></div>
-        <div class="grid">${featured.map(app => portfolioCard(app)).join("")}</div>
+    <section id="apps" class="app-scroll">
+      <div class="app-sticky">
+        <div class="inner app-stage">
+          <div class="apps-heading">
+            <p class="eyebrow">Current work</p>
+            <h2>A few software projects in motion.</h2>
+          </div>
+          <div class="app-track">
+            ${featured.map(app => portfolioCard(app)).join("")}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="forest-scene contact-forest">
+      <video class="forest-media" autoplay muted loop playsinline poster="${assetUrl("/assets/brand/bamboo-forest-poster.jpg")}" aria-hidden="true">
+        <source src="${assetUrl("/assets/brand/bamboo-forest-hero.mp4")}" type="video/mp4">
+      </video>
+      <div class="forest-shade contact-shade" aria-hidden="true"></div>
+      <div class="inner contact-panel">
+        <p class="eyebrow">Contact</p>
+        <h2>Reach Matthew through Bamboo.</h2>
+        <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
       </div>
     </section>`);
 }
