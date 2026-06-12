@@ -108,8 +108,16 @@ const apps = [
 const nav = [
   ["Home", "#top"],
   ["Bio", "#bio"],
-  ["Apps", "#apps"],
-  ["Contact", "#contact"]
+  ["Apps", "#apps"]
+];
+
+const footerLinks = [
+  ["Email", `mailto:${CONTACT_EMAIL}`],
+  ["Chalk", "/apps/chalk/"],
+  ["TripTracker Pro", "/apps/triptracker-pro/"],
+  ["Match Card", "/apps/match-card/"],
+  ["Support", "/apps/"],
+  ["Privacy", "/apps/match-card/privacy/"]
 ];
 
 const siteRootUrl = new URL(".", document.currentScript ? document.currentScript.src : window.location.href);
@@ -176,8 +184,11 @@ function shell(title, active, content) {
     <main id="main">${content}</main>
     <footer class="site-footer">
       <div class="inner footer-grid">
-        <span>&copy; ${new Date().getFullYear()} Bamboo Holdings.</span>
-        <div class="footer-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}">${label}</a>`).join("")}<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></div>
+        <div>
+          <strong>Bamboo Holdings</strong>
+          <span>&copy; ${new Date().getFullYear()} Matthew Grossman. All rights reserved.</span>
+        </div>
+        <div class="footer-links">${footerLinks.map(([label, href]) => `<a href="${pageUrl(href)}">${label === "Email" ? CONTACT_EMAIL : label}</a>`).join("")}</div>
       </div>
     </footer>`;
   document.addEventListener("pointermove", event => {
@@ -191,7 +202,7 @@ function shell(title, active, content) {
     item.classList.add("reveal");
     item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
   });
-  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .contact-panel, .fly-in");
+  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .fly-in");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -269,16 +280,7 @@ function home() {
         </div>
       </div>
     </section>
-    <section id="contact" class="forest-scene contact-forest">
-      <video class="forest-media" autoplay muted loop playsinline poster="${assetUrl("/assets/brand/bamboo-forest-poster.jpg")}" aria-hidden="true">
-        <source src="${assetUrl("/assets/brand/bamboo-forest-hero.mp4")}" type="video/mp4">
-      </video>
-      <div class="forest-shade contact-shade" aria-hidden="true"></div>
-      <div class="inner contact-panel">
-        <p class="eyebrow">Contact</p>
-        <a class="contact-email" href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
-      </div>
-    </section>`);
+    `);
 }
 
 function portfolioCard(app, index = 0) {
