@@ -408,7 +408,18 @@ main { min-height: 60vh; }
 }
 
 .app-grid .mini-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  gap: 0;
+  margin-top: auto;
+  text-align: center;
   color: #5c5548;
+}
+
+.app-grid .mini-links a {
+  display: block;
+  padding: 2px 8px 0;
 }
 
 .app-grid .mini-links a:hover {
@@ -1391,6 +1402,31 @@ h3 {
 
   .app-grid .portfolio-card {
     min-height: 320px;
+  }
+
+  .site-footer {
+    padding: 30px 0 calc(34px + env(safe-area-inset-bottom));
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: 14px 18px;
+    max-width: none;
+  }
+
+  .footer-links a {
+    width: fit-content;
+  }
+
+  .footer-links a:first-child {
+    grid-column: 1 / -1;
   }
 
   .grid,
