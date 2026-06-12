@@ -245,9 +245,9 @@ function home() {
       <div class="inner bio-card">
         <div class="bio-copy">
           <p class="eyebrow">Matthew Grossman</p>
-          <h1>Built from real operating work.</h1>
+          <h1>Founder. Operator. Still building.</h1>
           <p>Matthew co-founded Dorm Room Movers while at Arizona State University and helped grow it from a garage startup into a nationwide logistics operation serving more than 300 colleges, universities, and boarding schools.</p>
-          <p>That experience shapes Bamboo: study the workflow, find the friction, and build useful products around how people actually work.</p>
+          <p>Bamboo is where he works on what comes next: practical software, useful tools, and ideas worth testing.</p>
         </div>
         <div class="bio-photo">
           <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.parentElement.classList.add('missing-photo'); this.remove();">
@@ -259,7 +259,7 @@ function home() {
         <div class="inner app-stage">
           <div class="apps-heading">
             <p class="eyebrow">Current work</p>
-            <h2>A few software projects in motion.</h2>
+            <h2>Apps I am working on.</h2>
           </div>
           <div class="app-grid">
             ${featured.map((app, index) => portfolioCard(app, index)).join("")}
