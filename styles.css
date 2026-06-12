@@ -1435,7 +1435,7 @@ h3 {
 
   .bio-reveal {
     min-height: auto;
-    padding: 92px 0;
+    padding: 76px 0 58px;
   }
 
   .story-copy {
@@ -1451,10 +1451,29 @@ h3 {
     padding: 28px 0 76px;
   }
 
-  .bio-photo { width: min(210px, 36vw); }
+  .bio-card {
+    border-left-width: 4px;
+    padding-left: 20px;
+  }
+
+  .bio-photo {
+    width: clamp(132px, 34vw, 190px);
+    margin: 0 0 14px 22px;
+    box-shadow: 0 18px 54px rgba(31, 30, 26, .16);
+  }
+
+  .bio-photo::after {
+    border-width: 6px;
+  }
 
   .bio-copy .bio-lede {
-    font-size: clamp(24px, 6vw, 34px);
+    font-size: clamp(25px, 6.8vw, 34px);
+  }
+
+  .bio-copy p:not(.eyebrow) {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.48;
   }
 
   .app-grid {
@@ -1508,9 +1527,9 @@ h3 {
 
 @media (max-width: 520px) {
   .bio-photo {
-    float: none;
-    width: min(260px, 72vw);
-    margin: 0 0 24px;
+    float: right;
+    width: clamp(116px, 31vw, 150px);
+    margin: 2px 0 10px 16px;
   }
 
   .bio-copy .bio-lede { max-width: none; }
