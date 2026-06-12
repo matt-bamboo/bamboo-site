@@ -199,7 +199,7 @@ function shell(title, active, content) {
     item.classList.add("reveal");
     item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
   });
-  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .bio-facts span, .apps-heading, .fly-in");
+  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .apps-heading, .fly-in");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -254,13 +254,8 @@ function home() {
           <p class="bio-lede">I'm Matthew Grossman, and I build systems that scale.</p>
           <p>As an operational architect and growth advisor, I work at the intersection of complex logistics, technology integration, and large-scale labor management. Through Bamboo Holdings, I currently advise and mentor 14 scaling companies, helping founders audit workflows, eliminate supply chain bottlenecks, and build repeatable infrastructure for growth.</p>
           <p>My approach comes from nearly twenty years of hands-on execution: scaling high-volume national logistics, managing compressed seasonal demand, and running corporate enterprise operations.</p>
-          <div class="bio-facts" aria-label="Selected background">
-            <span><strong>200+</strong> Logistics partners and van line agents</span>
-            <span><strong>42</strong> States in the operating network</span>
-            <span><strong>350</strong> Seat Austin support center</span>
-          </div>
           <p>At Dorm Room Movers, I spent 16 years helping build an asset-light logistics platform across 300+ universities and boarding schools, including Yale, Carnegie Mellon, UMass Amherst, Choate Rosemary Hall, and the Berkshire School. Before that, with iEnergizer, I helped build and operate a 350-seat customer service center in Austin supporting Electronic Arts across 40 portfolios.</p>
-          <p>Whether I’m advising a growing company or building something new, the focus is the same: strip away operational chaos and engineer systems that perform.</p>
+          <p>Whether I'm advising a growing company or building something new, the focus is the same: strip away operational chaos and engineer systems that perform.</p>
         </div>
         <div class="bio-photo">
           <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.parentElement.classList.add('missing-photo'); this.remove();">
@@ -271,7 +266,6 @@ function home() {
       <div class="apps-wrap">
         <div class="inner app-stage">
           <div class="apps-heading">
-            <p class="eyebrow">Current work</p>
             <h2>Current apps</h2>
           </div>
           <div class="app-grid">
