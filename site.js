@@ -184,11 +184,30 @@ function shell(title, active, content) {
     document.documentElement.style.setProperty("--cursor-x", `${x}%`);
     document.documentElement.style.setProperty("--cursor-y", `${y}%`);
   }, { passive: true });
-  const revealItems = document.querySelectorAll(".card, .split, .app-hero-layout");
+  const revealItems = document.querySelectorAll(".card, .split, .app-hero-layout, .scroll-reveal");
   revealItems.forEach((item, index) => {
     item.classList.add("reveal");
     item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
   });
+  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title");
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("is-visible");
+      });
+    }, { threshold: 0.26, rootMargin: "0px 0px -12% 0px" });
+    stagedItems.forEach(item => observer.observe(item));
+  } else {
+    stagedItems.forEach(item => item.classList.add("is-visible"));
+  }
+  const heroVideo = document.querySelector(".hero-media");
+  if (heroVideo) {
+    const startVideo = () => heroVideo.play().catch(() => {});
+    if (heroVideo.readyState > 0) startVideo();
+    heroVideo.addEventListener("canplay", startVideo, { once: true });
+    window.addEventListener("pointerdown", startVideo, { once: true, passive: true });
+    window.addEventListener("scroll", startVideo, { once: true, passive: true });
+  }
 }
 
 function home() {
@@ -200,21 +219,31 @@ function home() {
       </video>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="inner hero-video-content hero-video-simple">
-        <p class="eyebrow">Bamboo Holdings</p>
-        <h1>The home for Matthew Grossman's projects.</h1>
-        <div class="actions"><a class="button" href="${pageUrl("#bio")}">Bio</a><a class="button secondary" href="${pageUrl("#apps")}">Apps</a></div>
+        <div class="hero-title">
+          <p class="eyebrow">Bamboo Holdings</p>
+          <h1>Matthew Grossman</h1>
+          <p class="lede">Entrepreneur, operator, mentor, and builder of useful things.</p>
+        </div>
+        <a class="scroll-cue" href="${pageUrl("#bio")}" aria-label="Scroll to bio"><span></span></a>
       </div>
     </section>
-    <section id="bio" class="band section">
-      <div class="inner split">
-        <div><p class="eyebrow">Bio</p><h2>Matthew Grossman</h2></div>
-        <div><p class="copy">Matthew founded Dorm Room Movers after graduating from Arizona State University and grew it into a national service across more than 200 college and boarding school campuses.</p><p class="copy">Bamboo Holdings is where he works on new ideas now.</p></div>
+    <section id="bio" class="story-section section">
+      <div class="inner story-stage">
+        <p class="eyebrow">Bio</p>
+        <h2>Matthew builds from inside real workflows.</h2>
+        <div class="story-copy">
+          <p>After graduating from Arizona State University, Matthew co-founded Dorm Room Movers and helped grow it from a garage startup into a nationwide, technology-enabled logistics operation serving more than 300 colleges, universities, and boarding schools.</p>
+          <p>Scaling that company meant living inside operational complexity: customers, seasonal demand, logistics partners, support teams, edge cases, and the systems that decide whether a service actually works.</p>
+          <p>Bamboo is the next chapter: a place to study specific problems, test ideas, and build practical products around real behavior.</p>
+        </div>
       </div>
     </section>
-    <section id="apps" class="inner section">
-      <p class="eyebrow">Apps</p>
-      <div class="split section-intro"><div><h2>Current app projects.</h2></div><div><p class="copy">Marketing, support, and privacy pages are available for each app.</p></div></div>
-      <div class="grid">${featured.map(app => portfolioCard(app)).join("")}</div>
+    <section id="apps" class="apps-section section">
+      <div class="inner app-stage">
+        <p class="eyebrow">Apps</p>
+        <div class="split section-intro"><div><h2>A few current software projects.</h2></div><div><p class="copy">These are not the whole story. They are examples of the kind of focused workflows Bamboo is exploring.</p></div></div>
+        <div class="grid">${featured.map(app => portfolioCard(app)).join("")}</div>
+      </div>
     </section>`);
 }
 
