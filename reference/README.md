@@ -14,9 +14,9 @@ The packets are reference material for creating marketing, support, and privacy 
 
 ## Privacy and Legal Review
 
-Public privacy pages for sensitive apps need owner and legal review before launch. This is especially important for apps involving financial planning, receipts, children, voice/audio, or cannabis.
+Public privacy pages for sensitive apps need owner and legal review before launch. This is especially important for apps involving receipts, photos, location, voice/audio, or other personal records.
 
-Do not claim compliance with COPPA, HIPAA, financial-advice rules, cannabis regulations, App Store privacy labels, or other legal frameworks unless that language has been reviewed and approved.
+Do not claim compliance with COPPA, HIPAA, financial-advice rules, App Store privacy labels, or other legal frameworks unless that language has been reviewed and approved.
 
 ## Source of Truth
 
