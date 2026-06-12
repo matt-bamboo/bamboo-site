@@ -251,13 +251,16 @@ function home() {
       <div class="inner bio-card">
         <div class="bio-copy">
           <p class="eyebrow">Matthew Grossman</p>
-          <p class="bio-lede">Matthew co-founded Dorm Room Movers while at Arizona State University and helped grow it from a garage startup into a nationwide logistics operation serving more than 300 colleges, universities, and boarding schools.</p>
-          <p>Before and alongside that work, he spent time in India and helped run a 350-seat customer service and operations center in Austin supporting Electronic Arts domestic voice, email, and live chat programs.</p>
+          <p class="bio-lede">I'm Matthew Grossman, and I build systems that scale.</p>
+          <p>As an operational architect and growth advisor, I work at the intersection of complex logistics, technology integration, and large-scale labor management. Through Bamboo Holdings, I currently advise and mentor 14 scaling companies, helping founders audit workflows, eliminate supply chain bottlenecks, and build repeatable infrastructure for growth.</p>
+          <p>My approach comes from nearly twenty years of hands-on execution: scaling high-volume national logistics, managing compressed seasonal demand, and running corporate enterprise operations.</p>
           <div class="bio-facts" aria-label="Selected background">
-            <span><strong>2007</strong> Founded Dorm Room Movers</span>
+            <span><strong>200+</strong> Logistics partners and van line agents</span>
+            <span><strong>42</strong> States in the operating network</span>
             <span><strong>350</strong> Seat Austin support center</span>
-            <span><strong>EA</strong> Domestic voice support</span>
           </div>
+          <p>At Dorm Room Movers, I spent 16 years helping build an asset-light logistics platform across 300+ universities and boarding schools, including Yale, Carnegie Mellon, UMass Amherst, Choate Rosemary Hall, and the Berkshire School. Before that, with iEnergizer, I helped build and operate a 350-seat customer service center in Austin supporting Electronic Arts across 40 portfolios.</p>
+          <p>Whether I’m advising a growing company or building something new, the focus is the same: strip away operational chaos and engineer systems that perform.</p>
         </div>
         <div class="bio-photo">
           <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.parentElement.classList.add('missing-photo'); this.remove();">
@@ -282,17 +285,15 @@ function home() {
 
 function portfolioCard(app, index = 0) {
   const directions = ["from-left", "from-bottom", "from-right"];
-  const featureList = app.features.slice(0, 3).map(([title]) => `<li>${esc(title)}</li>`).join("");
   return `<article class="card portfolio-card app-card-${esc(app.id)} fly-in ${directions[index % directions.length]}" style="--delay: ${index * 140}ms">
     <div class="app-card-top">
       ${appIcon(app)}
-      <span class="status">${esc(app.status)}</span>
+      ${app.appStoreUrl ? "" : `<span class="status">${esc(app.status)}</span>`}
     </div>
     <h3>${esc(app.name)}</h3>
     <p class="app-tagline">${esc(app.tagline)}</p>
     <p>${esc(app.intro)}</p>
-    <ul class="app-feature-pills">${featureList}</ul>
-    <p class="availability-note">${esc(app.availability)}</p>
+    ${app.appStoreUrl ? "" : `<p class="app-card-note">${esc(app.availability)}</p>`}
     ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : `<span class="testflight-badge">TestFlight</span>`}
     <div class="mini-links">
       <a href="${pageUrl(app.slug)}">Overview</a>
