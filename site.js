@@ -325,12 +325,11 @@ function portfolioCard(app, index = 0) {
   return `<article class="card portfolio-card app-card-${esc(app.id)}">
     <div class="app-card-top">
       ${appIcon(app)}
-      ${app.appStoreUrl ? "" : `<span class="status">${esc(app.status)}</span>`}
+      ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : `<span class="status">${esc(app.status)}</span>`}
     </div>
     <h3>${esc(app.name)}</h3>
     <p class="app-tagline">${esc(app.tagline)}</p>
     <p>${esc(app.intro)}</p>
-    ${app.appStoreUrl ? appStoreBadge(app.appStoreUrl) : ""}
     <div class="mini-links">
       <a href="${pageUrl(app.slug)}">Overview</a>
       <a href="${pageUrl(`${app.slug}support/`)}">Support</a>

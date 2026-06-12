@@ -459,6 +459,15 @@ main { min-height: 60vh; }
   margin-top: 2px;
 }
 
+.portfolio-card .app-store-badge {
+  flex: 0 0 auto;
+  margin-top: 0;
+}
+
+.portfolio-card .app-store-badge img {
+  width: clamp(118px, 16vw, 142px);
+}
+
 .app-card-chalk {
   --app-accent-soft: rgba(245, 211, 139, .22);
   --app-accent: #f1eadc;
