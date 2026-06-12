@@ -106,18 +106,16 @@ const apps = [
 ];
 
 const nav = [
-  ["Home", "#top"],
-  ["Bio", "#bio"],
-  ["Apps", "#apps"]
+  ["Home", "/#top"],
+  ["Bio", "/#bio"],
+  ["Apps", "/#apps"]
 ];
 
 const footerLinks = [
   ["Email", `mailto:${CONTACT_EMAIL}`],
   ["Chalk", "/apps/chalk/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
-  ["Match Card", "/apps/match-card/"],
-  ["Support", "/apps/"],
-  ["Privacy", "/apps/match-card/privacy/"]
+  ["Match Card", "/apps/match-card/"]
 ];
 
 const siteRootUrl = new URL(".", document.currentScript ? document.currentScript.src : window.location.href);
@@ -185,8 +183,7 @@ function shell(title, active, content) {
     <footer class="site-footer">
       <div class="inner footer-grid">
         <div>
-          <strong>Bamboo Holdings</strong>
-          <span>&copy; ${new Date().getFullYear()} Matthew Grossman. All rights reserved.</span>
+          <span>&copy; ${new Date().getFullYear()} Bamboo Holdings. All rights reserved.</span>
         </div>
         <div class="footer-links">${footerLinks.map(([label, href]) => `<a href="${pageUrl(href)}">${label === "Email" ? CONTACT_EMAIL : label}</a>`).join("")}</div>
       </div>
