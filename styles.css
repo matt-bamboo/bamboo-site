@@ -249,16 +249,16 @@ main { min-height: 60vh; }
 }
 
 .bio-reveal {
-  min-height: 100vh;
+  min-height: auto;
   scroll-snap-align: start;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
   background:
     linear-gradient(120deg, rgba(255, 255, 255, .96) 0%, rgba(255, 255, 255, .96) 58%, rgba(31, 30, 26, .05) 58.1%, rgba(31, 30, 26, .05) 100%),
     linear-gradient(180deg, #ffffff 0%, #f2eee5 100%);
   background-size: auto;
-  padding: clamp(84px, 10vh, 130px) 0;
+  padding: clamp(82px, 9vh, 118px) 0 clamp(46px, 6vh, 74px);
 }
 
 .bio-card {
@@ -350,25 +350,26 @@ main { min-height: 60vh; }
 .apps-wrap {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding: clamp(92px, 12vh, 150px) 0;
+  align-items: flex-start;
+  padding: clamp(18px, 3vh, 30px) 0 clamp(86px, 10vh, 128px);
 }
 
 .app-stage {
   width: 100%;
 }
 
-.apps-heading {
-  width: min(760px, 100%);
-  margin-bottom: clamp(28px, 5vh, 48px);
-  opacity: 0;
-  transform: translateY(44px);
-  transition: opacity .8s ease, transform .9s cubic-bezier(.16, 1, .3, 1);
+.apps-reveal .app-stage {
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
-.apps-heading.is-visible {
+.apps-heading {
+  width: min(760px, 100%);
+  margin-bottom: clamp(22px, 4vh, 34px);
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+  transition: none;
 }
 
 .apps-heading h2 {
@@ -489,36 +490,6 @@ main { min-height: 60vh; }
   background: rgba(31, 30, 26, .08);
   color: #171511;
   font-weight: 850;
-}
-
-.fly-in {
-  opacity: 0;
-  transition:
-    opacity .7s ease var(--delay, 0ms),
-    transform .95s cubic-bezier(.12, 1, .22, 1) var(--delay, 0ms),
-    filter .72s ease var(--delay, 0ms);
-  will-change: transform, opacity, filter;
-}
-
-.fly-in.from-left {
-  transform: translate3d(-130px, 72px, 0) rotateY(-22deg) rotateZ(-4deg) scale(.86);
-  filter: blur(16px);
-}
-
-.fly-in.from-bottom {
-  transform: translate3d(0, 140px, 0) rotateX(18deg) scale(.84);
-  filter: blur(18px);
-}
-
-.fly-in.from-right {
-  transform: translate3d(130px, 72px, 0) rotateY(22deg) rotateZ(4deg) scale(.86);
-  filter: blur(16px);
-}
-
-.fly-in.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
-  filter: blur(0);
 }
 
 .story-section,
@@ -1405,7 +1376,7 @@ h3 {
   }
 
   .apps-wrap {
-    padding: 76px 0;
+    padding: 28px 0 76px;
   }
 
   .bio-photo { width: min(210px, 36vw); }

@@ -201,7 +201,7 @@ function shell(title, active, content) {
     item.classList.add("reveal");
     item.style.setProperty("--delay", `${Math.min(index * 45, 360)}ms`);
   });
-  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .apps-heading, .fly-in");
+  const stagedItems = document.querySelectorAll(".story-stage, .app-stage, .hero-title, .bio-card, .apps-heading");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -226,6 +226,38 @@ function shell(title, active, content) {
     if (video.readyState > 0) startVideo();
     video.addEventListener("canplay", startVideo, { once: true });
   });
+  const introVideo = document.querySelector(".forest-intro .forest-media");
+  const bioSection = document.querySelector("#bio");
+  if (introVideo && bioSection && window.location.hash !== "#bio") {
+    let autoScrollUsed = false;
+    let visitorMoved = false;
+    const cancelAutoScroll = () => { visitorMoved = true; };
+    ["wheel", "touchstart", "pointerdown", "keydown"].forEach(eventName => {
+      window.addEventListener(eventName, cancelAutoScroll, { once: true, passive: true });
+    });
+    const ease = progress => 1 - Math.pow(1 - progress, 3);
+    const glideToBio = () => {
+      const startY = window.scrollY;
+      const endY = bioSection.getBoundingClientRect().top + window.scrollY;
+      const distance = endY - startY;
+      const duration = 2200;
+      const started = performance.now();
+      const step = now => {
+        if (visitorMoved) return;
+        const progress = Math.min((now - started) / duration, 1);
+        window.scrollTo(0, startY + (distance * ease(progress)));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    introVideo.addEventListener("timeupdate", () => {
+      if (autoScrollUsed || visitorMoved || window.scrollY > 18 || !introVideo.duration) return;
+      if (introVideo.currentTime >= introVideo.duration * 0.5) {
+        autoScrollUsed = true;
+        glideToBio();
+      }
+    });
+  }
   const updateScrollScenes = () => {
     document.body.classList.toggle("is-scrolled", window.scrollY > 32);
     document.querySelectorAll(".forest-scene").forEach(section => {
@@ -279,8 +311,7 @@ function home() {
 }
 
 function portfolioCard(app, index = 0) {
-  const directions = ["from-left", "from-bottom", "from-right"];
-  return `<article class="card portfolio-card app-card-${esc(app.id)} fly-in ${directions[index % directions.length]}" style="--delay: ${index * 140}ms">
+  return `<article class="card portfolio-card app-card-${esc(app.id)}">
     <div class="app-card-top">
       ${appIcon(app)}
       ${app.appStoreUrl ? "" : `<span class="status">${esc(app.status)}</span>`}
