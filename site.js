@@ -4,6 +4,38 @@ const TODAY = "June 8, 2026";
 
 const apps = [
   {
+    id: "runway",
+    name: "Runway",
+    slug: "/apps/runway/",
+    status: "Prelaunch",
+    tagline: "Retirement income planning in plain English",
+    hero: "Understand how long your money can last.",
+    intro: "Runway helps retirees and near-retirees model income, savings, spending, and drawdown assumptions in a calmer, more understandable way.",
+    long: "Runway is a retirement decumulation planning app built around simple planning inputs, plain-English explanations, and Clara, an AI assistant that can help users understand their retirement runway and planning assumptions.",
+    users: ["Retirees planning monthly income and spending", "Near-retirees comparing savings and income assumptions", "People who want a plain-English view of their retirement runway", "Users who prefer guided planning over spreadsheets"],
+    features: [["Runway estimate", "See a simple estimate of how long savings may last based on entered income, spending, and account assumptions."], ["Income and account inputs", "Enter Social Security, pension, savings, and other planning details manually."], ["Clara assistant", "Ask Clara questions about the numbers and get plain-English explanations."], ["Voice options", "Use voice input or spoken Clara responses when supported and configured."], ["Local-first planning", "Core planning inputs are primarily stored on the device."], ["No bank connection", "Runway does not connect to banks, brokerages, or account aggregators."]],
+    works: ["Enter income, account balances, spending targets, and planning assumptions.", "Review the runway estimate and monthly planning view.", "Ask Clara to explain assumptions or help with updates.", "Adjust numbers as life changes.", "Use voice features when available and enabled."],
+    availability: "Currently in prelaunch/TestFlight unless App Store availability is confirmed.",
+    disclaimer: "Runway is an educational planning tool and does not provide financial, investment, tax, legal, or human advisor services. Users should review important financial decisions with qualified professionals.",
+    support: {
+      overview: "Runway is a retirement income and decumulation planning app. It helps users enter planning assumptions, review a runway estimate, and ask Clara for plain-English explanations.",
+      include: ["Your iPhone model", "Your iOS version", "Runway app version if visible", "Whether the issue happened during onboarding, planning, Clara, account/settings, or voice use", "A short description of what happened and what you expected"],
+      faq: [["What can support help with?", "Support can help with onboarding, planning assumptions, Clara, account/settings questions, and technical issues."], ["Does Runway provide financial advice?", "No. Runway is an educational planning tool. Clara can explain entered assumptions, but Runway does not provide financial, investment, tax, legal, or human advisor services."], ["Does Runway connect to my bank?", "No. Runway does not connect to banks, brokerages, or account aggregation services. Planning values are entered manually."], ["Does Clara require internet access?", "Yes. Clara uses an external AI provider to generate responses, so Clara requires internet access."], ["Can I use Runway without Clara?", "Core planning views are designed around entered app data. Clara and voice features may require network access and configured services."]],
+      limitations: ["Prelaunch/TestFlight unless App Store availability is confirmed", "No bank or brokerage connection", "No human advisor support", "No guarantee that planning estimates will match future results", "Clara and voice features require network access and configured third-party services"]
+    },
+    privacy: {
+      stored: ["Optional name and age", "Income amounts such as Social Security, pension, and other sources", "Account balances and account categories", "Monthly bills, spending targets, and planning assumptions", "App preferences such as voice settings and appearance", "Clara-related saved context or memory entries when the user chooses to save them"],
+      local: "Runway is local-first. User planning inputs and financial assumptions are primarily stored on the user's device. Runway does not connect to banks, brokerages, or account aggregation services.",
+      thirdParty: "When a user uses Clara, Runway may send chat messages and relevant retirement planning context to Google Gemini so Clara can generate a response. When voice output is enabled and configured, Runway may send the text to be spoken to ElevenLabs to generate audio. Speech-to-text may use Apple speech recognition services depending on device and platform behavior.",
+      accounts: "Runway currently does not require a user account or sign-in for the local planning experience.",
+      ai: "Clara uses Google Gemini for AI responses. Relevant context can include manually entered income, savings, spending target, account balances, runway estimate, app preferences, Clara messages, and saved Clara memory. Clara is a planning assistant, not a licensed financial advisor.",
+      children: "Runway is not directed at children.",
+      payments: "This page does not make separate claims about pricing, subscriptions, or in-app purchases.",
+      tracking: "No advertising, analytics, or tracking claims are made unless confirmed against the current codebase before publication.",
+      deletion: "Users can remove local Runway data through in-app reset/delete controls when available, or by deleting the app, subject to normal device backup behavior. Any data processed by third-party providers is governed by those providers' policies."
+    }
+  },
+  {
     id: "chalk",
     name: "Chalk",
     slug: "/apps/chalk/",
@@ -146,6 +178,7 @@ const nav = [
 ];
 
 const footerLinks = [
+  ["Runway", "/apps/runway/"],
   ["Chalk", "/apps/chalk/"],
   ["Allotment Optimizer", "/apps/allotment-optimizer/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
