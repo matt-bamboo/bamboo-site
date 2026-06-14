@@ -1602,6 +1602,100 @@ h3 {
   font-size: 13px;
 }
 
+.story-print-hero {
+  padding: 150px 0 64px;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(37, 40, 33, .05) 1px, transparent 1px),
+    linear-gradient(180deg, #fffaf0, #eee7d8);
+  background-size: 96px 96px, auto;
+}
+
+.story-print-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 48px;
+  align-items: center;
+}
+
+.story-print-summary {
+  border: 1px solid rgba(37, 40, 33, .13);
+  border-radius: 8px;
+  padding: 26px;
+  background: rgba(255, 255, 255, .76);
+  box-shadow: 0 20px 60px rgba(37, 40, 33, .1);
+  display: grid;
+  gap: 12px;
+}
+
+.story-print-summary strong {
+  color: var(--ink);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.story-print-summary span {
+  border-top: 1px solid rgba(37, 40, 33, .1);
+  padding-top: 10px;
+  color: var(--muted);
+  font-weight: 780;
+}
+
+.story-print-book {
+  max-width: 860px;
+  padding: 74px 0 96px;
+}
+
+.story-print-chapter {
+  page-break-before: always;
+  break-before: page;
+}
+
+.story-print-chapter:first-child {
+  page-break-before: auto;
+  break-before: auto;
+}
+
+.story-print-chapter + .story-print-chapter {
+  margin-top: 72px;
+}
+
+.story-print-chapter h2 {
+  margin-bottom: 28px;
+  font-size: clamp(32px, 4.2vw, 54px);
+}
+
+.story-print-page {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  border-top: 1px solid rgba(37, 40, 33, .12);
+  padding: 18px 0 22px;
+}
+
+.story-print-marker {
+  margin: 0 0 8px;
+  color: #82672f;
+  font-size: 12px;
+  font-weight: 880;
+  text-transform: uppercase;
+}
+
+.story-print-page p:last-child {
+  margin: 0;
+  color: #312d26;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.print-story-page .site-header {
+  background: rgba(23, 25, 21, .86);
+}
+
+.print-story-page .brand-mark {
+  border-color: rgba(251, 250, 245, .34);
+  color: #fbfaf5;
+}
+
 .maya-hero {
   padding: 150px 0 72px;
   background:
@@ -1628,9 +1722,10 @@ h3 {
   border: 1px solid rgba(37, 40, 33, .13);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(46, 151, 190, .32), rgba(255, 250, 240, .64) 45%, rgba(211, 75, 70, .26)),
-    url("/assets/stories/elizabeth-scarlet/storyboards/page-003.webp") center / cover;
-  background-blend-mode: screen, normal;
+    linear-gradient(135deg, rgba(46, 151, 190, .22), rgba(255, 250, 240, .76) 45%, rgba(211, 75, 70, .2)),
+    linear-gradient(90deg, rgba(37, 40, 33, .06) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(37, 40, 33, .05) 1px, transparent 1px);
+  background-size: auto, 42px 42px, 42px 42px;
   box-shadow: 0 32px 90px rgba(37, 40, 33, .18);
   overflow: hidden;
 }
@@ -1700,12 +1795,6 @@ h3 {
 
 .maya-story-link.is-disabled img {
   filter: saturate(.8);
-}
-
-.maya-story-card img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
 }
 
 .maya-story-card span,
@@ -1880,11 +1969,79 @@ h3 {
   }
 }
 
+@media print {
+  @page {
+    margin: .68in;
+  }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .site-header,
+  .site-footer,
+  .ambient-frame,
+  .story-print-hero .actions,
+  .no-print {
+    display: none !important;
+  }
+
+  .story-print-hero {
+    padding: 0 0 28px;
+    border: 0;
+    background: #fff !important;
+  }
+
+  .story-print-hero-layout {
+    display: block;
+  }
+
+  .story-print-summary {
+    display: none;
+  }
+
+  .story-print-book {
+    width: auto;
+    max-width: none;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 30pt !important;
+    line-height: 1.05 !important;
+  }
+
+  .lede {
+    color: #333 !important;
+    font-size: 12pt !important;
+  }
+
+  .eyebrow {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: #333;
+    letter-spacing: 0;
+  }
+
+  .story-print-chapter h2 {
+    font-size: 20pt !important;
+  }
+
+  .story-print-page p:last-child {
+    color: #111;
+    font-size: 11.5pt;
+    line-height: 1.45;
+  }
+}
+
 @media (max-width: 940px) {
   .hero,
   .split,
   .app-hero-layout,
   .maya-hero-grid,
+  .story-print-hero-layout,
   .story-hero-grid,
   .story-reader {
     grid-template-columns: 1fr;

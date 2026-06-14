@@ -234,12 +234,15 @@ function appStoreBadge(url) {
 
 function shell(title, active, content) {
   const footerEmail = currentRoutePath().startsWith("/apps/") ? APP_CONTACT_EMAIL : CONTACT_EMAIL;
+  const brandMedia = active === "PrintStory"
+    ? `<span class="brand-mark" aria-hidden="true">B</span>`
+    : `<img src="${assetUrl("/assets/brand/bamboo-holdings-logo-hq.png")}" alt="" onerror="this.src='${assetUrl("/assets/brand/bamboo-logo.png")}'; this.onerror=()=>this.replaceWith(Object.assign(document.createElement('span'), {className: 'brand-mark', textContent: 'B'}))">`;
   const footerLinksHtml = [
     `<a href="mailto:${footerEmail}">${footerEmail}</a>`,
     ...footerLinks.map(([label, href]) => `<a href="${pageUrl(href)}">${label}</a>`)
   ].join("");
   document.title = title;
-  document.body.className = active === "Home" ? "home-page" : "";
+  document.body.className = active === "Home" ? "home-page" : active === "PrintStory" ? "print-story-page" : "";
   document.body.innerHTML = `
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="ambient-frame" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -247,7 +250,7 @@ function shell(title, active, content) {
       <div class="inner">
         <nav class="nav" aria-label="Primary">
           <a class="brand" href="${pageUrl("/")}">
-            <img src="${assetUrl("/assets/brand/bamboo-holdings-logo-hq.png")}" alt="" onerror="this.src='${assetUrl("/assets/brand/bamboo-logo.png")}'; this.onerror=()=>this.replaceWith(Object.assign(document.createElement('span'), {className: 'brand-mark', textContent: 'B'}))">
+            ${brandMedia}
             <span>Bamboo Holdings</span>
           </a>
           <div class="nav-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}"${label === active ? ' aria-current="page"' : ""}>${label}</a>`).join("")}</div>
@@ -516,15 +519,13 @@ function mayaWorkPage() {
       title: "Elizabeth and Scarlet's Adventures",
       edition: "Ages 9-12 middle grade edition",
       href: "/stories/elizabeth-scarlet/",
-      image: "/assets/stories/elizabeth-scarlet/storyboards/page-085.webp",
-      status: "Interactive edition",
-      description: "A 150-page magical mystery with princess detectives, Max the butler, Cinder the baby dragon, and page-by-page storyboard art."
+      status: "Printable PDF edition",
+      description: "A text-only printable edition of the 150-page magical mystery with princess detectives, Max the butler, and Cinder the baby dragon."
     },
     {
       title: "Elizabeth and Scarlet's Adventures",
       edition: "Ages 6 picture book edition",
       href: "/stories/elizabeth-and-scarlets-adventures/",
-      image: "/assets/stories/elizabeth-scarlet/storyboards/page-003.webp",
       status: "Picture book edition",
       description: "A younger read-aloud storybook experience with castle races, secret clues, golden glue, and Cinder the baby dragon."
     }
@@ -550,7 +551,6 @@ function mayaWorkPage() {
       <div class="maya-story-grid">
         ${stories.map(story => {
           const body = `
-            <img src="${esc(assetUrl(story.image))}" alt="">
             <span>${esc(story.status)}</span>
             <strong>${esc(story.title)}</strong>
             <em>${esc(story.edition)}</em>
@@ -565,88 +565,56 @@ function mayaWorkPage() {
     </section>`);
 }
 
+function storyPrintChapters(story) {
+  return story.chapters.map(chapter => {
+    const chapterPages = story.pages.filter(page => page.chapter === chapter.chapter);
+    return `<article class="story-print-chapter" id="chapter-${chapter.chapter}">
+      <p class="eyebrow">Chapter ${chapter.chapter}</p>
+      <h2>${esc(chapter.title.replace(/^\d+\.\s*/, ""))}</h2>
+      ${chapterPages.map(page => `<section class="story-print-page">
+        <p class="story-print-marker">Page ${page.page}</p>
+        <p>${esc(page.text)}</p>
+      </section>`).join("")}
+    </article>`;
+  }).join("");
+}
+
 function storyPage() {
   const story = window.elizabethScarletStory;
   if (!story) {
-    return shell("Elizabeth and Scarlet's Adventures - Bamboo Holdings", "Story", `
+    return shell("Elizabeth and Scarlet's Adventures - Bamboo Holdings", "PrintStory", `
       <section class="inner hero narrow">
-        <p class="eyebrow">Interactive story</p>
+        <p class="eyebrow">Printable story</p>
         <h1>Elizabeth and Scarlet's Adventures</h1>
         <p class="lede">The story data did not load. Please refresh the page.</p>
       </section>`);
   }
-  const firstPage = story.pages[0];
-  const firstScene = story.scenes[story.chapters[0].scene];
-  const firstImage = firstPage.image || firstScene.image;
-  shell(`${story.title} - Bamboo Holdings`, "Story", `
-    <section class="story-world" style="--story-scene: url('${esc(assetUrl(firstImage))}')">
-      <div class="story-backdrop" aria-hidden="true">
-        <img class="story-backdrop-image" src="${esc(assetUrl(firstImage))}" alt="">
-        <div class="story-stars"></div>
-        <div class="story-comet"></div>
-      </div>
-      <div class="inner story-hero-grid">
-        <div class="story-hero-copy">
-          <p class="eyebrow">Interactive story</p>
+  const pdfHref = "/assets/stories/elizabeth-scarlet/elizabeth-and-scarlets-adventures-ages-9-12-printable.pdf";
+  shell(`${story.title} - Bamboo Holdings`, "PrintStory", `
+    <section class="story-print-hero">
+      <div class="inner story-print-hero-layout">
+        <div>
+          <p class="eyebrow">Printable story</p>
           <h1>${esc(story.title)}</h1>
-          <p class="lede">${esc(story.subtitle)}</p>
-          <p class="copy">Princess detectives, a shattered royal vase, a hidden cave, one suspiciously helpful butler, and a baby sky dragon with gold fire in his breath.</p>
-          <div class="story-hero-actions">
-            <a class="button" href="#story-reader">Begin the adventure</a>
-            <button class="button secondary story-random" type="button">Open a surprise scene</button>
+          <p class="lede">A text-only printable edition for the Ages 9-12 story.</p>
+          <div class="actions">
+            <a class="button" href="${assetUrl(pdfHref)}" download>Download PDF</a>
+            <button class="button secondary" type="button" onclick="window.print()">Print page</button>
+            <a class="button secondary" href="${pageUrl("/maya/")}">Maya's Work</a>
           </div>
         </div>
-        <div class="story-orbital" aria-label="Main characters">
-          ${story.characters.map((character, index) => `<button class="story-character-token" type="button" data-character="${index}" style="--i:${index}">
-            <strong>${esc(character.name)}</strong>
-            <span>${esc(character.role)}</span>
-          </button>`).join("")}
-          <div class="story-character-card">
-            <span>Meet the crew</span>
-            <strong>${esc(story.characters[0].name)}</strong>
-            <p>${esc(story.characters[0].detail)}</p>
-          </div>
+        <div class="story-print-summary">
+          <strong>${story.pages.length} pages</strong>
+          <span>${story.chapters.length} chapters</span>
+          <span>No images</span>
+          <span>Print-ready PDF</span>
         </div>
       </div>
     </section>
-    <section class="story-chapters">
-      <div class="inner">
-        <div class="story-section-heading">
-          <p class="eyebrow">Chapter map</p>
-          <h2>Twenty-five doors into the mystery.</h2>
-        </div>
-        <div class="story-chapter-rail" aria-label="Story chapters">
-          ${story.chapters.map(chapter => `<button class="story-chapter-card" type="button" data-page="${chapter.startPage}">
-            <span>Chapter ${chapter.chapter}</span>
-            <strong>${esc(chapter.title.replace(/^\d+\.\s*/, ""))}</strong>
-            <em>${esc(story.scenes[chapter.scene].label)}</em>
-          </button>`).join("")}
-        </div>
-      </div>
+    <section id="printable-story" class="inner story-print-book">
+      ${storyPrintChapters(story)}
     </section>
-    <section id="story-reader" class="story-reader-shell">
-      <div class="inner story-reader">
-        <aside class="story-reader-art">
-          <img class="story-reader-image" src="${esc(assetUrl(firstImage))}" alt="">
-          <div class="story-reader-magic" aria-hidden="true"></div>
-          <div class="story-reader-meta">
-            <span class="story-scene-label">${esc(firstScene.label)}</span>
-            <strong>Page <span class="story-page-number">${firstPage.page}</span> of ${story.pages.length}</strong>
-          </div>
-        </aside>
-        <article class="story-page-panel">
-          <div class="story-progress"><span style="width:${(1 / story.pages.length) * 100}%"></span></div>
-          <p class="eyebrow story-chapter-kicker">Chapter ${firstPage.chapter}</p>
-          <h2 class="story-page-title">${esc(firstPage.title.replace(/^\d+\.\s*/, ""))}</h2>
-          <p class="story-page-text">${esc(firstPage.text)}</p>
-          <div class="story-reader-controls">
-            <button class="button secondary story-prev" type="button">Previous</button>
-            <button class="button story-next" type="button">Next page</button>
-          </div>
-        </article>
-      </div>
-    </section>
-    <section class="story-source-note">
+    <section class="story-source-note no-print">
       <div class="inner">
         <p>${esc(story.sourceNote)}</p>
       </div>
