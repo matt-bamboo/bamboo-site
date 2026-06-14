@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An immersive interactive storybook version of Elizabeth and Scarlet's Adventures.">
+  <link rel="canonical" href="https://bamboo.holdings/stories/elizabeth-and-scarlets-adventures/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Elizabeth and Scarlet's Adventures">
+  <meta property="og:description" content="A magical interactive storybook with castle races, secret clues, golden glue, and Cinder the baby dragon.">
+  <meta property="og:url" content="https://bamboo.holdings/stories/elizabeth-and-scarlets-adventures/">
+  <meta property="og:image" content="https://bamboo.holdings/assets/brand/bamboo-social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Elizabeth and Scarlet's Adventures">
+  <meta name="twitter:description" content="A magical interactive storybook with castle races, secret clues, golden glue, and Cinder the baby dragon.">
+  <meta name="twitter:image" content="https://bamboo.holdings/assets/brand/bamboo-social-card.png">
+  <title>Elizabeth and Scarlet's Adventures</title>
+  <link rel="icon" href="../../assets/brand/bamboo-logo.png">
+  <link rel="stylesheet" href="../../styles.css?v=20260614-maya">
+  <link rel="stylesheet" href="story.css?v=20260614-story">
+</head>
+<body class="storybook-page">
+  <a class="skip-link" href="#story-scenes">Skip to story</a>
+  <header class="storybook-header" aria-label="Story navigation">
+    <a class="storybook-brand" href="../../">
+      <img src="../../assets/brand/bamboo-logo.png" alt="" width="36" height="36">
+      <span>Bamboo Holdings</span>
+    </a>
+    <nav class="storybook-nav" aria-label="Primary">
+      <a href="../../">Home</a>
+      <a href="../../apps/">Apps</a>
+      <a aria-current="page" href="./">Story</a>
+    </nav>
+  </header>
+
+  <main id="main" class="storybook-main">
+    <section id="top" class="story-hero" aria-labelledby="story-title">
+      <div class="story-hero-art" aria-hidden="true">
+        <svg viewBox="0 0 1400 900" role="img">
+          <defs>
+            <linearGradient id="heroSky" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#6fd5ff"/>
+              <stop offset="38%" stop-color="#ffe3a6"/>
+              <stop offset="100%" stop-color="#dc7e76"/>
+            </linearGradient>
+            <linearGradient id="heroFloor" x1="0" x2="1">
+              <stop offset="0%" stop-color="#f8f1df"/>
+              <stop offset="52%" stop-color="#d9f2ff"/>
+              <stop offset="100%" stop-color="#f7d5c9"/>
+            </linearGradient>
+            <radialGradient id="heroGlow" cx="50%" cy="38%" r="45%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity=".82"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="1400" height="900" fill="url(#heroSky)"/>
+          <circle cx="700" cy="318" r="390" fill="url(#heroGlow)"/>
+          <path d="M0 620 C190 570 332 648 520 596 C710 542 886 604 1058 558 C1210 518 1320 544 1400 512 L1400 900 L0 900 Z" fill="#ffeac8"/>
+          <path d="M0 700 C190 642 344 722 560 668 C742 622 900 684 1090 642 C1238 608 1328 632 1400 606 L1400 900 L0 900 Z" fill="url(#heroFloor)"/>
+          <g class="hero-castle">
+            <path d="M222 238 h104 v-74 h70 v74 h116 v-98 h86 v98 h118 v-74 h70 v74 h108 v358 h-672 Z" fill="#fff7e5"/>
+            <path d="M222 238 h672 v46 h-672 Z" fill="#e4c785"/>
+            <path d="M248 190 l38 -74 l38 74 Z M526 164 l44 -88 l44 88 Z M786 190 l38 -74 l38 74 Z" fill="#4f72b9"/>
+            <g fill="#8bd7ff" opacity=".78">
+              <path d="M304 326 h74 v118 h-74 Z"/>
+              <path d="M506 326 h74 v118 h-74 Z"/>
+              <path d="M708 326 h74 v118 h-74 Z"/>
+              <path d="M424 486 h270 v110 h-270 Z"/>
+            </g>
+            <path d="M424 486 h270 v110 h-270 Z" fill="none" stroke="#c49a48" stroke-width="10"/>
+          </g>
+          <g class="hero-dragon">
+            <path d="M1034 506 c58 -42 132 -24 158 32 c-48 -10 -86 -2 -114 30 c-22 24 -64 18 -84 -8 c-14 -18 -10 -38 40 -54 Z" fill="#1d836d"/>
+            <path d="M1002 528 c-42 -30 -80 -20 -102 24 c48 -2 82 18 108 58 c26 -22 28 -58 -6 -82 Z" fill="#74d2b5" opacity=".9"/>
+            <circle cx="1110" cy="514" r="34" fill="#23a27f"/>
+            <circle cx="1122" cy="506" r="6" fill="#6f4db3"/>
+            <path d="M1086 476 l14 -30 l14 32 Z M1128 478 l18 -28 l8 34 Z" fill="#e8c15c"/>
+            <path d="M1066 560 q-52 18 -88 76" fill="none" stroke="#e9b64f" stroke-width="16" stroke-linecap="round"/>
+          </g>
+          <g class="hero-sisters">
+            <g class="girl elizabeth" transform="translate(500 560)">
+              <circle cx="0" cy="-86" r="34" fill="#f6caa2"/>
+              <path d="M-36 -88 q30 -50 76 -18 q-8 -42 -64 -38 q-44 8 -52 58 Z" fill="#b98745"/>
+              <path d="M-42 -46 h84 l28 122 h-140 Z" fill="#1d8eb9"/>
+              <path d="M-58 6 q-34 26 -58 8" stroke="#f6caa2" stroke-width="16" stroke-linecap="round"/>
+              <path d="M58 6 q46 28 82 -2" stroke="#f6caa2" stroke-width="16" stroke-linecap="round"/>
+              <path d="M-34 76 v68 M34 76 v68" stroke="#2b5c8b" stroke-width="18" stroke-linecap="round"/>
+              <path d="M-58 154 h68 M8 154 h72" stroke="#27d8ff" stroke-width="14" stroke-linecap="round"/>
+            </g>
+            <g class="girl scarlet" transform="translate(656 570)">
+              <circle cx="0" cy="-86" r="34" fill="#f5bc91"/>
+              <path d="M-50 -78 q24 -70 94 -26 q8 54 -18 76 q-8 -36 -76 -50 Z" fill="#9e4f35"/>
+              <path d="M-48 -44 h96 l30 122 h-156 Z" fill="#db5a56"/>
+              <path d="M-60 8 q-46 18 -82 -18" stroke="#f5bc91" stroke-width="16" stroke-linecap="round"/>
+              <path d="M60 8 q36 36 82 10" stroke="#f5bc91" stroke-width="16" stroke-linecap="round"/>
+              <path d="M-34 78 v68 M34 78 v68" stroke="#94353a" stroke-width="18" stroke-linecap="round"/>
+              <path d="M-60 156 h70 M8 156 h74" stroke="#f04c53" stroke-width="14" stroke-linecap="round"/>
+            </g>
+          </g>
+          <g class="hero-sparkles" fill="#fff7c5">
+            <path d="M176 488 l16 34 l36 16 l-36 16 l-16 34 l-16 -34 l-36 -16 l36 -16 Z"/>
+            <path d="M1006 238 l14 28 l30 12 l-30 14 l-14 30 l-14 -30 l-30 -14 l30 -12 Z"/>
+            <path d="M830 668 l10 22 l24 10 l-24 10 l-10 24 l-10 -24 l-24 -10 l24 -10 Z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="story-hero-copy">
+        <p class="story-kicker">Interactive picture book edition</p>
+        <h1 id="story-title">Elizabeth and Scarlet's Adventures</h1>
+        <p>Castle races, secret clues, golden glue, and one baby dragon with violet eyes.</p>
+        <div class="story-hero-actions">
+          <a class="story-button primary" href="#page-01">Begin</a>
+          <button class="story-button secondary" type="button" data-read-current>Read aloud</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="picturebook-reader" aria-label="Interactive storybook">
+      <div id="story-scenes" class="story-scenes"></div>
+    </section>
+  </main>
+
+  <nav id="story-progress" class="story-progress" aria-label="Story page progress"></nav>
+  <div class="story-dock" aria-label="Story controls">
+    <button type="button" class="dock-button" data-prev aria-label="Previous page">&larr;</button>
+    <span id="story-counter" class="story-counter">Page 1 of 30</span>
+    <button type="button" class="dock-button" data-next aria-label="Next page">&rarr;</button>
+  </div>
+
+  <footer class="storybook-footer">
+    <a href="../../">Bamboo Holdings</a>
+    <span>Elizabeth and Scarlet's Adventures</span>
+  </footer>
+
+  <script src="story.js?v=20260614-story"></script>
+</body>
+</html>

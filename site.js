@@ -176,7 +176,8 @@ const apps = [
 const nav = [
   ["Home", "/#top"],
   ["Bio", "/#bio"],
-  ["Apps", "/#apps"]
+  ["Apps", "/#apps"],
+  ["Story", "/stories/elizabeth-and-scarlets-adventures/"]
 ];
 
 const footerLinks = [
@@ -185,7 +186,8 @@ const footerLinks = [
   ["Chalk", "/apps/chalk/"],
   ["Allotment Optimizer", "/apps/allotment-optimizer/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
-  ["Match Card", "/apps/match-card/"]
+  ["Match Card", "/apps/match-card/"],
+  ["Elizabeth and Scarlet", "/stories/elizabeth-and-scarlets-adventures/"]
 ];
 
 const siteRootUrl = new URL(".", document.currentScript ? document.currentScript.src : window.location.href);
