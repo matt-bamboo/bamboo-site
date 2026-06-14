@@ -4,7 +4,7 @@ Public-safe source packet for Bamboo Holdings website pages.
 
 Contact email: info@bamboo.holdings  
 Recommended URL slug: `/apps/match-card/`  
-Status: TestFlight beta / in development. Do not claim public App Store availability until confirmed.
+Status: Owner-confirmed live in the public iOS App Store. The App Store listing currently shows `Match Card Pro`, while the installed app display name currently uses `Match Card`. Keep that naming mismatch flagged for owner review.
 
 ## Public Positioning
 
@@ -16,7 +16,7 @@ Status: TestFlight beta / in development. Do not claim public App Store availabi
 Match Card is a two-player golf scorecard for iPhone that helps regular playing partners score rounds, track rivalry stats, settle friendly side games, and keep a course-by-course record of how they play.
 
 **Long description:**  
-Match Card is built for the golfers who play the same courses with the same regular partner and care about the rivalry as much as the score. It keeps live scoring simple, supports tap or voice score entry, tracks per-course performance, calculates a course-specific handicap, and keeps a season-long head-to-head trophy. The app is local-first, works offline for scoring, and does not require an account.
+Match Card is built for golfers who play familiar courses with a regular partner and want a fast scorecard without a required account. Core round data is stored on device, live scoring is designed to stay simple, optional backup can be enabled separately, and tap-initiated voice scoring is available for players who want to keep the round moving.
 
 ## Target Users
 
@@ -30,7 +30,7 @@ Match Card is built for:
 
 ## Core Value Proposition
 
-Most golf apps are built around broad social features, generic scorecards, or full tournament systems. Match Card focuses on the round you actually play: two regular players, familiar courses, fast scoring, friendly wagers, and a long-running season trophy.
+Most golf apps are built around broad social features, generic scorecards, or full tournament systems. Match Card focuses on the round you actually play: regular playing partners, familiar courses, fast scoring, friendly side games, and a long-running head-to-head record.
 
 ## Public Feature Summary
 
@@ -42,9 +42,9 @@ Score hole by hole with quick tap controls. Drafts auto-save during a round so s
 
 Users can tap the microphone and speak the scores for the current hole. Match Card transcribes and parses the score entry. This is tap-to-record, not always-listening.
 
-### Per-course handicap
+### Course and player tracking
 
-Match Card tracks performance separately by course, giving golfers a course-specific view instead of blending every round into one generic number.
+Match Card keeps useful course, player, and round history in one place.
 
 ### Season trophy
 
@@ -52,7 +52,7 @@ A customizable season-long head-to-head trophy tracks results between the two pr
 
 ### Side games
 
-Match Card supports friendly side games such as Skins, Match Play, Nassau, Stableford, Wolf, Bingo Bango Bongo, Closest to the Pin, Longest Drive, Greenies, Sandies, First Birdie, First Par, and Press.
+Match Card supports friendly side-game tracking. Avoid detailed side-game or handicap claims unless they are verified against the current source for the release being described.
 
 ### Bag and club notes
 
@@ -72,13 +72,11 @@ Backup is optional and off by default. Users can export or restore app data usin
 
 ## Important Availability Language
 
-Use one of these after owner confirmation:
+Use this current wording unless owner or App Store Connect evidence changes:
 
-- **If TestFlight only:** Now in TestFlight for iPhone.
-- **If public:** Available now on iPhone.
-- **If not public yet:** Coming soon to iPhone.
+- **Current public wording:** Available now on the iOS App Store.
 
-Do not claim iPad, Android, web, Apple Watch, or App Store availability unless confirmed.
+Do not claim iPad, Android, web, Apple Watch, or always-listening voice support unless confirmed.
 
 ## Marketing Page Draft
 
@@ -88,7 +86,7 @@ Your courses. Your rivalry. One scorecard.
 
 ### Hero subheadline
 
-A premium two-player golf scorecard for iPhone. Score with a tap or your voice, settle friendly side games, and track the season-long head-to-head.
+A local-first golf scorecard and round tracker for iPhone. Score with a tap or your voice, track players and courses, organize friendly side games, and keep the head-to-head alive.
 
 ### Suggested feature cards
 
@@ -101,11 +99,11 @@ Tap the mic, say the scores, and keep the round moving.
 **Built for rivalries**  
 Track the season-long head-to-head between you and your regular playing partner.
 
-**Per-course handicap**  
-Keep course-specific performance history instead of one blended number.
+**Course and player tracking**  
+Keep useful course, player, and round history in one place.
 
-**Side games settled**  
-Handle Skins, Match Play, Nassau, Stableford, and more without spreadsheet math.
+**Side games organized**  
+Track friendly side games without spreadsheet math.
 
 **Share the round**  
 Generate clean post-round share cards for scores, stats, and highlights.
@@ -134,6 +132,8 @@ When contacting support, include:
 - Match Card app version if visible
 - A short description of the issue
 - What screen you were on
+- What happened
+- What they expected to happen
 - Screenshots if helpful
 
 ### FAQ
@@ -171,11 +171,11 @@ No. Match Card can tally friendly side games, but it does not process payments, 
 ### Known limitations
 
 - iPhone only unless owner confirms otherwise
-- TestFlight beta unless owner confirms public App Store release
 - No live multi-device sync
 - Optional backup is not an account system
 - Side games should not be described as net-handicap games unless that feature is confirmed
 - No always-listening voice mode
+- No Apple Watch support is claimed
 
 ## Privacy Page Inputs
 
@@ -183,7 +183,7 @@ Use precise local-first privacy language. Do not claim that data never leaves th
 
 ### Privacy positioning
 
-Match Card is local-first and account-free. Most scoring, stats, handicap, course, and settings data lives on the user’s device. Some optional features use third-party services only to perform the feature the user requested.
+Match Card is local-first and account-free. Core scoring, stats, course, player, side-game, and settings data is stored on the user’s device. Some optional features use third-party services only to perform the feature the user requested.
 
 ### Data stored on device
 
@@ -207,10 +207,10 @@ If the user enables backup, Match Card may store an opaque backup copy of app da
 
 Depending on which features the user chooses, Match Card may send limited data to service providers:
 
-- Voice clips for transcription and score parsing
-- Scorecard images for parsing
-- Course search queries and approximate location for course lookup
-- Approximate coordinates for weather information
+- Tap-initiated voice audio to the Match Card backend and OpenAI for transcription and parsing
+- Course search queries to OpenStreetMap/Nominatim
+- Course-search fallback prompts to OpenAI when needed
+- Approximate course or location coordinates to Open-Meteo for weather information
 
 These features should be described as feature-specific processing, not advertising or tracking.
 
@@ -220,7 +220,7 @@ Match Card currently does not require user accounts, login, email, Apple Sign In
 
 ### Analytics and tracking
 
-No analytics, advertising, or tracking claims should be made unless confirmed against the current codebase before publication.
+Current migration notes say Match Card has no ads and no third-party tracking. Reconfirm against the current source before changing the privacy page.
 
 ### Payments
 
@@ -249,6 +249,7 @@ Before public launch or App Store submission, confirm:
 - Whether optional backup is enabled and how it is described
 - Which third-party providers process voice, image, weather, and course-search data
 - Whether audio clips or scorecard images are retained anywhere
+- Whether App Store listing name `Match Card Pro` should remain different from installed app name `Match Card`
 
 ## Claims to Avoid
 
@@ -265,7 +266,6 @@ Do not say:
 - “iPad available”
 - “Apple Watch available”
 - “Net-handicap side games”
-- “App Store available”
 - “Processes payments or settles bets”
 
 Unless each claim has been verified.
