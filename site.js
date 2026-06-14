@@ -176,8 +176,7 @@ const apps = [
 const nav = [
   ["Home", "/#top"],
   ["Bio", "/#bio"],
-  ["Apps", "/#apps"],
-  ["Story", "/stories/elizabeth-and-scarlets-adventures/"]
+  ["Apps", "/#apps"]
 ];
 
 const footerLinks = [
@@ -186,8 +185,7 @@ const footerLinks = [
   ["Chalk", "/apps/chalk/"],
   ["Allotment Optimizer", "/apps/allotment-optimizer/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
-  ["Match Card", "/apps/match-card/"],
-  ["Elizabeth and Scarlet", "/stories/elizabeth-and-scarlets-adventures/"]
+  ["Match Card", "/apps/match-card/"]
 ];
 
 const siteRootUrl = new URL(".", document.currentScript ? document.currentScript.src : window.location.href);
@@ -525,10 +523,10 @@ function mayaWorkPage() {
     {
       title: "Elizabeth and Scarlet's Adventures",
       edition: "Ages 6 picture book edition",
-      href: "",
+      href: "/stories/elizabeth-and-scarlets-adventures/",
       image: "/assets/stories/elizabeth-scarlet/storyboards/page-003.webp",
-      status: "Being built",
-      description: "A younger picture-book version designed as a shorter, read-aloud storybook experience. It will be linked here when its page is ready."
+      status: "Picture book edition",
+      description: "A younger read-aloud storybook experience with castle races, secret clues, golden glue, and Cinder the baby dragon."
     }
   ];
   shell("Maya's Work - Bamboo Holdings", "", `
