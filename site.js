@@ -104,6 +104,38 @@ const apps = [
     }
   },
   {
+    id: "drip",
+    name: "DRIP",
+    slug: "/apps/drip/",
+    status: "Static web MVP",
+    tagline: "Fast browser arcade play",
+    hero: "A lightweight arcade game you can play right in the browser.",
+    intro: "DRIP is a fast, lightweight browser arcade game from Bamboo Holdings. It is built to play directly on the web with no account, payment, or app download required today.",
+    long: "DRIP is currently a static web MVP. Gameplay runs in the browser, native TestFlight packaging is planned separately, and these pages avoid public App Store or TestFlight availability claims until those records exist.",
+    users: ["Players who want quick arcade-style sessions", "People who prefer instant web play", "Users who do not want to create an account", "Players who want a lightweight game with simple local preferences"],
+    features: [["Play on the web", "Open DRIP in a modern browser and start playing without an app download today."], ["No account required", "DRIP does not require sign-in, account creation, or a user profile."], ["No payments or ads", "The current MVP does not process payments, run ads, or require subscriptions."], ["No AI or voice features", "DRIP does not use AI providers, microphone input, speech recognition, text-to-speech, or voice commands."], ["Browser-based gameplay", "Core game logic runs in the browser without a gameplay backend or database."], ["Small local preference", "The game may save a small local browser preference for tutorial or coach-mark dismissal."]],
+    works: ["Open DRIP on the web.", "Use a modern browser for the best game performance.", "Adjust browser audio or mute settings if sound is not playing.", "Refresh the page if the game appears stuck.", "Clear site data only if normal refresh troubleshooting does not resolve the issue."],
+    availability: "Available as a static web MVP. Native/TestFlight packaging is planned but not public yet.",
+    disclaimer: "DRIP is an early static web game MVP. Native packaging, TestFlight availability, App Store records, and final release details should be confirmed before public release claims are expanded.",
+    support: {
+      overview: "DRIP is a browser-based arcade game. It does not require an account, payment, or app download to play the current web MVP.",
+      include: ["Device type", "Browser name and version", "Whether the issue involves loading, controls, audio, or progress through the tutorial", "A short description of what happened", "Screenshots if helpful"],
+      faq: [["Do I need an account to play?", "No. DRIP does not require an account, sign-in, or profile."], ["What should I try if the game does not load?", "Refresh the browser, then try a modern browser if the issue continues."], ["What should I try if audio does not play?", "Check browser mute settings, device volume, and whether the page needs a tap or click before audio starts."], ["Should I clear site data?", "Only if normal troubleshooting does not help. Clearing site data may reset local browser preferences such as tutorial or coach-mark dismissal."], ["Is DRIP already in TestFlight or the App Store?", "No public TestFlight or App Store availability claim is made on this page. Native packaging is planned separately."]],
+      limitations: ["Static web MVP", "No account recovery because there is no account system", "No cloud save or cross-device sync", "No gameplay backend or database required", "Native/TestFlight packaging is planned but not public yet"]
+    },
+    privacy: {
+      stored: ["A small local browser preference for tutorial or coach-mark dismissal", "Browser-level cache or storage created by normal static site loading"],
+      local: "DRIP gameplay runs in the browser and does not require a backend account or gameplay database. The current MVP may store a small local browser preference for tutorial or coach-mark dismissal.",
+      thirdParty: "DRIP does not use AI providers, Replit AI, payment processors, advertising SDKs, voice providers, microphone services, speech recognition, text-to-speech, or a gameplay backend. The public Bamboo site is served by web hosting infrastructure, so standard hosting logs may exist outside the game itself.",
+      accounts: "DRIP does not require an account, sign-in, profile, Apple Sign In, Google Sign In, or remote user identity.",
+      ai: "DRIP does not use OpenAI, Anthropic, Gemini, ElevenLabs, Replicate, Hugging Face, LangChain, Vercel AI SDK, Replit AI, or similar AI/model SDKs in the current MVP.",
+      children: "DRIP is a general arcade-style browser game and is not designed to collect personal information from children.",
+      payments: "DRIP does not process payments, subscriptions, in-app purchases, checkout, or financial transactions in the current MVP.",
+      tracking: "DRIP itself does not intentionally collect gameplay personal information. No global analytics script was found in the current Bamboo site source during this update; standard hosting logs may still be created by the hosting provider.",
+      deletion: "Users can clear local browser site data if they want to remove locally stored DRIP preferences. Because DRIP has no account system or gameplay backend database, there is no DRIP account to delete."
+    }
+  },
+  {
     id: "triptracker-pro",
     name: "TripTracker Pro",
     slug: "/apps/triptracker-pro/",
@@ -185,6 +217,7 @@ const footerLinks = [
   ["Runway", "/apps/runway/"],
   ["Chalk", "/apps/chalk/"],
   ["Allotment Optimizer", "/apps/allotment-optimizer/"],
+  ["DRIP", "/apps/drip/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
   ["Match Card", "/apps/match-card/"]
 ];
