@@ -40,7 +40,7 @@ Score hole by hole with quick tap controls. Drafts auto-save during a round so s
 
 ### Voice score entry
 
-Users can tap the microphone and speak the scores for the current hole. Match Card transcribes and parses the score entry. This is tap-to-record, not always-listening.
+Users can tap the microphone and speak the scores for the current hole. Match Card records only after the user taps the microphone, then transcribes and parses the score entry.
 
 ### Course and player tracking
 
@@ -76,7 +76,7 @@ Use this current wording unless owner or App Store Connect evidence changes:
 
 - **Current public wording:** Available now on the iOS App Store.
 
-Do not claim iPad, Android, web, Apple Watch, or always-listening voice support unless confirmed.
+Do not claim additional platforms, device integrations, or removed voice modes unless confirmed.
 
 ## Marketing Page Draft
 
@@ -142,10 +142,10 @@ When contacting support, include:
 No. Match Card does not require sign-in or account creation.
 
 **Which devices are supported?**  
-Match Card is currently built for iPhone. Do not claim iPad, Android, web, or Apple Watch support unless confirmed.
+Match Card is currently built for iPhone. Do not claim additional platforms or device integrations unless confirmed.
 
 **How does voice scoring work?**  
-Tap the microphone on the live scoring screen and say the scores. It is a tap-to-record feature, not always-listening.
+Tap the microphone on the live scoring screen and say the scores. Recording starts only when the user taps the microphone.
 
 **Why does the app ask for location?**  
 Location may be used to capture a weather stamp for the round or bias course search. If location is denied, the app should still support scoring.
@@ -174,8 +174,7 @@ No. Match Card can tally friendly side games, but it does not process payments, 
 - No live multi-device sync
 - Optional backup is not an account system
 - Side games should not be described as net-handicap games unless that feature is confirmed
-- No always-listening voice mode
-- No Apple Watch support is claimed
+- Voice recording starts only after the user taps the microphone
 
 ## Privacy Page Inputs
 
@@ -257,14 +256,9 @@ Do not say:
 
 - “Your data never leaves your phone”
 - “We never send data anywhere”
-- “Always-listening voice assistant”
-- “Live voice conversation mode”
-- “Dynamic Island”
-- “Live Activity”
-- “Powered by Gemini”
-- “Android available”
-- “iPad available”
-- “Apple Watch available”
+- Unsupported platform or device integrations
+- Removed or unverified voice modes
+- Unverified AI provider names
 - “Net-handicap side games”
 - “Processes payments or settles bets”
 
