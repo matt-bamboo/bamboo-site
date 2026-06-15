@@ -146,28 +146,29 @@ const apps = [
     appStoreUrl: "https://apps.apple.com/us/app/match-card-pro/id6762983683",
     tagline: "Golf scorecard and round analytics",
     hero: "Your courses. Your rivalry. One scorecard.",
-    intro: "Match Card is a two-player golf scorecard for iPhone that helps regular playing partners score rounds, track rivalry stats, settle friendly side games, and keep a course-by-course record.",
-    long: "Match Card is built for golfers who play the same courses with the same regular partner and care about the rivalry as much as the score. It keeps live scoring simple, supports tap or voice score entry, tracks per-course performance, calculates a course-specific handicap, and keeps a season-long head-to-head trophy.",
+    intro: "Match Card is a local-first golf scorecard and round tracker for iPhone. It helps regular playing partners score rounds, track players and courses, review stats, and keep a head-to-head golf rivalry organized.",
+    long: "Match Card is built for golfers who play familiar courses with a regular partner and want a fast scorecard without a required account. Core round data is stored on device, live scoring is designed to stay simple, optional backup can be enabled separately, and tap-initiated voice scoring is available for players who want to keep the round moving.",
     users: ["Recreational golfers who play regularly with the same partner", "Two-player golf rivalries", "Golfers who care about course-specific history and head-to-head records", "Players who want a cleaner alternative to bloated golf apps", "Golfers who want side-game math handled for them"],
-    features: [["Live scoring, one-handed", "Fast hole-by-hole scoring with auto-saving drafts."], ["Score with your voice", "Tap the mic, say the scores, and keep the round moving."], ["Built for rivalries", "Track the season-long head-to-head between you and your regular playing partner."], ["Per-course handicap", "Keep course-specific performance history instead of one blended number."], ["Side games settled", "Handle Skins, Match Play, Nassau, Stableford, and more without spreadsheet math."], ["Share the round", "Generate clean post-round share cards for scores, stats, and highlights."]],
+    features: [["Live scoring, one-handed", "Fast hole-by-hole scoring with auto-saving drafts."], ["Score with your voice", "Tap the mic, say the scores, and keep the round moving."], ["Built for rivalries", "Track the head-to-head between you and your regular playing partner."], ["Course and player tracking", "Keep useful course, player, and round history in one place."], ["Side games organized", "Track friendly side games without spreadsheet math."], ["Share the round", "Generate clean post-round share cards for scores, stats, and highlights."]],
     works: ["Set your two player names.", "Choose or add a course.", "Score each hole by tap or voice.", "Save the round.", "Review side games and the season trophy.", "Share the result if you want."],
-    availability: "Available now on the iOS App Store. Android coming soon.",
+    availability: "Available now on the iOS App Store.",
     disclaimer: "Match Card can tally friendly side games, but it does not process payments, transfer money, or settle wagers.",
     support: {
       overview: "Match Card is a two-player golf scorecard for iPhone. It does not require an account and is designed to work offline for round scoring.",
-      include: ["iPhone model", "iOS version", "Match Card app version if visible", "A short description of the issue", "What screen you were on"],
+      include: ["iPhone model", "iOS version", "Match Card app version if visible", "What happened", "What you expected to happen", "What screen you were on", "Screenshots if helpful"],
+      caution: "Owner review: confirm the canonical support email before using this page in App Store metadata. The App Store listing currently uses Match Card Pro, while the installed app display name is Match Card.",
       faq: [["Do I need an account?", "No. Match Card does not require sign-in or account creation."], ["How does voice scoring work?", "Tap the microphone on the live scoring screen and say the scores. It is a tap-to-record feature, not always-listening."], ["Why does the app ask for location?", "Location may be used to capture a weather stamp for the round or bias course search. If location is denied, the app should still support scoring."], ["Is my data backed up?", "Only if the user enables optional backup. Backup is off by default."], ["Does Match Card handle money or betting payments?", "No. Match Card can tally friendly side games, but it does not process payments, transfer money, or settle wagers."]],
-      limitations: ["iOS only currently", "Android coming soon", "No live multi-device sync", "Optional backup is not an account system", "No always-listening voice mode"]
+      limitations: ["iOS only currently", "No live multi-device sync", "Optional backup is not an account system", "No always-listening voice mode", "No Apple Watch support is claimed"]
     },
     privacy: {
       stored: ["Round scores and scoring details", "Player names", "Course and venue records", "Hole notes and course history", "Bag and club data", "Side-game results", "App settings", "Attached local photo references", "Derived stats, records, and handicap calculations"],
-      local: "Match Card is local-first and account-free. Most scoring, stats, handicap, course, and settings data lives on the user's device.",
-      thirdParty: "Depending on which features the user chooses, Match Card may send limited data to service providers, including voice clips for transcription, scorecard images for parsing, course search queries, approximate location for course lookup, and approximate coordinates for weather information.",
+      local: "Match Card is local-first and account-free. Core scoring, stats, course, player, side-game, and settings data is stored on the user's device.",
+      thirdParty: "Depending on which features the user chooses, Match Card may send limited data to service providers. Tap-initiated voice scoring may send audio to the Match Card backend and OpenAI for transcription and parsing. Course search may use OpenStreetMap/Nominatim and an OpenAI fallback. Weather may use Open-Meteo based on approximate course or location coordinates.",
       accounts: "Match Card currently does not require user accounts, login, email, Apple Sign In, or Google Sign In.",
-      ai: "Voice, image, location, and course-search processing are feature-specific and should not be described as advertising or tracking.",
+      ai: "Voice scoring and course-search fallback may use OpenAI only for the feature the user requested. These AI features are not always-listening and are not used for advertising or third-party tracking.",
       children: "Match Card is not directed at children.",
       payments: "Match Card is available through the iOS App Store. Match Card does not process payments, transfer money, or settle wagers.",
-      tracking: "No analytics, advertising, or tracking claims are made unless confirmed against the current codebase before publication.",
+      tracking: "Match Card does not use ads or third-party tracking.",
       deletion: "Users can erase local data in the app. Optional backup, if enabled, should be deleted separately through the backup feature."
     }
   }
