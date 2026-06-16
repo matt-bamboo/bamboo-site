@@ -1697,144 +1697,167 @@ h3 {
 }
 
 .maya-hero {
-  padding: 150px 0 72px;
+  padding: 142px 0 86px;
   background:
-    radial-gradient(circle at 78% 16%, rgba(62, 151, 190, .2), transparent 28%),
-    radial-gradient(circle at 18% 72%, rgba(211, 75, 70, .13), transparent 28%),
-    linear-gradient(180deg, #fffaf0, #ece3cf);
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, .025) 1px, transparent 1px),
+    linear-gradient(135deg, #17150f 0%, #211a32 48%, #29352a 100%);
+  background-size: 94px 94px, 94px 94px, auto;
   overflow: hidden;
 }
 
 .maya-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
-  gap: 52px;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: 56px;
   align-items: center;
 }
 
+.maya-hero .eyebrow {
+  border-color: rgba(232, 186, 106, .34);
+  background: rgba(232, 186, 106, .1);
+  color: #e8ba6a;
+}
+
 .maya-hero h1 {
-  max-width: 880px;
+  max-width: 780px;
+  color: #fbfaf5;
 }
 
-.maya-hero-panel {
-  position: relative;
-  min-height: 420px;
-  border: 1px solid rgba(37, 40, 33, .13);
+.maya-hero .lede {
+  max-width: 650px;
+  color: rgba(251, 250, 245, .74);
+}
+
+.maya-cover-link {
+  display: block;
+  justify-self: end;
+  width: min(100%, 330px);
+  border: 1px solid rgba(251, 250, 245, .2);
   border-radius: 8px;
+  padding: 10px;
+  background: rgba(251, 250, 245, .08);
+  box-shadow: 0 34px 100px rgba(0, 0, 0, .34);
+  text-decoration: none;
+  transform: rotate(1.4deg);
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.maya-cover-link:hover {
+  border-color: rgba(232, 186, 106, .7);
+  transform: translateY(-3px) rotate(.5deg);
+}
+
+.maya-cover-link img,
+.maya-book-cover img {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .26);
+}
+
+.maya-book-section {
+  padding: 76px 0 110px;
   background:
-    linear-gradient(135deg, rgba(46, 151, 190, .22), rgba(255, 250, 240, .76) 45%, rgba(211, 75, 70, .2)),
-    linear-gradient(90deg, rgba(37, 40, 33, .06) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(37, 40, 33, .05) 1px, transparent 1px);
-  background-size: auto, 42px 42px, 42px 42px;
-  box-shadow: 0 32px 90px rgba(37, 40, 33, .18);
-  overflow: hidden;
+    linear-gradient(90deg, rgba(37, 40, 33, .045) 1px, transparent 1px),
+    linear-gradient(180deg, #fbfaf5, #ece3cf);
+  background-size: 112px 112px, auto;
 }
 
-.maya-hero-panel span {
-  position: absolute;
-  border-radius: 8px;
-  background: rgba(255, 250, 240, .72);
-  box-shadow: 0 20px 60px rgba(37, 40, 33, .18);
-}
-
-.maya-hero-panel span:nth-child(1) {
-  width: 46%;
-  height: 58%;
-  left: 10%;
-  top: 12%;
-  transform: rotate(-9deg);
-}
-
-.maya-hero-panel span:nth-child(2) {
-  width: 44%;
-  height: 54%;
-  right: 12%;
-  top: 22%;
-  transform: rotate(8deg);
-}
-
-.maya-hero-panel span:nth-child(3) {
-  width: 54%;
-  height: 34%;
-  left: 24%;
-  bottom: 12%;
-  transform: rotate(-2deg);
-  background: rgba(255, 228, 161, .68);
-}
-
-.maya-library {
-  padding: 76px 0 104px;
-}
-
-.maya-story-grid {
+.maya-book-layout {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
   gap: 22px;
+  align-items: start;
 }
 
-.maya-story-card {
-  border: 1px solid rgba(37, 40, 33, .13);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .68));
-  box-shadow: 0 22px 70px rgba(37, 40, 33, .11);
-  overflow: hidden;
-}
-
-.maya-story-link {
+.maya-featured-story {
   display: grid;
-  grid-template-rows: auto auto auto auto 1fr;
-  min-height: 100%;
-  color: inherit;
+  grid-template-columns: minmax(210px, 300px) minmax(0, 1fr);
+  gap: 30px;
+  border: 1px solid rgba(37, 40, 33, .14);
+  border-radius: 8px;
+  padding: 26px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, .62)),
+    var(--panel);
+  box-shadow: 0 24px 70px rgba(37, 40, 33, .1);
+}
+
+.maya-book-cover {
+  align-self: start;
   text-decoration: none;
 }
 
-.maya-story-link.is-disabled {
-  cursor: default;
+.maya-book-copy h2 {
+  max-width: 620px;
+  font-size: clamp(34px, 4.5vw, 58px);
 }
 
-.maya-story-link.is-disabled img {
-  filter: saturate(.8);
+.maya-book-copy .lede {
+  max-width: 620px;
+  font-size: 18px;
 }
 
-.maya-story-card span,
-.maya-story-card strong,
-.maya-story-card em,
-.maya-story-card p {
-  margin-left: 24px;
-  margin-right: 24px;
+.maya-book-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 26px 0 0;
 }
 
-.maya-story-card span {
-  width: fit-content;
-  margin-top: 22px;
-  border: 1px solid rgba(170, 129, 65, .26);
-  border-radius: 999px;
-  padding: 4px 10px;
-  background: rgba(170, 129, 65, .1);
-  color: #6f562d;
-  font-size: 12px;
-  font-weight: 860;
+.maya-book-facts div,
+.maya-next-panel {
+  border: 1px solid rgba(37, 40, 33, .12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .56);
 }
 
-.maya-story-card strong {
-  margin-top: 18px;
+.maya-book-facts div {
+  padding: 12px;
+}
+
+.maya-book-facts dt {
+  color: var(--subtle);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.maya-book-facts dd {
+  margin: 6px 0 0;
   color: var(--ink);
-  font-size: clamp(28px, 3.4vw, 44px);
-  line-height: 1;
+  font-size: 14px;
+  font-weight: 780;
+  line-height: 1.25;
 }
 
-.maya-story-card em {
-  margin-top: 10px;
-  color: #2f7d91;
-  font-style: normal;
-  font-weight: 850;
+.maya-next-panel {
+  padding: 22px;
 }
 
-.maya-story-card p {
-  margin-top: 14px;
-  margin-bottom: 24px;
+.maya-next-panel h2 {
+  font-size: 31px;
+  line-height: 1.05;
+}
+
+.maya-next-panel p {
+  margin: 16px 0 0;
   color: var(--muted);
+}
+
+.maya-next-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.maya-next-list span {
+  border-left: 3px solid rgba(170, 129, 65, .55);
+  padding: 8px 0 8px 12px;
+  color: #4a4338;
+  font-size: 14px;
+  font-weight: 780;
 }
 
 .headshot-wrap {
@@ -2037,15 +2060,15 @@ h3 {
 }
 
 @media (max-width: 940px) {
-  .hero,
-  .split,
-  .app-hero-layout,
-  .maya-hero-grid,
-  .story-print-hero-layout,
-  .story-hero-grid,
-  .story-reader {
-    grid-template-columns: 1fr;
-  }
+	  .hero,
+	  .split,
+	  .app-hero-layout,
+	  .maya-book-layout,
+	  .story-print-hero-layout,
+	  .story-hero-grid,
+	  .story-reader {
+	    grid-template-columns: 1fr;
+	  }
 
   .hero { min-height: auto; }
 
@@ -2063,9 +2086,10 @@ h3 {
     min-height: 430px;
   }
 
-  .maya-story-grid {
-    grid-template-columns: 1fr;
-  }
+	  .maya-cover-link {
+	    justify-self: start;
+	    width: min(100%, 280px);
+	  }
 
   .story-character-token {
     transform:
@@ -2234,17 +2258,34 @@ h3 {
     padding-bottom: 48px;
   }
 
-  .maya-hero {
-    padding: 104px 0 48px;
-  }
+	  .maya-hero {
+	    padding: 104px 0 58px;
+	  }
 
-  .maya-hero-panel {
-    min-height: 300px;
-  }
+	  .maya-hero-grid,
+	  .maya-featured-story {
+	    grid-template-columns: 1fr;
+	  }
 
-  .maya-library {
-    padding: 58px 0 78px;
-  }
+	  .maya-cover-link {
+	    width: min(100%, 230px);
+	  }
+
+	  .maya-book-cover {
+	    width: min(100%, 230px);
+	  }
+
+	  .maya-book-section {
+	    padding: 48px 0 78px;
+	  }
+
+	  .maya-featured-story {
+	    padding: 18px;
+	  }
+
+	  .maya-book-facts {
+	    grid-template-columns: 1fr;
+	  }
 
   .story-hero-copy h1 {
     font-size: clamp(45px, 13vw, 64px);

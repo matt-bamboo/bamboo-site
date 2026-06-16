@@ -1,0 +1,152 @@
+{
+  "generatedAt": "2026-06-16T03:16:37.543Z",
+  "chapters": [
+    {
+      "chapter": "ch1",
+      "file": "ch1.mp3",
+      "skipped": true
+    },
+    {
+      "chapter": "ch2",
+      "file": "ch2.mp3",
+      "skipped": true
+    },
+    {
+      "chapter": "ch3",
+      "file": "ch3.mp3",
+      "skipped": true
+    },
+    {
+      "chapter": "ch4",
+      "file": "ch4.mp3",
+      "bytes": 9654155,
+      "chunks": 3
+    },
+    {
+      "chapter": "ch5",
+      "file": "ch5.mp3",
+      "bytes": 7945075,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch6",
+      "file": "ch6.mp3",
+      "bytes": 7141340,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch7",
+      "file": "ch7.mp3",
+      "bytes": 7125875,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch8",
+      "file": "ch8.mp3",
+      "bytes": 7416357,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch9",
+      "file": "ch9.mp3",
+      "bytes": 7715616,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch10",
+      "file": "ch10.mp3",
+      "bytes": 8806071,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch11",
+      "file": "ch11.mp3",
+      "bytes": 9618583,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch12",
+      "file": "ch12.mp3",
+      "bytes": 6567899,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch13",
+      "file": "ch13.mp3",
+      "bytes": 6815749,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch14",
+      "file": "ch14.mp3",
+      "bytes": 6150777,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch15",
+      "file": "ch15.mp3",
+      "bytes": 8782665,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch16",
+      "file": "ch16.mp3",
+      "bytes": 6876354,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch17",
+      "file": "ch17.mp3",
+      "bytes": 5638359,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch18",
+      "file": "ch18.mp3",
+      "bytes": 6216814,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch19",
+      "file": "ch19.mp3",
+      "bytes": 8094287,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch20",
+      "file": "ch20.mp3",
+      "bytes": 6773536,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch21",
+      "file": "ch21.mp3",
+      "bytes": 8168684,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch22",
+      "file": "ch22.mp3",
+      "bytes": 6882623,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch23",
+      "file": "ch23.mp3",
+      "bytes": 6848350,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch24",
+      "file": "ch24.mp3",
+      "bytes": 7115008,
+      "chunks": 2
+    },
+    {
+      "chapter": "ch25",
+      "file": "ch25.mp3",
+      "bytes": 5183200,
+      "chunks": 2
+    }
+  ]
+}
