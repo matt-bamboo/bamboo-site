@@ -1,0 +1,188 @@
+{
+  "title": "The Dragon Glass Map",
+  "series": "The Adventures of Elizabeth and Scarlet",
+  "status": "Old inline SVG sketches removed from the reader. Use these 25 prompts to generate replacement chapter art.",
+  "styleBible": {
+    "format": "landscape chapter plate, 16:9 or 3:2, high-resolution WebP",
+    "visualDirection": "premium middle-grade fantasy, cinematic storybook realism, luminous but not cartoonish",
+    "continuity": "Elizabeth has dark blonde hair and neon-blue skates; Scarlet has auburn hair and red skates; Cinder is an emerald baby dragon with violet eyes, gold horns, velvet wings, glittery golden smoke.",
+    "avoid": "flat vector art, generic clipart, mismatched ages, random costumes, text inside image, distorted faces, extra limbs, muddy dark crops"
+  },
+  "illustrations": [
+    {
+      "chapter": "ch1",
+      "title": "The Race Through the Great Hall",
+      "caption": "The marble hall sings under their wheels — stained glass rivers of red, gold and blue.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch1.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 1: The Race Through the Great Hall. Scene: The marble hall sings under their wheels — stained glass rivers of red, gold and blue.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch2",
+      "title": "Max Makes a Deal",
+      "caption": "Max arrives with breakfast — and one raised eyebrow that sees everything.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch2.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 2: Max Makes a Deal. Scene: Max arrives with breakfast — and one raised eyebrow that sees everything.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch3",
+      "title": "The Queen's Speech and the Fifty-Dollar Treats",
+      "caption": "The Queen surveys the Great Hall — the broken pedestal, the circle of pale marble where the vase once stood.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch3.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 3: The Queen's Speech and the Fifty-Dollar Treats. Scene: The Queen surveys the Great Hall — the broken pedestal, the circle of pale marble where the vase once stood.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch4",
+      "title": "Operation Ice Cream",
+      "caption": "Midnight — the castle sleeps, Julio’s truck glows gold at the gate.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch4.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 4: Operation Ice Cream. Scene: Midnight — the castle sleeps, Julio’s truck glows gold at the gate.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch5",
+      "title": "The Sky Zone Stakeout",
+      "caption": "Sky Zone — Max hides behind a pillar, fake mustache visibly askew.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch5.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 5: The Sky Zone Stakeout. Scene: Sky Zone — Max hides behind a pillar, fake mustache visibly askew.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch6",
+      "title": "Ms. Ironfist's Test",
+      "caption": "Ms. Ironfist’s classroom — a test that measures more than anyone expects.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch6.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 6: Ms. Ironfist's Test. Scene: Ms. Ironfist’s classroom — a test that measures more than anyone expects.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch7",
+      "title": "The Sunflower Substitute",
+      "caption": "A signature moment from The Sunflower Substitute: Ms. Ironfist was absent on a Tuesday. This was information that reached Room Four like a weather report of unexpected sunshine — greeted with the same involuntary, slightly guilty delight of a school day where the hardest thing is figuring out what to do with all the lightness. The substitute arrived approximately forty-five seconds after the bell, which was fast enou",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch7.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 7: The Sunflower Substitute. Scene: A signature moment from The Sunflower Substitute: Ms. Ironfist was absent on a Tuesday. This was information that reached Room Four like a weather report of unexpected sunshine — greeted with the same involuntary, slightly guilty delight of a school day where the hardest thing is figuring out what to do with all the lightness. The substitute arrived approximately forty-five seconds after the bell, which was fast enou. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch8",
+      "title": "The Ladybug Room",
+      "caption": "The Ladybug Room — glowing ceiling bugs, painted meadow, a carved star in the wall.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch8.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 8: The Ladybug Room. Scene: The Ladybug Room — glowing ceiling bugs, painted meadow, a carved star in the wall.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch9",
+      "title": "The Field Trip Note",
+      "caption": "The Messenger Tree in Whispering Woods — a silver envelope tucked in the roots.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch9.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 9: The Field Trip Note. Scene: The Messenger Tree in Whispering Woods — a silver envelope tucked in the roots.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch10",
+      "title": "Picnic at the Crystal Cave",
+      "caption": "The Crystal Cave — violet walls, and the brass owl tapping the wooden box.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch10.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 10: Picnic at the Crystal Cave. Scene: The Crystal Cave — violet walls, and the brass owl tapping the wooden box.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch11",
+      "title": "The Clue in the Glass",
+      "caption": "A signature moment from The Clue in the Glass: Back at the picnic blanket, with the afternoon sun warm on their backs and the forest breathing quietly behind them, Elizabeth sat with the glass shard hidden under her napkin and tried to eat a cucumber sandwich as if nothing particular had occurred. She was not very convincing. Her jaw worked, and the sandwich disappeared, and she looked like someone doing a performanc",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch11.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 11: The Clue in the Glass. Scene: A signature moment from The Clue in the Glass: Back at the picnic blanket, with the afternoon sun warm on their backs and the forest breathing quietly behind them, Elizabeth sat with the glass shard hidden under her napkin and tried to eat a cucumber sandwich as if nothing particular had occurred. She was not very convincing. Her jaw worked, and the sandwich disappeared, and she looked like someone doing a performanc. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch12",
+      "title": "Golden Glue",
+      "caption": "The kintsugi repair — gold veins through blue glass, more beautiful for having broken.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch12.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 12: Golden Glue. Scene: The kintsugi repair — gold veins through blue glass, more beautiful for having broken.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch13",
+      "title": "Royal Detectives",
+      "caption": "A signature moment from Royal Detectives: The sign appeared on the door of the Ladybug Room the morning after the confession. It was hand-lettered, which meant Max had lettered it, in the precise unhurried style that Max applied to everything from breakfast tray arrangements to disciplinary conversations. The wood was dark and looked expensive. The letters were gold. ROYAL DETECTIVE HEADQUARTERS",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch13.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 13: Royal Detectives. Scene: A signature moment from Royal Detectives: The sign appeared on the door of the Ladybug Room the morning after the confession. It was hand-lettered, which meant Max had lettered it, in the precise unhurried style that Max applied to everything from breakfast tray arrangements to disciplinary conversations. The wood was dark and looked expensive. The letters were gold. ROYAL DETECTIVE HEADQUARTERS. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch14",
+      "title": "The Egg in the Mist",
+      "caption": "A heartbeat in the mist — the egg glows, and the compass needle swings.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch14.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 14: The Egg in the Mist. Scene: A heartbeat in the mist — the egg glows, and the compass needle swings.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch15",
+      "title": "Cinder Hatches",
+      "caption": "Cinder hatches — violet eyes open, glitter smoke curling, Scarlet’s hand reaching out.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch15.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 15: Cinder Hatches. Scene: Cinder hatches — violet eyes open, glitter smoke curling, Scarlet’s hand reaching out.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch16",
+      "title": "The Marshmallow Feast",
+      "caption": "Cinder breathes golden fire to warm the milk — his first favourite thing in the world.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch16.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 16: The Marshmallow Feast. Scene: Cinder breathes golden fire to warm the milk — his first favourite thing in the world.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch17",
+      "title": "Echo-Vision",
+      "caption": "Echo-Vision: figures ripple across the crystal wall like ghosts from another time.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch17.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 17: Echo-Vision. Scene: Echo-Vision: figures ripple across the crystal wall like ghosts from another time.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch18",
+      "title": "The Face Beyond Stone",
+      "caption": "A signature moment from The Face Beyond Stone: No one breathed. The cave had its own sounds — crystals adjusting to temperature, the distant white noise of the waterfall, Cinder's soft respiration — and under all of them, the knock. Patient as something that had thought about this moment and decided not to rush it. Scarlet pulled Cinder into the shadows by the far crystal cluster, tucking herself down to his level, h",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch18.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 18: The Face Beyond Stone. Scene: A signature moment from The Face Beyond Stone: No one breathed. The cave had its own sounds — crystals adjusting to temperature, the distant white noise of the waterfall, Cinder's soft respiration — and under all of them, the knock. Patient as something that had thought about this moment and decided not to rush it. Scarlet pulled Cinder into the shadows by the far crystal cluster, tucking herself down to his level, h. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch19",
+      "title": "The Stealth Flight",
+      "caption": "The first real flight — Cinder skims the forest canopy in golden mist.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch19.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 19: The Stealth Flight. Scene: The first real flight — Cinder skims the forest canopy in golden mist.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch20",
+      "title": "The Royal Hawaiian Jet",
+      "caption": "A signature moment from The Royal Hawaiian Jet: The Hawaii announcement happened at breakfast, which was where all the significant announcements in the family happened, on the theory that no one could react dramatically while eating. Mom put down her tea cup, in the particular way she put things down when she had something to say, and said: \"We're going to Hawaii. Two weeks. All of us.\" Scarlet's spoon hit the bowl.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch20.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 20: The Royal Hawaiian Jet. Scene: A signature moment from The Royal Hawaiian Jet: The Hawaii announcement happened at breakfast, which was where all the significant announcements in the family happened, on the theory that no one could react dramatically while eating. Mom put down her tea cup, in the particular way she put things down when she had something to say, and said: \"We're going to Hawaii. Two weeks. All of us.\" Scarlet's spoon hit the bowl.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch21",
+      "title": "Leilani and the Whispering Tides",
+      "caption": "The Whispering Tides cave — Leilani traces ancient dragon carvings lit by Cinder’s glow.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch21.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 21: Leilani and the Whispering Tides. Scene: The Whispering Tides cave — Leilani traces ancient dragon carvings lit by Cinder’s glow.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch22",
+      "title": "The Lava Glass Map",
+      "caption": "Leilani’s lava glass map — blue sand harness rising in the air above the crater.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch22.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 22: The Lava Glass Map. Scene: Leilani’s lava glass map — blue sand harness rising in the air above the crater.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch23",
+      "title": "The Collector's Net",
+      "caption": "A signature moment from The Collector's Net: The net came without warning. One moment the ceiling vent was just a ceiling vent, casting a column of afternoon light into the chamber, and then it was full of silver — a net, dense and fine-mesh, dropping through the opening in a controlled fall, its edges spreading as it fell to cover the maximum possible area. It fell toward Cinder.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch23.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 23: The Collector's Net. Scene: A signature moment from The Collector's Net: The net came without warning. One moment the ceiling vent was just a ceiling vent, casting a column of afternoon light into the chamber, and then it was full of silver — a net, dense and fine-mesh, dropping through the opening in a controlled fall, its edges spreading as it fell to cover the maximum possible area. It fell toward Cinder.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch24",
+      "title": "Fire Hill",
+      "caption": "Fire Hill crater — the Dragon Glass map key glows on the pedestal, three continents linked.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch24.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 24: Fire Hill. Scene: Fire Hill crater — the Dragon Glass map key glows on the pedestal, three continents linked.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    },
+    {
+      "chapter": "ch25",
+      "title": "The Sky Guardian Promise",
+      "caption": "The Sky Guardian — Cinder soars above the kingdom at dawn, the circle complete.",
+      "asset": "assets/stories/elizabeth-scarlet/illustrations/ch25.webp",
+      "prompt": "Premium middle-grade fantasy book illustration for The Dragon Glass Map, chapter 25: The Sky Guardian Promise. Scene: The Sky Guardian — Cinder soars above the kingdom at dawn, the circle complete.. Cinematic storybook realism, expressive ten-year-old princess detectives Elizabeth and Scarlet, consistent characters, warm magical lighting, detailed castle/fantasy environments, painterly but crisp, publish-ready, no text, no captions, no distorted faces or hands."
+    }
+  ]
+}
