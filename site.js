@@ -212,12 +212,13 @@ const nav = [
   ["Apps", "/#apps"]
 ];
 
+const featuredAppIds = new Set(["chalk", "allotment-optimizer", "triptracker-pro", "match-card"]);
+const featuredApps = apps.filter(app => featuredAppIds.has(app.id));
+
 const footerLinks = [
   ["Maya's Work", "/maya/"],
-  ["Runway", "/apps/runway/"],
   ["Chalk", "/apps/chalk/"],
   ["Allotment Optimizer", "/apps/allotment-optimizer/"],
-  ["DRIP", "/apps/drip/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
   ["Match Card", "/apps/match-card/"]
 ];
@@ -394,7 +395,7 @@ function shell(title, active, content) {
 }
 
 function home() {
-  const featured = apps;
+  const featured = featuredApps;
   shell("Bamboo Holdings", "Home", `
     <section id="top" class="forest-scene forest-intro">
       <video class="forest-media" autoplay muted loop playsinline poster="${assetUrl("/assets/brand/bamboo-forest-poster.jpg")}" aria-hidden="true">
@@ -414,16 +415,6 @@ function home() {
           <p>My approach comes from nearly twenty years of hands-on execution: scaling high-volume national logistics, managing compressed seasonal demand, and running corporate enterprise operations.</p>
           <p>At Dorm Room Movers, I spent 16 years helping build an asset-light logistics platform across 300+ universities and boarding schools, including Yale, Carnegie Mellon, UMass Amherst, Choate Rosemary Hall, and the Berkshire School. Before that, with iEnergizer, I helped build and operate a 350-seat customer service center in Austin supporting Electronic Arts across 40 portfolios.</p>
           <p>Whether I'm advising a growing company or building something new, the focus is the same: strip away operational chaos and engineer systems that perform.</p>
-        </div>
-      </div>
-    </section>
-    <section class="story-section">
-      <div class="inner story-stage">
-        <p class="eyebrow">Illustrated story</p>
-        <h2>The Dragon Glass Map</h2>
-        <div class="story-copy">
-          <p>Book one in The Adventures of Elizabeth and Scarlet: princess detectives, Dragon Glass clues, a secret crystal cave, and Cinder the baby dragon.</p>
-          <div class="actions"><a class="button" href="${pageUrl("/stories/elizabeth-scarlet/")}">Enter the story</a></div>
         </div>
       </div>
     </section>
