@@ -212,13 +212,12 @@ const nav = [
   ["Apps", "/#apps"]
 ];
 
-const featuredAppIds = new Set(["chalk", "allotment-optimizer", "triptracker-pro", "match-card"]);
+const featuredAppIds = new Set(["chalk", "triptracker-pro", "match-card"]);
 const featuredApps = apps.filter(app => featuredAppIds.has(app.id));
 
 const footerLinks = [
   ["Maya's Work", "/maya/"],
   ["Chalk", "/apps/chalk/"],
-  ["Allotment Optimizer", "/apps/allotment-optimizer/"],
   ["TripTracker Pro", "/apps/triptracker-pro/"],
   ["Match Card", "/apps/match-card/"]
 ];
@@ -410,11 +409,17 @@ function home() {
           <div class="bio-photo">
             <img src="${assetUrl("/assets/brand/matthew-grossman-headshot.jpg")}" alt="Matthew Grossman" onerror="this.parentElement.classList.add('missing-photo'); this.remove();">
           </div>
-          <p class="bio-lede">I'm Matthew Grossman, and I build systems that scale.</p>
-          <p>As an operational architect and growth advisor, I work at the intersection of complex logistics, technology integration, and large-scale labor management. Through Bamboo Holdings, I currently advise and mentor 14 scaling companies, helping founders audit workflows, eliminate supply chain bottlenecks, and build repeatable infrastructure for growth.</p>
-          <p>My approach comes from nearly twenty years of hands-on execution: scaling high-volume national logistics, managing compressed seasonal demand, and running corporate enterprise operations.</p>
-          <p>At Dorm Room Movers, I spent 16 years helping build an asset-light logistics platform across 300+ universities and boarding schools, including Yale, Carnegie Mellon, UMass Amherst, Choate Rosemary Hall, and the Berkshire School. Before that, with iEnergizer, I helped build and operate a 350-seat customer service center in Austin supporting Electronic Arts across 40 portfolios.</p>
-          <p>Whether I'm advising a growing company or building something new, the focus is the same: strip away operational chaos and engineer systems that perform.</p>
+          <p class="bio-lede">I’m Matthew Grossman, and I build systems that scale.</p>
+          <p>I’m a founder, operator, and advisor working at the intersection of logistics, technology, people, and execution, usually in places where things are messy, moving fast, and need to work anyway.</p>
+          <p>After graduating from Arizona State University in 2007, I co-founded <strong>Dorm Room Movers</strong> and spent <strong>16 years</strong> scaling it into a nationwide, asset-light logistics platform serving <strong>300+ universities and boarding schools</strong> across <strong>42 states</strong>, including <strong>Yale</strong>, <strong>Carnegie Mellon</strong>, <strong>UMass Amherst</strong>, <strong>Choate Rosemary Hall</strong>, <strong>Berkshire School</strong>, and <strong>IMG Academy</strong>. To make it work, we built custom technology to coordinate a distributed network of over <strong>200 local partners and national van line agents</strong>.</p>
+          <p>The business was built for pressure. Roughly <strong>90% of annual revenue</strong> happened inside a <strong>six-week window</strong>, which meant forecasting had to be right, vendors had to show up, schools had to trust us, customers had to be supported, and the systems had to hold. Every year was a live stress test.</p>
+          <p>Before Dorm Room Movers, I worked with <strong>iEnergizer</strong>, helping build and operate a <strong>250-seat corporate operations and customer service center</strong> in Austin supporting <strong>Electronic Arts</strong>. That experience gave me an early foundation in enterprise operations, team leadership, and high-volume execution.</p>
+          <p>Since exiting Dorm Room Movers in 2023, I’ve spent more time with my wife and three daughters, stayed active in <strong>Entrepreneurs’ Organization (EO) Arizona</strong>, mentored founders through <strong>EO Accelerator</strong>, and started building what comes next through <strong>Bamboo Holdings</strong>. Today, I advise scaling companies, build software products, and explore new ideas across <strong>AI</strong>, automation, logistics, financial technology, and real-world operations.</p>
+          <p>It all comes back to one core belief: pressure is useful. It shows you where the weak points are, who is aligned, what needs to change, and what kind of system is strong enough to keep going.</p>
+          <blockquote class="bio-quote">
+            <p>“Good timber does not grow with ease. The stronger wind, the stronger trees.”</p>
+            <cite>Douglas Malloch</cite>
+          </blockquote>
         </div>
       </div>
     </section>
