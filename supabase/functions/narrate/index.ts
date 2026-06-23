@@ -2,17 +2,34 @@ const DEFAULT_VOICE_ID = "JBFqnCBsd6RMkjVDRZzb";
 const DEFAULT_MODEL_ID = "eleven_multilingual_v2";
 const DEFAULT_STORY_URL = "https://bamboo.holdings/stories/elizabeth-scarlet/";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": Deno.env.get("NARRATION_ALLOWED_ORIGIN") || "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-  "Access-Control-Allow-Methods": "GET, OPTIONS",
-};
+const DEFAULT_ALLOWED_ORIGINS = new Set([
+  "https://app.bamboo.holdings",
+  "https://bamboo.holdings",
+  "http://127.0.0.1:8765",
+  "http://localhost:8765",
+]);
 
-function json(body: unknown, status = 200): Response {
+function corsHeaders(req: Request): Record<string, string> {
+  const configured = (Deno.env.get("NARRATION_ALLOWED_ORIGINS") || Deno.env.get("NARRATION_ALLOWED_ORIGIN") || "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const allowed = configured.length ? new Set(configured) : DEFAULT_ALLOWED_ORIGINS;
+  const origin = req.headers.get("Origin") || "";
+  const allowOrigin = origin && allowed.has(origin) ? origin : "https://bamboo.holdings";
+  return {
+    "Access-Control-Allow-Origin": allowOrigin,
+    "Vary": "Origin",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
+  };
+}
+
+function json(req: Request, body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
-      ...corsHeaders,
+      ...corsHeaders(req),
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "no-store",
     },
@@ -61,18 +78,18 @@ function envNumber(name: string, fallback: number): number {
 }
 
 Deno.serve(async (req: Request): Promise<Response> => {
-  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders });
-  if (req.method !== "GET") return json({ error: "Use GET." }, 405);
+  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders(req) });
+  if (req.method !== "GET") return json(req, { error: "Use GET." }, 405);
 
   const url = new URL(req.url);
   const apiKey = Deno.env.get("ELEVENLABS_API_KEY");
 
   if (url.searchParams.get("probe") === "1") {
-    if (!apiKey) return json({ ready: false, error: "Narration is not configured." }, 500);
-    return json({ ready: true, provider: "elevenlabs", mode: "stream" });
+    if (!apiKey) return json(req, { ready: false, error: "Narration is not configured." }, 500);
+    return json(req, { ready: true, provider: "elevenlabs", mode: "stream" });
   }
 
-  if (!apiKey) return json({ error: "Narration is not configured." }, 500);
+  if (!apiKey) return json(req, { error: "Narration is not configured." }, 500);
 
   try {
     const chapter = url.searchParams.get("chapter") || "ch1";
@@ -109,19 +126,19 @@ Deno.serve(async (req: Request): Promise<Response> => {
 
     if (!elevenResponse.ok || !elevenResponse.body) {
       const detail = await elevenResponse.text().catch(() => "");
-      return json({ error: "ElevenLabs narration failed.", detail: detail.slice(0, 240) }, elevenResponse.status || 502);
+      return json(req, { error: "ElevenLabs narration failed.", detail: detail.slice(0, 240) }, elevenResponse.status || 502);
     }
 
     return new Response(elevenResponse.body, {
       status: 200,
       headers: {
-        ...corsHeaders,
+        ...corsHeaders(req),
         "Content-Type": "audio/mpeg",
         "Cache-Control": "no-store",
       },
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Narration failed.";
-    return json({ error: message }, 500);
+    return json(req, { error: message }, 500);
   }
 });
