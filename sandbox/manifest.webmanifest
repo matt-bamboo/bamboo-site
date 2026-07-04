@@ -1,0 +1,23 @@
+{
+  "name": "Hem World Builder",
+  "short_name": "Hem",
+  "description": "Hem standalone sandbox review build.",
+  "start_url": "/sandbox/",
+  "scope": "/sandbox/",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#87d7ff",
+  "theme_color": "#87d7ff",
+  "icons": [
+    {
+      "src": "/sandbox/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/sandbox/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ]
+}
