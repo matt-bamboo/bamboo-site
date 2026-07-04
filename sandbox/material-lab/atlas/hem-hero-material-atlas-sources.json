@@ -1,0 +1,309 @@
+{
+  "atlas": {
+    "colorMap": "/material-lab/atlas/hem-hero-material-color-atlas-256.png",
+    "detailMap": "/material-lab/atlas/hem-hero-material-detail-atlas-256.png",
+    "tileSize": 256,
+    "columns": 4,
+    "rows": 3
+  },
+  "licensePolicy": "Only verified CC0 downloaded assets from the approved material sources are packed. No paid assets or raw source dumps are committed.",
+  "generatedAt": "2026-07-04T01:59:06.336Z",
+  "sources": [
+    {
+      "family": "brick",
+      "tile": [
+        0,
+        0
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Bricks097",
+      "assetId": "Bricks097",
+      "sourceUrl": "https://ambientcg.com/a/Bricks097",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Bricks097_1K-JPG.zip",
+      "downloadedBytes": 5172084,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "brick",
+        "roof_tile",
+        "tile",
+        "clay"
+      ]
+    },
+    {
+      "family": "roughStone",
+      "tile": [
+        1,
+        0
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Rock064",
+      "assetId": "Rock064",
+      "sourceUrl": "https://ambientcg.com/a/Rock064",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Rock064_1K-JPG.zip",
+      "downloadedBytes": 8205462,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "stone",
+        "rock",
+        "basalt",
+        "temple_ruin"
+      ]
+    },
+    {
+      "family": "plasterConcrete",
+      "tile": [
+        2,
+        0
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Plaster001",
+      "assetId": "Plaster001",
+      "sourceUrl": "https://ambientcg.com/a/Plaster001",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Plaster001_1K-JPG.zip",
+      "downloadedBytes": 7414156,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "plaster",
+        "concrete",
+        "limestone",
+        "moulding"
+      ]
+    },
+    {
+      "family": "grassMoss",
+      "tile": [
+        3,
+        0
+      ],
+      "provider": "Poly Haven",
+      "source": "Poly Haven Forest Leaves 02",
+      "assetId": "forest_leaves_02",
+      "sourceUrl": "https://polyhaven.com/a/forest_leaves_02",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://polyhaven.com/license",
+      "downloadedFile": "forest_leaves_02_1k_jpg_maps",
+      "downloadedBytes": 630414,
+      "packedMaps": [
+        "Diffuse",
+        "Rough"
+      ],
+      "materialTargets": [
+        "grass",
+        "meadow",
+        "soil",
+        "bush",
+        "cactus"
+      ]
+    },
+    {
+      "family": "wood",
+      "tile": [
+        0,
+        1
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Planks016",
+      "assetId": "Planks016",
+      "sourceUrl": "https://ambientcg.com/a/Planks016",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Planks016_1K-JPG.zip",
+      "downloadedBytes": 9186205,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "log",
+        "wood",
+        "timber",
+        "bamboo",
+        "wooden_window"
+      ]
+    },
+    {
+      "family": "cloth",
+      "tile": [
+        1,
+        1
+      ],
+      "provider": "Poly Haven",
+      "source": "Poly Haven Rough Linen",
+      "assetId": "rough_linen",
+      "sourceUrl": "https://polyhaven.com/a/rough_linen",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://polyhaven.com/license",
+      "downloadedFile": "rough_linen_1k_jpg_maps",
+      "downloadedBytes": 1919526,
+      "packedMaps": [
+        "Diffuse",
+        "Rough"
+      ],
+      "materialTargets": [
+        "fabric",
+        "tapestry",
+        "pillow"
+      ]
+    },
+    {
+      "family": "leather",
+      "tile": [
+        2,
+        1
+      ],
+      "provider": "Poly Haven",
+      "source": "Poly Haven Leather Red 02",
+      "assetId": "leather_red_02",
+      "sourceUrl": "https://polyhaven.com/a/leather_red_02",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://polyhaven.com/license",
+      "downloadedFile": "leather_red_02_1k_jpg_maps",
+      "downloadedBytes": 1882051,
+      "packedMaps": [
+        "Color 1",
+        "Rough"
+      ],
+      "materialTargets": [],
+      "rosterNote": "Verified CC0 soft-surface swatch retained for future leather-like accents; no current 75-material roster id is mapped to leather."
+    },
+    {
+      "family": "clearGlass",
+      "tile": [
+        3,
+        1
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Facade001",
+      "assetId": "Facade001",
+      "sourceUrl": "https://ambientcg.com/a/Facade001",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Facade001_1K-JPG.zip",
+      "downloadedBytes": 2890190,
+      "packedMaps": [
+        "Color",
+        "Roughness",
+        "Metalness"
+      ],
+      "materialTargets": [
+        "clear_glass",
+        "glass_brick",
+        "window"
+      ]
+    },
+    {
+      "family": "frostedGlass",
+      "tile": [
+        0,
+        2
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Facade006",
+      "assetId": "Facade006",
+      "sourceUrl": "https://ambientcg.com/a/Facade006",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Facade006_1K-JPG.zip",
+      "downloadedBytes": 2953361,
+      "packedMaps": [
+        "Color",
+        "Roughness",
+        "Metalness"
+      ],
+      "materialTargets": [
+        "frosted_glass",
+        "ice",
+        "dry_ice"
+      ]
+    },
+    {
+      "family": "steelIron",
+      "tile": [
+        1,
+        2
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Metal014",
+      "assetId": "Metal014",
+      "sourceUrl": "https://ambientcg.com/a/Metal014",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Metal014_1K-JPG.zip",
+      "downloadedBytes": 6883685,
+      "packedMaps": [
+        "Color",
+        "Roughness",
+        "Metalness"
+      ],
+      "materialTargets": [
+        "iron",
+        "steel",
+        "aluminium",
+        "truss",
+        "iron_balcony"
+      ]
+    },
+    {
+      "family": "copperBronze",
+      "tile": [
+        2,
+        2
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Metal057A",
+      "assetId": "Metal057A",
+      "sourceUrl": "https://ambientcg.com/a/Metal057A",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Metal057A_1K-JPG.zip",
+      "downloadedBytes": 2679654,
+      "packedMaps": [
+        "Color",
+        "Roughness",
+        "Metalness"
+      ],
+      "materialTargets": [
+        "copper",
+        "bronze",
+        "gold"
+      ]
+    },
+    {
+      "family": "warmGlow",
+      "tile": [
+        3,
+        2
+      ],
+      "provider": "Poly Haven",
+      "source": "Poly Haven Fireplace HDRI",
+      "assetId": "fireplace",
+      "sourceUrl": "https://polyhaven.com/a/fireplace",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://polyhaven.com/license",
+      "downloadedFile": "fireplace_tonemapped_jpg",
+      "downloadedBytes": 4528196,
+      "packedMaps": [
+        "Tonemapped JPG"
+      ],
+      "materialTargets": [
+        "glowstone",
+        "lava"
+      ]
+    }
+  ]
+}
