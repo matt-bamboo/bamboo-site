@@ -4,14 +4,14 @@
     "detailMap": "/material-lab/atlas/hem-hero-material-detail-atlas-256.png",
     "tileSize": 256,
     "columns": 4,
-    "rows": 3
+    "rows": 4
   },
   "licensePolicy": "Only verified CC0 downloaded assets from the approved material sources are packed. No paid assets or raw source dumps are committed.",
   "runtimePolicy": "Color and roughness/detail atlases are generated for the opt-in material identity path. Normal/displacement runtime use remains disabled by default.",
   "experimentFlags": {
     "normalDisplacementRuntime": false
   },
-  "generatedAt": "2026-07-04T10:07:59.953Z",
+  "generatedAt": "2026-07-04T10:59:40.303Z",
   "sources": [
     {
       "family": "brick",
@@ -312,13 +312,102 @@
         "Rough"
       ],
       "materialTargets": [
-        "grass",
-        "meadow",
-        "soil",
         "bush",
         "cactus"
       ],
       "status": "active"
+    },
+    {
+      "family": "mossGround",
+      "tile": [
+        0,
+        3
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Moss002",
+      "assetId": "Moss002",
+      "sourceUrl": "https://ambientcg.com/view?id=Moss002",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Moss002_1K-JPG.zip",
+      "downloadedBytes": 10391949,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "grass",
+        "meadow"
+      ],
+      "status": "active"
+    },
+    {
+      "family": "dirtSoil",
+      "tile": [
+        1,
+        3
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Ground048",
+      "assetId": "Ground048",
+      "sourceUrl": "https://ambientcg.com/view?id=Ground048",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Ground048_1K-JPG.zip",
+      "downloadedBytes": 10655049,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "soil",
+        "alien_soil"
+      ],
+      "status": "active"
+    },
+    {
+      "family": "waterFoamReference",
+      "tile": [
+        2,
+        3
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Foam003",
+      "assetId": "Foam003",
+      "sourceUrl": "https://ambientcg.com/view?id=Foam003",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Foam003_1K-JPG.zip",
+      "downloadedBytes": 9067128,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [],
+      "status": "reference-only",
+      "rosterNote": "Packed for water/foam study only. Not mapped to water until liquid readability and motion rules are approved."
+    },
+    {
+      "family": "frostIceReference",
+      "tile": [
+        3,
+        3
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Ice002",
+      "assetId": "Ice002",
+      "sourceUrl": "https://ambientcg.com/view?id=Ice002",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Ice002_1K-JPG.zip",
+      "downloadedBytes": 6056210,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [],
+      "status": "reference-only",
+      "rosterNote": "Packed for frost/ice study only. Not mapped to snow, ice, or dry ice until translucency/readability behavior is approved."
     }
   ],
   "referenceOnlySources": [
@@ -357,6 +446,30 @@
       "packed": false,
       "materialTargets": [],
       "rosterNote": "Reference-only scout candidate. No current Hem material id maps to leather, so it is not packed into the first atlas."
+    },
+    {
+      "family": "waterFoamReference",
+      "provider": "ambientCG",
+      "source": "ambientCG Foam003",
+      "assetId": "Foam003",
+      "sourceUrl": "https://ambientcg.com/view?id=Foam003",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "packed": true,
+      "materialTargets": [],
+      "rosterNote": "Packed for water/foam study only. Not mapped to water until liquid readability and motion rules are approved."
+    },
+    {
+      "family": "frostIceReference",
+      "provider": "ambientCG",
+      "source": "ambientCG Ice002",
+      "assetId": "Ice002",
+      "sourceUrl": "https://ambientcg.com/view?id=Ice002",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "packed": true,
+      "materialTargets": [],
+      "rosterNote": "Packed for frost/ice study only. Not mapped to snow, ice, or dry ice until translucency/readability behavior is approved."
     }
   ]
 }
