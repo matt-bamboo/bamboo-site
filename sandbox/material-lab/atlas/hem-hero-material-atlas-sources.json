@@ -7,7 +7,11 @@
     "rows": 3
   },
   "licensePolicy": "Only verified CC0 downloaded assets from the approved material sources are packed. No paid assets or raw source dumps are committed.",
-  "generatedAt": "2026-07-04T01:59:06.336Z",
+  "runtimePolicy": "Color and roughness/detail atlases are generated for the opt-in material identity path. Normal/displacement runtime use remains disabled by default.",
+  "experimentFlags": {
+    "normalDisplacementRuntime": false
+  },
+  "generatedAt": "2026-07-04T10:07:59.953Z",
   "sources": [
     {
       "family": "brick",
@@ -29,15 +33,62 @@
       ],
       "materialTargets": [
         "brick",
-        "roof_tile",
-        "tile",
         "clay"
-      ]
+      ],
+      "status": "active"
+    },
+    {
+      "family": "roofTile",
+      "tile": [
+        1,
+        0
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG RoofingTiles014A",
+      "assetId": "RoofingTiles014A",
+      "sourceUrl": "https://ambientcg.com/a/RoofingTiles014A",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "RoofingTiles014A_1K-JPG.zip",
+      "downloadedBytes": 5001373,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "roof_tile",
+        "tile"
+      ],
+      "status": "active"
+    },
+    {
+      "family": "pavingStone",
+      "tile": [
+        2,
+        0
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG PavingStones064",
+      "assetId": "PavingStones064",
+      "sourceUrl": "https://ambientcg.com/a/PavingStones064",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "PavingStones064_1K-JPG.zip",
+      "downloadedBytes": 9598627,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "gravel",
+        "asphalt"
+      ],
+      "status": "active"
     },
     {
       "family": "roughStone",
       "tile": [
-        1,
+        3,
         0
       ],
       "provider": "ambientCG",
@@ -57,13 +108,14 @@
         "rock",
         "basalt",
         "temple_ruin"
-      ]
+      ],
+      "status": "active"
     },
     {
       "family": "plasterConcrete",
       "tile": [
-        2,
-        0
+        0,
+        1
       ],
       "provider": "ambientCG",
       "source": "ambientCG Plaster001",
@@ -81,39 +133,16 @@
         "plaster",
         "concrete",
         "limestone",
-        "moulding"
-      ]
-    },
-    {
-      "family": "grassMoss",
-      "tile": [
-        3,
-        0
+        "moulding",
+        "marble",
+        "porcelain"
       ],
-      "provider": "Poly Haven",
-      "source": "Poly Haven Forest Leaves 02",
-      "assetId": "forest_leaves_02",
-      "sourceUrl": "https://polyhaven.com/a/forest_leaves_02",
-      "license": "Creative Commons CC0 1.0 Universal",
-      "licenseUrl": "https://polyhaven.com/license",
-      "downloadedFile": "forest_leaves_02_1k_jpg_maps",
-      "downloadedBytes": 630414,
-      "packedMaps": [
-        "Diffuse",
-        "Rough"
-      ],
-      "materialTargets": [
-        "grass",
-        "meadow",
-        "soil",
-        "bush",
-        "cactus"
-      ]
+      "status": "active"
     },
     {
       "family": "wood",
       "tile": [
-        0,
+        1,
         1
       ],
       "provider": "ambientCG",
@@ -133,14 +162,117 @@
         "wood",
         "timber",
         "bamboo",
-        "wooden_window"
-      ]
+        "wooden_window",
+        "ornate_wood",
+        "wooden_balcony",
+        "mahogany"
+      ],
+      "status": "active"
+    },
+    {
+      "family": "clearGlassReference",
+      "tile": [
+        2,
+        1
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Facade001",
+      "assetId": "Facade001",
+      "sourceUrl": "https://ambientcg.com/a/Facade001",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Facade001_1K-JPG.zip",
+      "downloadedBytes": 2890190,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [],
+      "status": "reference-only",
+      "rosterNote": "Packed for glass study only. Not mapped to current Hem glass ids until transparency/readability behavior is approved."
+    },
+    {
+      "family": "frostedGlassReference",
+      "tile": [
+        3,
+        1
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Facade006",
+      "assetId": "Facade006",
+      "sourceUrl": "https://ambientcg.com/a/Facade006",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Facade006_1K-JPG.zip",
+      "downloadedBytes": 2953361,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [],
+      "status": "reference-only",
+      "rosterNote": "Packed for frosted/ice study only. Not mapped to current Hem ids until translucency behavior is approved."
+    },
+    {
+      "family": "steelIron",
+      "tile": [
+        0,
+        2
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Metal014",
+      "assetId": "Metal014",
+      "sourceUrl": "https://ambientcg.com/a/Metal014",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Metal014_1K-JPG.zip",
+      "downloadedBytes": 6883685,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "iron",
+        "steel",
+        "aluminium",
+        "platinum",
+        "truss",
+        "iron_balcony",
+        "ore",
+        "red_steel"
+      ],
+      "status": "active"
+    },
+    {
+      "family": "copperBronze",
+      "tile": [
+        1,
+        2
+      ],
+      "provider": "ambientCG",
+      "source": "ambientCG Metal057A",
+      "assetId": "Metal057A",
+      "sourceUrl": "https://ambientcg.com/a/Metal057A",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "downloadedFile": "Metal057A_1K-JPG.zip",
+      "downloadedBytes": 2679654,
+      "packedMaps": [
+        "Color",
+        "Roughness"
+      ],
+      "materialTargets": [
+        "copper",
+        "bronze",
+        "gold"
+      ],
+      "status": "active"
     },
     {
       "family": "cloth",
       "tile": [
-        1,
-        1
+        2,
+        2
       ],
       "provider": "Poly Haven",
       "source": "Poly Haven Rough Linen",
@@ -158,152 +290,73 @@
         "fabric",
         "tapestry",
         "pillow"
-      ]
+      ],
+      "status": "active"
     },
     {
-      "family": "leather",
-      "tile": [
-        2,
-        1
-      ],
-      "provider": "Poly Haven",
-      "source": "Poly Haven Leather Red 02",
-      "assetId": "leather_red_02",
-      "sourceUrl": "https://polyhaven.com/a/leather_red_02",
-      "license": "Creative Commons CC0 1.0 Universal",
-      "licenseUrl": "https://polyhaven.com/license",
-      "downloadedFile": "leather_red_02_1k_jpg_maps",
-      "downloadedBytes": 1882051,
-      "packedMaps": [
-        "Color 1",
-        "Rough"
-      ],
-      "materialTargets": [],
-      "rosterNote": "Verified CC0 soft-surface swatch retained for future leather-like accents; no current 75-material roster id is mapped to leather."
-    },
-    {
-      "family": "clearGlass",
+      "family": "organicGround",
       "tile": [
         3,
-        1
+        2
       ],
+      "provider": "Poly Haven",
+      "source": "Poly Haven Forest Leaves 02",
+      "assetId": "forest_leaves_02",
+      "sourceUrl": "https://polyhaven.com/a/forest_leaves_02",
+      "license": "Creative Commons CC0 1.0 Universal",
+      "licenseUrl": "https://polyhaven.com/license",
+      "downloadedFile": "forest_leaves_02_1k_jpg_maps",
+      "downloadedBytes": 630414,
+      "packedMaps": [
+        "Diffuse",
+        "Rough"
+      ],
+      "materialTargets": [
+        "grass",
+        "meadow",
+        "soil",
+        "bush",
+        "cactus"
+      ],
+      "status": "active"
+    }
+  ],
+  "referenceOnlySources": [
+    {
+      "family": "clearGlassReference",
       "provider": "ambientCG",
       "source": "ambientCG Facade001",
       "assetId": "Facade001",
       "sourceUrl": "https://ambientcg.com/a/Facade001",
       "license": "Creative Commons CC0 1.0 Universal",
       "licenseUrl": "https://docs.ambientcg.com/license/",
-      "downloadedFile": "Facade001_1K-JPG.zip",
-      "downloadedBytes": 2890190,
-      "packedMaps": [
-        "Color",
-        "Roughness",
-        "Metalness"
-      ],
-      "materialTargets": [
-        "clear_glass",
-        "glass_brick",
-        "window"
-      ]
+      "packed": true,
+      "materialTargets": [],
+      "rosterNote": "Packed for glass study only. Not mapped to current Hem glass ids until transparency/readability behavior is approved."
     },
     {
-      "family": "frostedGlass",
-      "tile": [
-        0,
-        2
-      ],
+      "family": "frostedGlassReference",
       "provider": "ambientCG",
       "source": "ambientCG Facade006",
       "assetId": "Facade006",
       "sourceUrl": "https://ambientcg.com/a/Facade006",
       "license": "Creative Commons CC0 1.0 Universal",
       "licenseUrl": "https://docs.ambientcg.com/license/",
-      "downloadedFile": "Facade006_1K-JPG.zip",
-      "downloadedBytes": 2953361,
-      "packedMaps": [
-        "Color",
-        "Roughness",
-        "Metalness"
-      ],
-      "materialTargets": [
-        "frosted_glass",
-        "ice",
-        "dry_ice"
-      ]
+      "packed": true,
+      "materialTargets": [],
+      "rosterNote": "Packed for frosted/ice study only. Not mapped to current Hem ids until translucency behavior is approved."
     },
     {
-      "family": "steelIron",
-      "tile": [
-        1,
-        2
-      ],
-      "provider": "ambientCG",
-      "source": "ambientCG Metal014",
-      "assetId": "Metal014",
-      "sourceUrl": "https://ambientcg.com/a/Metal014",
-      "license": "Creative Commons CC0 1.0 Universal",
-      "licenseUrl": "https://docs.ambientcg.com/license/",
-      "downloadedFile": "Metal014_1K-JPG.zip",
-      "downloadedBytes": 6883685,
-      "packedMaps": [
-        "Color",
-        "Roughness",
-        "Metalness"
-      ],
-      "materialTargets": [
-        "iron",
-        "steel",
-        "aluminium",
-        "truss",
-        "iron_balcony"
-      ]
-    },
-    {
-      "family": "copperBronze",
-      "tile": [
-        2,
-        2
-      ],
-      "provider": "ambientCG",
-      "source": "ambientCG Metal057A",
-      "assetId": "Metal057A",
-      "sourceUrl": "https://ambientcg.com/a/Metal057A",
-      "license": "Creative Commons CC0 1.0 Universal",
-      "licenseUrl": "https://docs.ambientcg.com/license/",
-      "downloadedFile": "Metal057A_1K-JPG.zip",
-      "downloadedBytes": 2679654,
-      "packedMaps": [
-        "Color",
-        "Roughness",
-        "Metalness"
-      ],
-      "materialTargets": [
-        "copper",
-        "bronze",
-        "gold"
-      ]
-    },
-    {
-      "family": "warmGlow",
-      "tile": [
-        3,
-        2
-      ],
+      "family": "leatherReference",
       "provider": "Poly Haven",
-      "source": "Poly Haven Fireplace HDRI",
-      "assetId": "fireplace",
-      "sourceUrl": "https://polyhaven.com/a/fireplace",
+      "source": "Poly Haven Leather Red 02",
+      "assetId": "leather_red_02",
+      "sourceUrl": "https://polyhaven.com/a/leather_red_02",
       "license": "Creative Commons CC0 1.0 Universal",
       "licenseUrl": "https://polyhaven.com/license",
-      "downloadedFile": "fireplace_tonemapped_jpg",
-      "downloadedBytes": 4528196,
-      "packedMaps": [
-        "Tonemapped JPG"
-      ],
-      "materialTargets": [
-        "glowstone",
-        "lava"
-      ]
+      "packed": false,
+      "materialTargets": [],
+      "rosterNote": "Reference-only scout candidate. No current Hem material id maps to leather, so it is not packed into the first atlas."
     }
   ]
 }
