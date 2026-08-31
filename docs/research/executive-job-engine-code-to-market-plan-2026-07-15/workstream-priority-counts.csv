@@ -1,0 +1,27 @@
+workstream,priority,recommendation_count
+Applications,P0,3
+Applications,P1,2
+Architecture,P0,1
+Architecture,P1,4
+Career Canon,P0,1
+Career Canon,P1,4
+Career Canon,P2,1
+Commercial,P0,1
+Commercial,P1,2
+Commercial,P2,1
+Job sourcing,P0,3
+Job sourcing,P1,5
+Job sourcing,P2,1
+Privacy and trust,P0,1
+Privacy and trust,P1,2
+Resume and materials,P0,4
+Resume and materials,P1,5
+Resume and materials,P2,1
+Scoring and ranking,P0,3
+Scoring and ranking,P1,2
+Truth and acceptance,P0,3
+UI and UX,P0,2
+UI and UX,P1,5
+UI and UX,P2,1
+Workflow reliability,P0,2
+Workflow reliability,P1,1

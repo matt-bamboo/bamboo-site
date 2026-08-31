@@ -1,0 +1,1344 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Executive Job Engine: Code-to-Market Review and Go Plan (July 2026)",
+    "description": "A read-only product, UX, architecture, sourcing, resume, trust, and commercial review with a 24-hour go/no-go plan and 12-month roadmap.",
+    "generatedAt": "2026-07-15T03:20:00-04:00",
+    "sources": [
+      {
+        "id": "live_snapshot",
+        "label": "Authenticated live product inspection",
+        "path": "screenshots/09-live-roles-full-desktop.png; screenshots/12-live-find-roles-desktop.png; screenshots/17-live-system-desktop.png",
+        "query": {
+          "description": "Read-only authenticated journey inspection on 2026-07-15. No search, model generation, approval, application, or employer action was triggered.",
+          "sql": "SELECT 604 AS live_roles, 405 AS full_postings;",
+          "engine": "DuckDB",
+          "language": "sql",
+          "tables_used": [
+            "authenticated live product snapshot, 2026-07-15"
+          ],
+          "filters": [
+            "Live product as observed 2026-07-15",
+            "Counts are a point-in-time snapshot"
+          ],
+          "metric_definitions": [
+            "Live roles = roles shown in the All roles count during the inspected session.",
+            "Full postings = roles shown as having full postings in the inspected session."
+          ]
+        }
+      },
+      {
+        "id": "acceptance_evidence",
+        "label": "July 14 resume-system acceptance matrix",
+        "path": "/Users/matthewgrossman/Documents/GitHub/bamboo-private-apps/docs/audits/2026-07-14-resume-system/ACCEPTANCE_MATRIX.md",
+        "query": {
+          "description": "Latest inspected acceptance audit: 35 passed, 15 partial, and 4 failed requirements.",
+          "sql": "SELECT 35 AS acceptance_passed, 15 AS acceptance_partial, 4 AS acceptance_failed;",
+          "engine": "DuckDB",
+          "language": "sql",
+          "tables_used": [
+            "docs/audits/2026-07-14-resume-system/ACCEPTANCE_MATRIX.md"
+          ],
+          "filters": [
+            "Repository evidence inspected read-only on 2026-07-15"
+          ],
+          "metric_definitions": [
+            "Acceptance states are audit classifications, not independently rerun hosted production tests in this review."
+          ]
+        }
+      },
+      {
+        "id": "backlog_source",
+        "label": "Analyst-coded prioritized product backlog",
+        "path": "prioritized-backlog.csv",
+        "query": {
+          "description": "Recommendations derived from live behavior, current code, acceptance evidence, and competitive synthesis.",
+          "sql": "SELECT * FROM read_csv_auto('prioritized-backlog.csv', header = true);",
+          "engine": "DuckDB",
+          "language": "sql",
+          "tables_used": [
+            "prioritized-backlog.csv"
+          ],
+          "metric_definitions": [
+            "Recommendation count is plan inventory, not completed work or measured performance.",
+            "P0, P1, and P2 are analyst urgency classifications tied to the stated commercial boundary."
+          ]
+        }
+      },
+      {
+        "id": "plan_metrics_source",
+        "label": "Prioritized backlog headline counts",
+        "path": "prioritized-backlog.csv",
+        "query": {
+          "description": "Total and P0 recommendation counts from the analyst-coded backlog.",
+          "sql": "SELECT COUNT(*) AS backlog_actions, SUM(CASE WHEN priority = 'P0' THEN 1 ELSE 0 END) AS p0_actions FROM read_csv_auto('prioritized-backlog.csv', header = true);",
+          "engine": "DuckDB",
+          "language": "sql",
+          "tables_used": [
+            "prioritized-backlog.csv"
+          ],
+          "metric_definitions": [
+            "Recommendation count is plan inventory, not completed work or measured performance."
+          ]
+        }
+      },
+      {
+        "id": "workstream_counts_source",
+        "label": "Backlog recommendations by workstream and priority",
+        "path": "workstream-priority-counts.csv",
+        "query": {
+          "description": "Counts of analyst-coded backlog rows by workstream and priority.",
+          "sql": "SELECT workstream, priority, recommendation_count FROM read_csv_auto('workstream-priority-counts.csv', header = true);",
+          "engine": "DuckDB",
+          "language": "sql",
+          "tables_used": [
+            "workstream-priority-counts.csv"
+          ],
+          "metric_definitions": [
+            "Counts describe the proposed plan inventory; they are not a defect-rate or effort estimate."
+          ]
+        }
+      },
+      {
+        "id": "hour_plan_source",
+        "label": "Twenty-four-hour go/no-go evidence plan",
+        "path": "24-hour-plan.csv",
+        "query": {
+          "description": "Proposed evidence sequence and stop conditions for the first 24 hours.",
+          "sql": "SELECT * FROM read_csv_auto('24-hour-plan.csv', header = true);",
+          "engine": "DuckDB",
+          "language": "sql",
+          "tables_used": [
+            "24-hour-plan.csv"
+          ],
+          "metric_definitions": [
+            "Time windows are planning allocations, not completion forecasts or historical actuals."
+          ]
+        }
+      },
+      {
+        "id": "capability_source",
+        "label": "Code-to-market capability assessment",
+        "path": "capability-assessment.csv",
+        "query": {
+          "description": "Current-state assessment against the reviewed competitive landscape.",
+          "sql": "SELECT * FROM read_csv_auto('capability-assessment.csv', header = true);",
+          "engine": "DuckDB",
+          "language": "sql",
+          "tables_used": [
+            "capability-assessment.csv"
+          ],
+          "metric_definitions": [
+            "Verdicts and priorities are analyst judgments, not vendor claims or statistically validated outcomes."
+          ]
+        }
+      },
+      {
+        "id": "roadmap_source",
+        "label": "Twelve-month roadmap hypotheses",
+        "path": "roadmap.csv",
+        "query": {
+          "description": "Proposed delivery and validation sequence with explicit commercial gates.",
+          "sql": "SELECT * FROM read_csv_auto('roadmap.csv', header = true);",
+          "engine": "DuckDB",
+          "language": "sql",
+          "tables_used": [
+            "roadmap.csv"
+          ],
+          "metric_definitions": [
+            "All thresholds and commercial actions are hypotheses until paid cohorts validate them."
+          ]
+        }
+      },
+      {
+        "id": "competitive_review",
+        "label": "July 2026 review of 77 competitors and adjacencies",
+        "path": "../executive-job-engine-competitive-landscape-2026-07-14/report.md",
+        "query": {
+          "description": "Primary-source public landscape used to distinguish commodity features from the proposed evidence-grounded wedge.",
+          "filters": [
+            "77 meaningful products and services",
+            "Public sources accessed 2026-07-14"
+          ],
+          "metric_definitions": [
+            "The reviewed sample is broad but not a census; no-public-evidence is not proof a capability is absent."
+          ]
+        }
+      }
+    ],
+    "cards": [
+      {
+        "id": "live_inventory_card",
+        "dataset": "headline_metrics",
+        "sourceId": "live_snapshot",
+        "description": "Point-in-time inventory observed in the authenticated product.",
+        "metrics": [
+          {
+            "label": "Live roles",
+            "field": "live_roles",
+            "format": "number"
+          },
+          {
+            "label": "Full postings",
+            "field": "full_postings",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "acceptance_card",
+        "dataset": "headline_metrics",
+        "sourceId": "acceptance_evidence",
+        "description": "States reported by the July 14 acceptance audit.",
+        "metrics": [
+          {
+            "label": "Passed",
+            "field": "acceptance_passed",
+            "format": "number"
+          },
+          {
+            "label": "Partial",
+            "field": "acceptance_partial",
+            "format": "number"
+          },
+          {
+            "label": "Failed",
+            "field": "acceptance_failed",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "plan_inventory_card",
+        "dataset": "headline_metrics",
+        "sourceId": "plan_metrics_source",
+        "description": "Analyst-coded plan inventory, not completed work.",
+        "metrics": [
+          {
+            "label": "Recommendations",
+            "field": "backlog_actions",
+            "format": "number"
+          },
+          {
+            "label": "P0 actions",
+            "field": "p0_actions",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "backlog_workstream_chart",
+        "title": "Proposed backlog actions by workstream and priority",
+        "subtitle": "The concentration in trust, workflow, sourcing, materials, and UX reflects the current commercial blockers; counts are plan inventory, not measured effort.",
+        "type": "bar",
+        "dataset": "workstream_priority_counts",
+        "sourceId": "workstream_counts_source",
+        "valueFormat": "number",
+        "options": {
+          "orientation": "horizontal",
+          "grouping": "grouped"
+        },
+        "encodings": {
+          "x": {
+            "field": "workstream",
+            "type": "nominal",
+            "label": "Workstream"
+          },
+          "y": {
+            "field": "recommendation_count",
+            "type": "quantitative",
+            "label": "Recommendations",
+            "format": "number"
+          },
+          "color": {
+            "field": "priority",
+            "type": "nominal",
+            "label": "Priority"
+          },
+          "tooltip": [
+            {
+              "field": "priority",
+              "type": "nominal",
+              "label": "Priority"
+            },
+            {
+              "field": "recommendation_count",
+              "type": "quantitative",
+              "label": "Recommendations",
+              "format": "number"
+            }
+          ]
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "p0_table",
+        "title": "P0 launch gates",
+        "subtitle": "Every row needs environment-bound proof before external candidate data or logins.",
+        "dataset": "top_p0",
+        "sourceId": "backlog_source",
+        "density": "dense",
+        "defaultSort": {
+          "field": "id",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "id",
+            "label": "ID",
+            "type": "text"
+          },
+          {
+            "field": "workstream",
+            "label": "Workstream",
+            "type": "text"
+          },
+          {
+            "field": "horizon",
+            "label": "Horizon",
+            "type": "text"
+          },
+          {
+            "field": "recommendation",
+            "label": "Action",
+            "type": "text"
+          },
+          {
+            "field": "acceptance_gate",
+            "label": "Acceptance gate",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "hour_plan_table",
+        "title": "Twenty-four-hour go/no-go plan",
+        "subtitle": "The outcome is a defensible decision, not a promise of broad launch readiness.",
+        "dataset": "hour_plan",
+        "sourceId": "hour_plan_source",
+        "defaultSort": {
+          "field": "time_window",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "time_window",
+            "label": "Window",
+            "type": "text"
+          },
+          {
+            "field": "objective",
+            "label": "Objective",
+            "type": "text"
+          },
+          {
+            "field": "actions",
+            "label": "Actions",
+            "type": "text"
+          },
+          {
+            "field": "required_proof",
+            "label": "Required proof",
+            "type": "text"
+          },
+          {
+            "field": "decision",
+            "label": "Decision rule",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "capability_table",
+        "title": "Current capability versus market",
+        "subtitle": "A strong integrated concept with several P0 truth and reliability defects.",
+        "dataset": "capability_assessment",
+        "sourceId": "capability_source",
+        "density": "dense",
+        "defaultSort": {
+          "field": "priority",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "capability",
+            "label": "Capability",
+            "type": "text"
+          },
+          {
+            "field": "current_state",
+            "label": "Current state",
+            "type": "text"
+          },
+          {
+            "field": "competitive_context",
+            "label": "Competitive context",
+            "type": "text"
+          },
+          {
+            "field": "verdict",
+            "label": "Verdict",
+            "type": "text"
+          },
+          {
+            "field": "priority",
+            "label": "Priority",
+            "type": "text"
+          },
+          {
+            "field": "next_move",
+            "label": "Next move",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "roadmap_table",
+        "title": "Twelve-month roadmap",
+        "subtitle": "Trust first, then paid value, then repeatability and distribution.",
+        "dataset": "roadmap",
+        "sourceId": "roadmap_source",
+        "defaultSort": {
+          "field": "phase",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "phase",
+            "label": "Phase",
+            "type": "text"
+          },
+          {
+            "field": "objective",
+            "label": "Objective",
+            "type": "text"
+          },
+          {
+            "field": "deliverables",
+            "label": "Deliverables",
+            "type": "text"
+          },
+          {
+            "field": "exit_gates",
+            "label": "Exit gates",
+            "type": "text"
+          },
+          {
+            "field": "commercial_action",
+            "label": "Commercial action",
+            "type": "text"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Executive Job Engine: Code-to-Market Review and Go Plan (July 2026)"
+      },
+      {
+        "id": "verdict",
+        "type": "markdown",
+        "body": "## Verdict\n\n**No-go for a broad commercial launch. Go for a 24-hour evidence-and-correction sprint, continued Matthew-only use, and sanitized buyer interviews.** A paid three-user concierge beta is conditional on every P0 trust and isolation gate passing. The viable wedge is not generic career AI; it is candidate-controlled source truth, evidence truth, executive pursuit judgment, and immutable approvals."
+      },
+      {
+        "id": "headline",
+        "type": "metric-strip",
+        "cardIds": [
+          "live_inventory_card",
+          "acceptance_card",
+          "plan_inventory_card"
+        ]
+      },
+      {
+        "id": "critical_truths",
+        "type": "markdown",
+        "body": "## Five critical truths\n\n1. The product is materially beyond a prototype, but implementation, deployment, and acceptance evidence currently disagree.\n2. Source capture, compensation/relocation reasoning, and the Career Canon are the most promising foundations.\n3. Hidden rank weights, client-generated qualification precision, incomplete application retrieval, and ambiguous run receipts directly undermine the trust claim.\n4. The current resume system can produce fact-safe work and still correctly conclude that a cold application is a no-go; pursuit channel must therefore precede document generation.\n5. Tenant isolation, candidate ownership, export, deletion, and atomic paid workflows are commercial gates, not later enterprise polish."
+      },
+      {
+        "id": "workstream_chart",
+        "type": "chart",
+        "chartId": "backlog_workstream_chart",
+        "layout": "full"
+      },
+      {
+        "id": "p0_intro",
+        "type": "markdown",
+        "body": "## P0 launch gates\n\nThe highest-priority work is truth and safety work. A code path, button, or passing deterministic contract test does not close a hosted production acceptance failure."
+      },
+      {
+        "id": "p0",
+        "type": "table",
+        "tableId": "p0_table",
+        "layout": "full"
+      },
+      {
+        "id": "hours_intro",
+        "type": "markdown",
+        "body": "## First 24 hours\n\nFreeze the environment, reconcile acceptance, prove the three core role journeys, attack concurrency and source accounting, repair misleading states, then issue separate decisions for private use, demos, design partners, paid beta, and broad launch."
+      },
+      {
+        "id": "hours",
+        "type": "table",
+        "tableId": "hour_plan_table",
+        "layout": "full"
+      },
+      {
+        "id": "capability_intro",
+        "type": "markdown",
+        "body": "## Product and market assessment\n\nThe visible feature bundle is mostly commoditized. The integrated evidence-grounded workflow may still be distinctive if it becomes easier than a resume-plus-ChatGPT workflow and more trustworthy than automation-first competitors."
+      },
+      {
+        "id": "capabilities",
+        "type": "table",
+        "tableId": "capability_table",
+        "layout": "full"
+      },
+      {
+        "id": "roadmap_intro",
+        "type": "markdown",
+        "body": "## Twelve-month path\n\nProve trust before onboarding, paid executive value before distribution, and repeatability before scale. If the human work remains high, price and operate it honestly as a tech-enabled service."
+      },
+      {
+        "id": "roadmap",
+        "type": "table",
+        "tableId": "roadmap_table",
+        "layout": "full"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "body": "## Evidence and limitations\n\nLive behavior was inspected read-only on 2026-07-15. Current deterministic repository checks passed, but this review did not mutate Supabase, run paid generation, send anything, apply to a role, test destructive deletion, or independently close hosted concurrency and multi-tenant acceptance. The competitive landscape is a source-cited 77-product sample, not a census. Accessibility observations are risks requiring testing, not a compliance determination. Commercial thresholds are hypotheses, not forecasts."
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-07-15T03:20:00-04:00",
+    "status": "ready",
+    "datasets": {
+      "headline_metrics": [
+        {
+          "live_roles": 604,
+          "full_postings": 405,
+          "acceptance_passed": 35,
+          "acceptance_partial": 15,
+          "acceptance_failed": 4,
+          "backlog_actions": 61,
+          "p0_actions": 24
+        }
+      ],
+      "workstream_priority_counts": [
+        {
+          "workstream": "Applications",
+          "priority": "P0",
+          "recommendation_count": 3
+        },
+        {
+          "workstream": "Applications",
+          "priority": "P1",
+          "recommendation_count": 2
+        },
+        {
+          "workstream": "Architecture",
+          "priority": "P0",
+          "recommendation_count": 1
+        },
+        {
+          "workstream": "Architecture",
+          "priority": "P1",
+          "recommendation_count": 4
+        },
+        {
+          "workstream": "Career Canon",
+          "priority": "P0",
+          "recommendation_count": 1
+        },
+        {
+          "workstream": "Career Canon",
+          "priority": "P1",
+          "recommendation_count": 4
+        },
+        {
+          "workstream": "Career Canon",
+          "priority": "P2",
+          "recommendation_count": 1
+        },
+        {
+          "workstream": "Commercial",
+          "priority": "P0",
+          "recommendation_count": 1
+        },
+        {
+          "workstream": "Commercial",
+          "priority": "P1",
+          "recommendation_count": 2
+        },
+        {
+          "workstream": "Commercial",
+          "priority": "P2",
+          "recommendation_count": 1
+        },
+        {
+          "workstream": "Job sourcing",
+          "priority": "P0",
+          "recommendation_count": 3
+        },
+        {
+          "workstream": "Job sourcing",
+          "priority": "P1",
+          "recommendation_count": 5
+        },
+        {
+          "workstream": "Job sourcing",
+          "priority": "P2",
+          "recommendation_count": 1
+        },
+        {
+          "workstream": "Privacy and trust",
+          "priority": "P0",
+          "recommendation_count": 1
+        },
+        {
+          "workstream": "Privacy and trust",
+          "priority": "P1",
+          "recommendation_count": 2
+        },
+        {
+          "workstream": "Resume and materials",
+          "priority": "P0",
+          "recommendation_count": 4
+        },
+        {
+          "workstream": "Resume and materials",
+          "priority": "P1",
+          "recommendation_count": 5
+        },
+        {
+          "workstream": "Resume and materials",
+          "priority": "P2",
+          "recommendation_count": 1
+        },
+        {
+          "workstream": "Scoring and ranking",
+          "priority": "P0",
+          "recommendation_count": 3
+        },
+        {
+          "workstream": "Scoring and ranking",
+          "priority": "P1",
+          "recommendation_count": 2
+        },
+        {
+          "workstream": "Truth and acceptance",
+          "priority": "P0",
+          "recommendation_count": 3
+        },
+        {
+          "workstream": "UI and UX",
+          "priority": "P0",
+          "recommendation_count": 2
+        },
+        {
+          "workstream": "UI and UX",
+          "priority": "P1",
+          "recommendation_count": 5
+        },
+        {
+          "workstream": "UI and UX",
+          "priority": "P2",
+          "recommendation_count": 1
+        },
+        {
+          "workstream": "Workflow reliability",
+          "priority": "P0",
+          "recommendation_count": 2
+        },
+        {
+          "workstream": "Workflow reliability",
+          "priority": "P1",
+          "recommendation_count": 1
+        }
+      ],
+      "top_p0": [
+        {
+          "id": "APP-01",
+          "priority": "P0",
+          "workstream": "Applications",
+          "horizon": "24 hours",
+          "recommendation": "Adopt one canonical application-stage enum and render every loaded record exactly once",
+          "why_now": "Interviewing, follow-up, on-hold, and closed rows can disappear from both current columns",
+          "acceptance_gate": "Rendered plus deliberately archived equals total loaded for every fixture"
+        },
+        {
+          "id": "APP-02",
+          "priority": "P0",
+          "workstream": "Applications",
+          "horizon": "24 hours",
+          "recommendation": "Remove the silent eight-row ceiling or expose server pagination and total counts",
+          "why_now": "Current counts can represent only a truncated client window",
+          "acceptance_gate": "UI says loaded X of Y and active stages are complete"
+        },
+        {
+          "id": "APP-03",
+          "priority": "P0",
+          "workstream": "Applications",
+          "horizon": "24 hours",
+          "recommendation": "Map legacy statuses explicitly and never show a dropdown value that differs from stored state",
+          "why_now": "Unknown values can visually fall back to Applied",
+          "acceptance_gate": "Every persisted status renders truthfully or as Legacy status - review"
+        },
+        {
+          "id": "ARCH-01",
+          "priority": "P0",
+          "workstream": "Architecture",
+          "horizon": "24 hours",
+          "recommendation": "Document the source-of-truth split and prohibit production decisions from stale local copies",
+          "why_now": "Three materially different frontends exist and the stale copy can mislead review",
+          "acceptance_gate": "One architecture map names live repo, proof app, stale portal copy, backend, and authority"
+        },
+        {
+          "id": "CAN-01",
+          "priority": "P0",
+          "workstream": "Career Canon",
+          "horizon": "24 hours",
+          "recommendation": "Fix direct Canon route hydration so Resume Lanes and required evidence collections actually load",
+          "why_now": "The route renders Resume Lanes but its view map does not request them",
+          "acceptance_gate": "Direct reload shows the same 3 lanes and evidence counts as System"
+        },
+        {
+          "id": "GTM-01",
+          "priority": "P0",
+          "workstream": "Commercial",
+          "horizon": "24 hours",
+          "recommendation": "Permit Matthew-only use and sanitized buyer interviews; defer external logins",
+          "why_now": "The software is not yet a tenant-ready commercial product",
+          "acceptance_gate": "No third-party PII enters the current production environment"
+        },
+        {
+          "id": "SRC-01",
+          "priority": "P0",
+          "workstream": "Job sourcing",
+          "horizon": "24 hours",
+          "recommendation": "Make search receipts distinguish queued, running, no-results, partial, failed, stale, and complete",
+          "why_now": "Live runs display in progress with zeros and missing fields are coerced to zero",
+          "acceptance_gate": "Unknown is never displayed as zero and every terminal state has a reason"
+        },
+        {
+          "id": "SRC-02",
+          "priority": "P0",
+          "workstream": "Job sourcing",
+          "horizon": "24 hours",
+          "recommendation": "Reconcile seen, new, changed, unchanged, suppressed, deduped, deferred, and failed counts under one accounting identity",
+          "why_now": "Receipt UI exists but production evidence has not accepted its ledger",
+          "acceptance_gate": "The documented equation reconciles for a controlled production run"
+        },
+        {
+          "id": "SRC-03",
+          "priority": "P0",
+          "workstream": "Job sourcing",
+          "horizon": "24 hours",
+          "recommendation": "Prove restore from All roles survives reload and future source refresh",
+          "why_now": "Restore code exists while the newest acceptance audit still marks it failed",
+          "acceptance_gate": "A suppressed identity is restored, persists, and refreshes only on material source change"
+        },
+        {
+          "id": "SEC-01",
+          "priority": "P0",
+          "workstream": "Privacy and trust",
+          "horizon": "24 hours",
+          "recommendation": "Do not accept external candidate data until tenant isolation, candidate ownership, deletion, and export are proven",
+          "why_now": "The product is Matthew-specific and current auth proves one allowed user, not multi-tenant safety",
+          "acceptance_gate": "Real cross-user denial, row isolation, full export, deletion, and audit-log tests pass"
+        },
+        {
+          "id": "MAT-01",
+          "priority": "P0",
+          "workstream": "Resume and materials",
+          "horizon": "24 hours",
+          "recommendation": "Split artifact integrity from pursuit strategy, qualification readiness, and operational readiness",
+          "why_now": "An approved ATS artifact can still be a cold-application no-go",
+          "acceptance_gate": "The UI can say artifact safe while pursuit recommendation is warm intro or do not apply"
+        },
+        {
+          "id": "MAT-02",
+          "priority": "P0",
+          "workstream": "Resume and materials",
+          "horizon": "24 hours",
+          "recommendation": "Require deterministic per-factual-clause mapping to approved Canon evidence before employer-use approval",
+          "why_now": "Matched_fact_ids greater than zero does not prove complete coverage",
+          "acceptance_gate": "One hundred percent of factual clauses map to admissible facts; unsupported-claim escapes equal zero"
+        },
+        {
+          "id": "MAT-03",
+          "priority": "P0",
+          "workstream": "Resume and materials",
+          "horizon": "24 hours",
+          "recommendation": "Report packet readiness as exact usable versus blocked document counts",
+          "why_now": "One role can show a ready kit when 8 of 9 outputs lack per-document evidence",
+          "acceptance_gate": "Banner states 1 of 9 usable and names blockers by document"
+        },
+        {
+          "id": "MAT-04",
+          "priority": "P0",
+          "workstream": "Resume and materials",
+          "horizon": "24 hours",
+          "recommendation": "Choose pursuit channel before generating documents",
+          "why_now": "Nine default outputs create cost, review burden, and irrelevant work",
+          "acceptance_gate": "Cold ATS, warm intro, recruiter conversation, executive-network outreach, search-firm profile, interview prep, evidence-first, or pass is selected first"
+        },
+        {
+          "id": "RANK-01",
+          "priority": "P0",
+          "workstream": "Scoring and ranking",
+          "horizon": "24 hours",
+          "recommendation": "Rename Best to Curated review order and expose the three dominant ranking factors",
+          "why_now": "Hidden review-tier weights dwarf visible opportunity scores",
+          "acceptance_gate": "A user can explain why rank 1 sits above rank 2 without reading code"
+        },
+        {
+          "id": "RANK-02",
+          "priority": "P0",
+          "workstream": "Scoring and ranking",
+          "horizon": "24 hours",
+          "recommendation": "Stop synthesizing a qualification score in the browser when no persisted scored artifact exists",
+          "why_now": "The fallback gives 55 percent credit to needs_review and creates false precision",
+          "acceptance_gate": "Incomplete evidence displays Not scored or a confidence band, never an invented exact score"
+        },
+        {
+          "id": "RANK-03",
+          "priority": "P0",
+          "workstream": "Scoring and ranking",
+          "horizon": "24 hours",
+          "recommendation": "Separate opportunity attractiveness, qualification evidence, source confidence, pursuit recommendation, compensation confidence, and relocation friction",
+          "why_now": "Strong Fit can coexist with Qualifications 0 and confuse the decision",
+          "acceptance_gate": "No single label conflates search shape with evidence-backed qualification"
+        },
+        {
+          "id": "TRU-01",
+          "priority": "P0",
+          "workstream": "Truth and acceptance",
+          "horizon": "24 hours",
+          "recommendation": "Create one commit/deploy-bound acceptance ledger with implemented, locally tested, deployed, and production-accepted states",
+          "why_now": "The June live matrix, July 14 audit, current working tree, and live UI disagree",
+          "acceptance_gate": "Every critical row names commit, environment, timestamp, test, screenshot, and owner"
+        },
+        {
+          "id": "TRU-02",
+          "priority": "P0",
+          "workstream": "Truth and acceptance",
+          "horizon": "24 hours",
+          "recommendation": "Freeze and record current HEAD, dirty diff, deployed asset hash, Edge Function versions, database migrations, and screenshots",
+          "why_now": "Current uncommitted work may be mistaken for deployed proof",
+          "acceptance_gate": "One immutable baseline packet exists before any launch decision"
+        },
+        {
+          "id": "TRU-03",
+          "priority": "P0",
+          "workstream": "Truth and acceptance",
+          "horizon": "24 hours",
+          "recommendation": "Treat the 24-hour outcome as go/no-go evidence, not a broad commercial launch",
+          "why_now": "The newest audit still has 4 failed and 15 partial items",
+          "acceptance_gate": "No external candidate data or login is accepted while a P0 is open"
+        },
+        {
+          "id": "UX-01",
+          "priority": "P0",
+          "workstream": "UI and UX",
+          "horizon": "24 hours",
+          "recommendation": "Preserve focus and update only the result region while typing filters",
+          "why_now": "Current input handlers replace the full root DOM on each keystroke",
+          "acceptance_gate": "A multi-word filter can be typed uninterrupted with focus and selection preserved"
+        },
+        {
+          "id": "UX-02",
+          "priority": "P0",
+          "workstream": "UI and UX",
+          "horizon": "24 hours",
+          "recommendation": "Use loading and partial states instead of empty zero states during direct-route hydration",
+          "why_now": "Direct Find roles and Next actions can briefly claim no rows while data is still loading",
+          "acceptance_gate": "No authenticated route renders a false empty state before required data resolves"
+        },
+        {
+          "id": "WF-01",
+          "priority": "P0",
+          "workstream": "Workflow reliability",
+          "horizon": "24 hours",
+          "recommendation": "Prove atomic server-side step claiming and idempotency under concurrent advance requests",
+          "why_now": "A real run produced duplicate paid Writer calls",
+          "acceptance_gate": "Twenty concurrent or retried calls yield one billable step, one output, and one approval"
+        },
+        {
+          "id": "WF-02",
+          "priority": "P0",
+          "workstream": "Workflow reliability",
+          "horizon": "24 hours",
+          "recommendation": "Attach every workflow state to one canonical job, posting hash, Canon revision, and run version",
+          "why_now": "Stale or ambiguous runs can be advanced without enough visible context",
+          "acceptance_gate": "All model and approval records resolve to one current evidence snapshot"
+        }
+      ],
+      "hour_plan": [
+        {
+          "time_window": "Hours 0-2",
+          "objective": "Freeze the truth",
+          "actions": "Record repo HEAD and dirty diff; deployed asset hash; Edge Function versions; database migrations; live counts; screenshots; canonical acceptance source",
+          "required_proof": "One immutable evidence baseline tied to environment and timestamp",
+          "decision": "Continue only with explicit Matthew-only or commercial definition of go"
+        },
+        {
+          "time_window": "Hours 2-5",
+          "objective": "Reconcile acceptance",
+          "actions": "Compare June live matrix, July 14 audit, current source, current tests, and hosted behavior; classify every failed and partial item",
+          "required_proof": "Every item is implemented only, locally proven, deployed, production accepted, or still open",
+          "decision": "No code-presence claim may close a production failure"
+        },
+        {
+          "time_window": "Hours 5-9",
+          "objective": "Prove three critical journeys",
+          "actions": "Run source-complete high-fit, source-complete moderate-fit, and source-incomplete roles through posting, brief, qualification, material, approval, and export gates",
+          "required_proof": "Complete states advance; incomplete source remains blocked; all evidence stays role scoped",
+          "decision": "Stop if any workflow advances across an invalid gate"
+        },
+        {
+          "time_window": "Hours 9-11",
+          "objective": "Prove workflow idempotency",
+          "actions": "Issue concurrent and retried advance requests against a controlled no-employer-action workflow",
+          "required_proof": "Twenty requests produce one billable step, one durable output, one canonical approval, and one cost entry",
+          "decision": "No-go if any duplicate paid step or output occurs"
+        },
+        {
+          "time_window": "Hours 11-13",
+          "objective": "Prove search accounting",
+          "actions": "Run a bounded official-source search; reconcile seen, new, changed, unchanged, suppressed, deduped, deferred, and failed; restore one suppressed fixture and reload",
+          "required_proof": "Accounting identity reconciles; unknown is not zero; restore persists and future refresh behavior is correct",
+          "decision": "No-go if run state or counts remain ambiguous"
+        },
+        {
+          "time_window": "Hours 13-15",
+          "objective": "Repair trust semantics",
+          "actions": "Expose curated rank rationale; remove client fallback scores; separate source state, opportunity, qualification, pursuit, comp, and relocation",
+          "required_proof": "A test user can explain rank and readiness from the screen alone",
+          "decision": "No-go if the UI still says best, strong fit, ready, or zero ambiguously"
+        },
+        {
+          "time_window": "Hours 15-17",
+          "objective": "Repair application completeness",
+          "actions": "Centralize statuses; ensure every record renders once; add total count and pagination; preserve submitted artifact version",
+          "required_proof": "All fixtures and cloud rows appear in exactly one truthful stage",
+          "decision": "No-go if any persisted application can disappear or display the wrong status"
+        },
+        {
+          "time_window": "Hours 17-20",
+          "objective": "Prove channel-specific material safety",
+          "actions": "Select cold ATS, warm intro, recruiter, executive network, interview, evidence-first, or pass before generation; audit every factual clause",
+          "required_proof": "Every final clause maps to admissible Canon evidence and artifact integrity is separate from pursuit recommendation",
+          "decision": "No-go if any unsupported claim can be approved or a cold no-go appears application ready"
+        },
+        {
+          "time_window": "Hours 20-22",
+          "objective": "Prove privacy boundary",
+          "actions": "Run real second-account denial; verify row isolation; candidate export and deletion; provider and retention registry; least-privilege support access",
+          "required_proof": "No cross-user access; complete portable export; verifiable deletion; audit log",
+          "decision": "No third-party data if any privacy proof is missing"
+        },
+        {
+          "time_window": "Hours 22-24",
+          "objective": "Hold go or no-go review",
+          "actions": "Publish one acceptance report with open gates, evidence links, rollback, owners, and next dates",
+          "required_proof": "Written state-specific decision for Matthew-only use, demos, external design partners, paid beta, and broad launch",
+          "decision": "Default is no-go for external login until every P0 is passed"
+        }
+      ],
+      "capability_assessment": [
+        {
+          "capability": "Role discovery",
+          "current_state": "604 roles were loaded in the inspected live snapshot; breadth is already ample, but recent runs and inventory counts disagree",
+          "competitive_context": "LinkedIn, Indeed, Jobright, Simplify, Teal, and aggregators exceed or match breadth and distribution",
+          "verdict": "Do not compete on inventory volume",
+          "priority": "P1",
+          "next_move": "Optimize for 3-5 decision-worthy roles per week and make run accounting truthful"
+        },
+        {
+          "capability": "Official-source capture",
+          "current_state": "Official/ATS links, verification, suppression, identities, and safe-apply artifacts are substantive; source labels still collapse different evidence states",
+          "competitive_context": "Most trackers capture a URL, while job agents own breadth; fewer publicly expose immutable source provenance",
+          "verdict": "Promising wedge, not yet accepted end to end",
+          "priority": "P0",
+          "next_move": "Adopt one source-state ladder and one versioned search receipt"
+        },
+        {
+          "capability": "Full-posting evidence",
+          "current_state": "405 roles showed full postings, and materials block incomplete sources; code uses multiple thresholds for what full means",
+          "competitive_context": "Competitors often store descriptions, but public evidence of immutable full-posting snapshots and change lineage is limited",
+          "verdict": "Differentiated only if definitions and change invalidation are exact",
+          "priority": "P0",
+          "next_move": "Define one material-ready contract with timestamp, hash, parsed sections, freshness, and semantic diff"
+        },
+        {
+          "capability": "Identity and change detection",
+          "current_state": "Aliases, conflict handling, suppression, duplicate, unchanged, and changed states show strong intent",
+          "competitive_context": "General trackers and job boards have large identity graphs but rarely make candidate-visible provenance central",
+          "verdict": "Technically strong but operational proof is incomplete",
+          "priority": "P0",
+          "next_move": "Prove reconciliation and restore across reload and future refresh"
+        },
+        {
+          "capability": "Opportunity scoring",
+          "current_state": "Compensation, location, scope, company, and upside are separated from qualification",
+          "competitive_context": "Jobright, LinkedIn, Levels.fyi, executive networks, and human advisors already provide pieces of opportunity intelligence",
+          "verdict": "Useful but labels currently overstate precision",
+          "priority": "P0",
+          "next_move": "Expose score version, confidence, factors, and separate pursuit recommendation"
+        },
+        {
+          "capability": "Qualification and gap scoring",
+          "current_state": "Requirement-level evidence exists, but the browser can synthesize exact fallback values and reuse one score across dimensions",
+          "competitive_context": "Teal, Jobscan, Huntr, Careerflow, and many resume tools provide matching and gaps",
+          "verdict": "Currently less trustworthy than the strongest commodity match tools",
+          "priority": "P0",
+          "next_move": "Remove browser fallback; show not scored and requirement-level evidence confidence"
+        },
+        {
+          "capability": "Compensation and relocation",
+          "current_state": "Base versus package/OTE, equity, geography, missing pay, and relocation tradeoffs are modeled explicitly",
+          "competitive_context": "Market products offer salary filters and benchmarks; few candidate tools publicly combine compensation confidence and relocation decision logic",
+          "verdict": "Real executive differentiation if calibrated and explainable",
+          "priority": "P1",
+          "next_move": "Show source/confidence/range logic and validate decisions with paid users"
+        },
+        {
+          "capability": "Career Canon",
+          "current_state": "40 facts and three lanes feed scoring and writing, but the UI is a flat list and direct-route hydration omits lanes",
+          "competitive_context": "Generic AI projects, Notion, and resume master profiles can approximate a knowledge base; few career products publicly govern claim variants and uses",
+          "verdict": "Potential core moat, current UX does not earn it",
+          "priority": "P0",
+          "next_move": "Use explicit approved allowlist, fix hydration, and ship evidence cards with source excerpts and usage lineage"
+        },
+        {
+          "capability": "ATS resume",
+          "current_state": "Evidence-safe generation and parser review exist; the audited OpenAI v6 resume was factual but scored 73/100 and was a cold-apply no-go",
+          "competitive_context": "Jobscan, Rezi, Teal, Resume Worded, Careerflow, and many low-cost tools are mature here",
+          "verdict": "Commoditized unless claim lineage and channel strategy are exceptional",
+          "priority": "P0",
+          "next_move": "Separate factual integrity from role coverage and cold-application readiness"
+        },
+        {
+          "capability": "Executive resume and narrative",
+          "current_state": "Distinct resume concepts exist, but current proof does not show consistent executive-level narrative superiority",
+          "competitive_context": "Korn Ferry, outplacement firms, executive coaches, and specialist writers can exceed generic AI editorial judgment",
+          "verdict": "Unproven commercial quality",
+          "priority": "P1",
+          "next_move": "Run blinded advisor comparisons by channel and role family"
+        },
+        {
+          "capability": "Pursuit strategy",
+          "current_state": "The product can recommend next actions, but writing still precedes an explicit channel decision in the default mental model",
+          "competitive_context": "Human coaches and executive networks are stronger at deciding recruiter, warm intro, cold ATS, search firm, or pass",
+          "verdict": "Missing orchestration layer",
+          "priority": "P0",
+          "next_move": "Choose pursuit channel before generation and treat do-not-cold-apply as a successful outcome"
+        },
+        {
+          "capability": "Outreach and networking",
+          "current_state": "Role-scoped outreach assets exist and no automatic send is allowed",
+          "competitive_context": "LinkedIn, Teal, Simplify, WonsultingAI, CRM products, and coaches cover outreach well",
+          "verdict": "Table stakes; trust boundary is more valuable than output volume",
+          "priority": "P1",
+          "next_move": "Generate only channel-relevant outreach and preserve manual employer action"
+        },
+        {
+          "capability": "Feedback learning",
+          "current_state": "Revisions and reusable guidance exist, but rule promotion needs scope, provenance, conflict handling, and review dates",
+          "competitive_context": "General AI projects and writing products can retain preferences cheaply",
+          "verdict": "Not a moat without governed learning",
+          "priority": "P1",
+          "next_move": "Make every promoted rule explicit, scoped, reversible, and attributable"
+        },
+        {
+          "capability": "Version comparison",
+          "current_state": "Versions exist, but comparison is full side-by-side text and numbering/persistence are client-calculated",
+          "competitive_context": "Teal, Huntr, document tools, and general versioning products cover basic history",
+          "verdict": "Below the standard needed for high-stakes approvals",
+          "priority": "P1",
+          "next_move": "Use server-allocated immutable versions and semantic claim/evidence diffs"
+        },
+        {
+          "capability": "Approval and export",
+          "current_state": "Manual approvals and approved exports exist; approvals do not yet prove an exact signed source/Canon/content snapshot",
+          "competitive_context": "Jobscan and several automation tools now provide approval-first steps",
+          "verdict": "Strong brand boundary, incomplete technical guarantee",
+          "priority": "P0",
+          "next_move": "Sign posting, brief, Canon, content, model, and review hashes and invalidate stale approvals"
+        },
+        {
+          "capability": "Application tracking",
+          "current_state": "One honest live record exists, but only eight rows load and legitimate statuses can disappear from both columns",
+          "competitive_context": "Teal, Huntr, Simplify, Careerflow, and general CRMs are substantially more mature",
+          "verdict": "P0 product defect, not differentiation",
+          "priority": "P0",
+          "next_move": "Centralize stages, paginate with totals, render every record exactly once, and add a pursuit timeline"
+        },
+        {
+          "capability": "Interview preparation",
+          "current_state": "Preparation assets exist but the current system is not a specialist interview practice platform",
+          "competitive_context": "Final Round AI, Big Interview, Huru, interviewing.io, Exponent, and coaches exceed it in practice depth",
+          "verdict": "Partial adjacency",
+          "priority": "P2",
+          "next_move": "Focus on evidence-grounded executive stories and decision questions, not generic mock-interview breadth"
+        },
+        {
+          "capability": "Decision support",
+          "current_state": "Role briefs, economics, gaps, next actions, and controlled materials form a coherent decision system; hidden rank weights and conflicting labels weaken it",
+          "competitive_context": "No public reviewed product evidenced the identical integrated stack, but human advisors and DIY AI stacks can substitute",
+          "verdict": "Best commercial wedge if trust semantics become exceptional",
+          "priority": "P0",
+          "next_move": "Rename Best to Curated review order and make every recommendation explainable"
+        },
+        {
+          "capability": "Workflow reliability",
+          "current_state": "Deterministic checks pass, but the July audit records duplicate paid Writer calls and no accepted end-to-end role kit",
+          "competitive_context": "Enterprise workflow products provide stronger idempotency, tenancy, and audit guarantees",
+          "verdict": "Commercial blocker",
+          "priority": "P0",
+          "next_move": "Implement atomic server-side claims, bounded retries, unique outputs/approvals, and concurrency acceptance tests"
+        },
+        {
+          "capability": "Privacy and candidate control",
+          "current_state": "Single-user access and no automatic employer actions are good; tenant isolation, export, deletion, and provider governance are not commercially proven",
+          "competitive_context": "Executive outplacement and enterprise vendors sell trust, contracts, controls, and support",
+          "verdict": "No-go for external candidate data",
+          "priority": "P0",
+          "next_move": "Prove real second-account denial, row isolation, portable export, deletion, retention, and provider registry"
+        },
+        {
+          "capability": "Commercial model",
+          "current_state": "The integrated product is credible as founder-led decision infrastructure, not yet as self-serve SaaS",
+          "competitive_context": "Commodity career AI anchors price low; coaches and outplacement anchor high-touch value high",
+          "verdict": "Start as a tightly bounded tech-enabled service",
+          "priority": "P1",
+          "next_move": "After P0 gates, test one 12-week concierge Search Pass with at most five users and record all human/model cost"
+        }
+      ],
+      "roadmap": [
+        {
+          "phase": "Hours 0-24",
+          "objective": "Issue a defensible state-specific go/no-go decision",
+          "deliverables": "Truth freeze; acceptance reconciliation; three controlled role journeys; concurrency proof; search accounting and restore; truthful rank and score states; complete applications; channel-first material audit; privacy boundary review",
+          "exit_gates": "Every tested P0 has environment-bound evidence; no code-presence claim closes a production failure; default no external login while any P0 is open",
+          "commercial_action": "Continue Matthew-only use and sanitized interviews; do not onboard external candidate data"
+        },
+        {
+          "phase": "Days 2-30",
+          "objective": "Prove the trust wedge",
+          "deliverables": "Generated acceptance ledger; atomic workflow steps; one source-state ladder; change invalidation; score provenance; complete application stages; pursuit-channel gate; per-clause evidence release; Canon allowlist/evidence-card slice; tenant design and isolation tests",
+          "exit_gates": "Zero open P0; zero duplicate billable steps; zero unsupported claims in 10 independent audits; cross-user isolation passes; no false empty/zero critical state",
+          "commercial_action": "Prepare a maximum five-user concierge cohort only after all gates pass"
+        },
+        {
+          "phase": "Days 31-60",
+          "objective": "Prove paid executive value",
+          "deliverables": "5-10 founder-led paid users; guided Canon import; weekly source-backed briefs; channel-specific artifacts; blinded advisor review; complete human/model cost log; baseline comparison",
+          "exit_gates": "70% of qualified briefs yield a decision without outside reconciliation; 80% first-pass material audit; zero factual escape; users can explain rank and channel",
+          "commercial_action": "Run one 12-week Search Pass offer and avoid simultaneous pricing sprawl"
+        },
+        {
+          "phase": "Days 61-90",
+          "objective": "Choose SaaS, service, or stop",
+          "deliverables": "60 qualified demos; standardized onboarding; unit economics; outcome/channel instrumentation; calibration baseline; missed-winner audits",
+          "exit_gates": "15 paid customers from 60 qualified demos; 60% weekly active use; 70% gross margin including human time; no high-severity privacy defect",
+          "commercial_action": "Choose software-led pass, explicitly priced service, narrower wedge, or stop"
+        },
+        {
+          "phase": "Months 4-6",
+          "objective": "Prove repeatability",
+          "deliverables": "Automate costly Canon and reconciliation work; modularize high-risk domains; calibrate decisions; add user-authorized relationship/private-mandate capture; publish trust controls",
+          "exit_gates": "50% lower material rework; stable source adapters; measurable decision-time advantage; no claim or isolation regression",
+          "commercial_action": "Expand only the winning ICP/channel combination"
+        },
+        {
+          "phase": "Months 7-9",
+          "objective": "Test advisor distribution",
+          "deliverables": "Three paid coach or boutique outplacement pilots; candidate-controlled sharing/revocation; sponsor-safe aggregates; governed playbooks",
+          "exit_gates": "30% more client capacity or 40% less review time; candidate confidentiality preserved",
+          "commercial_action": "Continue B2B2C only if candidate control remains primary"
+        },
+        {
+          "phase": "Months 10-12",
+          "objective": "Earn scale",
+          "deliverables": "Security hardening; role-based administration; automated retention/deletion; source SLOs; continuity offer; commercial playbook",
+          "exit_gates": "70% gross margin; 30% completion-to-renewal or qualified referral; no unresolved high-severity authorization/privacy issue",
+          "commercial_action": "Scale selectively; do not add employer-side ranking or automatic employer actions"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "live_snapshot",
+      "label": "Authenticated live product inspection",
+      "path": "screenshots/09-live-roles-full-desktop.png; screenshots/12-live-find-roles-desktop.png; screenshots/17-live-system-desktop.png",
+      "query": {
+        "description": "Read-only authenticated journey inspection on 2026-07-15. No search, model generation, approval, application, or employer action was triggered.",
+        "sql": "SELECT 604 AS live_roles, 405 AS full_postings;",
+        "engine": "DuckDB",
+        "language": "sql",
+        "tables_used": [
+          "authenticated live product snapshot, 2026-07-15"
+        ],
+        "filters": [
+          "Live product as observed 2026-07-15",
+          "Counts are a point-in-time snapshot"
+        ],
+        "metric_definitions": [
+          "Live roles = roles shown in the All roles count during the inspected session.",
+          "Full postings = roles shown as having full postings in the inspected session."
+        ]
+      }
+    },
+    {
+      "id": "acceptance_evidence",
+      "label": "July 14 resume-system acceptance matrix",
+      "path": "/Users/matthewgrossman/Documents/GitHub/bamboo-private-apps/docs/audits/2026-07-14-resume-system/ACCEPTANCE_MATRIX.md",
+      "query": {
+        "description": "Latest inspected acceptance audit: 35 passed, 15 partial, and 4 failed requirements.",
+        "sql": "SELECT 35 AS acceptance_passed, 15 AS acceptance_partial, 4 AS acceptance_failed;",
+        "engine": "DuckDB",
+        "language": "sql",
+        "tables_used": [
+          "docs/audits/2026-07-14-resume-system/ACCEPTANCE_MATRIX.md"
+        ],
+        "filters": [
+          "Repository evidence inspected read-only on 2026-07-15"
+        ],
+        "metric_definitions": [
+          "Acceptance states are audit classifications, not independently rerun hosted production tests in this review."
+        ]
+      }
+    },
+    {
+      "id": "backlog_source",
+      "label": "Analyst-coded prioritized product backlog",
+      "path": "prioritized-backlog.csv",
+      "query": {
+        "description": "Recommendations derived from live behavior, current code, acceptance evidence, and competitive synthesis.",
+        "sql": "SELECT * FROM read_csv_auto('prioritized-backlog.csv', header = true);",
+        "engine": "DuckDB",
+        "language": "sql",
+        "tables_used": [
+          "prioritized-backlog.csv"
+        ],
+        "metric_definitions": [
+          "Recommendation count is plan inventory, not completed work or measured performance.",
+          "P0, P1, and P2 are analyst urgency classifications tied to the stated commercial boundary."
+        ]
+      }
+    },
+    {
+      "id": "plan_metrics_source",
+      "label": "Prioritized backlog headline counts",
+      "path": "prioritized-backlog.csv",
+      "query": {
+        "description": "Total and P0 recommendation counts from the analyst-coded backlog.",
+        "sql": "SELECT COUNT(*) AS backlog_actions, SUM(CASE WHEN priority = 'P0' THEN 1 ELSE 0 END) AS p0_actions FROM read_csv_auto('prioritized-backlog.csv', header = true);",
+        "engine": "DuckDB",
+        "language": "sql",
+        "tables_used": [
+          "prioritized-backlog.csv"
+        ],
+        "metric_definitions": [
+          "Recommendation count is plan inventory, not completed work or measured performance."
+        ]
+      }
+    },
+    {
+      "id": "workstream_counts_source",
+      "label": "Backlog recommendations by workstream and priority",
+      "path": "workstream-priority-counts.csv",
+      "query": {
+        "description": "Counts of analyst-coded backlog rows by workstream and priority.",
+        "sql": "SELECT workstream, priority, recommendation_count FROM read_csv_auto('workstream-priority-counts.csv', header = true);",
+        "engine": "DuckDB",
+        "language": "sql",
+        "tables_used": [
+          "workstream-priority-counts.csv"
+        ],
+        "metric_definitions": [
+          "Counts describe the proposed plan inventory; they are not a defect-rate or effort estimate."
+        ]
+      }
+    },
+    {
+      "id": "hour_plan_source",
+      "label": "Twenty-four-hour go/no-go evidence plan",
+      "path": "24-hour-plan.csv",
+      "query": {
+        "description": "Proposed evidence sequence and stop conditions for the first 24 hours.",
+        "sql": "SELECT * FROM read_csv_auto('24-hour-plan.csv', header = true);",
+        "engine": "DuckDB",
+        "language": "sql",
+        "tables_used": [
+          "24-hour-plan.csv"
+        ],
+        "metric_definitions": [
+          "Time windows are planning allocations, not completion forecasts or historical actuals."
+        ]
+      }
+    },
+    {
+      "id": "capability_source",
+      "label": "Code-to-market capability assessment",
+      "path": "capability-assessment.csv",
+      "query": {
+        "description": "Current-state assessment against the reviewed competitive landscape.",
+        "sql": "SELECT * FROM read_csv_auto('capability-assessment.csv', header = true);",
+        "engine": "DuckDB",
+        "language": "sql",
+        "tables_used": [
+          "capability-assessment.csv"
+        ],
+        "metric_definitions": [
+          "Verdicts and priorities are analyst judgments, not vendor claims or statistically validated outcomes."
+        ]
+      }
+    },
+    {
+      "id": "roadmap_source",
+      "label": "Twelve-month roadmap hypotheses",
+      "path": "roadmap.csv",
+      "query": {
+        "description": "Proposed delivery and validation sequence with explicit commercial gates.",
+        "sql": "SELECT * FROM read_csv_auto('roadmap.csv', header = true);",
+        "engine": "DuckDB",
+        "language": "sql",
+        "tables_used": [
+          "roadmap.csv"
+        ],
+        "metric_definitions": [
+          "All thresholds and commercial actions are hypotheses until paid cohorts validate them."
+        ]
+      }
+    },
+    {
+      "id": "competitive_review",
+      "label": "July 2026 review of 77 competitors and adjacencies",
+      "path": "../executive-job-engine-competitive-landscape-2026-07-14/report.md",
+      "query": {
+        "description": "Primary-source public landscape used to distinguish commodity features from the proposed evidence-grounded wedge.",
+        "filters": [
+          "77 meaningful products and services",
+          "Public sources accessed 2026-07-14"
+        ],
+        "metric_definitions": [
+          "The reviewed sample is broad but not a census; no-public-evidence is not proof a capability is absent."
+        ]
+      }
+    }
+  ]
+}
