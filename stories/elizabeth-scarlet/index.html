@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Dragon Glass Map, book one in The Adventures of Elizabeth and Scarlet, an illustrated middle-grade fantasy adventure with princess detectives, Cinder the baby dragon, and 25 magical chapters.">
+<meta name="author" content="Maya">
+<meta name="description" content="Mysteries of the Hidden World, book one in The Adventures of Elizabeth and Scarlet, an illustrated middle-grade fantasy adventure with princess detectives, Cinder the baby dragon, and 25 magical chapters.">
 <link rel="canonical" href="https://bamboo.holdings/stories/elizabeth-scarlet/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="The Dragon Glass Map">
+<meta property="og:title" content="Mysteries of the Hidden World">
 <meta property="og:description" content="Book one in The Adventures of Elizabeth and Scarlet: princess detectives, a secret crystal cave, and Cinder the baby dragon.">
 <meta property="og:url" content="https://bamboo.holdings/stories/elizabeth-scarlet/">
-<meta property="og:image" content="https://bamboo.holdings/assets/stories/elizabeth-scarlet/elizabeth-and-scarlets-adventures-cover.png">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="1000">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image" content="https://bamboo.holdings/assets/stories/elizabeth-scarlet/illustrations/cinder-hatches.webp">
+<meta property="og:image:width" content="1536">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:type" content="image/webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Dragon Glass Map">
+<meta name="twitter:title" content="Mysteries of the Hidden World">
 <meta name="twitter:description" content="Book one in The Adventures of Elizabeth and Scarlet: princess detectives, a secret crystal cave, and Cinder the baby dragon.">
-<meta name="twitter:image" content="https://bamboo.holdings/assets/stories/elizabeth-scarlet/elizabeth-and-scarlets-adventures-cover.png">
-<title>The Dragon Glass Map | The Adventures of Elizabeth and Scarlet</title>
+<meta name="twitter:image" content="https://bamboo.holdings/assets/stories/elizabeth-scarlet/illustrations/cinder-hatches.webp">
+<title>Mysteries of the Hidden World | The Adventures of Elizabeth and Scarlet</title>
 <style>
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -107,7 +108,11 @@ button.story-action{appearance:none}
 .hero h1 .gold{color:var(--gold-lt)}
 .hero-sub{
   font-family:var(--sans);font-size:.85rem;color:rgba(200,180,255,.7);
-  margin-bottom:3rem;position:relative;z-index:2;letter-spacing:.04em;
+  margin-bottom:.7rem;position:relative;z-index:2;letter-spacing:.04em;
+}
+.hero-byline{
+  position:relative;z-index:2;margin-bottom:2.5rem;
+  font-family:var(--serif);font-size:.92rem;font-style:italic;color:rgba(255,248,237,.78);
 }
 .hero-scroll{
   position:relative;z-index:2;
@@ -312,6 +317,7 @@ main{background:var(--surface)}
   box-shadow:0 8px 40px rgba(0,0,0,.15),0 2px 8px rgba(0,0,0,.08);
   background:#f0ede8;
 }
+.ill img,
 .ill svg{display:block;width:100%;height:auto}
 .ill figcaption{
   font-family:var(--sans);font-size:.65rem;color:var(--muted);
@@ -319,6 +325,122 @@ main{background:var(--surface)}
   padding:.55rem 1rem;background:rgba(0,0,0,.03);
   border-top:1px solid var(--rule);
 }
+.ill.is-missing{
+  border:1px dashed rgba(124,63,216,.42);
+  background:linear-gradient(135deg, rgba(255,248,237,.9), rgba(245,237,224,.9));
+}
+.ill.is-missing img{display:none}
+.ill-fallback{
+  min-height:200px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:1.2rem 1rem;
+  font-family:var(--sans);
+  font-size:.68rem;
+  color:var(--muted);
+  line-height:1.45;
+}
+
+/* ── BOOK VIEW (mobile landscape) ── */
+.book-mode-shell{
+  position:relative;
+  max-width:min(1100px,96vw);
+  margin:0 auto;
+  padding:0 1rem .75rem;
+  display:none;
+}
+.book-mode-controls{
+  display:none;
+  align-items:center;
+  justify-content:space-between;
+  gap:.75rem;
+  margin:0 auto 1rem;
+}
+.book-mode-shell.is-visible .book-mode-controls{display:flex}
+.book-mode-button{
+  appearance:none;
+  border:1px solid rgba(124,63,216,.28);
+  border-radius:999px;
+  background:#fff7e8;
+  color:var(--ink);
+  min-width:2.8rem;
+  min-height:2.25rem;
+  font:700 .85rem var(--sans);
+  cursor:pointer;
+}
+.book-mode-button:disabled{opacity:.4;cursor:not-allowed}
+.book-mode-meta{
+  flex:1;
+  text-align:center;
+  min-width:0;
+  font-family:var(--sans);
+  color:var(--muted);
+  font-size:.68rem;
+  display:flex;
+  flex-direction:column;
+  gap:.18rem;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.book-mode-meta strong{
+  color:var(--ink);
+  font-size:.9rem;
+  text-transform:none;
+  letter-spacing:.01em;
+}
+.book-mode-spreads{
+  position:relative;
+  perspective:1200px;
+  min-height:72svh;
+}
+.book-mode-spread{
+  position:absolute;
+  inset:0;
+  gap:1rem;
+  grid-template-columns:1fr 1fr;
+  align-items:start;
+  display:grid;
+  opacity:0;
+  transform:rotateY(8deg);
+  pointer-events:none;
+  visibility:hidden;
+  transition:opacity .28s ease, transform .28s ease;
+}
+.book-mode-shell.is-visible{display:block}
+.book-mode-shell.is-visible .book-mode-spread.is-active{opacity:1;transform:none;visibility:visible;pointer-events:auto}
+.book-mode-page{
+  background:var(--paper);
+  border:1px solid rgba(124,63,216,.22);
+  border-radius:8px;
+  padding:1.45rem 1.2rem 1.1rem;
+  box-shadow:0 10px 34px rgba(20,10,40,.12);
+  min-height:70svh;
+  max-height:72svh;
+  overflow:auto;
+}
+.book-mode-page + .book-mode-page{border-left:1px solid rgba(124,63,216,.18)}
+.book-mode-spread .chapter{display:block;max-width:none;margin:0;padding:0;border:0}
+.book-mode-spread .ch-body p{max-width:44ch}
+.book-mode-spread .ill{
+  margin:1.6rem -1.2rem 1.7rem;
+}
+.book-mode-spread .ill-fallback{
+  margin:0 -1.2rem;
+}
+.book-mode-spread.is-exit-left,
+.book-mode-spread.is-exit-right{
+  opacity:0;
+}
+.book-mode-spread.is-exit-left{transform:rotateY(-8deg)}
+.book-mode-spread.is-exit-right{transform:rotateY(8deg)}
+.book-mode-spread.is-enter-left,
+.book-mode-spread.is-enter-right{
+  opacity:0;
+}
+.book-mode-spread.is-enter-left{transform:rotateY(-8deg)}
+.book-mode-spread.is-enter-right{transform:rotateY(8deg)}
+body.book-mode #story-reader{display:none}
 
 /* ── FOOTER ── */
 footer{
@@ -363,6 +485,7 @@ footer a{color:var(--violet-lt);text-decoration:none}
   .listen-player{min-width:0}
   .chapter{padding:2.5rem 1rem 2rem}
 }
+
 @media(prefers-reduced-motion:reduce){
   .hero-dragon,.stars span{animation:none}
   *{transition:none!important}
@@ -373,8 +496,12 @@ footer a{color:var(--violet-lt);text-decoration:none}
   .nav,.totop,.hero-dragon,.stars,.story-actions,.footer-actions,.listen-panel,.listen-dock{display:none}
   .hero{height:9.75in;min-height:0;page-break-after:always;overflow:hidden}
   .front{page-break-after:always}
-  .chapter{page-break-before:always;break-before:page}
-  .ill{box-shadow:none;margin:1rem 0}
+  .chapter{max-width:none;padding:.35in 0 .15in;page-break-before:always;break-before:page}
+  .ch-head{margin-bottom:1.2rem}
+  .ch-body p{font-size:11pt;line-height:1.55;margin-bottom:.65rem}
+  .ch-body p.first::first-letter{font-size:3.2em}
+  .ill{box-shadow:none;margin:.85rem 0;break-inside:avoid;page-break-inside:avoid}
+  .ill figcaption{font-size:8pt}
 }
 </style>
 </head>
@@ -435,10 +562,11 @@ footer a{color:var(--violet-lt);text-decoration:none}
   </svg>
 
   <p class="hero-eyebrow">The Adventures of Elizabeth and Scarlet &bull; Book One</p>
-  <h1>The <span class="gold">Dragon Glass</span> <br>Map</h1>
+  <h1>Mysteries of the <br><span class="gold">Hidden World</span></h1>
   <p class="hero-sub">25 Chapters &nbsp;&middot;&nbsp; Two Princesses &nbsp;&middot;&nbsp; One Baby Dragon &nbsp;&middot;&nbsp; Countless Mysteries</p>
+  <p class="hero-byline">By Maya</p>
   <div class="story-actions" aria-label="Story actions">
-    <a class="story-action primary" href="/assets/stories/elizabeth-scarlet/the-dragon-glass-map-illustrated.pdf" download>Download PDF</a>
+    <a class="story-action primary" href="/assets/stories/elizabeth-scarlet/mysteries-of-the-hidden-world-illustrated.pdf" download>Download PDF</a>
     <a class="story-action" href="#listen">Read to Me</a>
     <button class="story-action" type="button" data-share-pdf>Share PDF</button>
   </div>
@@ -447,7 +575,7 @@ footer a{color:var(--violet-lt);text-decoration:none}
 
 <!-- ══════════════════ STICKY NAV ══════════════════ -->
 <nav class="nav">
-  <span class="nav-title" id="nav-title">The Dragon Glass Map</span>
+  <span class="nav-title" id="nav-title">Mysteries of the Hidden World</span>
   <div class="nav-links">
     <a href="/maya/">Maya&#8217;s Work</a>
     <a href="#toc">Contents</a>
@@ -455,7 +583,7 @@ footer a{color:var(--violet-lt);text-decoration:none}
     <a href="#ch13">Ch&nbsp;13</a>
     <a href="#ch25">Finale</a>
     <a href="#listen">Listen</a>
-    <a class="download-link" href="/assets/stories/elizabeth-scarlet/the-dragon-glass-map-illustrated.pdf" download>PDF</a>
+    <a class="download-link" href="/assets/stories/elizabeth-scarlet/mysteries-of-the-hidden-world-illustrated.pdf" download>PDF</a>
   </div>
 </nav>
 
@@ -577,6 +705,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">The marble sang under their wheels. The sound was low and smooth, a hum that vibrated up through Elizabeth&#x27;s ankles and into her knees, and she leaned forward the way you had to if you wanted speed instead of just noise. Her braid flipped back over her shoulder. Their capes — they hadn&#x27;t planned to be wearing capes, but royal mornings had a way of beginning with capes — snapped behind them like the wings of startled birds.</p>
 <p class="">They flew past the portrait gallery. The ancient kings and queens of the realm stared down at them with the collective expression of people who had very strongly wished, while they were alive, that someone would invent a rule against children.</p>
 <p class="">Scarlet took the lead first. She always did. She was running on pure joy and no brakes, and she hit a long patch of un-textured marble and went even faster, laughing so hard her whole body shook, which was absolutely not a stable way to maintain speed on polished stone. Elizabeth leaned into it, caught up, and they glided side by side past the second alcove, past the suit of armor that Scarlet had most certainly traumatized last week, past the blue velvet curtain that smelled like old roses and something older.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch01-great-hall-race.webp" alt="Elizabeth and Scarlet racing on roller skates through the sunlit Great Hall" width="1536" height="1024">
+  <figcaption>The Great Hall becomes the perfect royal racetrack.</figcaption>
+</figure>
 <p class="">The finish line was the archway into the Pedestal Room.</p>
 <p class="">The Pedestal Room was where Dad kept the things he loved most. Old maps. A brass telescope that had belonged to his grandmother. Three medals from his university years that he pretended not to be proud of and was absolutely proud of. And centered in the middle of the room on a polished column of white marble, under a glass dome that was supposed to protect it but had a small crack that no one had gotten around to fixing, stood the vase.</p>
 <p class="">The vase was tall and curving and entirely blue — not one blue but seven, layered in the glass like depths of ocean, with roses painted in translucent gold around the middle that caught the light and seemed to glow from inside. It had been in the family for three hundred years. Dad called it irreplaceable. Mom called it beautiful. The castle&#x27;s historical register called it a &quot;significant cultural artifact of considerable monetary and sentimental value.&quot;</p>
@@ -595,6 +727,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Then it rocked forward.</p>
 <p class="">Then it fell.</p>
 <p class="">The sound was enormous. It crashed through the morning quiet of the castle like a thunderclap, a splintering, shattering boom that seemed to bounce off every stone wall and return from every direction at once. Blue glass exploded across the marble. The fragments skittered and slid and came to rest across the entire pedestal room floor, glittering like crushed ice in the morning light, some pieces the size of a palm, others no bigger than a fingernail.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch01-broken-vase.webp" alt="Elizabeth and Scarlet staring in shock at the shattered blue royal vase" width="1536" height="1024">
+  <figcaption>One terrible crash turns a race into a mystery.</figcaption>
+</figure>
 <p class="">The glass dome had not protected anything except its own integrity, which had held perfectly.</p>
 <p class="">Silence.</p>
 <p class="">One sliver of blue glass slid across the marble and stopped against Elizabeth&#x27;s skate. For a second — only a second — it glowed as if it had remembered the sunlight after the room had gone still.</p>
@@ -644,6 +780,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Elizabeth, who was sitting on the edge of the bed doing her best impression of a pillow herself — small, unobtrusive, hiding the shape of the broken glass beneath her — pressed her lips together very hard to keep from laughing. This was not a laughing situation. She was simply not going to make it worse.</p>
 <p class="">Max set the tray down, turned, and let his gaze travel slowly across the room. It was the kind of gaze that saw everything and pretended to be interested in nothing. He saw the pillow. He saw the slight irregularity in its shape. He saw the corner of something blue peeking out from beneath it, catching the morning light in a way that morning light catching silk did not.</p>
 <p class="">For the smallest part of a second, the blue corner reflected in his polished shoe like a tiny map of lightning. Max went very still. Then he became Max again, which meant he became even stiller, but on purpose.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch02-breakfast-secret.webp" alt="Max bringing breakfast while Elizabeth and Scarlet try to hide the blue glass shards" width="1536" height="1024">
+  <figcaption>Max notices that breakfast is not the only thing being hidden.</figcaption>
+</figure>
 <p class="">His expression did not change.</p>
 <p class="">&quot;Princesses,&quot; he said, &quot;is there something you would like to tell me?&quot;</p>
 <p class="">&quot;No,&quot; Scarlet said.</p>
@@ -668,6 +808,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;No commentary,&quot; Max said, and somehow that sentence closed every door she&#x27;d been about to open.</p>
 <p class="">Elizabeth nudged Scarlet&#x27;s knee beneath the breakfast tray. &quot;We promise,&quot; Elizabeth said.</p>
 <p class="">Max leaned forward slightly. It was a very small movement, but the room got more serious. &quot;If you break this promise, I go directly to your father. Tonight, before the guests have finished their first course.&quot; He held their gaze, each in turn. &quot;Is that understood?&quot;</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch02-sisters-deal.webp" alt="Elizabeth and Scarlet making a solemn agreement with Max beside the hidden shards" width="1536" height="1024">
+  <figcaption>The sisters make a promise—and Max sets the terms.</figcaption>
+</figure>
 <p class="">&quot;Yes, Max,&quot; they said, in unison, in the exact tone you use when you mean it.</p>
 <p class="">He stood, smoothed the front of his jacket, and moved toward the door. Then he paused with his hand on the frame, not turning back.</p>
 <p class="">&quot;Some secrets,&quot; he said, &quot;become heavier the longer you carry them.&quot;</p>
@@ -709,6 +853,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;Our home,&quot; the Queen continued, &quot;carries the weight of every generation that came before us and the hope of every generation still to come. The treasures we inherit are not only things. They are stories. They are the evidence that we were here, and that we cared about something enough to keep it.&quot;</p>
 <p class="">Scarlet&#x27;s fingers curled around the arm of her gilded chair. Elizabeth could see them, white at the knuckles, in her peripheral vision.</p>
 <p class="">Across the lawn, Max remained perfectly still against the wall. The lantern light caught the edge of his rainbow tie. He did not look at the girls.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch03-lantern-speech.webp" alt="The Queen speaking on the castle lawn beneath hundreds of glowing lanterns" width="1536" height="1024">
+  <figcaption>Under the lanterns, Elizabeth and Scarlet keep their promise.</figcaption>
+</figure>
 <p class="">They behaved.</p>
 <p class="">They did not run, or whisper, or skate, which would have been logistically complicated but not outside the realm of Scarlet&#x27;s historical capabilities. Scarlet did not make a single face at the Duke of Plumford, even when he sneezed majestically into a napkin shaped like a swan and then looked at it with the expression of a man cataloguing an acquisition. Elizabeth did not fidget. She did not check the time. She did not compose lists in her head — or rather, she composed them internally, which was invisible and therefore acceptable.</p>
 <p class="">When the final applause rolled across the lawn, it felt genuinely earned.</p>
@@ -726,6 +874,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;The princesses,&quot; he said, by way of greeting. &quot;The usual?&quot;</p>
 <p class="">&quot;Everything,&quot; Scarlet said, spreading her arms slightly to indicate the scope of her ambition.</p>
 <p class="">They ended up with two extravagant creations. Scarlet got the Princess Special, which involved bubble-gum-flavored balls for eyes and a fondant tiara melting artfully at the top. Elizabeth got the patriot bar, striped red, white, and blue, on a stick the size of a ruler. They sat on the low stone wall along the drive while the party murmured behind them and the lanterns swayed in a gentle breeze, and the syrup stained their fingers in colors that would require explanation tomorrow.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch03-giant-ice-creams.webp" alt="Elizabeth and Scarlet celebrating with two enormous colorful ice creams" width="1536" height="1024">
+  <figcaption>Perfect behavior deserves an enormous reward.</figcaption>
+</figure>
 <p class="">&quot;Behave perfectly forever,&quot; Scarlet said, licking her bubble-gum eye with philosophical solemnity. &quot;Or fix what we broke.&quot;</p>
 <p class="">Elizabeth considered her bar. &quot;Fix what we broke.&quot;</p>
 <p class="">&quot;That sounds harder.&quot;</p>
@@ -788,6 +940,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;You saw nothing,&quot; Scarlet repeated.</p>
 <p class="">&quot;I see two princesses buying ice cream at eleven forty-five at night with fair tokens.&quot; He set down his book. &quot;What&#x27;ll it be?&quot;</p>
 <p class="">They bought sundaes — enormous ones, chocolate fudge and sprinkles and a cherry each, in proper cups with real spoons, carried back across the dark lawn with the stealth of people who were moving at approximately three times their operational capacity. Elizabeth got back through the south door without incident. Scarlet hit the doorframe with her elbow but managed not to drop her cup, which was genuinely impressive under the circumstances.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch04-midnight-escape.webp" alt="Elizabeth and Scarlet on a moonlit secret mission to Julio’s glowing ice-cream truck" width="1536" height="1024">
+  <figcaption>Operation Ice Cream begins beneath the moon.</figcaption>
+</figure>
 <p class="">They ate in the room with the lights off, sitting cross-legged on their beds, and the sundaes were the best thing either of them had ever tasted, partly because of quality and partly because of context. Midnight chocolate was simply different from afternoon chocolate. This was a scientific fact.</p>
 <p class="scenebreak">✦ ✦ ✦</p>
 <p class="">The next morning, Max appeared with breakfast at his customary 7:58.</p>
@@ -800,6 +956,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;A small pattern,&quot; Scarlet said.</p>
 <p class="">&quot;A sticky one,&quot; Max said, looking at the chocolate.</p>
 <p class="">The punishment for Operation Ice Cream was a week of cleaning Max&#x27;s butler quarters, which were immaculate and therefore required extremely precise maintenance to stay that way. They dusted his shoes in a specific order. They folded his white gloves in a specific manner. They organized his collection of rainbow ties by color, from warm to cool, in a spectrum so exacting it required a full afternoon.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch04-caught-with-sundaes.webp" alt="Max confronting Elizabeth and Scarlet after discovering their midnight sundaes" width="1536" height="1024">
+  <figcaption>By breakfast, Max has solved the sticky little mystery.</figcaption>
+</figure>
 <p class="">Scarlet found the pineapple one on the third day.</p>
 <p class="">&quot;Why,&quot; she said, holding it up, &quot;do you own a tie with tiny pineapples on it?&quot;</p>
 <p class="">Max accepted the tie and folded it into its place in the drawer with the same care he gave everything. &quot;A butler,&quot; he said, &quot;must be prepared for tropical emergencies.&quot;</p>
@@ -820,6 +980,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Scarlet invented a move she called the Royal Jellyfish, which consisted of jumping as high as possible and then going entirely boneless on the way down. It was not athletic. It was not graceful. It was deeply, genuinely funny, and she landed it seven times in a row, each time with the expression of someone accepting an award.</p>
 <p class="">Elizabeth practiced her spinning. She had been working on a one-and-a-half rotation for the past month. She landed it once, then twice, then a third time with enough control that she felt the clean click of a thing mastered, and that felt excellent in a completely different way from the Royal Jellyfish but equally real.</p>
 <p class="">They moved to the foam pits. They moved to the dodgeball court, where Scarlet hit a kid named Marcus three times in a row and then apologized very sincerely and then they all became friends for the duration of the pit session. They moved to the ninja warrior section, where Elizabeth got through seven obstacles and fell on the eighth and felt entirely fine about it.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch05-trampoline-flight.webp" alt="Elizabeth and Scarlet laughing as they soar through a colorful trampoline park" width="1536" height="1024">
+  <figcaption>For twenty perfect minutes, the princesses can fly.</figcaption>
+</figure>
 <p class="">Then Scarlet grabbed Elizabeth&#x27;s arm.</p>
 <p class="">&quot;Don&#x27;t look immediately,&quot; she said, in the very specific tone she used when something was happening that required strategy. &quot;Look in about four seconds. At the blue support pillar near the entrance.&quot;</p>
 <p class="">Elizabeth counted to four.</p>
@@ -846,6 +1010,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;For safety.&quot;</p>
 <p class="">&quot;With a fake mustache over your real mustache?&quot;</p>
 <p class="">Max touched his upper lip. The disguise mustache had now migrated to his chin.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch05-max-stakeout.webp" alt="Max attempting a stakeout behind a blue pillar with a crooked fake mustache" width="1536" height="1024">
+  <figcaption>Max’s disguise has one mustache too many.</figcaption>
+</figure>
 <p class="">There was a pause while Max looked at the mustache, gathered himself, and reset.</p>
 <p class="">&quot;A disguise,&quot; he said, with unshakeable composure, &quot;must have layers.&quot;</p>
 <p class="">Elizabeth and Scarlet looked at each other. Then they folded their arms in exactly the way Max folded his arms when he was being disappointed at them — same angle, same tilt, same chin position — and held the posture until his eyes narrowed in recognition.</p>
@@ -894,6 +1062,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Scarlet got a 41.</p>
 <p class="">&quot;Miss Scarlet,&quot; Ms. Ironfist said, in the flat, final tone she reserved for matters of significant consequence, &quot;please gather your things. You will be attending the remedial section in Room Seven for the remainder of this unit.&quot;</p>
 <p class="">Scarlet&#x27;s face went through three changes very quickly — shock, embarrassment, and then the particular stillness of someone working very hard not to cry in front of twenty-three people.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch06-hard-math-test.webp" alt="Scarlet facing a difficult mathematics test in the silent classroom" width="1536" height="1024">
+  <figcaption>The hardest problems are not always on the page.</figcaption>
+</figure>
 <p class="">Room Seven was fine. The teacher there smiled. The problems were easier. The room had a window that looked out over the courtyard garden.</p>
 <p class="">Scarlet hated every second of it. Not because it was bad but because it was somewhere else, and Elizabeth was in Room Four, and math was something she should be able to do if she just tried hard enough, and the fact that she&#x27;d landed here felt like proof that she hadn&#x27;t.</p>
 <p class="">That evening, in their room, she said this into her pillow.</p>
@@ -912,6 +1084,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">The principal appeared in the doorway of Room Seven the next morning before class had properly begun. She was holding a paper. She crossed to Scarlet&#x27;s desk and set it down.</p>
 <p class="">One hundred percent. Every problem. Clean and correct and showing every step of the working, the way Elizabeth had taught her.</p>
 <p class="">Scarlet ran. She was supposed to walk — the Academy had opinions about this — but she ran down the corridor and pushed open the door to Room Four and Elizabeth stood up from her desk without even knowing she was going to, and they hugged each other in the middle of the classroom with the door open and twenty-three students watching, which was embarrassing and completely worth it.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch06-reassessment-hug.webp" alt="Scarlet and Elizabeth hugging joyfully after Scarlet succeeds on her reassessment" width="1536" height="1024">
+  <figcaption>A perfect score is better when your sister helped you earn it.</figcaption>
+</figure>
 <p class="">Ms. Ironfist looked up from her ledger.</p>
 <p class="">&quot;Acceptable improvement,&quot; she said.</p>
 <p class="">It was the quietest, driest, most minimal possible praise.</p>
@@ -942,10 +1118,18 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;Much better.&quot; Mrs. Rosie stood, brushing grass from her knee. &quot;Mistakes are just clues wearing disguises.&quot;</p>
 <p class="">Scarlet stared at her. &quot;What does that mean?&quot;</p>
 <p class="">&quot;It means when you get an answer wrong, the wrong answer tells you exactly what you need to learn. It&#x27;s not a failure. It&#x27;s information.&quot; She moved on to the next student, leaving Scarlet standing in the sunflower bed with an expression Elizabeth had never quite seen on her face before — the look of someone who had just been handed a useful tool they hadn&#x27;t known they needed.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch07-sunflower-math.webp" alt="Mrs Rosie teaching Elizabeth and Scarlet mathematics among tall sunflowers" width="1536" height="1024">
+  <figcaption>Among the sunflowers, mistakes become clues.</figcaption>
+</figure>
 <p class="">At lunch, under the old oak tree, Elizabeth noticed something.</p>
 <p class="">Mrs. Rosie&#x27;s canvas bag was open beside her on the bench, and from inside it, a photograph had slipped partway out. The photograph showed two women in academic robes, arms around each other, grinning at the camera in the specific way people grin at cameras when they&#x27;ve just survived something significant together — a graduation, maybe, or a challenge. One of them was unmistakably Mrs. Rosie, younger, the same warm open face. The other woman had severe dark hair and eyebrows that were currently, in this photo, tilted upward in the closest thing to a smile they had apparently ever attempted.</p>
 <p class="">&quot;You know Ms. Ironfist?&quot; Scarlet said, before social judgment had a chance to intervene.</p>
 <p class="">Mrs. Rosie looked at the photo, then smiled and tucked it back. &quot;We were roommates in college. Thirty years ago.&quot;</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch07-old-photograph.webp" alt="Elizabeth and Scarlet examining an old photograph of young Mrs Rosie and Ms Ironfist" width="1536" height="1024">
+  <figcaption>An old photograph reveals an unexpected friendship.</figcaption>
+</figure>
 <p class="">&quot;But she&#x27;s...&quot; Scarlet looked for the right word.</p>
 <p class="">&quot;Terrifying,&quot; Elizabeth supplied.</p>
 <p class="">Mrs. Rosie looked at them both for a moment with an expression that was weighing something. &quot;She cares enormously about teaching,&quot; she said finally. &quot;I know that&#x27;s hard to see when she&#x27;s holding a ruler. But she stays up late grading. She writes detailed notes on every wrong answer — not to correct, but to explain. She wants you to understand. That&#x27;s not nothing.&quot;</p>
@@ -992,6 +1176,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;Dad,&quot; Elizabeth said.</p>
 <p class="">&quot;Yes?&quot;</p>
 <p class="">She looked at the meadow walls. At the sky ceiling. At the bunk bed and the bookshelves and the window seat and the water slide. &quot;This is the best room in the castle.&quot;</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch08-ladybug-room.webp" alt="Elizabeth and Scarlet discovering their magical ladybug bedroom and indoor water slide" width="1536" height="1024">
+  <figcaption>The best room in the castle is finally theirs.</figcaption>
+</figure>
 <p class="">&quot;By a significant margin,&quot; Scarlet added, with the authority of someone who has toured the whole building.</p>
 <p class="">Their parents left eventually, after a meal together in the new room that felt like the beginning of something. Night came in through the window and the painted stars on the ceiling — she hadn&#x27;t even noticed the stars yet, tiny and careful and silver between the ladybugs — lit up one by one, and the ladybugs glowed their gentle red, and the bunk bed was excellent, and the whole room felt like being inside something that had been made with specific love for the specific people who were now inside it.</p>
 <p class="">&quot;Best room ever,&quot; Scarlet whispered from the top bunk, in the particular soft voice she used for things she meant completely.</p>
@@ -1015,6 +1203,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Something clicked. Deep in the wall, mechanical and definite. A hairline seam appeared, straight and vertical, six inches to the right of the star.</p>
 <p class="">Elizabeth looked at her sister. &quot;I think,&quot; she said carefully, &quot;our room has a secret.&quot;</p>
 <p class="">Scarlet put her hand against the wall and pushed.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch08-secret-star-wall.webp" alt="Elizabeth and Scarlet pressing a carved star as a secret stone wall opens" width="1536" height="1024">
+  <figcaption>Behind the bunk bed, a star unlocks the first secret.</figcaption>
+</figure>
 <p class="">The seam opened slightly — enough to feel the cool air on the other side, the particular coolness of somewhere that had been closed for a long time — and then held.</p>
 <p class="">Not yet. Not enough information. Not tonight.</p>
 <p class="">But the wall had an answer, and they had found the question, and tomorrow they were going to need a better plan than pajamas and enthusiasm.</p>
@@ -1048,6 +1240,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Elizabeth reached in.</p>
 <p class="">Her fingers found the edge of something smooth and cool. She pulled it out carefully.</p>
 <p class="">A silver envelope. The outside was dusty in the way things get dusty when they&#x27;ve been somewhere for a long time, the gray-white dust of stillness. But the seal on the back — a circle pressed into purple wax — was fresh. The wax was still slightly yielding, still catching small fingerprint ridges, which meant it had been placed there recently.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch09-messenger-tree.webp" alt="Elizabeth and Scarlet finding a silver envelope inside the ancient Messenger Tree" width="1536" height="1024">
+  <figcaption>The compass leads to a message hidden in the woods.</figcaption>
+</figure>
 <p class="">Very recently.</p>
 <p class="">Elizabeth held it in both hands and looked at it. Scarlet stood beside her and looked at it. From somewhere behind them, Mrs. Rosie&#x27;s voice carried faintly, now on the subject of how trees communicated through their root systems, which felt accidentally relevant.</p>
 <p class="">&quot;Open it,&quot; Scarlet said, so quietly it was barely sound at all.</p>
@@ -1072,6 +1268,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;I don&#x27;t know,&quot; Elizabeth said.</p>
 <p class="">&quot;Do we trust her?&quot;</p>
 <p class="">Elizabeth watched Mrs. Rosie rejoin the group ahead, pointing something out in the canopy, the class looking up. She tucked the notebook under her arm. The word <em>meet</em> sat in the note like a small lit fuse.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch09-rosie-watching.webp" alt="Mrs Rosie quietly watching Elizabeth and Scarlet with a mysterious note nearby" width="1536" height="1024">
+  <figcaption>Mrs Rosie may know more than she says.</figcaption>
+</figure>
 <p class="">&quot;Not yet,&quot; she said.</p>
 <p class="">The wind moved through the Whispering Woods, and for one clear, unmistakable second, the leaves made a sound that was very close to specific words.</p>
 <p class="">Crystal Cave. Crystal Cave. Crystal Cave.</p>
@@ -1094,6 +1294,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">They were going to the Whispering Woods. The picnic was going to the Whispering Woods, where the note had said <em>Crystal Cave</em>, where the note had been left by someone who knew about the compass, and now the entire family was going to the Whispering Woods on an apparently unrelated but suspiciously well-timed family outing.</p>
 <p class="">Elizabeth touched the compass through her pocket. It was warm.</p>
 <p class="">&quot;Wonderful,&quot; Elizabeth said, and meant it for at least two reasons.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch10-woods-picnic.webp" alt="Elizabeth and Scarlet enjoying a royal family picnic in the Whispering Woods" width="1536" height="1024">
+  <figcaption>A family picnic brings everyone close to the next clue.</figcaption>
+</figure>
 <p class="scenebreak">✦ ✦ ✦</p>
 <p class="">The picnic materialized in the meadow clearing with the efficiency of a household that had done this before — Max producing a blanket from what appeared to be a very organized bag, with corners that went down like they had ambitions about staying, the guards setting up the folding table, Mom and Dad arranging sandwiches with the low-grade constructive argument that meant they were both happy.</p>
 <p class="">The strawberry tarts, Elizabeth observed, were extraordinary. This was not the point. She was working on a different point.</p>
@@ -1122,6 +1326,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">From behind one of the larger crystal clusters — a cluster near the right wall that jutted out like a small promontory — something moved. Something mechanical. They heard it before they saw it: the careful, slightly uneven movement of jointed metal on stone.</p>
 <p class="">It emerged from behind the crystals and stopped in a pool of purple light and looked at them.</p>
 <p class="">It was an owl.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch10-crystal-cave-box.webp" alt="Elizabeth and Scarlet discovering a brass owl and wooden box in Crystal Cave" width="1536" height="1024">
+  <figcaption>Deep in Crystal Cave, the brass owl delivers a gift.</figcaption>
+</figure>
 <p class="">Mechanical, precisely constructed, brass feathers individually articulated over a copper body, glass eyes that caught the crystal light and held it like small lamps. Its feet clicked delicately on the stone. It was maybe a foot tall. It turned its head — the articulation was extraordinary, smooth and silent — and looked at them with the unhurried regard of something that had been waiting for a specific event and had just watched it arrive.</p>
 <p class="">Then it hooted once — a soft, rounded sound, more musical than a real owl, as if the mechanism had been tuned — and tapped the wooden box with one brass talon.</p>
 <p class="">&quot;Is it telling us to open the box?&quot; Elizabeth asked.</p>
@@ -1160,6 +1368,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Tiny letters, frosted into the glass, fine as the lines of a fingerprint.</p>
 <p class="">Three words and an image. THE ROYAL CLOCKTOWER. And below the words, small and precise, drawn in the same frosted technique: a gear and a wrench.</p>
 <p class="">&quot;It&#x27;s not just a shard,&quot; Elizabeth said. Her voice was very level. &quot;It&#x27;s a clue.&quot;</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch11-shard-clocktower.webp" alt="A blue glass shard revealing a magical vision of the Royal Clocktower" width="1536" height="1024">
+  <figcaption>The broken glass points toward the Royal Clocktower.</figcaption>
+</figure>
 <p class="">Scarlet leaned in, squinting. &quot;Someone put writing in the glass.&quot;</p>
 <p class="">&quot;Someone put it there a long time ago, probably. When the vase was made.&quot; Elizabeth turned the shard slowly, watching the letters appear and disappear as the angle changed. They were only visible in that specific sunlight, at that specific angle. You&#x27;d never see them looking at the vase normally. You&#x27;d have to break it first.</p>
 <p class="">She thought about that. She thought about it carefully.</p>
@@ -1181,6 +1393,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">The clock room filled the entire top floor, open on all four sides to the night air through stone arches, and the machinery of it was enormous and beautiful — great bronze gears taller than either of them, turning with a slow majesty that you felt in your chest as well as heard. Bells hung above in graduated sizes, the smallest the size of a fist, the largest the size of a wardrobe, all suspended from iron framework and waiting for the hour. The room smelled of oil and old metal and the specific cold that comes with height.</p>
 <p class="">The gears ticked.</p>
 <p class="">A figure stood beside the largest clock face, looking out through the arch at the nighttime kingdom below.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch11-max-inventor.webp" alt="Elizabeth and Scarlet finding Max in inventor goggles and an apron inside the clocktower" width="1536" height="1024">
+  <figcaption>At the top of the tower, Max has another secret.</figcaption>
+</figure>
 <p class="">Scarlet grabbed Elizabeth&#x27;s hand. Hard.</p>
 <p class="">The figure turned at the sound of their step.</p>
 <p class="">It lowered its hood.</p>
@@ -1221,6 +1437,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">It took the whole morning.</p>
 <p class="">The golden glue worked with a logic that felt more like intention than chemistry — a single drop from the bottle on one edge, held to its matching piece, and then a warmth, a pull, as if the glass remembered what it had been and was choosing it again. The connection happened at the fracture line exactly. No excess. No misalignment.</p>
 <p class="">&quot;It wants to be whole,&quot; Scarlet said, after the third successful join.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch12-golden-repair.webp" alt="The blue royal vase being repaired with luminous golden seams" width="1536" height="1024">
+  <figcaption>Golden glue helps the glass remember how to be whole.</figcaption>
+</figure>
 <p class="">&quot;Don&#x27;t get philosophical about glue,&quot; Elizabeth said.</p>
 <p class="">&quot;I&#x27;m not getting philosophical. I&#x27;m making an observation.&quot;</p>
 <p class="">&quot;That is philosophical.&quot;</p>
@@ -1240,6 +1460,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Dad went very still.</p>
 <p class="">&quot;That&#x27;s—&quot;</p>
 <p class="">&quot;Dad,&quot; Elizabeth said.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch12-family-confession.webp" alt="Elizabeth and Scarlet confessing beside the restored vase as their family embraces them" width="1536" height="1024">
+  <figcaption>Telling the truth finally brings the whole family together.</figcaption>
+</figure>
 <p class="">And then they told everything. The race. The skates. The marble floor and the corner and the crash. The scarf and the hiding. Max&#x27;s deal and the Speech and the coin jar and the midnight sundaes. The punishment. The Clocktower and the brass owl and the Crystal Cave and the note that knew their soda flavors. The secret glue and the hidden clues and all of it, in order, in the light of the library lamps, while Mom and Dad listened and said nothing until they were done.</p>
 <p class="">When they finished, the room was quiet for a long moment.</p>
 <p class="">Scarlet&#x27;s eyes had filled with tears somewhere in the middle of the telling and she&#x27;d let them, because they were real and this was the moment for real things.</p>
@@ -1264,6 +1488,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">And below that, in smaller letters that had clearly been added as an afterthought that Max had felt strongly about:</p>
 <p class="">NO BUTLERS WITHOUT KNOCKING.</p>
 <p class="">&quot;You wrote that yourself,&quot; Scarlet said, reading the smaller text with her arms crossed.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch13-detective-headquarters.webp" alt="Elizabeth and Scarlet building a secret detective headquarters filled with maps and clues" width="1536" height="1024">
+  <figcaption>The Royal Detectives open their first headquarters.</figcaption>
+</figure>
 <p class="">&quot;A wise butler anticipates future policy before it becomes official,&quot; Max said, from the corridor behind her, where he was pretending to be en route to somewhere else.</p>
 <p class="">&quot;You specifically put that rule there so you&#x27;d already be following it before we made it.&quot;</p>
 <p class="">&quot;That is correct. It demonstrates initiative.&quot;</p>
@@ -1295,6 +1523,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;The Mysterious Pulsing Compass?&quot;</p>
 <p class="">Scarlet considered. &quot;Better. Still a bit administrative.&quot;</p>
 <p class="">&quot;In the morning,&quot; Elizabeth said, going back to bed, &quot;we can discuss naming conventions. For now, stop talking so I can think about logistics.&quot;</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch13-waterfall-compass.webp" alt="A glowing compass guiding Elizabeth and Scarlet behind a roaring waterfall" width="1536" height="1024">
+  <figcaption>The compass points straight through the falling water.</figcaption>
+</figure>
 <p class="">She heard Scarlet turn over on the top bunk. Then, quietly:</p>
 <p class="">&quot;Elizabeth?&quot;</p>
 <p class="">&quot;Yes.&quot;</p>
@@ -1333,6 +1565,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;I know that as well.&quot;</p>
 <p class="">They followed the sound deeper, past the stone table where they&#x27;d found the brass owl, through a narrowing in the passage that they hadn&#x27;t noticed before because they hadn&#x27;t been looking for it, and then out into a second chamber. Smaller than the first, the ceiling lower, the crystal growth here dense and continuous. The purple light was stronger. In the center of the chamber, built up from the floor in a construction of old dark stone that was partly natural and partly arranged, was a nest.</p>
 <p class="">And in the nest was an egg.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch14-glowing-egg.webp" alt="Elizabeth and Scarlet discovering a glowing mysterious egg in a purple crystal chamber" width="1536" height="1024">
+  <figcaption>In the purple mist, something waits inside an egg.</figcaption>
+</figure>
 <p class="">It was the size of a beach ball. The shell was smooth and seamless, the color shifting between deep emerald and a rich hammered gold as they moved around it, the pigment changing with the angle the way a dragonfly&#x27;s wing changes, like the color was a property of the material rather than something on the surface. From inside it, through the shell, warm light pulsed in the same rhythm as the walls, as the compass.</p>
 <p class="">&quot;Is it a bird?&quot; Scarlet asked.</p>
 <p class="">&quot;Maybe.&quot;</p>
@@ -1362,6 +1598,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">They were almost to the waterfall curtain when they heard it.</p>
 <p class="">Tap. Tap. Tap.</p>
 <p class="">The lightest possible sound. From the egg, behind them. Something on the inside of the shell.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch14-egg-tapping.webp" alt="Elizabeth and Scarlet turning back as tapping sounds come from inside the glowing egg" width="1536" height="1024">
+  <figcaption>Tap, tap, tap—something inside is ready to meet them.</figcaption>
+</figure>
 <p class="">Tapping out.</p>
 <p class="">They ran all the way home. Not from fear. From the specific joy of knowing that tomorrow would be extraordinary.</p></div>
 </section>
@@ -1391,6 +1631,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">It had tiny gold horns. Just two, symmetrical, no bigger than her thumb, curving back from its brow with the confidence of things that knew what they were for even if they hadn&#x27;t decided how to use them yet.</p>
 <p class="">And when it lifted its head and opened its eyes, the eyes were violet. The deep, saturated violet of certain flowers at dusk, the violet of certain sky-edges in winter, a color so specific it seemed impossible to have occurred naturally and also looked like it couldn&#x27;t have been anything else.</p>
 <p class="">It looked at them.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/cinder-hatches.webp" alt="Elizabeth and Scarlet meeting the newly hatched Cinder in the glowing Crystal Cave" width="1536" height="1024">
+  <figcaption>Cinder opens his violet eyes, and the hidden world becomes real.</figcaption>
+</figure>
 <p class="">&quot;Dragon,&quot; Elizabeth whispered.</p>
 <p class="">&quot;Baby dragon,&quot; Scarlet whispered back. &quot;Specifically. It matters that it&#x27;s a baby.&quot;</p>
 <p class="">The baby dragon considered them. Then it sneezed.</p>
@@ -1422,6 +1666,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;Cinder,&quot; Elizabeth repeated.</p>
 <p class="">The dragon chirped — a pure, resonant note, different from all the previous ones — flapped both wings at once in a motion that was clearly the first time he&#x27;d done this deliberately, and the force of it was sufficient to send him rolling backward onto the moss.</p>
 <p class="">He lay there on his back, wings spread, tail curled up, looking at the ceiling with an expression of mild surprise.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch15-cinder-named.webp" alt="Cinder rolling happily onto his back after choosing his name" width="1536" height="1024">
+  <figcaption>One joyful chirp makes the name official: Cinder.</figcaption>
+</figure>
 <p class="">Scarlet burst out laughing. Elizabeth pressed her face into her hand and let the laugh come. The cave echoed it back in soft repeating ripples.</p>
 <p class="">Cinder righted himself with dignity, arranged himself on his four legs, and sneezed glitter.</p>
 <p class="">He had chosen his name.</p></div>
@@ -1447,6 +1695,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Cinder leaned in.</p>
 <p class="">He breathed.</p>
 <p class="">A thin stream of golden fire, narrow and precise as a candle flame, emerged from his small mouth and touched the bottom of the pot. The milk warmed almost instantly — faster than a stovetop, faster than anything — and the marshmallows puffed upward in the heat, softening from white solids into translucent, yielding domes of sweetness. The fire cut off the exact moment the milk reached temperature, as if Cinder had an internal thermometer and used it as a matter of course.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/marshmallow-feast.webp" alt="Cinder warming marshmallows with golden fire while Elizabeth takes notes and Scarlet laughs" width="1536" height="1024">
+  <figcaption>The investigation reaches a delicious conclusion: dragons love marshmallows.</figcaption>
+</figure>
 <p class="">&quot;He made hot cocoa,&quot; Scarlet said.</p>
 <p class="">&quot;He warmed milk with marshmallows,&quot; Elizabeth said. &quot;It is close to hot cocoa.&quot;</p>
 <p class="">&quot;He made it. That&#x27;s the point.&quot;</p>
@@ -1471,6 +1723,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Elizabeth looked up from the notebook.</p>
 <p class="">The cave wall shimmered.</p>
 <p class="">It was very fast — a second, maybe less — but unmistakable: the crystal surface reflected something that wasn&#x27;t the cave. Two figures, walking. The woods behind them, recognizable. Earlier that same day, before they&#x27;d arrived.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch16-cinder-sleeping.webp" alt="Cinder sleeping in Scarlet’s lap as the Crystal Cave wall begins to shimmer" width="1536" height="1024">
+  <figcaption>As Cinder sleeps, the cave reveals a new kind of magic.</figcaption>
+</figure>
 <p class="">Then it was gone.</p>
 <p class="">Elizabeth grabbed the notebook and opened it to a fresh page.</p>
 <p class="">&quot;Cinder,&quot; she said, &quot;can do something we haven&#x27;t recorded yet.&quot;</p>
@@ -1488,6 +1744,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Past things, specifically. Things that had happened in the vicinity of the cave, in the world around the cave, in some undefined radius that they hadn&#x27;t yet been able to determine. The images were clear and steady, no distortion, slightly warmer in color than real life, like a photograph taken at golden hour.</p>
 <p class="">At first it was genuinely funny.</p>
 <p class="">He showed Scarlet tripping over a root on the forest path four times in a row, each replay slightly further zoomed in, as if he were enjoying it. He showed Elizabeth making her thinking face while holding a marshmallow bag upside down, which was a face she did not know she made and found objectionable. He showed Max, one week prior, standing at the edge of the wood with his arms folded, looking at the waterfall from twenty feet away with the expression of a man doing very precise calculations about whether to go closer.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch17-funny-echoes.webp" alt="Cinder’s Echo-Vision replaying funny moments for Elizabeth and Scarlet" width="1536" height="1024">
+  <figcaption>Echo-Vision begins with the moments nobody expected to see again.</figcaption>
+</figure>
 <p class="">&quot;He doesn&#x27;t come in,&quot; Elizabeth said, watching the replay. &quot;He knows it&#x27;s here.&quot;</p>
 <p class="">&quot;He knows a lot of things and waits,&quot; Scarlet said. &quot;He does that.&quot;</p>
 <p class="">But Echo-Vision stopped being funny when the image changed without Cinder being asked.</p>
@@ -1504,6 +1764,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Silver mist.</p>
 <p class="">Thick and particular, the consistency of dense fog, and it moved with intention rather than diffusing normally. It spread over the entrance in a layer, and where it touched stone it thickened and held, like paint drying at about twenty times the normal speed. The girls packed rocks and moss around and into it, and Cinder moved along the edges with small pulses of golden heat that bonded everything into a surface that looked, from two feet away, like cliff.</p>
 <p class="">From across the clearing, it looked like nothing. Like the cliff had always been exactly that. No vines, no cave entrance, no mist. Just stone.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch17-silver-net-figure.webp" alt="A cloaked Silver Net figure appearing in the cave vision as the children seal the entrance" width="1536" height="1024">
+  <figcaption>A dangerous visitor turns a funny discovery into a warning.</figcaption>
+</figure>
 <p class="">&quot;Invisible wall,&quot; Scarlet said.</p>
 <p class="">&quot;Disguised,&quot; Elizabeth said.</p>
 <p class="">&quot;Invisible sounds better.&quot;</p>
@@ -1540,6 +1804,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">He waddled to the center of the wall and sat down, and hummed his Echo-Vision tone, and the wall shimmered.</p>
 <p class="">But instead of showing the past, it showed the present. The person on the other side, rendered in blue light like an X-ray image projected through stone: height and build and posture and, unmistakably, the precise curling mustache, the perfectly aligned jacket, the something-in-the-hand that resolved, as the image clarified, into a canvas apron over one arm and a tool kit in the other.</p>
 <p class="">Max. Outside. Waiting.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch18-xray-max.webp" alt="Cinder’s magical sight revealing Max waiting beyond the disguised stone wall" width="1536" height="1024">
+  <figcaption>Cinder looks through stone and finds a familiar mustache.</figcaption>
+</figure>
 <p class="">Elizabeth let out a breath she hadn&#x27;t planned to hold.</p>
 <p class="">&quot;He can see through walls now,&quot; Scarlet said. &quot;Cinder, you absolute wonder.&quot;</p>
 <p class="">They found the secret push-point — a small depression in the new wall&#x27;s surface, the one intentional weakness — and pressed it, and a section the size of a narrow door swung inward.</p>
@@ -1566,6 +1834,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Cinder stood up. He walked, with deliberation, across the cave floor to Max&#x27;s feet. He sniffed the rainbow tie, which had been visible under the canvas apron the whole time and which Cinder had apparently been curious about since Max entered. He sniffed it thoroughly, making a small investigative sound.</p>
 <p class="">Then he sneezed glitter onto both of Max&#x27;s shoes.</p>
 <p class="">Max looked down at his glittering shoes.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch18-glittery-shoes.webp" alt="Cinder sneezing golden glitter over Max’s polished black shoes" width="1536" height="1024">
+  <figcaption>A little dragon glitter seals the new alliance.</figcaption>
+</figure>
 <p class="">&quot;He likes you,&quot; Scarlet said. &quot;That&#x27;s how he says it.&quot;</p>
 <p class="">&quot;I&#x27;m deeply honored,&quot; Max said, with the exact sincerity of someone who meant it completely and had chosen a flat delivery anyway.</p>
 <p class="">The secret team stood in the glowing cave, the crystals warm around them, the waterfall a distant roar, and took stock of what they were.</p>
@@ -1609,6 +1881,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;He&#x27;s doing it!&quot; Scarlet&#x27;s voice went up in pitch by about four notes. She was running along below him on the forest floor, tracking his path. &quot;Elizabeth, he&#x27;s actually—&quot;</p>
 <p class="">&quot;Quietly,&quot; Elizabeth said, also running.</p>
 <p class="">Cinder skimmed above the ferns. The golden fog around him caught the light and turned him into a drift of warm luminescence, almost invisible from a distance, beautiful from close. He sneezed mid-flight — the glitter scattered behind him like a comet trail — and three birds exploded from a nearby ash tree in indignant protest.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch19-first-forest-flight.webp" alt="Cinder making his first low flight through a forest filled with golden mist" width="1536" height="1024">
+  <figcaption>Cinder’s wings find the air for the very first time.</figcaption>
+</figure>
 <p class="">Scarlet&#x27;s bracelet buzzed.</p>
 <p class="">Two short bursts. Elizabeth&#x27;s answered immediately.</p>
 <p class="">&quot;Someone&#x27;s coming,&quot; Elizabeth hissed.</p>
@@ -1623,6 +1899,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;First flight,&quot; Elizabeth wrote, in her notebook, her hand still slightly trembling. &quot;Successful.&quot; Then added, from Scarlet&#x27;s dictation: &quot;First hiding — needs practice.&quot;</p>
 <p class="">She closed the notebook. High above the tree line — so far up you&#x27;d call it a bird if you didn&#x27;t look closely, and if you did look closely it still moved like a bird, but with the smooth mechanical precision of something that had a plan — a shape circled twice. Caught the afternoon light on something that was not feathers.</p>
 <p class="">Its wing flashed silver. For one cold instant, Elizabeth saw the same mark from the Echo-Vision: a circle crossed by a net.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch19-scout-and-bird.webp" alt="A royal scout below the trees while a mechanical silver bird circles high overhead" width="1536" height="1024">
+  <figcaption>One watcher walks away, but another remains in the sky.</figcaption>
+</figure>
 <p class="">Elizabeth watched it.</p>
 <p class="">&quot;Cinder didn&#x27;t fly that high,&quot; she said.</p>
 <p class="">Scarlet followed her gaze. The shape had already moved on, crossing into the castle&#x27;s eastern airspace. &quot;No,&quot; she said. &quot;He didn&#x27;t.&quot;</p>
@@ -1658,6 +1938,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Cinder, when introduced to the trunk, examined it thoroughly, ate a small piece of interior lining, decided it was acceptable, and climbed in.</p>
 <p class="">The flight was everything Elizabeth had expected and also several things she hadn&#x27;t.</p>
 <p class="">Cinder loved the clouds. This expressed itself as a sustained vibration from inside the trunk, accompanied by the muffled chirping of something deeply pleased. The trunk had to be checked as oversized baggage and loaded through the private jet&#x27;s cargo compartment, but they were cleared to be near it, and Scarlet spent significant portions of the flight on the floor beside it feeding marshmallows through the ventilation channel that was — not coincidentally — at exactly the right height for a small dragon.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch20-dragon-travel-trunk.webp" alt="Cinder traveling secretly inside Max’s ingenious royal trunk aboard a jet" width="1536" height="1024">
+  <figcaption>Max’s cleverest luggage carries one very unusual passenger.</figcaption>
+</figure>
 <p class="">&quot;Why does the luggage smell like toasted sugar?&quot; Dad said, from the front of the jet, at some point over the Pacific.</p>
 <p class="">&quot;Travel snacks,&quot; Max said, without looking up from his journal.</p>
 <p class="">&quot;In the luggage?&quot;</p>
@@ -1681,6 +1965,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Elizabeth&#x27;s Vibe-Link — the bracelet Max had tuned — buzzed once.</p>
 <p class="">She looked at the shape in the sky. At Leilani, who had seen it too and was watching it with an expression that was not surprise.</p>
 <p class="">&quot;Silver Net,&quot; Leilani said, so quietly Elizabeth almost missed it.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch20-leilani-beach.webp" alt="Elizabeth and Scarlet meeting Leilani on a Hawaiian beach beneath a mechanical bird" width="1536" height="1024">
+  <figcaption>On the beach, Leilani recognizes the danger overhead.</figcaption>
+</figure>
 <p class="">Vacation had lasted eleven minutes before something happened.</p>
 <p class="">Eleven minutes was, honestly, better than she&#x27;d expected.</p></div>
 </section>
@@ -1716,6 +2004,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;No,&quot; Elizabeth said, closing her eyes briefly, &quot;it is not.&quot;</p>
 <p class="">Leilani set her hand on the doorframe. She was doing the same thing Scarlet had done with her palm when she first met him — quiet, still, waiting. &quot;He&#x27;s beautiful,&quot; she said. And then, slower: &quot;My grandmother&#x27;s fire friends were real.&quot;</p>
 <p class="">She sat down on the floor, cross-legged, which put her at Cinder&#x27;s eye level. He watched her for a full thirty seconds with those violet eyes — this was longer than he&#x27;d taken with anyone except Scarlet — and then walked to her and sniffed her sea-glass necklace with evident interest.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch21-leilani-meets-cinder.webp" alt="Leilani meeting Cinder as the baby dragon emerges from his travel trunk" width="1536" height="1024">
+  <figcaption>Leilani meets the fire friend from her grandmother’s stories.</figcaption>
+</figure>
 <p class="">&quot;Sea glass,&quot; Leilani said. &quot;He can smell the fire in it. Sea glass is made from regular glass that&#x27;s been through heat and time and water. The fire is very old but it&#x27;s there.&quot;</p>
 <p class="">Cinder chirped.</p>
 <p class="">&quot;He trusts you,&quot; Elizabeth said. &quot;That usually takes three marshmallows at minimum.&quot;</p>
@@ -1731,6 +2023,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Then the cave wall shimmered.</p>
 <p class="">Cinder had not hummed the Echo-Vision tone, but the cave answered anyway, as if it had its own memory that didn&#x27;t need asking. On the black lava glass: dragons in flight. Different from Cinder — larger, older, moving in pairs and groups over this specific island, over the sea, over a world that had more of them in it than this one did. And below them, on the water, people waving from long canoes, their hands up in a gesture that looked like welcome.</p>
 <p class="">&quot;The old ones,&quot; Leilani said quietly.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch21-ancient-lava-mural.webp" alt="Ancient lava-glass visions showing dragons flying beside canoe voyagers" width="1536" height="1024">
+  <figcaption>The cave remembers a time when dragons and people traveled together.</figcaption>
+</figure>
 <p class="">Then the image shifted. Not Cinder&#x27;s doing. Not theirs. The cave offered it: a metal bird, landing on the cliff above them, and a human figure below it who looked up and waited for it to arrive.</p>
 <p class="">The same mechanical bird they&#x27;d been seeing.</p>
 <p class="">Someone had been following the dragon clues for longer than they&#x27;d known.</p>
@@ -1750,6 +2046,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">That was what they understood, standing in the Whispering Tides chamber with the tide turning outside and Cinder&#x27;s violet eyes doing what violet eyes apparently did in the presence of old lava glass: glowing, slowly, with a light that was richer and more deliberate than his ordinary glow, and reaching outward into the black surface of the walls the way roots reach into dark soil.</p>
 <p class="">Golden lines appeared.</p>
 <p class="">They emerged from the glass like writing becoming visible as the ink dries — first barely there, then definite, then bright. They were not random. They connected in the specific purposeful way of something someone had spent a long time designing: a coastline here, a ridge there, a series of marks at the volcano&#x27;s northeast crater that pulsed brighter than anything else on the map.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch22-golden-map-lines.webp" alt="Golden map lines glowing across black lava-glass walls around the young detectives" width="1536" height="1024">
+  <figcaption>Across the cave walls, an ancient map wakes up.</figcaption>
+</figure>
 <p class="">Leilani touched the pulsing mark. &quot;Pu&#x27;u Ahi,&quot; she said. &quot;Fire Hill. The old volcanic crater on the northeast side of the island. Tourists are supposed to stay away from it — the ground&#x27;s unstable in the southern quadrant — but the northern approach has a cleared trail.&quot;</p>
 <p class="">&quot;Maintained by whom?&quot; Elizabeth asked.</p>
 <p class="">Leilani considered. &quot;That&#x27;s a good question. The park service says they don&#x27;t maintain it.&quot;</p>
@@ -1777,6 +2077,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">&quot;A messenger,&quot; Elizabeth said.</p>
 <p class="">&quot;And protector,&quot; Leilani said. &quot;Both.&quot;</p>
 <p class="">From the sand, rising in the same slow deliberate way: one more shape. An object, suspended above the harness. Elizabeth recognized the material before she could name the purpose. Blue glass. Not a missing part of the vase, but the same impossible Dragon Glass, cut into a thin curved key with map-lines shining inside it. The final piece of the map.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch22-blue-sand-harness.webp" alt="Blue sand rising magically into a sky-guardian harness and glass key" width="1536" height="1024">
+  <figcaption>The blue sand shapes Cinder’s sky-guardian gear.</figcaption>
+</figure>
 <p class="">Here.</p>
 <p class="">In a volcanic cave in Hawaii.</p>
 <p class="">Connected to the same story they&#x27;d started with, six weeks ago in a castle five thousand miles away, with roller skates and a marble floor and a crash that they had believed, at the time, was only a catastrophe.</p>
@@ -1805,6 +2109,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">It fell toward Cinder.</p>
 <p class="">&quot;Move!&quot; Elizabeth&#x27;s voice came out before thought did.</p>
 <p class="">Cinder tried. He jumped sideways, clearing most of it, but his left wing caught on a crystal formation at exactly the wrong angle — not trapped, but slowed, the membrane against the stone for half a second — and Scarlet was already moving, throwing herself forward and pulling the wing free with both hands, the net hitting the chamber floor where Cinder had been and contracting, the mesh tightening around empty stone and crystal.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch23-silver-net-drops.webp" alt="A shimmering silver net dropping toward Cinder inside the lava cave" width="1536" height="1024">
+  <figcaption>The collectors spring their trap.</figcaption>
+</figure>
 <p class="">The sound it made was wrong. Not the sound of a net. The sound of something that had more in it than fiber and mesh — something in the weave that hummed briefly and then went quiet, a frequency designed for something.</p>
 <p class="">&quot;Back,&quot; Max said, from the arch. He&#x27;d retrieved the umbrella.</p>
 <p class="">&quot;Collector?&quot; Leilani asked.</p>
@@ -1835,6 +2143,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">He crouched. The wings came out, fully, spanning wider than the beach seemed to have room for, each one catching the sea wind in its own time.</p>
 <p class="">Then he launched.</p>
 <p class="">Not the tentative, exploratory flight of two weeks ago in the forest. This was something different — fast, vertical, deliberate, the kind of flight that came from knowing what you were and needing it. He rose above the cliff line in three wingbeats, the golden fire trailing behind him, and then he turned and came back, hovering above the beach, above the narrow cliff trail, and the collectors came out of the cave entrance and stopped.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch23-cinder-launches.webp" alt="Cinder launching above the beach while Elizabeth Scarlet and Leilani stand together" width="1536" height="1024">
+  <figcaption>Cinder chooses the open sky—and protects his friends.</figcaption>
+</figure>
 <p class="">They stopped because there was a dragon above them. That was a sufficient reason to stop.</p>
 <p class="">The larger of the two looked up. Then down. Then at the girls, who were standing on the beach not running, which was either incredibly brave or incredibly confident or, from where the collectors were standing, impossible to tell which.</p>
 <p class="">&quot;What—&quot; the man started.</p>
@@ -1868,6 +2180,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">He had accepted it the way he accepted most things from this specific group of people: with a brief and evaluating examination, one tentative sniff, and then a stillness while it was fitted, a stillness that was not submission but cooperation, the distinction being that one required trust and one didn&#x27;t. He wore it the way it was designed — the chest piece forward, the wing bands clear of the joint, the tail coupler loose enough for full range — and when it was on, something about him changed, very slightly. He stood slightly differently. His head came up.</p>
 <p class="">&quot;He knows what it means,&quot; Leilani said.</p>
 <p class="">&quot;He knows what he is,&quot; Scarlet said.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/sky-guardian-fire-hill.webp" alt="Cinder soaring above Fire Hill in his blue guardian harness as Elizabeth, Scarlet, and Leilani watch" width="1536" height="1024">
+  <figcaption>Above Fire Hill, Cinder takes his place among the sky guardians.</figcaption>
+</figure>
 <p class="">The crater rim was wider than Elizabeth had expected, the interior long since cooled to a bowl of dark rock that had, in the time since it was volcanic, grown its own small ecology. And at the center, in a ring of old stones that had been placed rather than tumbled there, was a pedestal.</p>
 <p class="">Stone, ancient, the kind of grey that came from being outside for centuries in all weather. And on it, in a small carved cavity: a single key of blue glass.</p>
 <p class="">Elizabeth stared at it.</p>
@@ -1883,6 +2199,10 @@ footer a{color:var(--violet-lt);text-decoration:none}
 <p class="">Then all the lights found the pedestal.</p>
 <p class="">And from the pedestal, the final key.</p>
 <p class="">Elizabeth picked it up. It was warm. She held it in her palm beside the compass, and in the full afternoon sunlight of the volcano crater, the frosted letters inside the key were visible immediately: THE CIRCLE IS COMPLETE. And below that, just one word: HOME.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch24-blue-glass-key.webp" alt="A blue-glass key awakening a luminous world map across the walls of Fire Hill crater" width="1536" height="1024">
+  <figcaption>The final key reveals a map that crosses oceans.</figcaption>
+</figure>
 <p class="">Behind them, the mechanical bird crossed the crater rim once, too high to reach and too deliberate to be lost. The Silver Net had retreated, not disappeared.</p>
 <p class="">Cinder breathed a small golden flame onto the center stone, and for one long moment the lava beneath it glowed warm amber, as if remembering.</p>
 <p class="">&quot;Does this mean there are more eggs?&quot; Scarlet asked.</p>
@@ -1917,6 +2237,10 @@ Associate Office: Whispering Tides, Hawaii</p>
 <p class="">They measured him monthly now — not because Max required data, though Max appreciated it, but because the measurements were satisfying the way all records were satisfying, the evidence that something was moving forward. He came to the castle one day a week on what had evolved into a structured arrangement: Max opened the east garden door at dusk, and Cinder came in under the fog he&#x27;d learned to produce specifically for this purpose, moving through the castle gardens with the confident unhurried stride of a creature who belonged where he was going. He spent the night in the east garden turret Max had quietly repurposed, and left before dawn.</p>
 <p class="">The rest of the time he was in the cave, practicing things that now had names — Echo-Vision, mist-seal, the specific fire calibration that could heat milk without scorching and light a dark passage without burning anything nearby. He practiced the harness, which Max had established was designed to carry objects at altitude, and which Cinder wore now the way you wore something that fit you exactly right.</p>
 <p class="">Leilani had come to the castle for a month, the previous autumn. She&#x27;d slept in the Ladybug Room on a cot they&#x27;d set up beside the bunk bed, and she and Scarlet had talked until far too late every night and Elizabeth had listened and added things and written everything important in the notebook. She&#x27;d gone back home knowing things and leaving behind things, which was how friendship worked when it was real.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch25-updated-headquarters.webp" alt="Elizabeth and Scarlet in their expanded detective headquarters with clues from Leilani and Mrs Rosie" width="1536" height="1024">
+  <figcaption>The headquarters grows with every friend and every mystery.</figcaption>
+</figure>
 <p class="">She&#x27;d promised to come back.</p>
 <p class="scenebreak">✦ ✦ ✦</p>
 <p class="">It was a Saturday morning in early spring, nothing particular about it, when Scarlet appeared downstairs with a stone in her hand and the expression that Elizabeth had long since learned to read as: <em>something is starting.</em></p>
@@ -1932,6 +2256,10 @@ Associate Office: Whispering Tides, Hawaii</p>
 <p class="">Her hand was already moving toward the notebook, already finding the next blank page, already uncapping the pen.</p>
 <p class="">From the window behind them, a shape moved across the morning sky — low, golden, trailing a breath of warm mist, following the line of the garden wall toward the Whispering Woods. Not a bird. Not a machine. Cinder, doing his morning circuit, checking on the world he had taken into his care.</p>
 <p class="">He circled the garden once. Then he turned and pointed himself at the woods, and his wings found the rhythm of something that knew where it was going.</p>
+<figure class="ill">
+  <img src="/assets/stories/elizabeth-scarlet/illustrations/ch25-new-map-stone.webp" alt="Cinder flying above the castle as a newly found map stone begins the next mystery" width="1536" height="1024">
+  <figcaption>One case closes just as the next one begins.</figcaption>
+</figure>
 <p class="">Elizabeth finished the case number at the top of the new page.</p>
 <p class="">Beside her, Scarlet was already pulling on her adventure boots, the ones with the laces she&#x27;d never learned to double-knot and Elizabeth always fixed for her, because some things were easier to do for each other than to do alone.</p>
 <p class="">&quot;Ready?&quot; Scarlet asked.</p>
@@ -1945,12 +2273,12 @@ Associate Office: Whispering Tides, Hawaii</p>
 <a href="#top" class="totop">&#8593; Back to the beginning</a>
 
 <footer>
-  <strong>The Dragon Glass Map</strong>
+  <strong>Mysteries of the Hidden World</strong>
   The Adventures of Elizabeth and Scarlet &bull; Book One &bull; Ages 9&ndash;12 &bull; 25 Chapters<br>
   The Royal Castle &bull; Crystal Cave &bull; Whispering Tides &bull; Fire Hill<br>
   <a href="/maya/">Maya&#8217;s Work</a> &bull; <a href="/">Bamboo Holdings</a><br>
   <span class="footer-actions">
-    <a class="story-action primary" href="/assets/stories/elizabeth-scarlet/the-dragon-glass-map-illustrated.pdf" download>Download PDF</a>
+    <a class="story-action primary" href="/assets/stories/elizabeth-scarlet/mysteries-of-the-hidden-world-illustrated.pdf" download>Download PDF</a>
     <a class="story-action" href="#listen">Read to Me</a>
     <button class="story-action" type="button" data-share-pdf>Share PDF</button>
   </span>
@@ -1969,10 +2297,308 @@ Associate Office: Whispering Tides, Hawaii</p>
   }
 })();
 
+// ── Image guardrail: keep broken links from becoming invisible to readers.
+(function(){
+  const guardIllustrationImages=scope=>{
+    scope.querySelectorAll('.ill img[src]').forEach(img=>{
+      if(img.dataset.imageGuarded) return;
+      img.dataset.imageGuarded='1';
+      img.loading='lazy';
+      const fallback=()=>{
+        const figure=img.closest('.ill');
+        if(!figure || figure.classList.contains('is-missing')) return;
+        figure.classList.add('is-missing');
+        const placeholder=document.createElement('div');
+        placeholder.className='ill-fallback';
+        const caption=img.getAttribute('alt') || 'Illustration';
+        placeholder.textContent=`Illustration is coming soon: ${caption}`;
+        figure.appendChild(placeholder);
+        img.remove();
+      };
+      img.addEventListener('error',fallback,{once:true});
+      if(img.complete && img.naturalWidth===0){fallback();}
+    });
+  };
+  window.__guardIllustrationImages=guardIllustrationImages;
+  guardIllustrationImages(document);
+})();
+
+// ── Book-mode reading for mobile/tablet landscape
+(function(){
+  const bookState={
+    shell: null,
+    controls: null,
+    spreads: [],
+    currentSpread: 0,
+    active:false,
+  };
+  const storyReader=document.getElementById('story-reader');
+  const navTitle=document.getElementById('nav-title');
+  if(!storyReader) return;
+  const allChapters=[...storyReader.querySelectorAll('.chapter')];
+  if(!allChapters.length) return;
+  const chapterIndexById=new Map(allChapters.map((chapter,index)=>[chapter.id,index]));
+  const chapterTitles=allChapters.map(chapter=>chapter.querySelector('h2')?.textContent?.trim()||chapter.id);
+  const guardImages=(scope)=>window.__guardIllustrationImages?.(scope);
+
+  const makeShell=()=>{
+    if(bookState.shell) return;
+    const shell=document.createElement('section');
+    shell.className='book-mode-shell';
+    shell.setAttribute('aria-label','Story spread viewer');
+    shell.hidden=true;
+
+    const controls=document.createElement('div');
+    controls.className='book-mode-controls';
+    controls.innerHTML=`
+      <button class="book-mode-button" type="button" data-book-prev aria-label="Previous spread">‹</button>
+      <div class="book-mode-meta">
+        <div>Book view</div>
+        <strong data-book-meta>Open pages</strong>
+      </div>
+      <button class="book-mode-button" type="button" data-book-next aria-label="Next spread">›</button>
+    `;
+
+    const spreads=document.createElement('div');
+    spreads.className='book-mode-spreads';
+    shell.appendChild(controls);
+    shell.appendChild(spreads);
+    bookState.shell=shell;
+    bookState.controls=controls;
+    bookState.spreadsContainer=spreads;
+    storyReader.parentNode.insertBefore(shell, storyReader);
+    bookState.shellObserverTarget=spreads;
+  };
+
+  const chapterLabelForIndex=(idx)=>chapterTitles[idx]||`Chapter ${idx+1}`;
+  const pairTitle=(spreadIndex)=>{
+    const first=spreadIndex*2;
+    const right=allChapters[first+1] ? first+1 : null;
+    const leftTitle=chapterLabelForIndex(first);
+    if(right===null) return `${leftTitle}`;
+    return `${leftTitle} · ${chapterLabelForIndex(right)}`;
+  };
+
+  const rebuildSpreads=()=>{
+    if(!bookState.shell) return;
+    bookState.spreads=[];
+    bookState.spreadsContainer.textContent='';
+    for(let i=0;i<allChapters.length;i+=2){
+      const spread=document.createElement('section');
+      spread.className='book-mode-spread';
+      spread.dataset.spread=i/2;
+      const leftChapter=allChapters[i];
+      const rightChapter=allChapters[i+1]||null;
+      if(leftChapter){
+        const left=leftChapter.cloneNode(true);
+        left.removeAttribute('id');
+        left.classList.add('book-mode-page');
+        guardImages(left);
+        spread.appendChild(left);
+      }
+      if(rightChapter){
+        const right=rightChapter.cloneNode(true);
+        right.removeAttribute('id');
+        right.classList.add('book-mode-page');
+        guardImages(right);
+        spread.appendChild(right);
+      }
+      bookState.spreads.push(spread);
+      bookState.spreadsContainer.appendChild(spread);
+    }
+  };
+
+  const hideShell=()=>{
+    if(!bookState.shell) return;
+    bookState.shell.classList.remove('is-visible');
+    bookState.shell.hidden=true;
+    bookState.shell.classList.remove('is-active');
+    window.__storyBookModeActive=false;
+    bookState.controls?.setAttribute('hidden','hidden');
+    bookState.active=false;
+    document.body.classList.remove('book-mode');
+  };
+
+  const showShell=()=>{
+    if(!bookState.shell) return;
+    bookState.shell.hidden=false;
+    bookState.shell.classList.add('is-visible');
+    bookState.shell.classList.remove('is-hidden');
+    bookState.controls?.removeAttribute('hidden');
+    window.__storyBookModeActive=true;
+    bookState.active=true;
+    document.body.classList.add('book-mode');
+  };
+
+  const updateNavFromSpread=(index)=>{
+    if(!navTitle) return;
+    const leftIndex=index*2;
+    const right=allChapters[leftIndex+1];
+    if(right){
+      navTitle.textContent=`${chapterLabelForIndex(leftIndex)} + ${chapterLabelForIndex(leftIndex+1)}`;
+    }else{
+      navTitle.textContent=chapterLabelForIndex(leftIndex);
+    }
+  };
+
+  const renderSpread=(index)=>{
+    if(!bookState.shell || !bookState.spreads.length) return;
+    const nextIndex=Math.max(0,Math.min(index,bookState.spreads.length-1));
+    const prevIndex=bookState.currentSpread;
+    const prevSpread=bookState.spreads[prevIndex];
+    const nextSpread=bookState.spreads[nextIndex];
+    const didChange=nextIndex!==prevIndex;
+    bookState.currentSpread=nextIndex;
+    if(didChange && bookState.active && prevSpread && nextSpread){
+      const direction=bookState.currentSpread>prevIndex?1:-1;
+      const exitClass=direction>0?'is-exit-left':'is-exit-right';
+      const enterClass=direction>0?'is-enter-right':'is-enter-left';
+      prevSpread?.classList.add(exitClass);
+      nextSpread.classList.add(enterClass,'is-active');
+      requestAnimationFrame(()=>nextSpread.classList.remove(enterClass));
+      window.setTimeout(()=>{
+        prevSpread?.classList.remove('is-active',exitClass);
+      },280);
+      bookState.spreads.forEach((spread,spreadIndex)=>{
+        if(spreadIndex===prevIndex || spreadIndex===nextIndex) return;
+        spread.classList.remove('is-active');
+      });
+    }else{
+      bookState.spreads.forEach((spread,spreadIndex)=>spread.classList.toggle('is-active',spreadIndex===bookState.currentSpread));
+    }
+    const prev=bookState.controls?.querySelector('[data-book-prev]');
+    const next=bookState.controls?.querySelector('[data-book-next]');
+    const meta=bookState.controls?.querySelector('[data-book-meta]');
+    if(prev) prev.disabled=bookState.currentSpread===0;
+    if(next) next.disabled=bookState.currentSpread>=bookState.spreads.length-1;
+    if(meta){
+      const left=bookState.currentSpread*2+1;
+      const right=Math.min(left+1,allChapters.length);
+      const pageText=`Pages ${left}-${right}`;
+      const spreadText=`${pageText} · ${pairTitle(bookState.currentSpread)}`;
+      meta.textContent=spreadText;
+    }
+    updateNavFromSpread(bookState.currentSpread);
+  };
+
+  const turnToSpread=(index)=>{
+    if(!bookState.active) return;
+    renderSpread(index);
+  };
+
+  const turnByOffset=(offset)=>{
+    if(!bookState.active) return;
+    turnToSpread(bookState.currentSpread+offset);
+  };
+
+  const enableBookMode=()=>{
+    if(!storyReader) return;
+    makeShell();
+    rebuildSpreads();
+    showShell();
+    const chapterHash=location.hash && location.hash.startsWith('#ch') ? location.hash.slice(1) : null;
+    if(chapterHash){
+      const spread=targetSpreadForChapter(chapterHash);
+      if(spread!==null) turnToSpread(spread);
+      else turnToSpread(0);
+    }else{
+      turnToSpread(0);
+    }
+  };
+
+  const disableBookMode=()=>{
+    if(!bookState.shell) return;
+    hideShell();
+  };
+
+  const targetSpreadForChapter=(chapterId)=>{
+    const chapterIndex=chapterIndexById.get(chapterId);
+    if(chapterIndex===undefined) return null;
+    return Math.floor(chapterIndex/2);
+  };
+
+  const shouldUseBookMode=()=>{
+    const isLandscape=window.matchMedia('(orientation: landscape)').matches;
+    const isNarrow=window.matchMedia('(max-width: 1400px)').matches;
+    const hasTouch=window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches;
+    return isLandscape && isNarrow && hasTouch;
+  };
+
+  const updateBookMode=()=>{
+    if(shouldUseBookMode()){
+      if(!bookState.active) enableBookMode();
+    }else{
+      if(bookState.active) disableBookMode();
+    }
+  };
+
+  makeShell();
+  window.addEventListener('resize',updateBookMode);
+  window.addEventListener('orientationchange',updateBookMode);
+  bookState.shell?.addEventListener('click',e=>{
+    const prev=e.target.closest('[data-book-prev]');
+    const next=e.target.closest('[data-book-next]');
+    if(prev) turnByOffset(-1);
+    if(next) turnByOffset(1);
+  });
+  bookState.shell?.addEventListener('touchstart',e=>{
+    if(!bookState.active) return;
+    if(!e.touches?.[0]) return;
+    bookState.touchStartX=e.touches[0].clientX;
+  },{passive:true});
+  bookState.shell?.addEventListener('touchend',e=>{
+    if(!bookState.active||bookState.touchStartX===undefined) return;
+    const endX=e.changedTouches?.[0]?.clientX;
+    if(endX===undefined) return;
+    const delta=endX-bookState.touchStartX;
+    if(Math.abs(delta)>48){
+      turnByOffset(delta<0?1:-1);
+    }
+    bookState.touchStartX=undefined;
+  });
+  document.addEventListener('keydown',e=>{
+    if(!bookState.active) return;
+    if(e.key==='ArrowLeft'){turnByOffset(-1); return;}
+    if(e.key==='ArrowRight'){turnByOffset(1); return;}
+  });
+
+  const hashLinks=[...document.querySelectorAll('a[href^="#"]')];
+  const jumpToHash=(hash)=>{
+    const chapterId=hash.replace('#','');
+    const spread=targetSpreadForChapter(chapterId);
+    if(spread===null) return false;
+    enableBookMode();
+    turnToSpread(spread);
+    return true;
+  };
+  hashLinks.forEach(link=>{
+    link.addEventListener('click',event=>{
+      const hash=link.getAttribute('href')||'';
+      if(!hash.startsWith('#ch')) return;
+      if(shouldUseBookMode()){
+        const handled=jumpToHash(hash);
+        if(handled){
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      }
+    });
+  });
+  document.addEventListener('DOMContentLoaded',updateBookMode);
+  updateBookMode();
+})();
+
 // ── Chapter tracker in nav ──
 (function(){
-  const chapters=document.querySelectorAll('.chapter');
+  const chapters=[...document.querySelectorAll('.chapter')];
   const title=document.getElementById('nav-title');
+  const setTitleFromChapterId=chapterId=>{
+    const chapter=chapters.find(c=>c.id===chapterId);
+    if(!chapter||!title) return;
+    const heading=chapter.querySelector('h2');
+    if(heading) title.textContent=heading.textContent;
+  };
+  window.__setStoryNavTitle=setTitleFromChapterId;
   const io=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -1987,7 +2613,9 @@ Associate Office: Whispering Tides, Hawaii</p>
 // ── Smooth hash nav ──
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
-    const t=document.querySelector(a.getAttribute('href'));
+    const href=a.getAttribute('href')||'';
+    if(href.startsWith('#ch')&&window.__storyBookModeActive){return;}
+    const t=document.querySelector(href);
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
   });
 });
@@ -2280,12 +2908,12 @@ if(location.hash==='#story-reader'){
 
 document.querySelectorAll('[data-share-pdf]').forEach(button=>{
   button.addEventListener('click',async()=>{
-    const pdfUrl=new URL('/assets/stories/elizabeth-scarlet/the-dragon-glass-map-illustrated.pdf',location.href).href;
-    const title='The Dragon Glass Map';
+    const pdfUrl=new URL('/assets/stories/elizabeth-scarlet/mysteries-of-the-hidden-world-illustrated.pdf',location.href).href;
+    const title='Mysteries of the Hidden World';
     try{
       const response=await fetch(pdfUrl);
       const blob=await response.blob();
-      const file=new File([blob],'the-dragon-glass-map-illustrated.pdf',{type:'application/pdf'});
+      const file=new File([blob],'mysteries-of-the-hidden-world-illustrated.pdf',{type:'application/pdf'});
       if(navigator.canShare&&navigator.canShare({files:[file]})){
         await navigator.share({title,text:'Book one in The Adventures of Elizabeth and Scarlet',files:[file]});
         return;
