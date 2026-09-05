@@ -543,12 +543,12 @@ function privacyPage(app) {
 
 function mayaWorkPage() {
   const story = {
-    title: "The Dragon Glass Map",
+    title: "Mysteries of the Hidden World",
     series: "The Adventures of Elizabeth and Scarlet",
     edition: "Ages 9-12 illustrated middle grade edition",
     href: "/stories/elizabeth-scarlet/",
-    pdfHref: "/assets/stories/elizabeth-scarlet/the-dragon-glass-map-illustrated.pdf",
-    cover: "/assets/stories/elizabeth-scarlet/elizabeth-and-scarlets-adventures-cover.png",
+    pdfHref: "/assets/stories/elizabeth-scarlet/mysteries-of-the-hidden-world-illustrated.pdf",
+    cover: "/assets/stories/elizabeth-scarlet/illustrations/mysteries-hidden-world-cover.webp",
     status: "Current story",
     description: "Book one in The Adventures of Elizabeth and Scarlet: a 25-chapter magical mystery with princess detectives, Max the butler, Leilani, and Cinder the baby dragon."
   };
