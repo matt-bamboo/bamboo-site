@@ -266,7 +266,13 @@ function appStoreBadge(url) {
   </a>`;
 }
 
-function shell(title, active, content) {
+function shell(title, active, content, options = {}) {
+  const {
+    showBrand = true,
+    brandLabel = "Bamboo Holdings",
+    brandImage = true,
+    brandUrl = pageUrl("/")
+  } = options;
   const footerEmail = currentRoutePath().startsWith("/apps/") ? APP_CONTACT_EMAIL : CONTACT_EMAIL;
   const brandMedia = `<img src="${assetUrl("/assets/brand/bamboo-holdings-logo-hq.png")}" alt="" onerror="this.src='${assetUrl("/assets/brand/bamboo-logo.png")}'; this.onerror=()=>this.replaceWith(Object.assign(document.createElement('span'), {className: 'brand-mark', textContent: 'B'}))">`;
   const footerLinksHtml = [
@@ -281,9 +287,9 @@ function shell(title, active, content) {
     <header class="site-header">
       <div class="inner">
         <nav class="nav" aria-label="Primary">
-          <a class="brand" href="${pageUrl("/")}">
-            ${brandMedia}
-            <span>Bamboo Holdings</span>
+          <a class="brand" href="${brandUrl}">
+            ${showBrand && brandImage ? brandMedia : ""}
+            <span>${esc(brandLabel)}</span>
           </a>
           <div class="nav-links">${nav.map(([label, href]) => `<a href="${pageUrl(href)}"${label === active ? ' aria-current="page"' : ""}>${label}</a>`).join("")}</div>
         </nav>
@@ -293,7 +299,7 @@ function shell(title, active, content) {
     <footer class="site-footer">
       <div class="inner footer-grid">
         <div class="footer-meta">
-          <span>&copy; ${new Date().getFullYear()} Bamboo Holdings. All rights reserved.</span>
+          <span>&copy; ${new Date().getFullYear()} ${esc(brandLabel)}. All rights reserved.</span>
         </div>
         <nav class="footer-links" aria-label="Footer links">
           ${footerLinksHtml}
@@ -552,7 +558,7 @@ function mayaWorkPage() {
     status: "Current story",
     description: "Book one in The Adventures of Elizabeth and Scarlet: a 25-chapter magical mystery with princess detectives, Max the butler, Leilani, and Cinder the baby dragon."
   };
-  shell("Maya's Work - Bamboo Holdings", "", `
+  shell("Maya's Work - Mysteries of the Hidden World", "", `
     <section class="maya-hero">
       <div class="inner maya-hero-grid">
         <div class="maya-hero-copy">
@@ -602,11 +608,20 @@ function mayaWorkPage() {
           </div>
         </aside>
       </div>
-    </section>`);
+    </section>`, {
+    showBrand: false,
+    brandLabel: "Maya's Work",
+    brandUrl: pageUrl("/maya/")
+  });
 }
 
 function currentRoutePath() {
   let path = window.location.pathname;
+  try {
+    path = decodeURIComponent(path || "/");
+  } catch (error) {
+    // Keep the fallback path if decoding fails for any reason.
+  }
   if (isFilePreview) {
     const rootPath = siteRootUrl.pathname;
     if (path.startsWith(rootPath)) path = path.slice(rootPath.length);
@@ -615,13 +630,18 @@ function currentRoutePath() {
     path = path.replace(/index\.html$/, "");
     return `/${path.replace(/^\/+/, "")}`.replace(/\/?$/, "/");
   }
+  path = path.replace(/\/+/g, "/");
   return path.endsWith("/") ? path : `${path}/`;
 }
 
 function route() {
-  const path = currentRoutePath();
+  const path = currentRoutePath().toLowerCase();
+  const segments = path.split("/").filter(Boolean);
+  const lastSegment = segments[segments.length - 1];
+  const previousSegment = segments[segments.length - 2];
+
   if (path === "/") return home();
-  if (path === "/maya/") return mayaWorkPage();
+  if (path === "/maya/" || lastSegment === "maya" || (lastSegment === "index.html" && previousSegment === "maya")) return mayaWorkPage();
   if (path === "/apps/" || path === "/about/" || path === "/contact/") return home();
   const app = apps.find(item => path === item.slug || path === `${item.slug}support/` || path === `${item.slug}privacy/`);
   if (!app) return shell("Page Not Found - Bamboo Holdings", "", `<section class="inner hero narrow"><h1>Page not found.</h1><p class="lede">Return to <a href="${pageUrl("/")}">Bamboo Holdings</a>.</p></section>`);

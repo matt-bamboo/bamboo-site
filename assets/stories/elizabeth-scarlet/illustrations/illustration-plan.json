@@ -1,7 +1,7 @@
 {
   "title": "Mysteries of the Hidden World",
   "series": "The Adventures of Elizabeth and Scarlet",
-  "status": "13 of 50 chapter plates currently generated; two are planned for each of 25 chapters.",
+  "status": "Complete illustrated edition: two chapter plates are generated and integrated in each of 25 chapters.",
   "coverAsset": "assets/stories/elizabeth-scarlet/illustrations/mysteries-hidden-world-cover.webp",
   "referenceAsset": "/home/devbox/.codex/generated_images/01a06fa3-4713-7423-8e1a-02537f464f3c/exec-21f17b5c-b573-4f63-8e2d-6d97aa91fef5.png",
   "commonPrompt": {
@@ -46,7 +46,7 @@
       "slot": 2,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch02-sisters-deal.webp",
       "alt": "Elizabeth and Scarlet making a solemn agreement with Max beside the hidden shards",
-      "caption": "The sisters make a promise—and Max sets the terms.",
+      "caption": "The sisters make a promise\u2014and Max sets the terms.",
       "scenePrompt": "Elizabeth and Scarlet making a solemn agreement with Max beside the hidden shards"
     },
     {
@@ -72,9 +72,9 @@
       "chapterTitle": "Operation Ice Cream",
       "slot": 1,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch04-midnight-escape.webp",
-      "alt": "Elizabeth and Scarlet on a moonlit secret mission to Julio’s glowing ice-cream truck",
+      "alt": "Elizabeth and Scarlet on a moonlit secret mission to Julio\u2019s glowing ice-cream truck",
       "caption": "Operation Ice Cream begins beneath the moon.",
-      "scenePrompt": "Elizabeth and Scarlet on a moonlit secret mission to Julio’s glowing ice-cream truck"
+      "scenePrompt": "Elizabeth and Scarlet on a moonlit secret mission to Julio\u2019s glowing ice-cream truck"
     },
     {
       "chapter": "ch4",
@@ -100,7 +100,7 @@
       "slot": 2,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch05-max-stakeout.webp",
       "alt": "Max attempting a stakeout behind a blue pillar with a crooked fake mustache",
-      "caption": "Max’s disguise has one mustache too many.",
+      "caption": "Max\u2019s disguise has one mustache too many.",
       "scenePrompt": "Max attempting a stakeout behind a blue pillar with a crooked fake mustache"
     },
     {
@@ -262,7 +262,7 @@
       "slot": 2,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch14-egg-tapping.webp",
       "alt": "Elizabeth and Scarlet turning back as tapping sounds come from inside the glowing egg",
-      "caption": "Tap, tap, tap—something inside is ready to meet them.",
+      "caption": "Tap, tap, tap\u2014something inside is ready to meet them.",
       "scenePrompt": "Elizabeth and Scarlet turning back as tapping sounds come from inside the glowing egg"
     },
     {
@@ -297,18 +297,18 @@
       "chapterTitle": "The Marshmallow Feast",
       "slot": 2,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch16-cinder-sleeping.webp",
-      "alt": "Cinder sleeping in Scarlet’s lap as the Crystal Cave wall begins to shimmer",
+      "alt": "Cinder sleeping in Scarlet\u2019s lap as the Crystal Cave wall begins to shimmer",
       "caption": "As Cinder sleeps, the cave reveals a new kind of magic.",
-      "scenePrompt": "Cinder sleeping in Scarlet’s lap as the Crystal Cave wall begins to shimmer"
+      "scenePrompt": "Cinder sleeping in Scarlet\u2019s lap as the Crystal Cave wall begins to shimmer"
     },
     {
       "chapter": "ch17",
       "chapterTitle": "Echo-Vision",
       "slot": 1,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch17-funny-echoes.webp",
-      "alt": "Cinder’s Echo-Vision replaying funny moments for Elizabeth and Scarlet",
+      "alt": "Cinder\u2019s Echo-Vision replaying funny moments for Elizabeth and Scarlet",
       "caption": "Echo-Vision begins with the moments nobody expected to see again.",
-      "scenePrompt": "Cinder’s Echo-Vision replaying funny moments for Elizabeth and Scarlet"
+      "scenePrompt": "Cinder\u2019s Echo-Vision replaying funny moments for Elizabeth and Scarlet"
     },
     {
       "chapter": "ch17",
@@ -324,18 +324,18 @@
       "chapterTitle": "The Face Beyond Stone",
       "slot": 1,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch18-xray-max.webp",
-      "alt": "Cinder’s magical sight revealing Max waiting beyond the disguised stone wall",
+      "alt": "Cinder\u2019s magical sight revealing Max waiting beyond the disguised stone wall",
       "caption": "Cinder looks through stone and finds a familiar mustache.",
-      "scenePrompt": "Cinder’s magical sight revealing Max waiting beyond the disguised stone wall"
+      "scenePrompt": "Cinder\u2019s magical sight revealing Max waiting beyond the disguised stone wall"
     },
     {
       "chapter": "ch18",
       "chapterTitle": "The Face Beyond Stone",
       "slot": 2,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch18-glittery-shoes.webp",
-      "alt": "Cinder sneezing golden glitter over Max’s polished black shoes",
+      "alt": "Cinder sneezing golden glitter over Max\u2019s polished black shoes",
       "caption": "A little dragon glitter seals the new alliance.",
-      "scenePrompt": "Cinder sneezing golden glitter over Max’s polished black shoes"
+      "scenePrompt": "Cinder sneezing golden glitter over Max\u2019s polished black shoes"
     },
     {
       "chapter": "ch19",
@@ -343,7 +343,7 @@
       "slot": 1,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch19-first-forest-flight.webp",
       "alt": "Cinder making his first low flight through a forest filled with golden mist",
-      "caption": "Cinder’s wings find the air for the very first time.",
+      "caption": "Cinder\u2019s wings find the air for the very first time.",
       "scenePrompt": "Cinder making his first low flight through a forest filled with golden mist"
     },
     {
@@ -360,9 +360,9 @@
       "chapterTitle": "The Royal Hawaiian Jet",
       "slot": 1,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch20-dragon-travel-trunk.webp",
-      "alt": "Cinder traveling secretly inside Max’s ingenious royal trunk aboard a jet",
-      "caption": "Max’s cleverest luggage carries one very unusual passenger.",
-      "scenePrompt": "Cinder traveling secretly inside Max’s ingenious royal trunk aboard a jet"
+      "alt": "Cinder traveling secretly inside Max\u2019s ingenious royal trunk aboard a jet",
+      "caption": "Max\u2019s cleverest luggage carries one very unusual passenger.",
+      "scenePrompt": "Cinder traveling secretly inside Max\u2019s ingenious royal trunk aboard a jet"
     },
     {
       "chapter": "ch20",
@@ -379,7 +379,7 @@
       "slot": 1,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch21-leilani-meets-cinder.webp",
       "alt": "Leilani meeting Cinder as the baby dragon emerges from his travel trunk",
-      "caption": "Leilani meets the fire friend from her grandmother’s stories.",
+      "caption": "Leilani meets the fire friend from her grandmother\u2019s stories.",
       "scenePrompt": "Leilani meeting Cinder as the baby dragon emerges from his travel trunk"
     },
     {
@@ -406,7 +406,7 @@
       "slot": 2,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch22-blue-sand-harness.webp",
       "alt": "Blue sand rising magically into a sky-guardian harness and glass key",
-      "caption": "The blue sand shapes Cinder’s sky-guardian gear.",
+      "caption": "The blue sand shapes Cinder\u2019s sky-guardian gear.",
       "scenePrompt": "Blue sand rising magically into a sky-guardian harness and glass key"
     },
     {
@@ -424,7 +424,7 @@
       "slot": 2,
       "asset": "assets/stories/elizabeth-scarlet/illustrations/ch23-cinder-launches.webp",
       "alt": "Cinder launching above the beach while Elizabeth Scarlet and Leilani stand together",
-      "caption": "Cinder chooses the open sky—and protects his friends.",
+      "caption": "Cinder chooses the open sky\u2014and protects his friends.",
       "scenePrompt": "Cinder launching above the beach while Elizabeth Scarlet and Leilani stand together"
     },
     {
