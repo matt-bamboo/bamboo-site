@@ -611,7 +611,7 @@ function mayaWorkPage() {
     ]
   };
 
-  const bookUrl = (chapter = "ch1", slot = 1) => `${pageUrl(story.href)}?view=book&entry=maya&start=${encodeURIComponent(chapter)}&slot=${slot}#book-reader`;
+  const bookUrl = (chapter = "ch1", slot = 1) => `${pageUrl(story.href)}?view=book&entry=maya&reader=fixed-pages-20260906&start=${encodeURIComponent(chapter)}&slot=${slot}#book-reader`;
   const readAsBook = bookUrl();
   const featuredPanels = ["ch1", "ch4", "ch9", "ch15", "ch20", "ch24"]
     .map(chapter => story.previewPanels.find(item => item.id === chapter))
