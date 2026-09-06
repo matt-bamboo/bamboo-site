@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Redirecting…</title>
+  <script>
+    (function () {
+      const path = decodeURIComponent(location.pathname).toLowerCase().replace(/\/+$/, "");
+      if (path === "/maya" || path === "/bamboo holdings/maya" || path === "/bamboo-holdings/maya") {
+        location.replace("/maya/");
+        return;
+      }
+
+      const normalized = path.replace(/^\/+/, "");
+      if (normalized === "bamboo holdings" || normalized === "bamboo-holdings") {
+        location.replace("/");
+        return;
+      }
+
+      if (normalized === "contact" || normalized === "apps" || normalized === "about") {
+        location.replace(`/${normalized}/`);
+        return;
+      }
+
+      location.replace("/");
+    })();
+  </script>
+</head>
+<body>
+  <noscript>
+    <p>Page not found. Go to <a href="/">the home page</a>.</p>
+  </noscript>
+</body>
+</html>
