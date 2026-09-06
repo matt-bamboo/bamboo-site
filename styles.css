@@ -1732,77 +1732,114 @@ h3 {
 }
 
 .maya-hero {
-  padding: 142px 0 86px;
+  min-height: calc(100svh - 74px);
+  padding: 112px 0 76px;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255, 255, 255, .025) 1px, transparent 1px),
-    linear-gradient(135deg, #17150f 0%, #211a32 48%, #29352a 100%);
-  background-size: 94px 94px, 94px 94px, auto;
+    radial-gradient(circle at 22% 24%, rgba(122, 63, 216, .28), transparent 34%),
+    radial-gradient(circle at 82% 78%, rgba(61, 127, 87, .2), transparent 32%),
+    linear-gradient(135deg, #0b0912 0%, #1c132e 52%, #111c18 100%);
   overflow: hidden;
-}
-
-.maya-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
-  gap: 56px;
   align-items: center;
 }
 
-.maya-hero .eyebrow {
-  border-color: rgba(232, 186, 106, .34);
-  background: rgba(232, 186, 106, .1);
-  color: #e8ba6a;
+.maya-hero-shell {
+  display: grid;
+  grid-template-columns: minmax(250px, 360px) minmax(300px, 1fr);
+  gap: clamp(42px, 7vw, 104px);
+  align-items: center;
+  justify-content: center;
+}
+
+.maya-series {
+  margin: 0 0 22px;
+  color: rgba(244, 225, 186, .78);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
 }
 
 .maya-hero h1 {
-  max-width: 780px;
+  max-width: 720px;
+  margin: 8px 0 30px;
   color: #fbfaf5;
+  font-size: clamp(54px, 7vw, 96px);
+  line-height: .92;
+  letter-spacing: -.055em;
 }
 
-.maya-hero .lede {
-  max-width: 650px;
-  color: rgba(251, 250, 245, .74);
+.maya-hero-copy {
+  max-width: min(100%, 720px);
+  justify-self: start;
+  align-self: center;
+}
+
+.maya-book-number {
+  margin: 0;
+  color: #e8ba6a;
+  font-family: var(--serif);
+  font-size: clamp(25px, 3vw, 38px);
+  font-style: italic;
+  line-height: 1;
 }
 
 .maya-cover-link {
   display: block;
   justify-self: end;
-  width: min(100%, 330px);
-  border: 1px solid rgba(251, 250, 245, .2);
-  border-radius: 8px;
-  padding: 10px;
-  background: rgba(251, 250, 245, .08);
-  box-shadow: 0 34px 100px rgba(0, 0, 0, .34);
+  width: min(100%, 350px);
+  border: 1px solid rgba(251, 250, 245, .18);
+  border-radius: 18px;
+  padding: 11px;
+  background: rgba(251, 250, 245, .07);
+  box-shadow: 0 38px 110px rgba(0, 0, 0, .5);
   text-decoration: none;
-  transform: rotate(1.4deg);
-  transition: transform .2s ease, border-color .2s ease;
+  transform: rotate(-1deg);
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
 }
 
 .maya-cover-link:hover {
   border-color: rgba(232, 186, 106, .7);
-  transform: translateY(-3px) rotate(.5deg);
+  box-shadow: 0 46px 130px rgba(0, 0, 0, .62);
+  transform: translateY(-8px) rotate(0deg) scale(1.015);
 }
 
 .maya-cover-link img,
 .maya-book-cover img {
   width: 100%;
-  border-radius: 6px;
+  border-radius: 10px;
   box-shadow: 0 18px 48px rgba(0, 0, 0, .26);
 }
 
+.maya-open-button {
+  min-width: 190px;
+  justify-content: space-between;
+  border-color: #e8ba6a;
+  background: #e8ba6a;
+  color: #17110a;
+  box-shadow: 0 18px 50px rgba(232, 186, 106, .18);
+}
+
+.maya-open-button span {
+  font-size: 20px;
+  transition: transform .2s ease;
+}
+
+.maya-open-button:hover span { transform: translateX(5px); }
+
 .maya-book-section {
-  padding: 76px 0 110px;
+  padding: 28px 0 72px;
   background:
-    linear-gradient(90deg, rgba(37, 40, 33, .045) 1px, transparent 1px),
     linear-gradient(180deg, #fbfaf5, #ece3cf);
-  background-size: 112px 112px, auto;
+}
+
+.maya-book-section .inner {
+  display: flex;
+  justify-content: center;
 }
 
 .maya-book-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-  gap: 22px;
-  align-items: start;
+  display: none;
 }
 
 .maya-featured-story {
@@ -1831,6 +1868,28 @@ h3 {
 .maya-book-copy .lede {
   max-width: 620px;
   font-size: 18px;
+}
+
+.maya-book-highlights {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.maya-book-highlights li {
+  color: var(--ink);
+  font-size: 14px;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.maya-book-highlights li::before {
+  content: "•";
+  color: #7a4f15;
+  margin-top: 2px;
 }
 
 .maya-book-facts {
@@ -1893,6 +1952,106 @@ h3 {
   color: #4a4338;
   font-size: 14px;
   font-weight: 780;
+}
+
+.maya-reader-preview {
+  padding: 0;
+  background: #0b0912;
+}
+
+.maya-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.maya-preview-card {
+  display: block;
+  border: 0;
+  border-radius: 0;
+  background: #15101f;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.maya-preview-card img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  display: block;
+  filter: saturate(.86) brightness(.82);
+  transition: transform .55s cubic-bezier(.2,.8,.2,1), filter .4s ease;
+}
+
+.maya-preview-card:hover {
+  transform: none;
+  border-color: transparent;
+}
+
+.maya-preview-card:hover img {
+  filter: saturate(1.08) brightness(1);
+  transform: scale(1.045);
+}
+
+body.maya-is-opening { overflow: hidden; }
+
+.maya-opening-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle, #30204d 0%, #09070e 68%);
+  animation: maya-curtain-in .28s ease both;
+}
+
+.maya-opening-book {
+  position: relative;
+  width: min(36vw, 280px);
+  aspect-ratio: 2 / 3;
+  perspective: 1600px;
+  transform-style: preserve-3d;
+  animation: maya-book-zoom 1.05s cubic-bezier(.18,.78,.18,1) both;
+}
+
+.maya-opening-book::before,
+.maya-opening-book span {
+  content: "";
+  position: absolute;
+  inset: 2%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #eadfc9 0 48.5%, #b9a98f 49.5% 50.5%, #f5ecdc 51.5% 100%);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, .54);
+}
+
+.maya-opening-book img {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  transform-origin: left center;
+  backface-visibility: hidden;
+  animation: maya-cover-open 1.05s cubic-bezier(.2,.76,.18,1) both;
+}
+
+@keyframes maya-curtain-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes maya-book-zoom {
+  0% { transform: scale(.7) rotate(-2deg); }
+  52% { transform: scale(1) rotate(0); }
+  100% { transform: scale(2.25) rotate(0); }
+}
+
+@keyframes maya-cover-open {
+  0%, 28% { transform: rotateY(0deg); }
+  100% { transform: rotateY(-118deg); }
 }
 
 .headshot-wrap {
@@ -2096,10 +2255,9 @@ h3 {
 
 @media (max-width: 940px) {
 	  .hero,
-	  .split,
-	  .app-hero-layout,
-	  .maya-book-layout,
-	  .story-print-hero-layout,
+		  .split,
+		  .app-hero-layout,
+		  .story-print-hero-layout,
 	  .story-hero-grid,
 	  .story-reader {
 	    grid-template-columns: 1fr;
@@ -2294,17 +2452,30 @@ h3 {
   }
 
 	  .maya-hero {
-	    padding: 104px 0 58px;
+	    min-height: auto;
+	    padding: 106px 0 66px;
 	  }
 
-	  .maya-hero-grid,
-	  .maya-featured-story {
-	    grid-template-columns: 1fr;
-	  }
+		  .maya-hero-shell,
+		  .maya-featured-story {
+		    grid-template-columns: 1fr;
+		  }
 
 	  .maya-cover-link {
-	    width: min(100%, 230px);
+	    justify-self: center;
+	    width: min(72vw, 300px);
 	  }
+
+	  .maya-hero-copy {
+	    justify-self: center;
+	    text-align: center;
+	  }
+
+	  .maya-hero-copy .actions { justify-content: center; }
+
+	  .maya-series { margin-bottom: 16px; }
+
+	  .maya-hero h1 { font-size: clamp(48px, 10vw, 76px); }
 
 	  .maya-book-cover {
 	    width: min(100%, 230px);
@@ -2320,6 +2491,10 @@ h3 {
 
 	  .maya-book-facts {
 	    grid-template-columns: 1fr;
+	  }
+
+	  .maya-preview-grid {
+	    grid-template-columns: repeat(2, minmax(0, 1fr));
 	  }
 
   .story-hero-copy h1 {

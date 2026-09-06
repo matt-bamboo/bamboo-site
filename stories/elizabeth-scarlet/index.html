@@ -342,20 +342,21 @@ main{background:var(--surface)}
   line-height:1.45;
 }
 
-/* ── BOOK VIEW (mobile landscape) ── */
+/* ── MAYA'S STORYBOOK READER ── */
 .book-mode-shell{
   position:relative;
-  max-width:min(1100px,96vw);
-  margin:0 auto;
-  padding:0 1rem .75rem;
+  max-width:min(1440px,98vw);
+  margin:0 auto 2rem;
+  padding:.7rem 1rem 1rem;
   display:none;
+  scroll-margin-top:4.5rem;
 }
 .book-mode-controls{
   display:none;
   align-items:center;
   justify-content:space-between;
   gap:.75rem;
-  margin:0 auto 1rem;
+  margin:0 auto .7rem;
 }
 .book-mode-shell.is-visible .book-mode-controls{display:flex}
 .book-mode-button{
@@ -391,40 +392,44 @@ main{background:var(--surface)}
 }
 .book-mode-spreads{
   position:relative;
-  perspective:1200px;
-  min-height:72svh;
+  perspective:1800px;
+  min-height:calc(100svh - 8rem);
+  overflow:hidden;
+  border-radius:14px;
+  background:radial-gradient(circle at 50% 5%,rgba(255,249,235,.16),transparent 50%);
 }
 .book-mode-spread{
   position:absolute;
   inset:0;
-  gap:1rem;
-  grid-template-columns:1fr 1fr;
-  align-items:start;
+  gap:0;
+  grid-template-columns:1fr;
+  align-items:stretch;
   display:grid;
   opacity:0;
-  transform:rotateY(8deg);
+  transform:rotateY(7deg) translateX(34px);
   pointer-events:none;
   visibility:hidden;
-  transition:opacity .28s ease, transform .28s ease;
+  transition:opacity .58s ease, transform .68s cubic-bezier(.2,.78,.18,1);
 }
 .book-mode-shell.is-visible{display:block}
 .book-mode-shell.is-visible .book-mode-spread.is-active{opacity:1;transform:none;visibility:visible;pointer-events:auto}
 .book-mode-page{
-  background:var(--paper);
-  border:1px solid rgba(124,63,216,.22);
-  border-radius:8px;
-  padding:1.45rem 1.2rem 1.1rem;
-  box-shadow:0 10px 34px rgba(20,10,40,.12);
-  min-height:70svh;
-  max-height:72svh;
+  position:relative;
+  background:linear-gradient(90deg,#efe2cb 0,#fffaf0 5%,#fffaf0 96%,#eadcc2 100%);
+  border:1px solid rgba(83,52,24,.22);
+  border-radius:12px;
+  padding:1.35rem 1.3rem 1.2rem;
+  box-shadow:0 20px 56px rgba(8,3,18,.3),inset 0 0 28px rgba(121,79,31,.08);
+  min-height:calc(100svh - 8.5rem);
+  max-height:calc(100svh - 8.5rem);
   overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(124,63,216,.28) transparent;
 }
-.book-mode-page + .book-mode-page{border-left:1px solid rgba(124,63,216,.18)}
+.book-mode-page + .book-mode-page{border-left:1px solid rgba(83,52,24,.22)}
 .book-mode-spread .chapter{display:block;max-width:none;margin:0;padding:0;border:0}
 .book-mode-spread .ch-body p{max-width:44ch}
-.book-mode-spread .ill{
-  margin:1.6rem -1.2rem 1.7rem;
-}
+.book-mode-spread .ill{margin:1.35rem -1.3rem 1.5rem}
 .book-mode-spread .ill-fallback{
   margin:0 -1.2rem;
 }
@@ -437,10 +442,140 @@ main{background:var(--surface)}
 .book-mode-spread.is-enter-left,
 .book-mode-spread.is-enter-right{
   opacity:0;
+  transform:rotateY(28deg) translateX(-46px);
 }
-.book-mode-spread.is-enter-left{transform:rotateY(-8deg)}
-.book-mode-spread.is-enter-right{transform:rotateY(8deg)}
+.book-mode-spread.is-enter-left{transform:rotateY(-72deg) translateX(-40px)}
+.book-mode-spread.is-enter-right{transform:rotateY(72deg) translateX(40px)}
 body.book-mode #story-reader{display:none}
+
+@media(orientation:landscape) and (min-width:640px){
+  .book-mode-spread{grid-template-columns:1fr 1fr}
+  .book-mode-page:first-child{
+    border-radius:14px 3px 3px 14px;
+    background:linear-gradient(90deg,#efe2cb 0,#fffaf0 6%,#fffaf0 95%,#e2d1b5 100%);
+    box-shadow:0 22px 60px rgba(8,3,18,.3),inset -18px 0 26px rgba(72,45,20,.08);
+  }
+  .book-mode-page:last-child{
+    border-radius:3px 14px 14px 3px;
+    background:linear-gradient(90deg,#e2d1b5 0,#fffaf0 5%,#fffaf0 94%,#efe2cb 100%);
+    box-shadow:0 22px 60px rgba(8,3,18,.3),inset 18px 0 26px rgba(72,45,20,.08);
+  }
+}
+
+.story-entry-launch {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 45%, rgba(180, 140, 255, .22), rgba(10, 4, 24, .9) 62%);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity .34s ease;
+  animation: story-open-overlay .48s ease both;
+}
+
+.story-entry-launch.is-closing {
+  opacity: 0;
+}
+
+.story-entry-launch-book {
+  width: min(82vw, 760px);
+  aspect-ratio: 2 / 1.1;
+  perspective: 1400px;
+  position: relative;
+}
+
+.story-entry-launch-pages {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1600px;
+}
+
+.story-entry-launch-pages::before,
+.story-entry-launch-pages::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 250, 240, .34);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .38);
+  opacity: .98;
+}
+
+.story-entry-launch-pages::before {
+  background:
+    linear-gradient(145deg, #f6f0e3 0%, #ece0ce 50%, #e3d4be 100%);
+}
+
+.story-entry-launch-pages::after {
+  inset: 0 52%;
+  border-left: 1px solid rgba(124, 63, 216, .28);
+  background:
+    linear-gradient(145deg, #f3e8d8 0%, #d6c9b6 50%, #ebdcc8 100%);
+  animation: story-open 1.05s cubic-bezier(.21,.9,.2,1) forwards;
+  transform-origin: left center;
+  transform: rotateY(0deg);
+}
+
+.story-entry-launch-pages::before {
+  animation: story-open-soft 1.05s cubic-bezier(.21,.9,.2,1) forwards;
+}
+
+.story-entry-launch-book::after {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border: 1px solid rgba(255, 250, 240, .2);
+  border-radius: 9px;
+  pointer-events: none;
+  box-shadow: inset 0 0 28px rgba(255, 252, 244, .2);
+}
+
+.story-entry-launch-copy {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 16px 0;
+  text-align: center;
+  color: rgba(255, 248, 237, .84);
+  font-family: var(--sans);
+  font-size: .66rem;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  animation: story-open-label 1.05s ease forwards;
+}
+
+.story-entry-launch-copy strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: .85rem;
+  letter-spacing: .05em;
+  color: var(--gold-lt);
+}
+
+@keyframes story-open {
+  0% { transform: rotateY(0deg); }
+  18% { transform: rotateY(0deg); }
+  100% { transform: rotateY(-78deg); }
+}
+
+@keyframes story-open-soft {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes story-open-label {
+  0%, 20% { opacity: 0; transform: translateY(12px); }
+  35% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
+
+@keyframes story-open-overlay {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  100% { opacity: 1; }
+}
 
 /* ── FOOTER ── */
 footer{
@@ -484,6 +619,15 @@ footer a{color:var(--violet-lt);text-decoration:none}
   .listen-dock-title,.listen-dock-audio{grid-column:1/-1}
   .listen-player{min-width:0}
   .chapter{padding:2.5rem 1rem 2rem}
+  .book-mode-shell{padding:.55rem .5rem 1rem}
+  .book-mode-controls{margin-bottom:.5rem}
+  .book-mode-spreads{min-height:calc(100svh - 7.2rem)}
+  .book-mode-page{
+    min-height:calc(100svh - 7.2rem);
+    max-height:calc(100svh - 7.2rem);
+    padding:1.2rem 1rem;
+  }
+  .book-mode-spread .ill{margin:1.2rem -1rem 1.4rem}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -493,7 +637,8 @@ footer a{color:var(--violet-lt);text-decoration:none}
 @media print{
   @page{size:Letter;margin:.45in .5in}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .nav,.totop,.hero-dragon,.stars,.story-actions,.footer-actions,.listen-panel,.listen-dock{display:none}
+  .nav,.totop,.hero-dragon,.stars,.story-actions,.footer-actions,.listen-panel,.listen-dock,.book-mode-shell{display:none!important}
+  body.book-mode #story-reader{display:block!important}
   .hero{height:9.75in;min-height:0;page-break-after:always;overflow:hidden}
   .front{page-break-after:always}
   .chapter{max-width:none;padding:.35in 0 .15in;page-break-before:always;break-before:page}
@@ -2331,7 +2476,13 @@ Associate Office: Whispering Tides, Hawaii</p>
     spreads: [],
     currentSpread: 0,
     active:false,
+    touchStartX:undefined,
+    pagesPerSpread:2,
   };
+  const queryParams = new URLSearchParams(location.search);
+  const forceBookMode = queryParams.get("view")==="book" && queryParams.get("entry")==="maya";
+  const forcedStartChapter = queryParams.get("start");
+  const forcedStartSlot = Number(queryParams.get("slot"));
   const storyReader=document.getElementById('story-reader');
   const navTitle=document.getElementById('nav-title');
   if(!storyReader) return;
@@ -2345,6 +2496,7 @@ Associate Office: Whispering Tides, Hawaii</p>
     if(bookState.shell) return;
     const shell=document.createElement('section');
     shell.className='book-mode-shell';
+    shell.id='book-reader';
     shell.setAttribute('aria-label','Story spread viewer');
     shell.hidden=true;
 
@@ -2370,10 +2522,15 @@ Associate Office: Whispering Tides, Hawaii</p>
     bookState.shellObserverTarget=spreads;
   };
 
+  const desiredPagesPerSpread=()=>{
+    const landscape=window.matchMedia('(orientation: landscape)').matches || window.innerWidth>window.innerHeight;
+    return landscape && window.innerWidth>=640 ? 2 : 1;
+  };
+
   const chapterLabelForIndex=(idx)=>chapterTitles[idx]||`Chapter ${idx+1}`;
   const pairTitle=(spreadIndex)=>{
-    const first=spreadIndex*2;
-    const right=allChapters[first+1] ? first+1 : null;
+    const first=spreadIndex*bookState.pagesPerSpread;
+    const right=bookState.pagesPerSpread===2 && allChapters[first+1] ? first+1 : null;
     const leftTitle=chapterLabelForIndex(first);
     if(right===null) return `${leftTitle}`;
     return `${leftTitle} · ${chapterLabelForIndex(right)}`;
@@ -2381,14 +2538,15 @@ Associate Office: Whispering Tides, Hawaii</p>
 
   const rebuildSpreads=()=>{
     if(!bookState.shell) return;
+    bookState.pagesPerSpread=desiredPagesPerSpread();
     bookState.spreads=[];
     bookState.spreadsContainer.textContent='';
-    for(let i=0;i<allChapters.length;i+=2){
+    for(let i=0;i<allChapters.length;i+=bookState.pagesPerSpread){
       const spread=document.createElement('section');
       spread.className='book-mode-spread';
       spread.dataset.spread=i/2;
       const leftChapter=allChapters[i];
-      const rightChapter=allChapters[i+1]||null;
+      const rightChapter=bookState.pagesPerSpread===2 ? allChapters[i+1]||null : null;
       if(leftChapter){
         const left=leftChapter.cloneNode(true);
         left.removeAttribute('id');
@@ -2432,8 +2590,8 @@ Associate Office: Whispering Tides, Hawaii</p>
 
   const updateNavFromSpread=(index)=>{
     if(!navTitle) return;
-    const leftIndex=index*2;
-    const right=allChapters[leftIndex+1];
+    const leftIndex=index*bookState.pagesPerSpread;
+    const right=bookState.pagesPerSpread===2 ? allChapters[leftIndex+1] : null;
     if(right){
       navTitle.textContent=`${chapterLabelForIndex(leftIndex)} + ${chapterLabelForIndex(leftIndex+1)}`;
     }else{
@@ -2458,7 +2616,7 @@ Associate Office: Whispering Tides, Hawaii</p>
       requestAnimationFrame(()=>nextSpread.classList.remove(enterClass));
       window.setTimeout(()=>{
         prevSpread?.classList.remove('is-active',exitClass);
-      },280);
+      },680);
       bookState.spreads.forEach((spread,spreadIndex)=>{
         if(spreadIndex===prevIndex || spreadIndex===nextIndex) return;
         spread.classList.remove('is-active');
@@ -2472,9 +2630,9 @@ Associate Office: Whispering Tides, Hawaii</p>
     if(prev) prev.disabled=bookState.currentSpread===0;
     if(next) next.disabled=bookState.currentSpread>=bookState.spreads.length-1;
     if(meta){
-      const left=bookState.currentSpread*2+1;
-      const right=Math.min(left+1,allChapters.length);
-      const pageText=`Pages ${left}-${right}`;
+      const left=bookState.currentSpread*bookState.pagesPerSpread+1;
+      const right=Math.min(left+bookState.pagesPerSpread-1,allChapters.length);
+      const pageText=left===right ? `Page ${left}` : `Pages ${left}-${right}`;
       const spreadText=`${pageText} · ${pairTitle(bookState.currentSpread)}`;
       meta.textContent=spreadText;
     }
@@ -2491,19 +2649,44 @@ Associate Office: Whispering Tides, Hawaii</p>
     turnToSpread(bookState.currentSpread+offset);
   };
 
+  const playOpenAnimation=()=>{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const launch=document.createElement('div');
+    launch.className='story-entry-launch';
+    launch.innerHTML=`
+      <div class="story-entry-launch-book">
+        <p class="story-entry-launch-copy"><strong>Opening Maya’s Storybook</strong> from the shelf...</p>
+        <div class="story-entry-launch-pages"></div>
+      </div>
+    `;
+    document.body.appendChild(launch);
+    window.setTimeout(()=>launch.classList.add('is-closing'),1080);
+    window.setTimeout(()=>launch.remove(),1450);
+  };
+
   const enableBookMode=()=>{
     if(!storyReader) return;
     makeShell();
     rebuildSpreads();
     showShell();
+    if(forceBookMode){
+      playOpenAnimation();
+    }
     const chapterHash=location.hash && location.hash.startsWith('#ch') ? location.hash.slice(1) : null;
+    const targetFromStartParam=forcedStartChapter ? targetSpreadForChapter(forcedStartChapter) : null;
     if(chapterHash){
       const spread=targetSpreadForChapter(chapterHash);
       if(spread!==null) turnToSpread(spread);
       else turnToSpread(0);
+    }else if(targetFromStartParam!==null){
+      turnToSpread(targetFromStartParam);
+      const spreadEl=bookState.spreads[targetFromStartParam];
+      const preferredPage=(forcedStartSlot === 2 && spreadEl?.children?.[1]) ? spreadEl.children[1] : spreadEl?.children?.[0];
+      if(preferredPage) preferredPage.scrollTop=0;
     }else{
       turnToSpread(0);
     }
+    window.setTimeout(()=>bookState.shell?.scrollIntoView({block:'start'}),60);
   };
 
   const disableBookMode=()=>{
@@ -2514,19 +2697,28 @@ Associate Office: Whispering Tides, Hawaii</p>
   const targetSpreadForChapter=(chapterId)=>{
     const chapterIndex=chapterIndexById.get(chapterId);
     if(chapterIndex===undefined) return null;
-    return Math.floor(chapterIndex/2);
+    return Math.floor(chapterIndex/bookState.pagesPerSpread);
   };
 
   const shouldUseBookMode=()=>{
-    const isLandscape=window.matchMedia('(orientation: landscape)').matches;
-    const isNarrow=window.matchMedia('(max-width: 1400px)').matches;
+    const isLandscape = window.matchMedia('(orientation: landscape)').matches || window.innerWidth > window.innerHeight;
+    if(forceBookMode){
+      return true;
+    }
+    const isWide = window.matchMedia('(max-width: 1700px)').matches && window.matchMedia('(min-width: 420px)').matches;
     const hasTouch=window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches;
-    return isLandscape && isNarrow && hasTouch;
+    return isLandscape && isWide && hasTouch;
   };
 
   const updateBookMode=()=>{
     if(shouldUseBookMode()){
-      if(!bookState.active) enableBookMode();
+      if(!bookState.active){
+        enableBookMode();
+      }else if(bookState.pagesPerSpread!==desiredPagesPerSpread()){
+        const currentChapter=bookState.currentSpread*bookState.pagesPerSpread;
+        rebuildSpreads();
+        renderSpread(Math.floor(currentChapter/bookState.pagesPerSpread));
+      }
     }else{
       if(bookState.active) disableBookMode();
     }
@@ -2590,7 +2782,7 @@ Associate Office: Whispering Tides, Hawaii</p>
 
 // ── Chapter tracker in nav ──
 (function(){
-  const chapters=[...document.querySelectorAll('.chapter')];
+  const chapters=[...document.querySelectorAll('#story-reader > .chapter')];
   const title=document.getElementById('nav-title');
   const setTitleFromChapterId=chapterId=>{
     const chapter=chapters.find(c=>c.id===chapterId);
@@ -2600,6 +2792,7 @@ Associate Office: Whispering Tides, Hawaii</p>
   };
   window.__setStoryNavTitle=setTitleFromChapterId;
   const io=new IntersectionObserver(entries=>{
+    if(window.__storyBookModeActive) return;
     entries.forEach(e=>{
       if(e.isIntersecting){
         const h=e.target.querySelector('h2');
@@ -2620,7 +2813,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-if(location.hash==='#story-reader'){
+if(location.hash==='#story-reader' && !window.__storyBookModeActive){
   requestAnimationFrame(()=>document.querySelector('#story-reader')?.scrollIntoView({block:'start'}));
 }
 
@@ -2637,7 +2830,7 @@ if(location.hash==='#story-reader'){
   const statuses=[...document.querySelectorAll('[data-listen-status]')];
   const now=document.querySelector('[data-listen-now]');
   const progress=document.querySelector('[data-listen-progress]');
-  const chapters=[...document.querySelectorAll('.chapter')];
+  const chapters=[...document.querySelectorAll('#story-reader > .chapter')];
   const storyReader=document.getElementById('story-reader');
   const endpoint=window.STORY_NARRATION_ENDPOINT||'';
   const staticAudioBase=window.STORY_AUDIO_BASE||'/assets/stories/elizabeth-scarlet/audio';
@@ -2664,6 +2857,7 @@ if(location.hash==='#story-reader'){
     if(now) now.textContent=titleFor(id);
   };
 
+  selects.forEach(select=>{select.textContent=''});
   chapters.forEach((chapter,index)=>{
     const title=chapter.querySelector('h2')?.textContent?.trim()||`Chapter ${index+1}`;
     selects.forEach(select=>{

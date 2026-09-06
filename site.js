@@ -551,67 +551,111 @@ function mayaWorkPage() {
   const story = {
     title: "Mysteries of the Hidden World",
     series: "The Adventures of Elizabeth and Scarlet",
-    edition: "Ages 9-12 illustrated middle grade edition",
+    edition: "Ages 9–12 illustrated middle grade edition",
     href: "/stories/elizabeth-scarlet/",
     pdfHref: "/assets/stories/elizabeth-scarlet/mysteries-of-the-hidden-world-illustrated.pdf",
     cover: "/assets/stories/elizabeth-scarlet/illustrations/mysteries-hidden-world-cover.webp",
     status: "Current story",
-    description: "Book one in The Adventures of Elizabeth and Scarlet: a 25-chapter magical mystery with princess detectives, Max the butler, Leilani, and Cinder the baby dragon."
+    description: "Mysteries of the Hidden World is book one in The Adventures of Elizabeth and Scarlet: a 25-chapter middle-grade mystery fantasy with secret caves, royal clues, and a baby dragon.",
+    previewPanels: [
+      { id: "ch1", src: "/assets/stories/elizabeth-scarlet/illustrations/ch01-great-hall-race.webp", title: "Ch 1 · The Race Through the Great Hall", alt: "Elizabeth and Scarlet racing through the Great Hall." },
+      { id: "ch1", src: "/assets/stories/elizabeth-scarlet/illustrations/ch01-broken-vase.webp", title: "Ch 1 · The Blue Vase Discovery", alt: "The girls react as the vase shatters." },
+      { id: "ch2", src: "/assets/stories/elizabeth-scarlet/illustrations/ch02-breakfast-secret.webp", title: "Ch 2 · Breakfast Secret", alt: "Max brings breakfast while the mystery deepens." },
+      { id: "ch2", src: "/assets/stories/elizabeth-scarlet/illustrations/ch02-sisters-deal.webp", title: "Ch 2 · The Sisters' Deal", alt: "The girls make a quiet pact beside the broken pieces." },
+      { id: "ch3", src: "/assets/stories/elizabeth-scarlet/illustrations/ch03-lantern-speech.webp", title: "Ch 3 · Lantern Speech", alt: "The Queen speaks beneath glowing lanterns." },
+      { id: "ch3", src: "/assets/stories/elizabeth-scarlet/illustrations/ch03-giant-ice-creams.webp", title: "Ch 3 · The Giant Ice Creams", alt: "A giant dessert mystery at the party." },
+      { id: "ch4", src: "/assets/stories/elizabeth-scarlet/illustrations/ch04-midnight-escape.webp", title: "Ch 4 · Midnight Escape", alt: "A moonlit mission to the ice-cream truck." },
+      { id: "ch4", src: "/assets/stories/elizabeth-scarlet/illustrations/ch04-caught-with-sundaes.webp", title: "Ch 4 · Caught with Sundaes", alt: "Max catches the sisters in the act." },
+      { id: "ch5", src: "/assets/stories/elizabeth-scarlet/illustrations/ch05-trampoline-flight.webp", title: "Ch 5 · Trampoline Flight", alt: "A bright park with clues on every jump." },
+      { id: "ch5", src: "/assets/stories/elizabeth-scarlet/illustrations/ch05-max-stakeout.webp", title: "Ch 5 · Max's Stakeout", alt: "Max keeps watch from a blue support pillar." },
+      { id: "ch6", src: "/assets/stories/elizabeth-scarlet/illustrations/ch06-hard-math-test.webp", title: "Ch 6 · Hard Math Test", alt: "The sisters stay sharp under pressure." },
+      { id: "ch6", src: "/assets/stories/elizabeth-scarlet/illustrations/ch06-reassessment-hug.webp", title: "Ch 6 · Reassessment", alt: "Success brings comfort and a hug." },
+      { id: "ch7", src: "/assets/stories/elizabeth-scarlet/illustrations/ch07-sunflower-math.webp", title: "Ch 7 · Sunflower Math", alt: "Lessons are hidden in the garden." },
+      { id: "ch7", src: "/assets/stories/elizabeth-scarlet/illustrations/ch07-old-photograph.webp", title: "Ch 7 · Old Photograph", alt: "A photograph unlocks the older clue trail." },
+      { id: "ch8", src: "/assets/stories/elizabeth-scarlet/illustrations/ch08-ladybug-room.webp", title: "Ch 8 · Ladybug Room", alt: "A magical room reveals moving walls and light." },
+      { id: "ch8", src: "/assets/stories/elizabeth-scarlet/illustrations/ch08-secret-star-wall.webp", title: "Ch 8 · Secret Star Wall", alt: "A carved wall of stars opens with a turn." },
+      { id: "ch9", src: "/assets/stories/elizabeth-scarlet/illustrations/ch09-messenger-tree.webp", title: "Ch 9 · Messenger Tree", alt: "A letter and a silver glint in the tree." },
+      { id: "ch9", src: "/assets/stories/elizabeth-scarlet/illustrations/ch09-rosie-watching.webp", title: "Ch 9 · Mrs. Rosie Watches", alt: "A watchful eye spots a hidden detail." },
+      { id: "ch10", src: "/assets/stories/elizabeth-scarlet/illustrations/ch10-woods-picnic.webp", title: "Ch 10 · Picnic in the Woods", alt: "A royal picnic sets the next clue." },
+      { id: "ch10", src: "/assets/stories/elizabeth-scarlet/illustrations/ch10-crystal-cave-box.webp", title: "Ch 10 · Crystal Cave Box", alt: "A brass owl appears beside a hidden box." },
+      { id: "ch11", src: "/assets/stories/elizabeth-scarlet/illustrations/ch11-shard-clocktower.webp", title: "Ch 11 · Shard in the Tower", alt: "Clocktower magic points to the vault." },
+      { id: "ch11", src: "/assets/stories/elizabeth-scarlet/illustrations/ch11-max-inventor.webp", title: "Ch 11 · Max the Inventor", alt: "Max explains what he has found." },
+      { id: "ch12", src: "/assets/stories/elizabeth-scarlet/illustrations/ch12-golden-repair.webp", title: "Ch 12 · Golden Repair", alt: "The vase reforms, glowing with gold seams." },
+      { id: "ch12", src: "/assets/stories/elizabeth-scarlet/illustrations/ch12-family-confession.webp", title: "Ch 12 · Family Confession", alt: "They open up and face the truth together." },
+      { id: "ch13", src: "/assets/stories/elizabeth-scarlet/illustrations/ch13-waterfall-compass.webp", title: "Ch 13 · Waterfall Compass", alt: "A glowing compass reveals the cave route." },
+      { id: "ch13", src: "/assets/stories/elizabeth-scarlet/illustrations/ch13-detective-headquarters.webp", title: "Ch 13 · Detective Headquarters", alt: "Maps and clues fill their makeshift office." },
+      { id: "ch14", src: "/assets/stories/elizabeth-scarlet/illustrations/ch14-egg-tapping.webp", title: "Ch 14 · Egg Tapping", alt: "Mysterious sounds leak from the glowing egg." },
+      { id: "ch14", src: "/assets/stories/elizabeth-scarlet/illustrations/ch14-glowing-egg.webp", title: "Ch 14 · Glowing Egg", alt: "An inner fire answers their curiosity." },
+      { id: "ch15", src: "/assets/stories/elizabeth-scarlet/illustrations/cinder-hatches.webp", title: "Ch 15 · Cinder Hatches", alt: "A new hatchway leads to new courage." },
+      { id: "ch15", src: "/assets/stories/elizabeth-scarlet/illustrations/ch15-cinder-named.webp", title: "Ch 15 · Cinder Named", alt: "The dragon finally earns his name." },
+      { id: "ch16", src: "/assets/stories/elizabeth-scarlet/illustrations/ch16-cinder-sleeping.webp", title: "Ch 16 · Cinder Sleeps", alt: "A quiet pause before the next move." },
+      { id: "ch16", src: "/assets/stories/elizabeth-scarlet/illustrations/marshmallow-feast.webp", title: "Ch 16 · Marshmallow Feast", alt: "The group warms up by the fire." },
+      { id: "ch17", src: "/assets/stories/elizabeth-scarlet/illustrations/ch17-funny-echoes.webp", title: "Ch 17 · Funny Echoes", alt: "They hear the future before seeing it." },
+      { id: "ch17", src: "/assets/stories/elizabeth-scarlet/illustrations/ch17-silver-net-figure.webp", title: "Ch 17 · Silver Net Figure", alt: "A figure enters with shimmering lines." },
+      { id: "ch18", src: "/assets/stories/elizabeth-scarlet/illustrations/ch18-xray-max.webp", title: "Ch 18 · X-Ray Max", alt: "X-ray sight reveals the hidden route." },
+      { id: "ch18", src: "/assets/stories/elizabeth-scarlet/illustrations/ch18-glittery-shoes.webp", title: "Ch 18 · Glittery Shoes", alt: "A glitter burst marks the turning point." },
+      { id: "ch19", src: "/assets/stories/elizabeth-scarlet/illustrations/ch19-first-forest-flight.webp", title: "Ch 19 · First Flight", alt: "Cinder lifts everyone above the tree line." },
+      { id: "ch19", src: "/assets/stories/elizabeth-scarlet/illustrations/ch19-scout-and-bird.webp", title: "Ch 19 · Scout and Bird", alt: "A mechanical bird circles the valley." },
+      { id: "ch20", src: "/assets/stories/elizabeth-scarlet/illustrations/ch20-dragon-travel-trunk.webp", title: "Ch 20 · Dragon Travel Trunk", alt: "A trunk becomes a way to move unseen." },
+      { id: "ch20", src: "/assets/stories/elizabeth-scarlet/illustrations/ch20-leilani-beach.webp", title: "Ch 20 · Leilani Arrives", alt: "Leilani joins the quest on the beach." },
+      { id: "ch21", src: "/assets/stories/elizabeth-scarlet/illustrations/ch21-leilani-meets-cinder.webp", title: "Ch 21 · Leilani Meets Cinder", alt: "A first meeting under the open sky." },
+      { id: "ch21", src: "/assets/stories/elizabeth-scarlet/illustrations/ch21-ancient-lava-mural.webp", title: "Ch 21 · Ancient Lava Mural", alt: "A mural reveals ancient passage maps." },
+      { id: "ch22", src: "/assets/stories/elizabeth-scarlet/illustrations/ch22-golden-map-lines.webp", title: "Ch 22 · Golden Map Lines", alt: "Golden lines appear across the sky." },
+      { id: "ch22", src: "/assets/stories/elizabeth-scarlet/illustrations/ch22-blue-sand-harness.webp", title: "Ch 22 · Blue Sand Harness", alt: "A map appears from the sand and wind." },
+      { id: "ch23", src: "/assets/stories/elizabeth-scarlet/illustrations/ch23-silver-net-drops.webp", title: "Ch 23 · Silver-Net Drops", alt: "A silver net drops toward the cave entrance." },
+      { id: "ch23", src: "/assets/stories/elizabeth-scarlet/illustrations/ch23-cinder-launches.webp", title: "Ch 23 · Cinder Launches", alt: "The team follows Cinder into the sky." },
+      { id: "ch24", src: "/assets/stories/elizabeth-scarlet/illustrations/sky-guardian-fire-hill.webp", title: "Ch 24 · Sky Guardian", alt: "A guardian forms over Fire Hill." },
+      { id: "ch24", src: "/assets/stories/elizabeth-scarlet/illustrations/ch24-blue-glass-key.webp", title: "Ch 24 · Blue Glass Key", alt: "The final key appears in the firelight." },
+      { id: "ch25", src: "/assets/stories/elizabeth-scarlet/illustrations/ch25-updated-headquarters.webp", title: "Ch 25 · New Headquarters", alt: "The detectives prepare their next move." },
+      { id: "ch25", src: "/assets/stories/elizabeth-scarlet/illustrations/ch25-new-map-stone.webp", title: "Ch 25 · New Map", alt: "A fresh map starts the next adventure." }
+    ]
   };
+
+  const bookUrl = (chapter = "ch1", slot = 1) => `${pageUrl(story.href)}?view=book&entry=maya&start=${encodeURIComponent(chapter)}&slot=${slot}#book-reader`;
+  const readAsBook = bookUrl();
+  const featuredPanels = ["ch1", "ch4", "ch9", "ch15", "ch20", "ch24"]
+    .map(chapter => story.previewPanels.find(item => item.id === chapter))
+    .filter(Boolean);
+
   shell("Maya's Work - Mysteries of the Hidden World", "", `
     <section class="maya-hero">
-      <div class="inner maya-hero-grid">
-        <div class="maya-hero-copy">
-          <p class="eyebrow">Maya's Work</p>
-          <h1>A quiet shelf for Maya's story worlds.</h1>
-          <p class="lede">Illustrated adventures, printable editions, and live narration-ready story experiences collected in one place.</p>
-          <div class="actions">
-            <a class="button" href="${pageUrl(story.href)}">Read the story</a>
-            <a class="button secondary" href="${assetUrl(story.pdfHref)}" download>Download PDF</a>
-          </div>
-        </div>
-        <a class="maya-cover-link" href="${pageUrl(story.href)}" aria-label="Open ${esc(story.title)}">
+      <div class="inner maya-hero-shell">
+        <a class="maya-cover-link" href="${readAsBook}" data-maya-open aria-label="Open ${esc(story.title)}">
           <img src="${assetUrl(story.cover)}" alt="${esc(story.title)} cover">
         </a>
+        <div class="maya-hero-copy">
+          <p class="maya-series">${esc(story.series)}</p>
+          <p class="maya-book-number">Book One</p>
+          <h1>${esc(story.title)}</h1>
+          <div class="actions">
+            <a class="button maya-open-button" href="${readAsBook}" data-maya-open>Open the book <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
       </div>
     </section>
-    <section class="maya-book-section">
-      <div class="inner maya-book-layout">
-        <article class="maya-featured-story">
-          <a class="maya-book-cover" href="${pageUrl(story.href)}" aria-label="Open ${esc(story.title)}">
-            <img src="${assetUrl(story.cover)}" alt="">
-          </a>
-          <div class="maya-book-copy">
-            <p class="eyebrow">${esc(story.status)}</p>
-            <h2>${esc(story.title)}</h2>
-            <p class="lede">${esc(story.description)}</p>
-            <dl class="maya-book-facts">
-              <div><dt>Series</dt><dd>${esc(story.series)}</dd></div>
-              <div><dt>Edition</dt><dd>${esc(story.edition)}</dd></div>
-              <div><dt>Length</dt><dd>25 chapters</dd></div>
-              <div><dt>Formats</dt><dd>Web story, live reader, and illustrated PDF</dd></div>
-            </dl>
-            <div class="actions">
-              <a class="button" href="${pageUrl(story.href)}">Open story</a>
-              <a class="button secondary" href="${assetUrl(story.pdfHref)}" download>Download PDF</a>
-            </div>
-          </div>
-        </article>
-        <aside class="maya-next-panel">
-          <p class="eyebrow">Narration</p>
-          <h2>Read to Me is wired in.</h2>
-          <p>The story page has a chapter player ready for live ElevenLabs narration through a secure API endpoint.</p>
-          <div class="maya-next-list">
-            <span>Secure API key</span>
-            <span>Chapter streaming</span>
-            <span>Warm storyteller voice</span>
-          </div>
-        </aside>
+    <section class="maya-reader-preview">
+      <div class="maya-preview-grid" aria-label="Scenes from the story">
+        ${featuredPanels.map((item, index) => `<a class="maya-preview-card" href="${bookUrl(item.id, 1)}" data-maya-open aria-label="Open the book at ${esc(item.title)}"><img src="${assetUrl(item.src)}" alt="${esc(item.alt)}"${index > 1 ? ' loading="lazy"' : ''}></a>`).join("")}
       </div>
     </section>`, {
     showBrand: false,
     brandLabel: "Maya's Work",
     brandUrl: pageUrl("/maya/")
+  });
+
+  document.querySelectorAll("[data-maya-open]").forEach(link => {
+    link.addEventListener("click", event => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      event.preventDefault();
+      const href = link.href;
+      document.body.classList.add("maya-is-opening");
+      const curtain = document.createElement("div");
+      curtain.className = "maya-opening-curtain";
+      curtain.setAttribute("aria-hidden", "true");
+      curtain.innerHTML = `<div class="maya-opening-book"><img src="${assetUrl(story.cover)}" alt=""><span></span></div>`;
+      document.body.appendChild(curtain);
+      window.setTimeout(() => { window.location.href = href; }, 1050);
+    }, { once: true });
   });
 }
 
